@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "上岗证资格认证（倒班）";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+
+<div class="lr-layout lr-layout-left-center" style="padding-left:0px" id="lr_layout">
+    <div class="lr-layout-center">
+        <div class="lr-layout-wrap">
+            <div class="lr-layout-title">上岗证资格认证（倒班）</div>
+            <div class="lr-layout-tool">
+                <div class="lr-layout-tool-left">
+                    <div class="lr-layout-tool-item">
+                        <input id="txt_Keyword" type="text" class="form-control" placeholder="请输入要查询关键字" />
+                    </div>
+                    <div class="lr-layout-tool-item">
+                        <a id="btn_Search" class="btn btn-primary btn-sm"><i class="fa fa-search"></i>&nbsp;查询</a>
+                    </div>
+                </div>
+                <div class="lr-layout-tool-right">
+                    <div class=" btn-group btn-group-sm">
+                        <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+                    </div>
+                    <div class=" btn-group btn-group-sm" learun-authorize="yes">
+                        <a id="lr_add" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp;新增</a>
+                    </div>
+                </div>
+            </div>
+            <div class="lr-layout-body" id="gridtable"></div>
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/Wl_ChangeShifts/Index.js")
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:750px;">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="display: inline;padding-left:1%;">
+                    <canvas id="myCanvas" class="canvasclass" width="354" height="213" style="background-size: 100% 100%;">
+                        您的浏览器不支持 HTML5 canvas 标签。
+                    </canvas>
+                </div>
+                <div style="display: inline">
+                    <canvas id="othenSideCanvas" class="canvasclass" width="354" height="213" style="background-size:100% 100%;float:left;">
+                        您的浏览器不支持 HTML5 canvas 标签。
+                    </canvas>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "培训内容和结果";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_training" >
+        <div class="lr-form-item-title">培训人员<font face="宋体">*</font></div>
+        <div id="F_CandidatesID" isvalid="yes" checkexpession="NotNull" ></div>
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_training" >
+        <div class="lr-form-item-title">培训内容<font face="宋体">*</font></div>
+        <textarea id="F_Content" class="form-control" style="height:150px;" isvalid="yes" checkexpession="NotNull" ></textarea>
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_training" >
+        <div class="lr-form-item-title">是否完成<font face="宋体">*</font></div>
+        <div id="F_TrainingResult" isvalid="yes" checkexpession="NotNull" ></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/Training/Form.js")

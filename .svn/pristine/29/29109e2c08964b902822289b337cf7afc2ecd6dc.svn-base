@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "报道节点审批维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+@Html.AppendCssFile("/AppManager/Views/DTImg/Form.css")
+<div class="lr-form-wrap" id="DormitoryForm">
+    <div class="col-xs-6 lr-form-item">
+        <div class="lr-form-item-title">人员姓名<font face="宋体">*</font></div>
+        <input id="F_UserName" type="text" readonly="readonly" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item">
+        <div class="lr-form-item-title">身份证号<font face="宋体">*</font></div>
+        <input id="F_CardId" type="text" readonly="readonly" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12" style="padding-left:100px;">
+        <div class="lr-form-item-title">证件照展示<font face="宋体">*</font></div>
+        <div class="file">
+            <input type="file" name="uploadFile" id="uploadFile">
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Views/LR_Content/script/lr-fileupload.js", "/Areas/Platform/Views/RecruitReportNodeApprovalClass/DormitoryForm.js")

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "餐别补贴规则";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_MealAllowanceStandard" style="display: none;" >
+        <div class="lr-form-item-title">系统ID<font face="宋体">*</font></div>
+        <input id="mas_no" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_MealAllowanceStandard" >
+        <div class="lr-form-item-title">餐别<font face="宋体">*</font></div>
+        <input id="mas_name" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_MealAllowanceStandard" >
+        <div class="lr-form-item-title">消费补贴开始有效时间<font face="宋体">*</font></div>
+        <input id="startime" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_MealAllowanceStandard" >
+        <div class="lr-form-item-title">消费补贴截止补贴时间<font face="宋体">*</font></div>
+        <input id="endtime" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_MealAllowanceStandard" >
+        <div class="lr-form-item-title">补贴标准<font face="宋体">*</font></div>
+        <input id="mas_money" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_MealAllowanceStandard" >
+        <div class="lr-form-item-title">最低消费额度<font face="宋体">*</font></div>
+        <input id="mas_limitminmoney" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HY_Logistics/Views/MealSubsidyRulesClass/Form.js")

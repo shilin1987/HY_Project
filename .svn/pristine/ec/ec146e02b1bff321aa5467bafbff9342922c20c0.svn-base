@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://localhost/hy.webservice.hr.HyRecruitingService" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://hr.webservice.hy" targetNamespace="http://localhost/hy.webservice.hr.HyRecruitingService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://localhost/hy.webservice.hr.HyRecruitingService">
+      <xsd:element name="SendOa">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="strJson" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="workcode" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendOaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ReturnIfo" nillable="true" type="ns1:ReturnIfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://hr.webservice.hy">
+      <xsd:complexType name="ReturnIfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="isSuccess" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="message" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SendOaResponse">
+    <wsdl:part name="parameters" element="tns:SendOaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendOaRequest">
+    <wsdl:part name="parameters" element="tns:SendOa" />
+  </wsdl:message>
+  <wsdl:portType name="HyRecruitingServicePortType">
+    <wsdl:operation name="SendOa">
+      <wsdl:input name="SendOaRequest" message="tns:SendOaRequest" />
+      <wsdl:output name="SendOaResponse" message="tns:SendOaResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HyRecruitingServiceHttpBinding" type="tns:HyRecruitingServicePortType">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendOa">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="SendOaRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SendOaResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HyRecruitingService">
+    <wsdl:port name="HyRecruitingServiceHttpPort" binding="tns:HyRecruitingServiceHttpBinding">
+      <wsdlsoap:address location="http://192.168.98.151:8088//services/HyRecruitingService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

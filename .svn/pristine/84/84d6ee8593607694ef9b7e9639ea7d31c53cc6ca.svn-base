@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.HR_SocialRecruitment.RecruitmentProcessInformationClass
+{
+    public class ProcessNode
+    {
+        public ProcessNode()
+        {
+        }
+
+        public ProcessNode(string f_CheckpointName, DateTime? f_ApproveCreationTime, DateTime? f_ApprovalTime, string f_TheApprover, string f_ProcessStandardTime, string f_IfTimeout, string f_WhetherThrough)
+        {
+            F_CheckpointName = f_CheckpointName;
+            F_ApproveCreationTime = f_ApproveCreationTime;
+            F_ApprovalTime = f_ApprovalTime;
+            F_TheApprover = f_TheApprover;
+            F_ProcessStandardTime = f_ProcessStandardTime;
+            F_IfTimeout = f_IfTimeout;
+            F_WhetherThrough = f_WhetherThrough;
+        }
+
+        /// <summary>
+        /// OA审批节点名称
+        /// </summary>
+        /// <returns></returns>
+        public string F_CheckpointName { get; set; }
+        /// <summary>
+        /// 流程节点创建时间
+        /// </summary>
+        /// <returns></returns>
+        public DateTime? F_ApproveCreationTime { get; set; }
+        /// <summary>
+        /// 审批时间
+        /// </summary>
+        /// <returns></returns>
+        public DateTime? F_ApprovalTime { get; set; }
+        /// <summary>
+        /// 审批人
+        /// </summary>
+        /// <returns></returns>
+        public string F_TheApprover { get; set; }
+
+        /// <summary>
+        /// 超时标准
+        /// </summary>
+        /// <returns></returns>
+        public string F_ProcessStandardTime { get; set; }
+        /// <summary>
+        /// 是否超时
+        /// </summary>
+        /// <returns></returns>
+        public string F_IfTimeout { get; set; }
+        /// <summary>
+        /// 是否通过
+        /// </summary>
+        /// <returns></returns>
+        public string F_WhetherThrough { get; set; }
+    }
+}

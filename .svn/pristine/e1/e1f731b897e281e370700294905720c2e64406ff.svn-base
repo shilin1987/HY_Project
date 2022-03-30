@@ -1,0 +1,38 @@
+﻿var acceptClick;
+var dfopid = request('dfopid');
+var keyValue = request('keyValue');
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            page.initData();
+            page.bind();
+        },
+        bind: function () {
+            $('#WAFER_NO').jfGrid({
+                headData: [
+                    {
+                        label: '片号', name: 'WAFER_NO', width: 100, align: 'center',
+                        edit: {
+                            type: 'input'
+                        }
+                    }
+                ],
+                isEdit: true,
+                height: 410,
+                width: 500
+            });
+        },
+        initData: function () {}
+    };
+    // 保存数据
+    acceptClick = function (callBack) {
+        var rowdata = $('#WAFER_NO').jfGridGet('showData');
+        var listdata = "";
+        for (var item in rowdata) {     
+            listdata = rowdata[item]["WAFER_NO"] + ',' + listdata;
+        }       
+        return listdata.substring(0, listdata.length-1);
+    };
+    page.init();
+}

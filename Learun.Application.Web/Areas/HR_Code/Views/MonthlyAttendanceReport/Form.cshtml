@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "月考勤数据";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">员工工号<font face="宋体">*</font></div>
+        <div id="F_UserId" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">考勤日期<font face="宋体">*</font></div>
+        <input id="F_AttendanceMonth" type="text" class="form-control" isvalid="yes" maxlength="6" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">排班/天<font face="宋体">*</font></div>
+        <input id="F_SchedulingDays" type="text" class="form-control" isvalid="yes" maxlength="2" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">出勤天数<font face="宋体">*</font></div>
+        <input id="F_AttendanceDays" type="text" class="form-control" isvalid="yes" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">排班工时<font face="宋体">*</font></div>
+        <input id="F_SchedulingHours" type="text" class="form-control" isvalid="yes" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">出勤百分率<font face="宋体">*</font></div>
+        <input id="F_PercentageAttendance" type="text" class="form-control" isvalid="yes" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">在岗工时<font face="宋体">*</font></div>
+        <input id="F_OnDutyHours" type="text" class="form-control" isvalid="yes" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">实际出勤时数<font face="宋体">*</font></div>
+        <input id="F_ActualAttendanceHours" type="text" class="form-control" isvalid="yes" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">白班天数<font face="宋体">*</font></div>
+        <input id="F_DayShiftDays" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">夜班天数</div>
+        <input id="F_NightShiftDays" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">长白班天数</div>
+        <input id="F_DaysChangbaiShift" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">长夜班天数</div>
+        <input id="F_DaysLongNightShift" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">特殊夜班工时</div>
+        <input id="F_SpecialNightShiftHours" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">特殊白班工时</div>
+        <input id="F_SpecialDayShift" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">缺勤工时</div>
+        <input id="F_AbsenceHours" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">OT1确认</div>
+        <input id="F_OT1Confirm" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">OT1统计</div>
+        <input id="F_OT1Statistics" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">OT2确认</div>
+        <input id="F_OT2Confirm" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">OT2统计</div>
+        <input id="F_OT2Statistics" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">OT3确认</div>
+        <input id="F_OT3Confirm" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">OT3统计</div>
+        <input id="F_OT3Statistics" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">倒班平日加班</div>
+        <input id="F_ShiftWorkOvertimeOnWeekdays" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">倒班双休加班</div>
+        <input id="F_OvertimeOnShift" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">年假/时</div>
+        <input id="F_AnnualLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">集团年假/时</div>
+        <input id="F_GroupAnnualLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">调休/时</div>
+        <input id="F_CompensatoryLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">放班假/时</div>
+        <input id="F_ClassLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">旷工次数</div>
+        <input id="F_AbsenteeismNumber" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">旷工/时</div>
+        <input id="F_AbsenteeismTimes" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">事假/时</div>
+        <input id="F_CompassionateLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">病假/时</div>
+        <input id="F_SickLeave" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">婚假/时</div>
+        <input id="F_MarriageHoliday" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">丧假/时</div>
+        <input id="F_BereavementLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">产检/时</div>
+        <input id="F_PrenatalExaminationHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">产假/时</div>
+        <input id="F_MaternityLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">护理假/时</div>
+        <input id="F_NursingLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">工伤假/时</div>
+        <input id="F_WorkRelatedInjuryLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">哺乳假/时</div>
+        <input id="F_LactationLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">医疗期/时</div>
+        <input id="F_MedicalPeriodHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">产前挂职/时</div>
+        <input id="F_AntenatalSuspendJobHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">停薪留职/时</div>
+        <input id="F_StayWithoutPayHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">陪产假/时</div>
+        <input id="F_PaternityLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">其他假/时</div>
+        <input id="F_OtherLeaveHour" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">出差/时</div>
+        <input id="F_BusinessTravel" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">公出/时</div>
+        <input id="F_BeAwayOnBusiness" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">补卡次数</div>
+        <input id="F_NumberCardFilling" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">迟到分钟</div>
+        <input id="F_MinutesLate" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">早退分钟</div>
+        <input id="F_LeaveEarly" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">迟到次数</div>
+        <input id="F_TimesBeingLlate" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">早退次数</div>
+        <input id="F_NumberEarlyLeave" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">白班天数</div>
+        <input id="F_BaiBanShiftDays" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">小夜天数</div>
+        <input id="F_DaysSmallNight" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_AttendanceSheet">
+        <div class="lr-form-item-title">大夜天数</div>
+        <input id="F_DaysBigNight" type="text" class="form-control" isvalid="yes" checkexpession="NumOrNull" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/MonthlyAttendanceReport/Form.js")

@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\Microsoft.ClearScript.V8.Native.win-x86.7.2.0\build\Microsoft.ClearScript.V8.Native.win-x86.props" Condition="Exists('..\..\..\packages\Microsoft.ClearScript.V8.Native.win-x86.7.2.0\build\Microsoft.ClearScript.V8.Native.win-x86.props')" />
+  <Import Project="..\..\..\packages\Microsoft.ClearScript.V8.Native.win-x64.7.2.0\build\Microsoft.ClearScript.V8.Native.win-x64.props" Condition="Exists('..\..\..\packages\Microsoft.ClearScript.V8.Native.win-x64.7.2.0\build\Microsoft.ClearScript.V8.Native.win-x64.props')" />
+  <Import Project="..\..\..\packages\Microsoft.ClearScript.V8.ICUData.7.2.0\build\Microsoft.ClearScript.V8.ICUData.props" Condition="Exists('..\..\..\packages\Microsoft.ClearScript.V8.ICUData.7.2.0\build\Microsoft.ClearScript.V8.ICUData.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56F9A112-FD96-4809-98F4-0D7C5DE0711B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Learun.Application.TwoDevelopment</RootNamespace>
+    <AssemblyName>Learun.Application.TwoDevelopment</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\..\..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript.Core, Version=7.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ClearScript.Core.7.2.0\lib\net45\ClearScript.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript.V8, Version=7.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ClearScript.V8.7.2.0\lib\net45\ClearScript.V8.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript.Windows, Version=7.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ClearScript.Windows.7.2.0\lib\net45\ClearScript.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript.Windows.Core, Version=7.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ClearScript.Windows.Core.7.2.0\lib\net45\ClearScript.Windows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NPOI.2.5.4\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NPOI.2.5.4\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NPOI.2.5.4\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NPOI.2.5.4\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="sapnco">
+      <HintPath>bin\Debug\sapnco.dll</HintPath>
+    </Reference>
+    <Reference Include="sapnco_utils">
+      <HintPath>bin\Debug\sapnco_utils.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="B2B_Code\B2B_CUST_ORDER_CHECK\B2BOrders.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_ORDER_CHECK\B2BResult.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_ORDER_CHECK\B2BResultSub.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_ORDER_CHECK\B2B_CUST_ORDER_CHECKBLL.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_ORDER_CHECK\B2B_CUST_ORDER_CHECKIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_ORDER_CHECK\B2B_CUST_ORDER_CHECKService.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_ORDER_CHECK\BocAttr.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_PLAN_CONTRAST_WARN\B2B_CUST_PLAN_CONTRAST_WARNBLL.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_PLAN_CONTRAST_WARN\B2B_CUST_PLAN_CONTRAST_WARNEntity.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_PLAN_CONTRAST_WARN\B2B_CUST_PLAN_CONTRAST_WARNIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_PLAN_CONTRAST_WARN\B2B_CUST_PLAN_CONTRAST_WARNService.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_PLAN_WARN\B2B_CUST_PLAN_WARNBLL.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_PLAN_WARN\B2B_CUST_PLAN_WARNEntity.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_PLAN_WARN\B2B_CUST_PLAN_WARNIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_CUST_PLAN_WARN\B2B_CUST_PLAN_WARNService.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_CREATE\B2B_PLAN_CREATEBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_CREATE\B2B_PLAN_CREATEIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_CREATE\B2B_PLAN_CREATEService.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_CREATE\B2B_PLAN_INCOMING_MATERIALEntity.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_CREATE\B2B_PLAN_INCOMING_MATERIAL_SUBEntity.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ALLOT\B2B_PLAN_MATERIAL_ALLOTBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ALLOT\B2B_PLAN_MATERIAL_ALLOTEntity.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ALLOT\B2B_PLAN_MATERIAL_ALLOTIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ALLOT\B2B_PLAN_MATERIAL_ALLOTService.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ALLOT\B2B_PLAN_MATERIAL_ALLOT_SUBEntity.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ALLOT_REPORT\B2B_PLAN_MATERIAL_ALLOT_REPORTBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ALLOT_REPORT\B2B_PLAN_MATERIAL_ALLOT_REPORTIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ALLOT_REPORT\B2B_PLAN_MATERIAL_ALLOT_REPORTService.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_CREATE_CUST\B2B_PLAN_MATERIAL_CREATE_CUSTBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_CREATE_CUST\B2B_PLAN_MATERIAL_CREATE_CUSTIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_CREATE_CUST\B2B_PLAN_MATERIAL_CREATE_CUSTService.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_CREATE_CUST\MES_PRODUCT_DATA.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_MERGE_REPORT\B2B_PLAN_MATERIAL_MERGE.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_MERGE_REPORT\B2B_PLAN_MATERIAL_MERGE_REPORTBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_MERGE_REPORT\B2B_PLAN_MATERIAL_MERGE_REPORTIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_MERGE_REPORT\B2B_PLAN_MATERIAL_MERGE_REPORTService.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ＭERGE_CREATE\B2B_PLAN_MATERIAL_MERGEEntity.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ＭERGE_CREATE\B2B_PLAN_MATERIAL_MERGE_SUBEntity.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ＭERGE_CREATE\B2B_PLAN_MATERIAL_ＭERGE_CREATEBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ＭERGE_CREATE\B2B_PLAN_MATERIAL_ＭERGE_CREATEIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_PLAN_MATERIAL_ＭERGE_CREATE\B2B_PLAN_MATERIAL_ＭERGE_CREATEService.cs" />
+    <Compile Include="B2B_Code\B2B_Report_MB52\B2B_Report_MB52BLL.cs" />
+    <Compile Include="B2B_Code\B2B_Report_MB52\B2B_Report_MB52Entity.cs" />
+    <Compile Include="B2B_Code\B2B_Report_MB52\B2B_Report_MB52IBLL.cs" />
+    <Compile Include="B2B_Code\B2B_Report_MB52\B2B_Report_MB52Service.cs" />
+    <Compile Include="B2B_Code\B2B_Report_WaferStock\B2B_Report_WaferStockBLL.cs" />
+    <Compile Include="B2B_Code\B2B_Report_WaferStock\B2B_Report_WaferStockEntity.cs" />
+    <Compile Include="B2B_Code\B2B_Report_WaferStock\B2B_Report_WaferStockIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_Report_WaferStock\B2B_Report_WaferStockService.cs" />
+    <Compile Include="B2B_Code\B2B_Report_WIP\B2B_Report_WIPBLL.cs" />
+    <Compile Include="B2B_Code\B2B_Report_WIP\B2B_Report_WIPEntity.cs" />
+    <Compile Include="B2B_Code\B2B_Report_WIP\B2B_Report_WIPIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_Report_WIP\B2B_Report_WIPService.cs" />
+    <Compile Include="B2B_Code\B2B_SAP_RFC\SapRfc.cs" />
+    <Compile Include="B2B_Code\B2B_WAFER_LIST\B2B_WAFER_LISTBLL.cs" />
+    <Compile Include="B2B_Code\B2B_WAFER_LIST\B2B_WAFER_LISTEntity.cs" />
+    <Compile Include="B2B_Code\B2B_WAFER_LIST\B2B_WAFER_LISTIBLL.cs" />
+    <Compile Include="B2B_Code\B2B_WAFER_LIST\B2B_WAFER_LISTService.cs" />
+    <Compile Include="B2B_Code\B2B_WAFER_LIST\B2B_WAFER_LIST_SUBEntity.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\B2B_CUST_ORDEREntity.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\B2B_CUST_ORDER_PARAMEntity.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\B2B_CUST_ORDER_SUBEntity.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\CUST_ORDER_CREATEBLL.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\CUST_ORDER_CREATEIBLL.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\CUST_ORDER_CREATEService.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\ExcelParam.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\ListOrderParams.cs" />
+    <Compile Include="B2B_Code\CUST_ORDER_CREATE\MesPort.cs" />
+    <Compile Include="ERPDemo\DataHistory\DataHistoryBLL.cs" />
+    <Compile Include="ERPDemo\DataHistory\DataHistoryIBLL.cs" />
+    <Compile Include="ERPDemo\DataHistory\DataHistoryService.cs" />
+    <Compile Include="ERPDemo\DataHistory\LR_ERP_DataHistoryEntity.cs" />
+    <Compile Include="ERPDemo\PaymentInfo\LR_ERP_PaymentInfoDetailEntity.cs" />
+    <Compile Include="ERPDemo\PaymentInfo\LR_ERP_PaymentInfoEntity.cs" />
+    <Compile Include="ERPDemo\PaymentInfo\PaymentInfoBLL.cs" />
+    <Compile Include="ERPDemo\PaymentInfo\PaymentInfoIBLL.cs" />
+    <Compile Include="ERPDemo\PaymentInfo\PaymentInfoService.cs" />
+    <Compile Include="ERPDemo\Product\LR_ERP_ProductEntity.cs" />
+    <Compile Include="ERPDemo\Product\ProductBLL.cs" />
+    <Compile Include="ERPDemo\Product\ProductIBLL.cs" />
+    <Compile Include="ERPDemo\Product\ProductService.cs" />
+    <Compile Include="ERPDemo\PurchaseOrder\LR_ERP_PurchaseOrderDetailEntity.cs" />
+    <Compile Include="ERPDemo\PurchaseOrder\LR_ERP_PurchaseOrderEntity.cs" />
+    <Compile Include="ERPDemo\PurchaseOrder\PurchaseOrderBLL.cs" />
+    <Compile Include="ERPDemo\PurchaseOrder\PurchaseOrderIBLL.cs" />
+    <Compile Include="ERPDemo\PurchaseOrder\PurchaseOrderService.cs" />
+    <Compile Include="ERPDemo\PurchaseRequisition\LR_ERP_ProductInfoEntity.cs" />
+    <Compile Include="ERPDemo\PurchaseRequisition\LR_ERP_PurchaseRequisitionEntity.cs" />
+    <Compile Include="ERPDemo\PurchaseRequisition\PurchaseRequisitionBLL.cs" />
+    <Compile Include="ERPDemo\PurchaseRequisition\PurchaseRequisitionIBLL.cs" />
+    <Compile Include="ERPDemo\PurchaseRequisition\PurchaseRequisitionService.cs" />
+    <Compile Include="ERPDemo\PurchaseWarehousing\LR_ERP_PurchaseWarehousingDetailEntity.cs" />
+    <Compile Include="ERPDemo\PurchaseWarehousing\LR_ERP_PurchaseWarehousingEntity.cs" />
+    <Compile Include="ERPDemo\PurchaseWarehousing\PurchaseWarehousingBLL.cs" />
+    <Compile Include="ERPDemo\PurchaseWarehousing\PurchaseWarehousingIBLL.cs" />
+    <Compile Include="ERPDemo\PurchaseWarehousing\PurchaseWarehousingService.cs" />
+    <Compile Include="ERPDemo\ReceiptInfo\LR_ERP_ReceiptInfoDetailEntity.cs" />
+    <Compile Include="ERPDemo\ReceiptInfo\LR_ERP_ReceiptInfoEntity.cs" />
+    <Compile Include="ERPDemo\ReceiptInfo\ReceiptInfoBLL.cs" />
+    <Compile Include="ERPDemo\ReceiptInfo\ReceiptInfoIBLL.cs" />
+    <Compile Include="ERPDemo\ReceiptInfo\ReceiptInfoService.cs" />
+    <Compile Include="ERPDemo\SalesOffer\LR_ERP_SalesOfferDetailEntity.cs" />
+    <Compile Include="ERPDemo\SalesOffer\LR_ERP_SalesOfferEntity.cs" />
+    <Compile Include="ERPDemo\SalesOffer\SalesOfferBLL.cs" />
+    <Compile Include="ERPDemo\SalesOffer\SalesOfferIBLL.cs" />
+    <Compile Include="ERPDemo\SalesOffer\SalesOfferService.cs" />
+    <Compile Include="ERPDemo\SalesOrder\LR_ERP_SalesOrderDetailEntity.cs" />
+    <Compile Include="ERPDemo\SalesOrder\LR_ERP_SalesOrderEntity.cs" />
+    <Compile Include="ERPDemo\SalesOrder\SalesOrderBLL.cs" />
+    <Compile Include="ERPDemo\SalesOrder\SalesOrderIBLL.cs" />
+    <Compile Include="ERPDemo\SalesOrder\SalesOrderService.cs" />
+    <Compile Include="ERPDemo\SalesReceipt\LR_ERP_SalesReceiptDetailEntity.cs" />
+    <Compile Include="ERPDemo\SalesReceipt\LR_ERP_SalesReceiptEntity.cs" />
+    <Compile Include="ERPDemo\SalesReceipt\SalesReceiptBLL.cs" />
+    <Compile Include="ERPDemo\SalesReceipt\SalesReceiptIBLL.cs" />
+    <Compile Include="ERPDemo\SalesReceipt\SalesReceiptService.cs" />
+    <Compile Include="HR_Code\AttendanceMaintenanceClass\AttendanceMaintenanceClassBLL.cs" />
+    <Compile Include="HR_Code\AttendanceMaintenanceClass\AttendanceMaintenanceClassIBLL.cs" />
+    <Compile Include="HR_Code\AttendanceMaintenanceClass\AttendanceMaintenanceClassService.cs" />
+    <Compile Include="HR_Code\AttendanceMaintenanceClass\Hr_SHIFTTIMETAB_fileEntity.cs" />
+    <Compile Include="HR_Code\AttendanceSalaryFormula\AttendanceSalaryFormulaBLL.cs" />
+    <Compile Include="HR_Code\AttendanceSalaryFormula\AttendanceSalaryFormulaIBLL.cs" />
+    <Compile Include="HR_Code\AttendanceSalaryFormula\AttendanceSalaryFormulaService.cs" />
+    <Compile Include="HR_Code\AttendanceSalaryFormula\Hy_hr_AttendanceSalaryFormulaEntity.cs" />
+    <Compile Include="HR_Code\BatchPrintChangePDF\BatchPrintPDFBLL.cs" />
+    <Compile Include="HR_Code\BatchPrintChangePDF\BatchPrintPDFIBLL.cs" />
+    <Compile Include="HR_Code\BatchPrintChangePDF\BatchPrintService.cs" />
+    <Compile Include="HR_Code\BatchPrintChangePDF\BothSidesOfWorkPermitDTO.cs" />
+    <Compile Include="HR_Code\CenterCostClass\CenterCostClassBLL.cs" />
+    <Compile Include="HR_Code\CenterCostClass\CenterCostClassIBLL.cs" />
+    <Compile Include="HR_Code\CenterCostClass\CenterCostClassService.cs" />
+    <Compile Include="HR_Code\CenterCostClass\Hr_center_costEntity.cs" />
+    <Compile Include="HR_Code\CloseFinancialLedger\CloseFinancialLedgerBLL.cs" />
+    <Compile Include="HR_Code\CloseFinancialLedger\CloseFinancialLedgerIBLL.cs" />
+    <Compile Include="HR_Code\CloseFinancialLedger\CloseFinancialLedgerService.cs" />
+    <Compile Include="HR_Code\CloseFinancialLedger\Hy_hr_CloseFinancialLedgerEntity.cs" />
+    <Compile Include="HR_Code\Common\FormulaDisassembly.cs" />
+    <Compile Include="HR_Code\Common\IFormulaDisassembly.cs" />
+    <Compile Include="HR_Code\EverybodyStandardWageSub\Hy_hr_EverybodyStandardWageSubEntity.cs" />
+    <Compile Include="HR_Code\EverybodyStandardWage\EverybodyStandardWageBLL.cs" />
+    <Compile Include="HR_Code\EverybodyStandardWage\EverybodyStandardWageIBLL.cs" />
+    <Compile Include="HR_Code\EverybodyStandardWage\EverybodyStandardWageService.cs" />
+    <Compile Include="HR_Code\EverybodyStandardWage\EverybodyStandardWageSubDTO.cs" />
+    <Compile Include="HR_Code\EverybodyStandardWage\Hy_hr_EverybodyStandardWageEntity.cs" />
+    <Compile Include="HR_Code\FinancialDeductionsClass\FinancialDeductionsClassBLL.cs" />
+    <Compile Include="HR_Code\FinancialDeductionsClass\FinancialDeductionsClassIBLL.cs" />
+    <Compile Include="HR_Code\FinancialDeductionsClass\FinancialDeductionsClassService.cs" />
+    <Compile Include="HR_Code\FinancialDeductionsClass\Hr_FinancialDeductionsEntity.cs" />
+    <Compile Include="HR_Code\FSConsumptionRecord\FSConsumptionRecordBLL.cs" />
+    <Compile Include="HR_Code\FSConsumptionRecord\FSConsumptionRecordIBLL.cs" />
+    <Compile Include="HR_Code\FSConsumptionRecord\FSConsumptionRecordService.cs" />
+    <Compile Include="HR_Code\FSConsumptionRecord\FSRecordsConsumptionDTO.cs" />
+    <Compile Include="HR_Code\FSConsumptionRecord\FSRecordsOfConsumptionDTO.cs" />
+    <Compile Include="HR_Code\FSConsumptionRecord\hr_MonthlyconsumptiondataEntity.cs" />
+    <Compile Include="HR_Code\FSCounterTheWindowsillClass\FSCounterTheWindowsillClassBLL.cs" />
+    <Compile Include="HR_Code\FSCounterTheWindowsillClass\FSCounterTheWindowsillClassIBLL.cs" />
+    <Compile Include="HR_Code\FSCounterTheWindowsillClass\FSCounterTheWindowsillClassService.cs" />
+    <Compile Include="HR_Code\FSCounterTheWindowsillClass\FS_CounterTheWindowsillEntity.cs" />
+    <Compile Include="HR_Code\FSVegetablePricesCalculation\FSVegetablePricesCalculationBLL.cs" />
+    <Compile Include="HR_Code\FSVegetablePricesCalculation\FSVegetablePricesCalculationIBLL.cs" />
+    <Compile Include="HR_Code\FSVegetablePricesCalculation\FSVegetablePricesCalculationService.cs" />
+    <Compile Include="HR_Code\FSVegetablePricesCalculation\FS_VegetablePricesEntity.cs" />
+    <Compile Include="HR_Code\FSVegetablePriceSubsidyMonthlyDetails\FSVegetablePriceSubsidyMonthlyDetailsBLL.cs" />
+    <Compile Include="HR_Code\FSVegetablePriceSubsidyMonthlyDetails\FSVegetablePriceSubsidyMonthlyDetailsIBLL.cs" />
+    <Compile Include="HR_Code\FSVegetablePriceSubsidyMonthlyDetails\FSVegetablePriceSubsidyMonthlyDetailsService.cs" />
+    <Compile Include="HR_Code\FSVegetablePriceSubsidyMonthlyDetails\FS_VegetablePriceSubsidyMonthlyDetailsEntity.cs" />
+    <Compile Include="HR_Code\HeterogeneousSystemInterface\HeterogeneousHrToOABLL.cs" />
+    <Compile Include="HR_Code\HeterogeneousSystemInterface\HeterogeneousHrToOAIBLL.cs" />
+    <Compile Include="HR_Code\HeterogeneousSystemInterface\HttpHelper.cs" />
+    <Compile Include="HR_Code\HeterogeneousSystemInterface\JsonNewtonsoft.cs" />
+    <Compile Include="HR_Code\HeterogeneousSystemInterface\ProcessNodeDTO.cs" />
+    <Compile Include="HR_Code\HrMonthAllData\HrMonthAllDataBLL.cs" />
+    <Compile Include="HR_Code\HrMonthAllData\HrMonthAllDataIBLL.cs" />
+    <Compile Include="HR_Code\HrMonthAllData\HrMonthAllDataService.cs" />
+    <Compile Include="HR_Code\HrMonthAllData\HrMonthDataEntity.cs" />
+    <Compile Include="HR_Code\HrMonthAllData\Hr_vpsmonthdataALLEntity.cs" />
+    <Compile Include="HR_Code\HrvpsmonthdataTab\HrVpsMonthDataDTO.cs" />
+    <Compile Include="HR_Code\HrvpsmonthdataTab\HrvpsmonthdataTabBLL.cs" />
+    <Compile Include="HR_Code\HrvpsmonthdataTab\HrvpsmonthdataTabIBLL.cs" />
+    <Compile Include="HR_Code\HrvpsmonthdataTab\HrvpsmonthdataTabService.cs" />
+    <Compile Include="HR_Code\HrvpsmonthdataTab\Hr_vpsmonthdataEntity.cs" />
+    <Compile Include="HR_Code\Hr_PayDuesClass\Hr_PayDuesClassBLL.cs" />
+    <Compile Include="HR_Code\Hr_PayDuesClass\Hr_PayDuesClassIBLL.cs" />
+    <Compile Include="HR_Code\Hr_PayDuesClass\Hr_PayDuesClassService.cs" />
+    <Compile Include="HR_Code\Hr_PayDuesClass\Hr_PayDuesTableEntity.cs" />
+    <Compile Include="HR_Code\IndividualStandardItem\Hr_personalStandards_fileEntity.cs" />
+    <Compile Include="HR_Code\IndividualStandardItem\IndividualStandardItemBLL.cs" />
+    <Compile Include="HR_Code\IndividualStandardItem\IndividualStandardItemIBLL.cs" />
+    <Compile Include="HR_Code\IndividualStandardItem\IndividualStandardItemService.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataAutoClass\AttendanceUserDTO.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataAutoClass\QkAndShiftDTO.cs" />
+    <Compile Include="HR_Code\MonthlySettlementsFormulaToCalculate\DataStorageDTO.cs" />
+    <Compile Include="HR_Code\MonthlySettlementsFormulaToCalculate\DataStoreNumDTO.cs" />
+    <Compile Include="HR_Code\MonthlySettlementsFormulaToCalculate\FormulaLogicJudgment.cs" />
+    <Compile Include="HR_Code\MonthlySettlementsFormulaToCalculate\FormulaToCalculateBLL.cs" />
+    <Compile Include="HR_Code\MonthlySettlementsFormulaToCalculate\FormulaToCalculateIBLL.cs" />
+    <Compile Include="HR_Code\MonthlySettlementsFormulaToCalculate\FormulaToCalculateService.cs" />
+    <Compile Include="HR_Code\MonthlySettlementsFormulaToCalculate\ReturnCommonMeg.cs" />
+    <Compile Include="HR_Code\MonthlySettlements\MonthlySettlementsIBLL.cs" />
+    <Compile Include="HR_Code\MonthlySettlements\MonthlySettlementsIBLLImpl.cs" />
+    <Compile Include="HR_Code\NewVegetablePrices\VegetablePricesBLL.cs" />
+    <Compile Include="HR_Code\NewVegetablePrices\VegetablePricesIBLL.cs" />
+    <Compile Include="HR_Code\NewVegetablePrices\VegetablePricesService.cs" />
+    <Compile Include="HR_Code\OaNodeAuditTime\SR_RecruitmentProcessNodeEntity.cs" />
+    <Compile Include="HR_Code\SalaryGeneration\SalaryGenerationEntityDTO.cs" />
+    <Compile Include="HR_Code\SeniorityPayClass\HR_SeniorityPayTableEntity.cs" />
+    <Compile Include="HR_Code\SeniorityPayClass\SeniorityPayClassBLL.cs" />
+    <Compile Include="HR_Code\SeniorityPayClass\SeniorityPayClassIBLL.cs" />
+    <Compile Include="HR_Code\SeniorityPayClass\SeniorityPayClassService.cs" />
+    <Compile Include="HR_Code\Utils\ControlClosingTime.cs" />
+    <Compile Include="HR_Code\Utils\Impl\ImplControlClosingTime.cs" />
+    <Compile Include="HR_SocialRecruitment\ApprovalProcess\SR_ApprovalProcessEntity.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcessInformationClass\Files.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcessInformationClass\OaProssInfoDTO.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcessInformationClass\ProcessNode.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcessInformationClass\RecruitmentProcessInformationClassBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcessInformationClass\RecruitmentProcessInformationClassIBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcessInformationClass\RecruitmentProcessInformationClassService.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcessInformationClass\SR_ProcessAttachmentEntity.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcessInformationClass\SR_ProcessNodeEntity.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcess\RecruitmentProcessBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcess\RecruitmentProcessIBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcess\RecruitmentProcessService.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcess\SRProcessExportDataDTO.cs" />
+    <Compile Include="HR_SocialRecruitment\RecruitmentProcess\SR_RecruitmentProcessNodeEntity.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_ClubResortFunction\SR_ClubResortFunctionBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_ClubResortFunction\SR_ClubResortFunctionEntity.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_ClubResortFunction\SR_ClubResortFunctionIBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_ClubResortFunction\SR_ClubResortFunctionService.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_ProcessNodeTableClass\HR_ProcessNodeTableEntity.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_ProcessNodeTableClass\SR_ProcessNodeTableClassBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_ProcessNodeTableClass\SR_ProcessNodeTableClassIBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_ProcessNodeTableClass\SR_ProcessNodeTableClassService.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_SocialRecruitment\SR_RecruitmentBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_SocialRecruitment\SR_RecruitmentEntity.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_SocialRecruitment\SR_RecruitmentIBLL.cs" />
+    <Compile Include="HR_SocialRecruitment\SR_SocialRecruitment\SR_RecruitmentService.cs" />
+    <Compile Include="HR_WorkPermitModule\DETAILS.cs" />
+    <Compile Include="HR_WorkPermitModule\HEADER.cs" />
+    <Compile Include="HR_WorkPermitModule\Hy_Wl_OaReturnInfoEntity.cs" />
+    <Compile Include="HR_WorkPermitModule\Hy_Wl_OaReturnInfo_itemEntity.cs" />
+    <Compile Include="HR_WorkPermitModule\MainProcessDTO.cs" />
+    <Compile Include="HR_WorkPermitModule\ProcessNode.cs" />
+    <Compile Include="HR_WorkPermitModule\Root.cs" />
+    <Compile Include="HR_WorkPermitModule\WorkingCertificateBLL.cs" />
+    <Compile Include="HR_WorkPermitModule\WorkingCertificateIBLL.cs" />
+    <Compile Include="HR_WorkPermitModule\WorkingCertificateService.cs" />
+    <Compile Include="HR_WorkPermitModule\WorkPermitModuleCreateOABLL .cs" />
+    <Compile Include="HR_WorkPermitModule\WorkPermitModuleCreateOAIBLL.cs" />
+    <Compile Include="HY_Logistics\DormitoryManagement\DormitoryManagementBLL.cs" />
+    <Compile Include="HY_Logistics\DormitoryManagement\DormitoryManagementIBLL.cs" />
+    <Compile Include="HY_Logistics\DormitoryManagement\DormitoryManagementService.cs" />
+    <Compile Include="HY_Logistics\MealSubsidyRulesClass\Hr_MealAllowanceStandardEntity.cs" />
+    <Compile Include="HY_Logistics\MealSubsidyRulesClass\MealSubsidyRulesClassBLL.cs" />
+    <Compile Include="HY_Logistics\MealSubsidyRulesClass\MealSubsidyRulesClassIBLL.cs" />
+    <Compile Include="HY_Logistics\MealSubsidyRulesClass\MealSubsidyRulesClassService.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataAutoClass\Hr_user_attendanceEntity.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataAutoClass\MonthlyAttendanceDataAutoClassBLL.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataAutoClass\MonthlyAttendanceDataAutoClassIBLL.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataAutoClass\MonthlyAttendanceDataAutoClassService.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataClass\Hr_MonthlyDataSummary_fileEntity.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataClass\MonthlyAttendanceDataClassBLL.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataClass\MonthlyAttendanceDataClassIBLL.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceDataClass\MonthlyAttendanceDataClassService.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceReport\Hy_hr_AttendanceSheetEntity.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceReport\MonthlyAttendanceReportBLL.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceReport\MonthlyAttendanceReportIBLL.cs" />
+    <Compile Include="HR_Code\MonthlyAttendanceReport\MonthlyAttendanceReportService.cs" />
+    <Compile Include="HR_Code\MonthlyVegetablePriceSubsidy\MonthlyVegetablePriceSubsidyBLL.cs" />
+    <Compile Include="HR_Code\MonthlyVegetablePriceSubsidy\MonthlyVegetablePriceSubsidyDTO.cs" />
+    <Compile Include="HR_Code\MonthlyVegetablePriceSubsidy\MonthlyVegetablePriceSubsidyEntity.cs" />
+    <Compile Include="HR_Code\MonthlyVegetablePriceSubsidy\MonthlyVegetablePriceSubsidyIBLL.cs" />
+    <Compile Include="HR_Code\MonthlyVegetablePriceSubsidy\MonthlyVegetablePriceSubsidyService.cs" />
+    <Compile Include="HR_Code\PostLevel\Hy_hr_PostLevelEntity.cs" />
+    <Compile Include="HR_Code\PostLevel\PostLevelBLL.cs" />
+    <Compile Include="HR_Code\PostLevel\PostLevelIBLL.cs" />
+    <Compile Include="HR_Code\PostLevel\PostLevelService.cs" />
+    <Compile Include="HR_Code\RewardsPunishments\Hy_hr_RewardPunishmentEntity.cs" />
+    <Compile Include="HR_Code\RewardsPunishments\RewardsPunishmentsBLL.cs" />
+    <Compile Include="HR_Code\RewardsPunishments\RewardsPunishmentsIBLL.cs" />
+    <Compile Include="HR_Code\RewardsPunishments\RewardsPunishmentsService.cs" />
+    <Compile Include="HR_Code\StandardWage\Hy_hr_StandardWageEntity.cs" />
+    <Compile Include="HR_Code\StandardWage\StandardWageBLL.cs" />
+    <Compile Include="HR_Code\StandardWage\StandardWageIBLL.cs" />
+    <Compile Include="HR_Code\StandardWage\StandardWageService.cs" />
+    <Compile Include="HR_Code\Wagecalculationformula\Hy_hr_WageCalculationFormulaEntity.cs" />
+    <Compile Include="HR_Code\Wagecalculationformula\WagecalculationformulaBLL.cs" />
+    <Compile Include="HR_Code\Wagecalculationformula\WagecalculationformulaIBLL.cs" />
+    <Compile Include="HR_Code\Wagecalculationformula\WagecalculationformulaService.cs" />
+    <Compile Include="HR_Code\WaterElectricity\Hy_hr_WaterElectricityEntity.cs" />
+    <Compile Include="HR_Code\WaterElectricity\WaterElectricityBLL.cs" />
+    <Compile Include="HR_Code\WaterElectricity\WaterElectricityIBLL.cs" />
+    <Compile Include="HR_Code\WaterElectricity\WaterElectricityService.cs" />
+    <Compile Include="LR_CodeDemo\AnlyCheck\AnlyCheckBLL.cs" />
+    <Compile Include="LR_CodeDemo\AnlyCheck\AnlyCheckIBLL.cs" />
+    <Compile Include="LR_CodeDemo\AnlyCheck\AnlyCheckService.cs" />
+    <Compile Include="LR_CodeDemo\AnlyCheck\MSTB_QUA_CHECKITEMINFOEntity.cs" />
+    <Compile Include="LR_CodeDemo\AnlySele\AnlySeleBLL.cs" />
+    <Compile Include="LR_CodeDemo\AnlySele\AnlySeleIBLL.cs" />
+    <Compile Include="LR_CodeDemo\AnlySele\AnlySeleService.cs" />
+    <Compile Include="LR_CodeDemo\DemoOrder\DemoOrderBLL.cs" />
+    <Compile Include="LR_CodeDemo\DemoOrder\DemoOrderIBLL.cs" />
+    <Compile Include="LR_CodeDemo\DemoOrder\DemoOrderService.cs" />
+    <Compile Include="LR_CodeDemo\DemoOrder\LR_Demo_OrderDetailEntity.cs" />
+    <Compile Include="LR_CodeDemo\DemoOrder\LR_Demo_OrderEntity.cs" />
+    <Compile Include="LR_CodeDemo\FlowDemo\FlowDemoBLL.cs" />
+    <Compile Include="LR_CodeDemo\FlowDemo\FlowDemoIBLL.cs" />
+    <Compile Include="LR_CodeDemo\FlowDemo\FlowDemoService.cs" />
+    <Compile Include="LR_CodeDemo\FlowDemo\F_parentEntity.cs" />
+    <Compile Include="LR_CodeDemo\GantProject\GantProjectBLL.cs" />
+    <Compile Include="LR_CodeDemo\GantProject\GantProjectIBLL.cs" />
+    <Compile Include="LR_CodeDemo\GantProject\GantProjectService.cs" />
+    <Compile Include="LR_CodeDemo\GantProject\LR_OA_ProjectDetailEntity.cs" />
+    <Compile Include="LR_CodeDemo\GantProject\LR_OA_ProjectEntity.cs" />
+    <Compile Include="LR_CodeDemo\QueueDemo\QueueDemo.cs" />
+    <Compile Include="LR_CodeDemo\Soorder\AllotAssetsEntity.cs" />
+    <Compile Include="LR_CodeDemo\Soorder\ApplyAssetsEntity.cs" />
+    <Compile Include="LR_CodeDemo\Soorder\SoorderBLL.cs" />
+    <Compile Include="LR_CodeDemo\Soorder\SoorderIBLL.cs" />
+    <Compile Include="LR_CodeDemo\Soorder\SoorderService.cs" />
+    <Compile Include="LR_CodeDemo\StockDemo\LR_Demo_StockEntity.cs" />
+    <Compile Include="LR_CodeDemo\StockDemo\StockDemoBLL.cs" />
+    <Compile Include="LR_CodeDemo\StockDemo\StockDemoIBLL.cs" />
+    <Compile Include="LR_CodeDemo\StockDemo\StockDemoService.cs" />
+    <Compile Include="LR_CodeDemo\WorkOrder\LR_Demo_WorkOrderEntity.cs" />
+    <Compile Include="LR_CodeDemo\WorkOrder\WorkOrderBLL.cs" />
+    <Compile Include="LR_CodeDemo\WorkOrder\WorkOrderIBLL.cs" />
+    <Compile Include="LR_CodeDemo\WorkOrder\WorkOrderService.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Platform\AgeLimit\AgeLimitBLL.cs" />
+    <Compile Include="Platform\AgeLimit\AgeLimitIBLL.cs" />
+    <Compile Include="Platform\AgeLimit\AgeLimitService.cs" />
+    <Compile Include="Platform\AgeLimit\Platform_AgeLimitEntity.cs" />
+    <Compile Include="Platform\BasicInformationReport\BasicInformationReportBLL.cs" />
+    <Compile Include="Platform\BasicInformationReport\BasicInformationReportIBLL.cs" />
+    <Compile Include="Platform\BasicInformationReport\BasicInformationReportService.cs" />
+    <Compile Include="Platform\BasicInformationReport\CandidatesEntity.cs" />
+    <Compile Include="Platform\Blacklist\BlacklistBLL.cs" />
+    <Compile Include="Platform\Blacklist\BlacklistIBLL.cs" />
+    <Compile Include="Platform\Blacklist\BlacklistService.cs" />
+    <Compile Include="Platform\Blacklist\Hy_Platform_BlacklistEntity.cs" />
+    <Compile Include="Platform\CandidateInformation\SendEntity.cs" />
+    <Compile Include="Platform\ComparisonOfIdCardVerificationClass\ComparisonOfIdCardVerificationClassBLL.cs" />
+    <Compile Include="Platform\ComparisonOfIdCardVerificationClass\ComparisonOfIdCardVerificationClassIBLL.cs" />
+    <Compile Include="Platform\ComparisonOfIdCardVerificationClass\ComparisonOfIdCardVerificationClassService.cs" />
+    <Compile Include="Platform\ComparisonOfIdCardVerificationClass\Hr_hy_ComparisonOfIdCardVerificationDTO.cs" />
+    <Compile Include="Platform\ComparisonOfIdCardVerificationClass\Hr_hy_ComparisonOfIdCardVerificationEntity.cs" />
+    <Compile Include="Platform\ComparisonOfIdCardVerificationClass\IDCardInfo.cs" />
+    <Compile Include="Platform\ComparisonOfIdCardVerificationClass\Root.cs" />
+    <Compile Include="Platform\ComparisonOfIdCardVerificationClass\RootDTO.cs" />
+    <Compile Include="Platform\HyRecruitContractTemplateManagement\HyRecruitContractTemplateManagementBLL.cs" />
+    <Compile Include="Platform\HyRecruitContractTemplateManagement\HyRecruitContractTemplateManagementIBLL.cs" />
+    <Compile Include="Platform\HyRecruitContractTemplateManagement\HyRecruitContractTemplateManagementService.cs" />
+    <Compile Include="Platform\HyRecruitContractTemplateManagement\Hy_Recruit_ContractTemplateManagementEntity.cs" />
+    <Compile Include="Platform\HyRecruitTheTrainingContent\HyRecruitTheTrainingContentBLL.cs" />
+    <Compile Include="Platform\HyRecruitTheTrainingContent\HyRecruitTheTrainingContentIBLL.cs" />
+    <Compile Include="Platform\HyRecruitTheTrainingContent\HyRecruitTheTrainingContentService.cs" />
+    <Compile Include="Platform\HyRecruitTheTrainingContent\Hy_Recruit_TheTrainingContentEntity.cs" />
+    <Compile Include="Platform\Hy_Recruit_ProcessOperation\Hy_Recruit_ProcessOperationEntity.cs" />
+    <Compile Include="Platform\Hy_Recruit_ProcessOperation\ProcessOperationInfoBLL.cs" />
+    <Compile Include="Platform\Hy_Recruit_ProcessOperation\ProcessOperationInfoIBLL.cs" />
+    <Compile Include="Platform\Hy_Recruit_ProcessOperation\ProcessOperationInfoService.cs" />
+    <Compile Include="Platform\Hy_Recruit_TheEmployeeHandbook\Hy_Recruit_TheEmployeeHandbookBLL.cs" />
+    <Compile Include="Platform\Hy_Recruit_TheEmployeeHandbook\Hy_Recruit_TheEmployeeHandbookEntity.cs" />
+    <Compile Include="Platform\Hy_Recruit_TheEmployeeHandbook\Hy_Recruit_TheEmployeeHandbookIBLL.cs" />
+    <Compile Include="Platform\Hy_Recruit_TheEmployeeHandbook\Hy_Recruit_TheEmployeeHandbookService.cs" />
+    <Compile Include="Platform\InfoTips\Hy_Recruit_InfoTipsEntity.cs" />
+    <Compile Include="Platform\InfoTips\InfoTipsBLL.cs" />
+    <Compile Include="Platform\InfoTips\InfoTipsIBLL.cs" />
+    <Compile Include="Platform\InfoTips\InfoTipsService.cs" />
+    <Compile Include="Platform\NodeInformation\NodeInformationBLL.cs" />
+    <Compile Include="Platform\NodeInformation\NodeInformationEntity.cs" />
+    <Compile Include="Platform\NodeInformation\NodeInformationIBLL.cs" />
+    <Compile Include="Platform\NodeInformation\NodeInformationService.cs" />
+    <Compile Include="Platform\RecordOperatorRecruitmentProcessClass\RecordOperatorRecruitmentProcessClassBLL.cs" />
+    <Compile Include="Platform\RecordOperatorRecruitmentProcessClass\RecordOperatorRecruitmentProcessClassIBLL.cs" />
+    <Compile Include="Platform\RecordOperatorRecruitmentProcessClass\RecordOperatorRecruitmentProcessClassService.cs" />
+    <Compile Include="Platform\RecordOperatorRecruitmentProcessClass\SR_RecordOperatorRecruitmentProcessEntity.cs" />
+    <Compile Include="Platform\RecruitExaminationQuestionBank\Hy_Recruit_WrittenExaminationQuestionBankEntity.cs" />
+    <Compile Include="Platform\RecruitExaminationQuestionBank\RecruitExaminationQuestionBankBLL.cs" />
+    <Compile Include="Platform\RecruitExaminationQuestionBank\RecruitExaminationQuestionBankIBLL.cs" />
+    <Compile Include="Platform\RecruitExaminationQuestionBank\RecruitExaminationQuestionBankService.cs" />
+    <Compile Include="Platform\RecruitInterviewQuestionBank\Hy_Recruit_InterviewQuestionBankEntity.cs" />
+    <Compile Include="Platform\RecruitInterviewQuestionBank\RecruitInterviewQuestionBankBLL.cs" />
+    <Compile Include="Platform\RecruitInterviewQuestionBank\RecruitInterviewQuestionBankIBLL.cs" />
+    <Compile Include="Platform\RecruitInterviewQuestionBank\RecruitInterviewQuestionBankService.cs" />
+    <Compile Include="Platform\RecruitInterview\Hy_Recruit_InterviewEntity.cs" />
+    <Compile Include="Platform\RecruitInterview\InterviewEntityDTO.cs" />
+    <Compile Include="Platform\RecruitInterview\RecruitInterviewBLL.cs" />
+    <Compile Include="Platform\RecruitInterview\RecruitInterviewIBLL.cs" />
+    <Compile Include="Platform\RecruitInterview\RecruitInterviewService.cs" />
+    <Compile Include="Platform\RecruitReportNodeApprovalClass\DormitoryDTO.cs" />
+    <Compile Include="Platform\RecruitReportNodeApprovalClass\Hy_Recruit_ReportNodeApprovalDTO.cs" />
+    <Compile Include="Platform\RecruitReportNodeApprovalClass\Hy_Recruit_ReportNodeApprovalEntity.cs" />
+    <Compile Include="Platform\RecruitReportNodeApprovalClass\RecruitReportNodeApprovalClassBLL.cs" />
+    <Compile Include="Platform\RecruitReportNodeApprovalClass\RecruitReportNodeApprovalClassIBLL.cs" />
+    <Compile Include="Platform\RecruitReportNodeApprovalClass\RecruitReportNodeApprovalClassService.cs" />
+    <Compile Include="Platform\RecruitReportNotice\Hy_Recruit_ReportNoticeEntity.cs" />
+    <Compile Include="Platform\RecruitReportNotice\RecruitReportNoticeBLL.cs" />
+    <Compile Include="Platform\RecruitReportNotice\RecruitReportNoticeIBLL.cs" />
+    <Compile Include="Platform\RecruitReportNotice\RecruitReportNoticeService.cs" />
+    <Compile Include="Platform\RecruitSubProcessEntity\Hy_Recruit_SubProcessEntity  .cs" />
+    <Compile Include="Platform\RQuestions\Hy_Recruit_WrittenExaminationQuestionsEntity.cs" />
+    <Compile Include="Platform\RQuestions\RQuestionsBLL.cs" />
+    <Compile Include="Platform\RQuestions\RQuestionsIBLL.cs" />
+    <Compile Include="Platform\RQuestions\RQuestionsService.cs" />
+    <Compile Include="Platform\RWrittenExamination\Hy_Recruit_WrittenExaminationEntity.cs" />
+    <Compile Include="Platform\RWrittenExamination\RWrittenExaminationBLL.cs" />
+    <Compile Include="Platform\RWrittenExamination\RWrittenExaminationIBLL.cs" />
+    <Compile Include="Platform\RWrittenExamination\RWrittenExaminationService.cs" />
+    <Compile Include="Platform\RWrittenExamination\WrittenExaminationEntityDTO.cs" />
+    <Compile Include="Platform\Training\Hy_hr_trainingEntity.cs" />
+    <Compile Include="Platform\Training\TrainingBLL.cs" />
+    <Compile Include="Platform\Training\TrainingIBLL.cs" />
+    <Compile Include="Platform\Training\TrainingService.cs" />
+    <Compile Include="Platform\WL_BaseService\BaseService.cs" />
+    <Compile Include="Platform\WL_BaseService\MainSubProcessModel.cs" />
+    <Compile Include="Platform\WL_BaseService\OutPutProcessModel.cs" />
+    <Compile Include="Platform\WL_BaseService\Hy_Recruit_ProcessOperation.cs" />
+    <Compile Include="Platform\Wl_ChangeShifts\ChangeShiftForAccountDTO.cs" />
+    <Compile Include="Platform\Wl_ChangeShifts\ChangeShiftsEntityDTO.cs" />
+    <Compile Include="Platform\Wl_ChangeShifts\Hy_Wl_ChangeShiftsEntity.cs" />
+    <Compile Include="Platform\Wl_ChangeShifts\UserChangeShiftsEntityDTO.cs" />
+    <Compile Include="Platform\Wl_ChangeShifts\Wl_ChangeShiftsBLL.cs" />
+    <Compile Include="Platform\Wl_ChangeShifts\Wl_ChangeShiftsIBLL.cs" />
+    <Compile Include="Platform\Wl_ChangeShifts\Wl_ChangeShiftsService.cs" />
+    <Compile Include="Platform\WL_NormalShift\Hy_Wl_NormalShiftEntity.cs" />
+    <Compile Include="Platform\WL_NormalShift\NormalShiftEntityDTO.cs" />
+    <Compile Include="Platform\WL_NormalShift\UserNormalShiftEntityDTO.cs" />
+    <Compile Include="Platform\WL_NormalShift\WL_NormalShiftBLL.cs" />
+    <Compile Include="Platform\WL_NormalShift\WL_NormalShiftIBLL.cs" />
+    <Compile Include="Platform\WL_NormalShift\WL_NormalShiftService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReturnModel\ReturnComment.cs" />
+    <Compile Include="ReturnModel\ReturnCommon.cs" />
+    <Compile Include="SystemDemo\Demoleave\DemoleaveBLL.cs" />
+    <Compile Include="SystemDemo\Demoleave\DemoleaveEntity.cs" />
+    <Compile Include="SystemDemo\Demoleave\DemoleaveIBLL.cs" />
+    <Compile Include="SystemDemo\Demoleave\DemoleaveService.cs" />
+    <Compile Include="LR_CodeDemo\ime\F_ChildrenEntity.cs" />
+    <Compile Include="LR_CodeDemo\ime\imeService.cs" />
+    <Compile Include="LR_CodeDemo\ime\imeBLL.cs" />
+    <Compile Include="LR_CodeDemo\ime\imeIBLL.cs" />
+    <Compile Include="HR_Code\IncomePay\Hy_hr_OperationRelationEntity.cs" />
+    <Compile Include="HR_Code\IncomePay\IncomePayService.cs" />
+    <Compile Include="HR_Code\IncomePay\IncomePayBLL.cs" />
+    <Compile Include="HR_Code\IncomePay\IncomePayIBLL.cs" />
+    <Compile Include="HR_Code\OperationItems\Hy_hr_OperationItemsEntity.cs" />
+    <Compile Include="HR_Code\OperationItems\OperationItemsService.cs" />
+    <Compile Include="HR_Code\OperationItems\OperationItemsBLL.cs" />
+    <Compile Include="HR_Code\OperationItems\OperationItemsIBLL.cs" />
+    <Compile Include="HR_Code\SalaryGeneration\Hy_hr_SalaryGenerationEntity.cs" />
+    <Compile Include="HR_Code\SalaryGeneration\SalaryGenerationService.cs" />
+    <Compile Include="HR_Code\SalaryGeneration\SalaryGenerationBLL.cs" />
+    <Compile Include="HR_Code\SalaryGeneration\SalaryGenerationIBLL.cs" />
+    <Compile Include="HR_Code\FiveInsurancesOneFund\Hy_hr_FiveInsurancesOneFundEntity.cs" />
+    <Compile Include="HR_Code\FiveInsurancesOneFund\FiveInsurancesOneFundService.cs" />
+    <Compile Include="HR_Code\FiveInsurancesOneFund\FiveInsurancesOneFundBLL.cs" />
+    <Compile Include="HR_Code\FiveInsurancesOneFund\FiveInsurancesOneFundIBLL.cs" />
+    <Compile Include="HR_Code\PersonalIncomeTax\Hy_hr_PersonalIncomeTaxEntity.cs" />
+    <Compile Include="HR_Code\PersonalIncomeTax\PersonalIncomeTaxService.cs" />
+    <Compile Include="HR_Code\PersonalIncomeTax\PersonalIncomeTaxBLL.cs" />
+    <Compile Include="HR_Code\PersonalIncomeTax\PersonalIncomeTaxIBLL.cs" />
+    <Compile Include="HR_Code\RoolRate\Hy_hr_RoomRateEntity.cs" />
+    <Compile Include="HR_Code\RoolRate\RoolRateService.cs" />
+    <Compile Include="HR_Code\RoolRate\RoolRateBLL.cs" />
+    <Compile Include="HR_Code\RoolRate\RoolRateIBLL.cs" />
+    <Compile Include="Platform\DeviceManagement\Hy_DeviceInfoEntity.cs" />
+    <Compile Include="Platform\DeviceManagement\DeviceManagementService.cs" />
+    <Compile Include="Platform\DeviceManagement\DeviceManagementBLL.cs" />
+    <Compile Include="Platform\DeviceManagement\DeviceManagementIBLL.cs" />
+    <Compile Include="Platform\CandidateInformation\Hy_Recruit_CandidatesEntity.cs" />
+    <Compile Include="Platform\CandidateInformation\CandidateInformationService.cs" />
+    <Compile Include="Platform\CandidateInformation\CandidateInformationBLL.cs" />
+    <Compile Include="Platform\CandidateInformation\CandidateInformationIBLL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Learun.Application.Organization\Learun.Application.Organization.csproj">
+      <Project>{e9877a25-801b-4605-ad35-e6306916513c}</Project>
+      <Name>Learun.Application.Organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Learun.Cache\Learun.Cache.Base\Learun.Cache.Base.csproj">
+      <Project>{975f2cb8-605c-4add-b365-b97bf844f0fe}</Project>
+      <Name>Learun.Cache.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Learun.Cache\LeaRun.Cache.Factory\Learun.Cache.Factory.csproj">
+      <Project>{68902fcf-c439-4010-b17b-2499c972ee33}</Project>
+      <Name>Learun.Cache.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Learun.Cache\Learun.Cache.Redis\Learun.Cache.Redis.csproj">
+      <Project>{13808645-2013-4896-8ee2-65144e222c69}</Project>
+      <Name>Learun.Cache.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Learun.Db\Learun.DataBase.Repository\Learun.DataBase.Repository.csproj">
+      <Project>{7f5e2a6c-c859-494a-8577-75bf9603a80c}</Project>
+      <Name>Learun.DataBase.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Learun.Util\Learun.Util.Operat\Learun.Util.Operat.csproj">
+      <Project>{ad556b7a-e0d1-41bd-9d5b-18f8502e9f33}</Project>
+      <Name>Learun.Util.Operat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Learun.Util\Learun.Util\Learun.Util.csproj">
+      <Project>{cf8ae293-88ab-436c-9720-a8386ba5d7b7}</Project>
+      <Name>Learun.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Learun.Application.Base\Learun.Application.Base.csproj">
+      <Project>{0cdd0dc8-74cf-4c71-923c-66204a8923d3}</Project>
+      <Name>Learun.Application.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="obj\Release\Learun.Application.TwoDevelopment.csproj.CopyComplete" />
+    <None Include="obj\Release\Learun.Application.TwoDevelopment.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\Learun.Application.TwoDevelopment.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Release\TempPE\" />
+    <Folder Include="Platform\WrittenExaminationQuestionBank\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Release\Learun.Application.TwoDevelopment.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Learun.Application.TwoDevelopment.dll" />
+    <Content Include="obj\Release\Learun.Application.TwoDevelopment.pdb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.ClearScript.V8.ICUData.7.2.0\build\Microsoft.ClearScript.V8.ICUData.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.ClearScript.V8.ICUData.7.2.0\build\Microsoft.ClearScript.V8.ICUData.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.ClearScript.V8.Native.win-x64.7.2.0\build\Microsoft.ClearScript.V8.Native.win-x64.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.ClearScript.V8.Native.win-x64.7.2.0\build\Microsoft.ClearScript.V8.Native.win-x64.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.ClearScript.V8.Native.win-x86.7.2.0\build\Microsoft.ClearScript.V8.Native.win-x86.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.ClearScript.V8.Native.win-x86.7.2.0\build\Microsoft.ClearScript.V8.Native.win-x86.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

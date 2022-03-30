@@ -1,0 +1,150 @@
+﻿using Learun.Util;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Learun.Application.TwoDevelopment.B2B_Code
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-11-10 15:43
+    /// 描 述：来料计划填报查询功能
+    /// </summary>
+    public class B2B_PLAN_INCOMING_MATERIALEntity 
+    {
+        #region 实体成员
+        /// <summary>
+        /// F_GUID
+        /// </summary>
+        [Column("F_GUID")]
+        public string F_GUID { get; set; }
+        /// <summary>
+        /// 客户代码
+        /// </summary>
+        [Column("F_CUST_CODE")]
+        public string F_CUST_CODE { get; set; }
+        /// <summary>
+        /// 填报月份
+        /// </summary>
+        [Column("F_WRITE_MONTH")]
+        public string F_WRITE_MONTH { get; set; }
+        /// <summary>
+        /// 填报人员
+        /// </summary>
+        [Column("F_WRITE_PRESON")]
+        public string F_WRITE_PRESON { get; set; }
+        /// <summary>
+        /// 填报日期
+        /// </summary>
+        [Column("F_WRITE_DATE")]
+        public string F_WRITE_DATE { get; set; }
+        /// <summary>
+        /// 合并标记
+        /// </summary>
+        [Column("F_MERGE_FLG")]
+        public int? F_MERGE_FLG { get; set; }
+        #endregion
+
+        #region 扩展操作
+        /// <summary>
+        /// 新增调用
+        /// </summary>
+        public void Create()
+        {
+            this.F_GUID = Guid.NewGuid().ToString();
+        }
+        /// <summary>
+        /// 编辑调用
+        /// </summary>
+        /// <param name="keyValue"></param>
+        public void Modify(string keyValue)
+        {
+            this.F_GUID = keyValue;
+        }
+        #endregion
+        #region 扩展字段
+        /// <summary>
+        /// 产品型号
+        /// </summary>
+        [NotMapped]
+        public string F_PRODUCT_MODEL { get; set; }
+        /// <summary>
+        /// 封装外形
+        /// </summary>
+        [NotMapped]
+        public string F_PACKAGE_MODEL { get; set; }
+        /// <summary>
+        /// 芯片型号
+        /// </summary>
+        [NotMapped]
+        public string F_WAFER_MODEL { get; set; }
+        /// <summary>
+        /// 晶圆尺寸
+        /// </summary>
+        [NotMapped]
+        public string F_WAFER_SIZE { get; set; }
+        /// <summary>
+        /// 包装方式
+        /// </summary>
+        [NotMapped]
+        public string F_PACKAGING_TYPE { get; set; }
+        /// <summary>
+        /// 封装等级
+        /// </summary>
+        [NotMapped]
+        public string F_PRODUCT_LEVEL { get; set; }
+        /// <summary>
+        /// 月份一
+        /// </summary>
+        [NotMapped]
+        public string F_MONTH_ONE { get; set; }
+        /// <summary>
+        /// 月份二
+        /// </summary>
+        [NotMapped]
+        public string F_MONTH_TWO { get; set; }
+        /// <summary>
+        /// 月份三
+        /// </summary>
+        [NotMapped]
+        public string F_MONTH_THREE { get; set; }
+        /// <summary>
+        /// 月份四
+        /// </summary>
+        [NotMapped]
+        public string F_MONTH_FOUR { get; set; }
+        /// <summary>
+        /// 月份五
+        /// </summary>
+        [NotMapped]
+        public string F_MONTH_FIVE { get; set; }
+        /// <summary>
+        /// 月份六
+        /// </summary>
+        [NotMapped]
+        public string F_MONTH_SIX { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [NotMapped]
+        public string F_REMARK { get; set; }
+        /// <summary>
+        /// 焊线描述
+        /// </summary>
+        [NotMapped]
+        public string F_WIRE_SOLDER_NAME { get; set; }
+        /// <summary>
+        /// 框架描述
+        /// </summary>
+        [NotMapped]
+        public string F_SHELL_FRAM_NAME { get; set; }
+        /// <summary>
+        /// PARTID
+        /// </summary>
+        [NotMapped]
+        public string PARTID { get; set; }
+        #endregion
+    }
+}
+

@@ -1,0 +1,52 @@
+(function () {
+    var userinfo = null;
+    var page = {
+        isScroll: true,
+        init: function ($page) {
+
+            $page.find('#outloginbtn').on('tap', function () {
+                learun.layer.confirm('确定要退出账号?', function (_index) {
+                    if (_index === '1') {
+                        learun.isOutLogin = true;
+                        learun.storage.set('logininfo', null);
+                        learun.nav.go({ path: 'login', isBack: false, isHead: false });
+                    }
+
+                }, '', ['取消', '退出']);
+            });
+
+            $page.find('#candidates').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/candidates',
+                    title: "常见员工招聘、培训问题解答"
+                });
+            });
+            $page.find('#mynode').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/mynode',
+                    title: "我的应聘节点"
+                });
+            });
+            $page.find('#myIDPhoto').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/pictureupload',
+                    title: "报到信息上传"
+                });
+            });
+            $page.find('#abouthuayi').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/abouthuayi',
+                    title: "关于华羿"
+                });
+            });
+        },
+        reload: function ($page, pageinfo) {
+
+        }
+    };
+    return page;
+})();

@@ -1,0 +1,212 @@
+﻿using Dapper;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2022-02-08 15:20
+    /// 描 述：笔试题目管理
+    /// </summary>
+    public class QuestionsService : RepositoryFactory
+    {
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<Hy_Recruit_WrittenExaminationQuestionsEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                t.F_Id,
+                t.F_QuestionsBankID,
+                t.Questions,
+                t.F_QuestionsType,
+                t.F_AnswerContent,
+                t.F_Answer,
+                t.F_Score
+                ");
+                strSql.Append("  FROM Hy_Recruit_WrittenExaminationQuestions t ");
+                strSql.Append("  LEFT JOIN Hy_Recruit_WrittenExaminationQuestionBank t1 ON t.F_QuestionsBankID = t1.F_Id ");
+                strSql.Append("  WHERE 1=1 ");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["StartTime"].IsEmpty() && !queryParam["EndTime"].IsEmpty())
+                {
+                    dp.Add("startTime", queryParam["StartTime"].ToDate(), DbType.DateTime);
+                    dp.Add("endTime", queryParam["EndTime"].ToDate(), DbType.DateTime);
+                    strSql.Append(" AND ( t.F_CreateDate >= @startTime AND t.F_CreateDate <= @endTime ) ");
+                }
+                if (!queryParam["F_TestPaperName"].IsEmpty())
+                {
+                    dp.Add("F_TestPaperName",queryParam["F_TestPaperName"].ToString(), DbType.String);
+                    strSql.Append(" AND t.F_TestPaperName = @F_TestPaperName ");
+                }
+                if (!queryParam["Questions"].IsEmpty())
+                {
+                    dp.Add("Questions", "%" + queryParam["Questions"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t1.Questions Like @Questions ");
+                }
+                if (!queryParam["F_QuestionsType"].IsEmpty())
+                {
+                    dp.Add("F_QuestionsType",queryParam["F_QuestionsType"].ToString(), DbType.String);
+                    strSql.Append(" AND t1.F_QuestionsType = @F_QuestionsType ");
+                }
+                return this.BaseRepository().FindList<Hy_Recruit_WrittenExaminationQuestionsEntity>(strSql.ToString(),dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取Hy_Recruit_WrittenExaminationQuestionBank表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_Recruit_WrittenExaminationQuestionsEntity GetHy_Recruit_WrittenExaminationQuestionBankEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<Hy_Recruit_WrittenExaminationQuestionsEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取Hy_Recruit_WrittenExaminationQuestions表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_Recruit_WrittenExaminationQuestionsEntity GetHy_Recruit_WrittenExaminationQuestionsEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<Hy_Recruit_WrittenExaminationQuestionsEntity>(t=>t.F_QuestionsBankID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            var db = this.BaseRepository().BeginTrans();
+            try
+            {
+                var hy_Recruit_WrittenExaminationQuestionBankEntity = GetHy_Recruit_WrittenExaminationQuestionBankEntity(keyValue);
+                db.Delete<Hy_Recruit_WrittenExaminationQuestionBankEntity>(t => t.F_Id == keyValue);
+                db.Delete<Hy_Recruit_WrittenExaminationQuestionsEntity>(t => t.F_QuestionsBankID == hy_Recruit_WrittenExaminationQuestionBankEntity.F_ID);
+                db.Commit();
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, Hy_Recruit_WrittenExaminationQuestionBankEntity entity,Hy_Recruit_WrittenExaminationQuestionsEntity hy_Recruit_WrittenExaminationQuestionsEntity)
+        {
+            var db = this.BaseRepository().BeginTrans();
+            try
+            {
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    //var hy_Recruit_WrittenExaminationQuestionBankEntityTmp = GetHy_Recruit_WrittenExaminationQuestionBankEntity(keyValue); 
+                    //entity.Modify(keyValue);
+                    //db.Update(entity);
+                    //db.Delete<Hy_Recruit_WrittenExaminationQuestionsEntity>(t=>t.F_QuestionsBankID == hy_Recruit_WrittenExaminationQuestionBankEntityTmp.F_Id);
+                    hy_Recruit_WrittenExaminationQuestionsEntity.Create();
+                    hy_Recruit_WrittenExaminationQuestionsEntity.F_QuestionsBankID = entity.F_TestPaperName;
+                    db.Insert(hy_Recruit_WrittenExaminationQuestionsEntity);
+                }
+                else
+                {
+                    //entity.Create();
+                    //db.Insert(entity);
+                    hy_Recruit_WrittenExaminationQuestionsEntity.Create();
+                    hy_Recruit_WrittenExaminationQuestionsEntity.F_QuestionsBankID = entity.F_TestPaperName;
+                    db.Insert(hy_Recruit_WrittenExaminationQuestionsEntity);
+                }
+                db.Commit();
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+}

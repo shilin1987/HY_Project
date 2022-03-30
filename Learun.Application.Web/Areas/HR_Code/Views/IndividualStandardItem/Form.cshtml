@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "个人标准工资明细";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">员工工号<font face="宋体">*</font></div>
+        <div id="f_ps02" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">员工姓名<font face="宋体">*</font></div>
+        <input id="f_ps03" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">岗级<font face="宋体">*</font></div>
+        <input id="f_ps13" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">标准工资<font face="宋体">*</font></div>
+        <input id="f_ps15" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">基本工资<font face="宋体">*</font></div>
+        <input id="f_ps04" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">绩效工资<font face="宋体">*</font></div>
+        <input id="f_ps14" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">技能工资<font face="宋体">*</font></div>
+        <input id="f_ps05" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">管理技能工资<font face="宋体">*</font></div>
+        <input id="f_ps06" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">全勤奖励<font face="宋体">*</font></div>
+        <input id="f_ps07" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">交通补贴<font face="宋体">*</font></div>
+        <input id="f_ps08" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">住房补贴<font face="宋体">*</font></div>
+        <input id="f_ps09" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">值班补贴<font face="宋体">*</font></div>
+        <input id="f_ps10" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">专干补贴<font face="宋体">*</font></div>
+        <input id="f_ps11" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">误餐补贴<font face="宋体">*</font></div>
+        <input id="f_ps12" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">延时基数<font face="宋体">*</font></div>
+        <input id="f_ps16" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hr_personalStandards_file">
+        <div class="lr-form-item-title">大夜班补贴基数<font face="宋体">*</font></div>
+        <input id="f_ps17" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/IndividualStandardItem/Form.js")

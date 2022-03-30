@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "奖惩费用维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_RewardPunishment">
+        <div class="lr-form-item-title">员工工号<font face="宋体">*</font></div>
+        <div id="F_UserId" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_RewardPunishment" >
+        <div class="lr-form-item-title">奖惩项目<font face="宋体">*</font></div>
+        <div id="F_ItemId" isvalid="yes" checkexpession="NotNull" ></div>
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_RewardPunishment" >
+        <div class="lr-form-item-title">奖惩日期<font face="宋体">*</font></div>
+        <input id="F_DateRewardPunishment" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_RewardPunishment" >
+        <div class="lr-form-item-title">奖惩类别</div>
+        <div id="F_RewardorPunishment"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_RewardPunishment" >
+        <div class="lr-form-item-title">奖惩费用<font face="宋体">*</font></div>
+        <input id="F_Cost" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/RewardsPunishments/Form.js")

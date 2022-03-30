@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "客户订单维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+    <div class="lr-layout">
+        <div class="lr-layout-center">
+            <div class="lr-layout-wrap lr-layout-wrap-notitle">
+                @*<div class="col-xs-12 lr-layout-tool" style="padding:0;line-height:38px;text-align:right;font-size:20px;font-weight:bold;color:#333;">  
+                </div>*@
+
+                <div class="lr-layout-body" style="padding-bottom:300px;">
+                    <div class="lr-form-wrap" id="form">
+                        <table border="0" width="100%" align="center" height="100%">
+                            <tr>
+                                <td width="60%">
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER">
+                                        <div class="lr-form-item-title">客户代码</div>
+                                        <input id="FCUST_CODE" name="FCUST_CODE" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item">
+                                        <a id="btn_Search" class="btn btn-primary btn-sm" style="width:300px">
+                                            <i class="fa fa-search"></i>&nbsp;<span class="lrlg">&nbsp;&nbsp;&nbsp;根据客户查找对应的产品信息</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER">
+                                        <div class="lr-form-item-title">订单类型</div>
+                                        <select id="FORDER_TYPE" name="FORDER_TYPE" class="form-control">
+                                            <option>EL</option>
+                                            <option>PL</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">PARITD</div>
+                                        <input id="FPARITD" type="text" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">芯片型号</div>
+                                        <input id="FWAFER_TYPE" type="text" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">产品型号</div>
+                                        <input id="FPRODUCT_TYPE" type="text" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">封装形式</div>
+                                        <input id="FPACKAGE_TYPE" type="text" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">芯片批号</div>
+                                        <input id="FWAFER_BATCH" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">芯片片数</div>
+                                        <input id="FWAFER_NUMBER" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">芯片片号</div>
+                                        <select id="FWAFER_NO" name="FWAFER_NO" class="form-control"></select>
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">芯片数量【只】</div>
+                                        <input id="FWAFER_QTY" type="text" class="form-control" />
+                                    </div>  
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">测试规范编号</div>
+                                        <input id="FTEST_CODE" type="text" class="form-control" />
+                                    </div>                
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">印章规范编号</div>
+                                        <input id="FPRINT_CODE" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">压焊图号</div>
+                                        <input id="FBONDING_CODE" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">包装方式</div>
+                                        <input id="FPACKING_TYPE" name="FPACKING_TYPE" type="text" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">环保等级</div>
+                                        <select id="FGREEN_LEVE" name="FGREEN_LEVE" class="form-control"></select>
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">封装等级</div>
+                                        <input id="FPACKAGE_LEVE" name="FPACKAGE_LEVE" type="text" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">取片方式</div>
+                                        <select id="FGETWAFER_TYPE" name="FGETWAFER_TYPE" class="form-control"></select>
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">贸易方式</div>
+                                        <select id="FTRADE_TYPE" name="FTRADE_TYPE" class="form-control"></select>
+                                    </div>
+                                    <div class="col-xs-6 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">用户批号</div>
+                                        <input id="FCUST_PO" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-xs-12 lr-form-item" data-table="B2B_CUST_ORDER_SUB">
+                                        <div class="lr-form-item-title">备&nbsp;注</div>
+                                        <input id="FREMARK" type="text" class="form-control" />
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="col-xs-12 lr-form-item lr-form-item-grid">
+                                        <div id="B2B_CUST_ORDER_PARAM_DATA"></div>
+                                    </div>                      
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <a id="lr_add_order" class="btn btn-primary btn-sm" style="width:300px">
+                                        <i class="fa fa-plus"></i>&nbsp;<span class="lrlg">&nbsp;请将填写的内容加载到下面网格中</span>
+                                    </a>&nbsp;&nbsp;&nbsp;
+                                    <a id="lr_refresh" class="btn btn-primary btn-sm" style="width:200px">
+                                        <i class="fa fa-refresh"></i>&nbsp;<span class="lrlg">&nbsp;刷新页面</span>
+                                    </a>
+                                </td>                          
+                            </tr>     
+                        </table>
+                    </div>
+
+                    <div style="position:absolute;bottom:0;left:0;border-top:1px solid #ccc;height:300px;width:100%;">
+                        <div class="lr-form-tabs" id="lr_form_tabs">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-value="tab1"><span class="lrlg">产品信息</span></a></li>
+                                <li><a data-value="tab2"><span class="lrlg">扩展信息</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="lr-tab-content tab-content">
+                            <div id="tab1" class="tab-pane active" style="padding:4px;">
+                                <div id="B2B_CUST_ORDER_SUB" style="border:1px solid #ccc;">                          
+                                </div>
+                            </div>
+                            <div id="tab2" class="tab-pane">
+                                <div id="B2B_CUST_ORDER_PARAM" style="border:1px solid #ccc;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@Html.AppendJsFile("/Areas/B2B_Code/Views/CUST_ORDER_CREATE/Form.js")

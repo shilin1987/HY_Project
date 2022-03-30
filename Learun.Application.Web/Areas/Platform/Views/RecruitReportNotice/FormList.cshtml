@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "通知单管理";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hy_Recruit_ReportNotice">
+        <div id="f_Content" style="height:350px;"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/RecruitReportNotice/FormList.js")

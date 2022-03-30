@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "报道节点审批维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_Recruit_ReportNodeApproval" >
+        <div class="lr-form-item-title">人员姓名<font face="宋体">*</font></div>
+        <input id="F_UserName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_Recruit_ReportNodeApproval" >
+        <div class="lr-form-item-title">身份证号<font face="宋体">*</font></div>
+        <input id="F_CardId" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_Recruit_ReportNodeApproval" >
+        <div class="lr-form-item-title">日期框<font face="宋体">*</font></div>
+        <input id="F_StoryTime" type="text" class="form-control lr-input-wdatepicker" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd',onpicked: function () { $('#F_StoryTime').trigger('change'); } })"  isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_Recruit_ReportNodeApproval" >
+        <div class="lr-form-item-title">是否通过<font face="宋体">*</font></div>
+        <div id="F_WhetherTheAudit" isvalid="yes" checkexpession="NotNull" ></div>
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_Recruit_ReportNodeApproval" >
+        <div class="lr-form-item-title">审批意见<font face="宋体">*</font></div>
+        <input id="F_Description" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/RecruitReportNodeApprovalClass/Form.js")

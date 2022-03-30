@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "考勤班次维护";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="lr-layout "  >
+    <div class="lr-layout-center">
+        <div class="lr-layout-wrap lr-layout-wrap-notitle ">
+            <div class="lr-layout-tool">
+                <div class="lr-layout-tool-left">
+                    <div class="lr-layout-tool-item">
+                        <div id="datesearch"></div>
+                    </div>
+                    <div class="lr-layout-tool-item">
+                        <div id="multiple_condition_query">
+                            <div class="lr-query-formcontent">
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">员工编码</div>
+                                    <input id="userid" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">员工姓名</div>
+                                    <input id="username" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">年份</div>
+                                    <input id="yearno" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">月份</div>
+                                    <input id="monthno" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lr-layout-tool-right">
+                    <div class=" btn-group btn-group-sm">
+                        <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+                    </div>
+
+                    <div class=" btn-group btn-group-sm" learun-authorize="yes">
+                        @*<a id="lr_import"   class="btn btn-default"><i class="fa fa-plus"></i>&nbsp; 导入</a>*@
+                        <a id="lr_emport"   class="btn btn-default"><i class="fa fa-plus"></i>&nbsp; 导出</a>
+                    </div>
+                </div>
+            </div>
+            <div class="lr-layout-body" id="gridtable"></div>
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/MonthlyVegetablePriceSubsidy/Index.js")

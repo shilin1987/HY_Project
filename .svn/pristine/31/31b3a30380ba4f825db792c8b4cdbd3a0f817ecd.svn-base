@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<connectionStrings>
+  <add name="BaseDb" connectionString="Server=10.100.200.86;Initial Catalog=HYDatabase;User ID=sa;Password=malaihong" providerName="System.Data.SqlClient" />
+  <!--<add name="BaseDb" connectionString="Server=192.168.0.12;Initial Catalog=adms701;User ID=sa;Password=SQLserver2learun.com" providerName="System.Data.SqlClient" />-->
+  <!--<add name="BaseDb" connectionString="server=192.168.0.12;user id=learun;password=learun.com;database=adms7;charset=utf8" providerName="MySql.Data.MySqlClient" />-->
+  <!--<add name="BaseDb" connectionString="Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.12 )(PORT=1521))(CONNECT_DATA=(SERVER = DEDICATED)(SERVICE_NAME=LEARUN)));User Id=learun;Password=qwert123456;" providerName="Oracle.ManagedDataAccess.Client"/>-->
+  <add name="WFDB" connectionString="Server=192.168.0.12;Initial Catalog=Learun_OAWFForm;User ID=sa;Password=SQLserver2learun.com" providerName="System.Data.SqlClient" />
+  <add name="DDit" connectionString="Server=192.168.0.12;Initial Catalog=DDit;User ID=sa;Password=SQLserver2learun.com" providerName="System.Data.SqlClient" />
+  <add name="MySql" connectionString="Server=106.12.128.26;port=3306;Initial Catalog=fans;user id=xuanniu;password=3d876dcf4f1fe10a;charset=utf8" providerName="MySql.Data.MySqlClient" />
+  <add name="JS" connectionString="Server=.;Initial Catalog=JS;User ID=sa;Password=123456" providerName="System.Data.SqlClient" />
+</connectionStrings>

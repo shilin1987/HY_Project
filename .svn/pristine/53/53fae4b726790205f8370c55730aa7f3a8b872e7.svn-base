@@ -1,0 +1,22 @@
+﻿.form {
+    width: 96%;
+    margin: 0.3rem auto;
+    font-size: 0.7rem;
+    td {
+        height: 2.5rem;
+    }
+    input {
+        font-family: "Microsoft Yahei";
+        outline: none;
+        color: #d8d8d8;
+    }
+    input[type=text], input[type=phone], input[type=email] {
+        border: 1px solid #e10000;
+        height: 1.55rem;
+        line-height: 1.55rem;
+        padding-left: 0.4rem;
+        width: 100%;
+        box-sizing: border-box;
+        background: transparent;
+    }
+

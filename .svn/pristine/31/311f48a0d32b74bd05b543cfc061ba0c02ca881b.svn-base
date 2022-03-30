@@ -1,0 +1,191 @@
+﻿using Dapper;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-12-18 17:57
+    /// 描 述：操作员招聘流程流程环节记录
+    /// </summary>
+    public class RecordOperatorRecruitmentProcessClassService : RepositoryFactory
+    {
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<SR_RecordOperatorRecruitmentProcessEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                t.F_ID,
+                t.F_ProcessIdName,
+                t.F_SubProcessName,
+                t.F_UserName,
+                t.F_StartTime,
+                t.F_EndTime,
+                t.F_CreateUserName,
+                t.F_State,
+                t.F_ApprovalOpinions
+                ");
+                strSql.Append("  FROM SR_RecordOperatorRecruitmentProcess t ");
+                strSql.Append("  WHERE 1=1 ");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["F_CreateUserName"].IsEmpty())
+                {
+                    dp.Add("F_CreateUserName", "%" + queryParam["F_CreateUserName"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_CreateUserName Like @F_CreateUserName ");
+                }
+                if (!queryParam["F_UserName"].IsEmpty())
+                {
+                    dp.Add("F_UserName", "%" + queryParam["F_UserName"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_UserName Like @F_UserName ");
+                }
+                if (!queryParam["F_ProcessIdName"].IsEmpty())
+                {
+                    dp.Add("F_ProcessIdName", "%" + queryParam["F_ProcessIdName"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_ProcessIdName Like @F_ProcessIdName ");
+                }
+                if (!queryParam["F_SubProcessName"].IsEmpty())
+                {
+                    dp.Add("F_SubProcessName", "%" + queryParam["F_SubProcessName"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_SubProcessName Like @F_SubProcessName ");
+                }
+                return this.BaseRepository().FindList<SR_RecordOperatorRecruitmentProcessEntity>(strSql.ToString(),dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取SR_RecordOperatorRecruitmentProcess表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public SR_RecordOperatorRecruitmentProcessEntity GetSR_RecordOperatorRecruitmentProcessEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<SR_RecordOperatorRecruitmentProcessEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        public  SR_RecordOperatorRecruitmentProcessEntity getRecordOperatorRecruitment(string f_UserId, string f_ProcessId, decimal f_SortCode)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<SR_RecordOperatorRecruitmentProcessEntity>(t => t.F_UserId == f_UserId && t.F_SubProcessId == f_ProcessId && t.F_Sort == f_SortCode );
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            try
+            {
+                this.BaseRepository().Delete<SR_RecordOperatorRecruitmentProcessEntity>(t=>t.F_ID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, SR_RecordOperatorRecruitmentProcessEntity entity)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    entity.Modify(keyValue);
+                    this.BaseRepository().Update(entity);
+                }
+                else
+                {
+                    entity.Create();
+                    this.BaseRepository().Insert(entity);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+}

@@ -1,0 +1,281 @@
+﻿using Dapper;
+using Learun.Application.TwoDevelopment.Platform.Hy_Recruit_ProcessOperation;
+using Learun.Application.TwoDevelopment.Platform.RecruitSubProcessEntity;
+using Learun.Application.TwoDevelopment.Platform.WL_BaseService;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2022-01-12 15:16
+    /// 描 述：面试信息
+    /// </summary>
+    public class RecruitInterviewService : RepositoryFactory
+    {
+        ReturnCommon _return;
+        #region 构造函数和属性
+
+        private string fieldSql;
+        public RecruitInterviewService()
+        {
+            fieldSql=@"
+                t.F_EnabledMark,
+                t.F_CreateUserId,
+                t.F_ModifyUserName,
+                t.F_ModifyUserId,
+                t.F_DeleteMark,
+                t.F_SortCode,
+                t.F_ModifyDate,
+                t.F_CreateUserName,
+                t.F_CreateDate,
+                t.F_Description,
+                t.F_Id,
+                t.F_CandidatesID,
+                t.F_Content,
+                t.F_InterviewResult,
+                t.F_IDCard
+            ";
+            _return = new ReturnCommon();
+        }
+        #endregion
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取列表数据
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<Hy_Recruit_InterviewEntity> GetList( string queryJson )
+        {
+            try
+            {
+                //参考写法
+                //var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                //var dp = new DynamicParameters(new { });
+                //dp.Add("startTime", queryParam["StartTime"].ToDate(), DbType.DateTime);
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql);
+                strSql.Append(" FROM Hy_Recruit_Interview t ");
+                return this.BaseRepository().FindList<Hy_Recruit_InterviewEntity>(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取列表分页数据
+        /// <param name="pagination">分页参数</param>
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<Hy_Recruit_InterviewEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql);
+                strSql.Append(" from  Hy_Recruit_Interview  t ,Hy_Recruit_Candidates rc   ");
+                strSql.Append("  WHERE  t.F_CandidatesID=rc.F_UserId ");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["StartTime"].IsEmpty() && !queryParam["EndTime"].IsEmpty())
+                {
+                    dp.Add("startTime", queryParam["StartTime"].ToDate(), DbType.DateTime);
+                    dp.Add("endTime", queryParam["EndTime"].ToDate(), DbType.DateTime);
+                    strSql.Append(" AND ( t.F_CreateDate >= @startTime AND t.F_CreateDate <= @endTime ) ");
+                }
+                if (!queryParam["F_RealName"].IsEmpty())
+                {
+                    dp.Add("F_RealName", queryParam["F_RealName"].ToString(), DbType.String);
+                    strSql.Append(" AND rc.F_RealName like @F_RealName ");
+                }
+                if (!queryParam["F_IDCard"].IsEmpty())
+                {
+                    dp.Add("F_IDCard", queryParam["F_IDCard"].ToString(), DbType.String);
+                    strSql.Append(" AND t.F_IDCard like @F_IDCard ");
+                }
+                if (!queryParam["F_InterviewResult"].IsEmpty())
+                {
+                    dp.Add("F_InterviewResult", queryParam["F_InterviewResult"].ToString(), DbType.String);
+                    strSql.Append(" AND t.F_InterviewResult like @F_InterviewResult ");
+                }
+                return this.BaseRepository().FindList<Hy_Recruit_InterviewEntity>(strSql.ToString(),dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_Recruit_InterviewEntity GetEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<Hy_Recruit_InterviewEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public ReturnCommon DeleteEntity(string keyValue)
+        {
+            try
+            {
+                var isDel = this.BaseRepository().Delete<Hy_Recruit_InterviewEntity>(t => t.F_Id == keyValue);
+                if (isDel > 0)
+                {
+                    _return.Status = true;
+                    _return.Message = "删除成功";
+                }
+                else
+                {
+                    _return.Status = false;
+                    _return.Message = "删除失败";
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+            return _return;
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public ReturnCommon SaveEntity(string keyValue, Hy_Recruit_InterviewEntity entity)
+        {
+            ReturnCommon rc = new ReturnCommon();
+            var db = this.BaseRepository().BeginTrans();
+            try
+            {
+
+                var baodao = this.BaseRepository().FindList<Hy_Recruit_ReportNodeApprovalEntity>(t => t.F_UserId == entity.F_CandidatesID);
+                var newusermodel = this.BaseRepository().FindList<Hy_Recruit_CandidatesEntity>(t => t.F_UserId == entity.F_CandidatesID);
+                Hy_Recruit_ReportNodeApprovalEntity rrentity = new Hy_Recruit_ReportNodeApprovalEntity();
+                RecruitReportNodeApprovalClassService rn = new RecruitReportNodeApprovalClassService();
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    entity.Modify(keyValue);
+                    this.BaseRepository().Update(entity);
+                    if (entity.F_InterviewResult == 1)
+                    {
+                        if (baodao.Count() == 0)
+                        {
+                            rrentity.Create();
+                            rrentity.F_UserId = entity.F_CandidatesID;
+                            rrentity.F_UserName = newusermodel.First().F_RealName;
+                            rrentity.F_CardId = newusermodel.First().F_IDCard;
+                            rn.SaveEntity(null, rrentity);
+
+                            //写流程状态表
+                            BaseService bsService = new BaseService();
+                            Hy_Recruit_SubProcessEntity hsEntity = bsService.getHy_Recruit_SubProcessEntity("面试");
+                            var data = bsService.GetProcessInfo(hsEntity.ID);
+                            ProcessOperationInfoIBLL poBLL = new ProcessOperationInfoBLL();
+                            rc = poBLL.SaveNodeInfoEntity(db, data, entity.F_CandidatesID, hsEntity.ID, hsEntity.Name);
+                        }
+                    }
+                }
+                else
+                {
+                    entity.Create();
+                    this.BaseRepository().Insert(entity);
+                    if (entity.F_InterviewResult == 1)
+                    {
+                        rrentity.Create();
+                        rrentity.F_UserName = newusermodel.First().F_RealName;
+                        rrentity.F_CardId = newusermodel.First().F_IDCard;
+                        rrentity.F_UserId = entity.F_CandidatesID;
+                        rn.SaveEntity(null, rrentity);
+                    }
+                    //写流程状态表
+                    BaseService bsService = new BaseService();
+                    Hy_Recruit_SubProcessEntity hsEntity = bsService.getHy_Recruit_SubProcessEntity("面试");
+                    var data = bsService.GetProcessInfo(hsEntity.ID);
+                    ProcessOperationInfoIBLL poBLL = new ProcessOperationInfoBLL();
+                    rc = poBLL.SaveNodeInfoEntity(db, data, entity.F_CandidatesID, hsEntity.ID, hsEntity.Name);
+                }
+                db.Commit();
+                _return.Message = "操作成功";
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+            return _return;
+        }
+
+        #endregion
+
+    }
+}

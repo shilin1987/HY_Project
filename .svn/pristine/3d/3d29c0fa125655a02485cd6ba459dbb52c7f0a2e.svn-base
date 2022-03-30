@@ -1,0 +1,2206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HYDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Hy_Recruit_AgeLimit">
+          <Key>
+            <PropertyRef Name="F_AgeLimitID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_PostID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_AgeLimitID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_StartAge" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="F_EndAge" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_Blacklist">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_IDCard" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_Candidates">
+          <Key>
+            <PropertyRef Name="F_UserId" />
+          </Key>
+          <Property Name="F_UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_RealName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_IDCard" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_RecruitmentChannels" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Education" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_DocumentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_NationAlity" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Nation" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_RRNature" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_NativePlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_IDCardStartDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_IDCardEndDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OneCardNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EntryChannel" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_LaborRecruitmentDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_RecruitmentCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_IDCardAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ExpectedentryDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_PWD" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Gender" Type="int" />
+          <Property Name="F_Dormitory" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_HeadIcon" Type="nvarchar" MaxLength="100" />
+          <Property Name="F_EnCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DepartmentNmae" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Entrydate" Type="datetime" />
+          <Property Name="F_MaritalStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Birthday" Type="datetime" />
+          <Property Name="F_ResidentialAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CurrentAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_PostName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EducationStartDate" Type="datetime" />
+          <Property Name="F_EducationEndDate" Type="datetime" />
+          <Property Name="F_GraduationUniversitie" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_MajorStudied" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ForeignLanguageLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_BankDeposit" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_BankCardNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_PoliticalOutlook" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EmergencyContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EContactRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EContactNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OneWorkexperience" Type="text" />
+          <Property Name="F_TwoWorkexperience" Type="text" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_CardInfo">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="varchar" MaxLength="50" />
+          <Property Name="F_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Name" Type="varchar" MaxLength="50" />
+          <Property Name="F_Sex" Type="varchar" MaxLength="50" />
+          <Property Name="F_Birthday" Type="varchar" MaxLength="50" />
+          <Property Name="F_Address" Type="varchar" MaxLength="50" />
+          <Property Name="F_CardID" Type="varchar" MaxLength="50" />
+          <Property Name="F_IssueOrgan" Type="varchar" MaxLength="50" />
+          <Property Name="F_ValidStart" Type="varchar" MaxLength="50" />
+          <Property Name="F_ValidEnd" Type="varchar" MaxLength="50" />
+          <Property Name="F_SexCode" Type="varchar" MaxLength="50" />
+          <Property Name="F_AppendMsg" Type="varchar" MaxLength="50" />
+          <Property Name="F_PhotoBase64" Type="varchar" MaxLength="3000" />
+          <Property Name="F_PhotoBase64_F" Type="varchar" MaxLength="3000" />
+          <Property Name="photoBase64_ZF" Type="varchar" MaxLength="3000" />
+          <Property Name="strIDUID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_ContractTemplateManagement">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="varchar" MaxLength="200" />
+          <Property Name="F_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Type" Type="varchar" MaxLength="50" />
+          <Property Name="F_Name" Type="varchar" MaxLength="50" />
+          <Property Name="F_ContractContent" Type="text" />
+          <Property Name="F_PreviewtheContract" Type="varchar" MaxLength="200" />
+          <Property Name="F_Url" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_InfoTips">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SubProcessId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_Interview">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_CandidatesID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Content" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_InterviewResult" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="F_IDCard" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_RealName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Education" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_StartTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EndTime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_InterviewQuestionBank">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="int" />
+          <Property Name="F_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Question" Type="varchar" MaxLength="500" />
+          <Property Name="F_Answer" Type="varchar" MaxLength="500" />
+          <Property Name="F_Fraction" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_MainProcess">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PorcessSort" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_ProcessOperation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubProcessId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OperationStatus" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+          <Property Name="OperationContent" Type="nvarchar" MaxLength="50" />
+          <Property Name="CandidatesId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OperationTime" Type="datetime" />
+          <Property Name="Operator" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_ReportNodeApproval">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="F_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CardId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_StoryTime" Type="datetime" />
+          <Property Name="F_WhetherTheAudit" Type="int" />
+          <Property Name="F_DormitoryButton" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_ReportNotice">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_SubProcessId" Type="varchar" MaxLength="50" />
+          <Property Name="f_Content" Type="text" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_SubProcess">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MainProcessId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_TheEmployeeHandbook">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="varchar" MaxLength="300" />
+          <Property Name="F_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Name" Type="varchar" MaxLength="50" />
+          <Property Name="F_Content" Type="varchar" MaxLength="50" />
+          <Property Name="F_Url" Type="varchar" MaxLength="50" />
+          <Property Name="F_Preview" Type="varchar" MaxLength="50" />
+          <Property Name="F_Version" Type="int" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_TheTrainingContent">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="varchar" MaxLength="300" />
+          <Property Name="F_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Name" Type="varchar" MaxLength="50" />
+          <Property Name="F_Type" Type="varchar" MaxLength="50" />
+          <Property Name="F_Content" Type="varchar" MaxLength="500" />
+          <Property Name="F_Version" Type="int" />
+          <Property Name="F_Preview" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_WrittenExamination">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Score" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="F_WrittenTestQuestionBankId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CandidatesID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_IDCard" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_RealName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Education" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_WrittenExaminationQuestionBank">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="varchar" MaxLength="50" />
+          <Property Name="F_Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_TestPaperName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Content" Type="varchar" MaxLength="1000" />
+          <Property Name="F_MinimumScore" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_WrittenExaminationQuestions">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_Description" Type="varchar" MaxLength="50" />
+          <Property Name="Questions" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="F_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_QuestionsType" Type="int" Nullable="false" />
+          <Property Name="F_AnswerContent" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="F_Answer" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="F_Score" Type="int" Nullable="false" />
+          <Property Name="F_QuestionsBankID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hy_SMS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SendTime" Type="datetime" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="lr_base_company">
+          <Key>
+            <PropertyRef Name="F_CompanyId" />
+          </Key>
+          <Property Name="F_CompanyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Category" Type="int" />
+          <Property Name="F_ParentId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EnCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Nature" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OuterPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InnerPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Postalcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Manager" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ProvinceId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CityId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CountyId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_WebAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_FoundedTime" Type="datetime2" Precision="7" />
+          <Property Name="F_BusinessScope" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_CreateDate" Type="datetime2" Precision="7" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyDate" Type="datetime2" Precision="7" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="lr_base_department">
+          <Key>
+            <PropertyRef Name="F_DepartmentId" />
+          </Key>
+          <Property Name="F_DepartmentId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_CompanyId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ParentId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EnCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Nature" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Manager" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OuterPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InnerPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_CreateDate" Type="datetime2" Precision="7" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyDate" Type="datetime2" Precision="7" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="lr_base_img">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_ExName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="lr_base_log">
+          <Key>
+            <PropertyRef Name="F_LogId" />
+          </Key>
+          <Property Name="F_LogId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_CategoryId" Type="int" />
+          <Property Name="F_SourceObjectId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SourceContentJson" Type="nvarchar(max)" />
+          <Property Name="F_OperateTime" Type="datetime2" Precision="7" />
+          <Property Name="F_OperateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OperateAccount" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_OperateTypeId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OperateType" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Module" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_IPAddressName" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_Host" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_Browser" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ExecuteResult" Type="int" />
+          <Property Name="F_ExecuteResultJson" Type="nvarchar(max)" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_EnabledMark" Type="int" />
+        </EntityType>
+        <EntityType Name="lr_base_post">
+          <Key>
+            <PropertyRef Name="F_PostId" />
+          </Key>
+          <Property Name="F_PostId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_ParentId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_EnCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_CompanyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_DepartmentId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_CreateDate" Type="datetime2" Precision="7" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyDate" Type="datetime2" Precision="7" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="lr_base_role">
+          <Key>
+            <PropertyRef Name="F_RoleId" />
+          </Key>
+          <Property Name="F_RoleId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EnCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_CreateDate" Type="datetime2" Precision="7" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyDate" Type="datetime2" Precision="7" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="lr_base_user">
+          <Key>
+            <PropertyRef Name="F_UserId" />
+          </Key>
+          <Property Name="F_UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_EnCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Account" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Secretkey" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_RealName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_HeadIcon" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_QuickQuery" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_SimpleSpelling" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_Gender" Type="int" />
+          <Property Name="F_Birthday" Type="datetime" />
+          <Property Name="F_Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OICQ" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_WeChat" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_MSN" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CompanyId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DepartmentId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SecurityLevel" Type="int" />
+          <Property Name="F_OpenId" Type="int" />
+          <Property Name="F_Question" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_AnswerQuestion" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CheckOnLine" Type="int" />
+          <Property Name="F_AllowStartTime" Type="datetime" />
+          <Property Name="F_AllowEndTime" Type="datetime" />
+          <Property Name="F_LockStartDate" Type="datetime" />
+          <Property Name="F_LockEndDate" Type="datetime" />
+          <Property Name="F_SortCode" Type="int" />
+          <Property Name="F_DeleteMark" Type="int" />
+          <Property Name="F_EnabledMark" Type="int" />
+          <Property Name="F_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_CreateDate" Type="datetime" />
+          <Property Name="F_CreateUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CreateUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyDate" Type="datetime" />
+          <Property Name="F_ModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ModifyUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_IDCard" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_PrimaryOrganization" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SecondaryOrganization" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_TertiaryOrganization" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_FourLevelOrganization" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_FiveLevelOrganization" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SixLevelOrganization" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_RecruitmentChannels" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Entrydate" Type="datetime" />
+          <Property Name="F_ConfirmationDate" Type="datetime" />
+          <Property Name="F_DepartureDate" Type="datetime" />
+          <Property Name="F_Education" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SalaryMethod" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_PayModel" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_WorkingSystem" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_BankCardNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_BankDeposit" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DateHoldingPost" Type="datetime" />
+          <Property Name="F_IsTrainingAgreement" Type="int" />
+          <Property Name="F_StartDateService" Type="datetime" />
+          <Property Name="F_EndDateService" Type="datetime" />
+          <Property Name="F_EmployeeNature" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EmployeeNatureChangeDate" Type="datetime" />
+          <Property Name="F_PieceworkType" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_TimeBecomeRegular" Type="datetime" />
+          <Property Name="F_TimeShiftWorkSystem" Type="datetime" />
+          <Property Name="F_TypesResignation" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_MakeUpTime" Type="datetime" />
+          <Property Name="F_PostId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SalaryCalculation" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Age" Type="int" />
+          <Property Name="F_DocumentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_NationAlity" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Nation" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_RRNature" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_PoliticalOutlook" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_MaritalStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_NativePlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OnJobStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_IDCardStartDate" Type="datetime" />
+          <Property Name="F_IDCardEndDate" Type="datetime" />
+          <Property Name="F_OneCardNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SalaryStructureType" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SalaryType" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_PersonnelCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_JoiningGroupDate" Type="datetime" />
+          <Property Name="F_EntryChannel" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_OfflineDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_LaborRecruitmentDate" Type="datetime" />
+          <Property Name="F_RecruitmentCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_GraduationUniversitie" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_MajorStudied" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EducationStartDate" Type="datetime" />
+          <Property Name="F_EducationEndDate" Type="datetime" />
+          <Property Name="F_EducationalMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ForeignLanguageLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_IsQualified" Type="int" />
+          <Property Name="F_QualificationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_GetTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalTitleType" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_InternalTitleDate" Type="datetime" />
+          <Property Name="F_SocialTitleType" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SocialTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_SocialTitleDate" Type="datetime" />
+          <Property Name="F_IDCardAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_PermanentAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ResidentialAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CurrentAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EmergencyContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EContactRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_EContactNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_ContactAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_laborContractStartDate" Type="datetime" />
+          <Property Name="F_laborContractEndDate" Type="datetime" />
+          <Property Name="F_LaborContractStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_AttendanceDeadline" Type="datetime" />
+          <Property Name="F_IsEsignationCertificate" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_Depreciation" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_UserState" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist">
+          <End Role="Hy_Recruit_Blacklist" Type="Self.Hy_Recruit_Blacklist" Multiplicity="1" />
+          <End Role="Hy_Recruit_Blacklist1" Type="Self.Hy_Recruit_Blacklist" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Hy_Recruit_Blacklist">
+              <PropertyRef Name="F_ID" />
+            </Principal>
+            <Dependent Role="Hy_Recruit_Blacklist1">
+              <PropertyRef Name="F_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates">
+          <End Role="Hy_Recruit_Candidates" Type="Self.Hy_Recruit_Candidates" Multiplicity="1" />
+          <End Role="Hy_Recruit_ProcessOperation" Type="Self.Hy_Recruit_ProcessOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hy_Recruit_Candidates">
+              <PropertyRef Name="F_UserId" />
+            </Principal>
+            <Dependent Role="Hy_Recruit_ProcessOperation">
+              <PropertyRef Name="CandidatesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess">
+          <End Role="Hy_Recruit_MainProcess" Type="Self.Hy_Recruit_MainProcess" Multiplicity="1" />
+          <End Role="Hy_Recruit_SubProcess" Type="Self.Hy_Recruit_SubProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hy_Recruit_MainProcess">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hy_Recruit_SubProcess">
+              <PropertyRef Name="MainProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination">
+          <End Role="Hy_Recruit_WrittenExamination" Type="Self.Hy_Recruit_WrittenExamination" Multiplicity="1" />
+          <End Role="Hy_Recruit_WrittenExamination1" Type="Self.Hy_Recruit_WrittenExamination" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Hy_Recruit_WrittenExamination">
+              <PropertyRef Name="F_Id" />
+            </Principal>
+            <Dependent Role="Hy_Recruit_WrittenExamination1">
+              <PropertyRef Name="F_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HYDatabaseModelStoreContainer">
+          <EntitySet Name="Hy_Recruit_AgeLimit" EntityType="Self.Hy_Recruit_AgeLimit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_Blacklist" EntityType="Self.Hy_Recruit_Blacklist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_Candidates" EntityType="Self.Hy_Recruit_Candidates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_CardInfo" EntityType="Self.Hy_Recruit_CardInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_ContractTemplateManagement" EntityType="Self.Hy_Recruit_ContractTemplateManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_InfoTips" EntityType="Self.Hy_Recruit_InfoTips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_Interview" EntityType="Self.Hy_Recruit_Interview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_InterviewQuestionBank" EntityType="Self.Hy_Recruit_InterviewQuestionBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_MainProcess" EntityType="Self.Hy_Recruit_MainProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_ProcessOperation" EntityType="Self.Hy_Recruit_ProcessOperation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_ReportNodeApproval" EntityType="Self.Hy_Recruit_ReportNodeApproval" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_ReportNotice" EntityType="Self.Hy_Recruit_ReportNotice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_SubProcess" EntityType="Self.Hy_Recruit_SubProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_TheEmployeeHandbook" EntityType="Self.Hy_Recruit_TheEmployeeHandbook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_TheTrainingContent" EntityType="Self.Hy_Recruit_TheTrainingContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_WrittenExamination" EntityType="Self.Hy_Recruit_WrittenExamination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_WrittenExaminationQuestionBank" EntityType="Self.Hy_Recruit_WrittenExaminationQuestionBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_Recruit_WrittenExaminationQuestions" EntityType="Self.Hy_Recruit_WrittenExaminationQuestions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hy_SMS" EntityType="Self.Hy_SMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lr_base_company" EntityType="Self.lr_base_company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lr_base_department" EntityType="Self.lr_base_department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lr_base_img" EntityType="Self.lr_base_img" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lr_base_log" EntityType="Self.lr_base_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lr_base_post" EntityType="Self.lr_base_post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lr_base_role" EntityType="Self.lr_base_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lr_base_user" EntityType="Self.lr_base_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist" Association="Self.FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist">
+            <End Role="Hy_Recruit_Blacklist" EntitySet="Hy_Recruit_Blacklist" />
+            <End Role="Hy_Recruit_Blacklist1" EntitySet="Hy_Recruit_Blacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates" Association="Self.FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates">
+            <End Role="Hy_Recruit_Candidates" EntitySet="Hy_Recruit_Candidates" />
+            <End Role="Hy_Recruit_ProcessOperation" EntitySet="Hy_Recruit_ProcessOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess" Association="Self.FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess">
+            <End Role="Hy_Recruit_MainProcess" EntitySet="Hy_Recruit_MainProcess" />
+            <End Role="Hy_Recruit_SubProcess" EntitySet="Hy_Recruit_SubProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination" Association="Self.FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination">
+            <End Role="Hy_Recruit_WrittenExamination" EntitySet="Hy_Recruit_WrittenExamination" />
+            <End Role="Hy_Recruit_WrittenExamination1" EntitySet="Hy_Recruit_WrittenExamination" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HYDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="lr_base_company">
+          <Key>
+            <PropertyRef Name="F_CompanyId" />
+          </Key>
+          <Property Name="F_CompanyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_Category" Type="Int32" />
+          <Property Name="F_ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OuterPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InnerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Postalcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ProvinceId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CityId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CountyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_WebAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_FoundedTime" Type="DateTime" Precision="7" />
+          <Property Name="F_BusinessScope" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="7" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="7" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="lr_base_department">
+          <Key>
+            <PropertyRef Name="F_DepartmentId" />
+          </Key>
+          <Property Name="F_DepartmentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_CompanyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OuterPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InnerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="7" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="7" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="lr_base_img">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_ExName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="lr_base_log">
+          <Key>
+            <PropertyRef Name="F_LogId" />
+          </Key>
+          <Property Name="F_LogId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_CategoryId" Type="Int32" />
+          <Property Name="F_SourceObjectId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SourceContentJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_OperateTime" Type="DateTime" Precision="7" />
+          <Property Name="F_OperateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OperateAccount" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_OperateTypeId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OperateType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Module" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IPAddressName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_Host" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ExecuteResult" Type="Int32" />
+          <Property Name="F_ExecuteResultJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_EnabledMark" Type="Int32" />
+        </EntityType>
+        <EntityType Name="lr_base_post">
+          <Key>
+            <PropertyRef Name="F_PostId" />
+          </Key>
+          <Property Name="F_PostId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_EnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_CompanyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_DepartmentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="7" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="7" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="lr_base_role">
+          <Key>
+            <PropertyRef Name="F_RoleId" />
+          </Key>
+          <Property Name="F_RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="7" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="7" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="HYDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="lr_base_company" EntityType="Self.lr_base_company" />
+          <EntitySet Name="lr_base_department" EntityType="Self.lr_base_department" />
+          <EntitySet Name="lr_base_img" EntityType="Self.lr_base_img" />
+          <EntitySet Name="lr_base_log" EntityType="Self.lr_base_log" />
+          <EntitySet Name="lr_base_post" EntityType="Self.lr_base_post" />
+          <EntitySet Name="lr_base_role" EntityType="Self.lr_base_role" />
+          <EntitySet Name="Hy_SMS" EntityType="HYDatabaseModel.Hy_SMS" />
+          <EntitySet Name="Hy_Recruit_AgeLimit" EntityType="HYDatabaseModel.Hy_Recruit_AgeLimit" />
+          <EntitySet Name="Hy_Recruit_Blacklist" EntityType="HYDatabaseModel.Hy_Recruit_Blacklist" />
+          <EntitySet Name="Hy_Recruit_CardInfo" EntityType="HYDatabaseModel.Hy_Recruit_CardInfo" />
+          <EntitySet Name="Hy_Recruit_ContractTemplateManagement" EntityType="HYDatabaseModel.Hy_Recruit_ContractTemplateManagement" />
+          <EntitySet Name="Hy_Recruit_InfoTips" EntityType="HYDatabaseModel.Hy_Recruit_InfoTips" />
+          <EntitySet Name="Hy_Recruit_Interview" EntityType="HYDatabaseModel.Hy_Recruit_Interview" />
+          <EntitySet Name="Hy_Recruit_InterviewQuestionBank" EntityType="HYDatabaseModel.Hy_Recruit_InterviewQuestionBank" />
+          <EntitySet Name="Hy_Recruit_MainProcess" EntityType="HYDatabaseModel.Hy_Recruit_MainProcess" />
+          <EntitySet Name="Hy_Recruit_ProcessOperation" EntityType="HYDatabaseModel.Hy_Recruit_ProcessOperation" />
+          <EntitySet Name="Hy_Recruit_ReportNodeApproval" EntityType="HYDatabaseModel.Hy_Recruit_ReportNodeApproval" />
+          <EntitySet Name="Hy_Recruit_ReportNotice" EntityType="HYDatabaseModel.Hy_Recruit_ReportNotice" />
+          <EntitySet Name="Hy_Recruit_SubProcess" EntityType="HYDatabaseModel.Hy_Recruit_SubProcess" />
+          <EntitySet Name="Hy_Recruit_TheEmployeeHandbook" EntityType="HYDatabaseModel.Hy_Recruit_TheEmployeeHandbook" />
+          <EntitySet Name="Hy_Recruit_TheTrainingContent" EntityType="HYDatabaseModel.Hy_Recruit_TheTrainingContent" />
+          <EntitySet Name="Hy_Recruit_WrittenExamination" EntityType="HYDatabaseModel.Hy_Recruit_WrittenExamination" />
+          <EntitySet Name="Hy_Recruit_WrittenExaminationQuestionBank" EntityType="HYDatabaseModel.Hy_Recruit_WrittenExaminationQuestionBank" />
+          <EntitySet Name="Hy_Recruit_WrittenExaminationQuestions" EntityType="HYDatabaseModel.Hy_Recruit_WrittenExaminationQuestions" />
+          <AssociationSet Name="FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist" Association="HYDatabaseModel.FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist">
+            <End Role="Hy_Recruit_Blacklist" EntitySet="Hy_Recruit_Blacklist" />
+            <End Role="Hy_Recruit_Blacklist1" EntitySet="Hy_Recruit_Blacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess" Association="HYDatabaseModel.FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess">
+            <End Role="Hy_Recruit_MainProcess" EntitySet="Hy_Recruit_MainProcess" />
+            <End Role="Hy_Recruit_SubProcess" EntitySet="Hy_Recruit_SubProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination" Association="HYDatabaseModel.FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination">
+            <End Role="Hy_Recruit_WrittenExamination" EntitySet="Hy_Recruit_WrittenExamination" />
+            <End Role="Hy_Recruit_WrittenExamination1" EntitySet="Hy_Recruit_WrittenExamination" />
+          </AssociationSet>
+          <EntitySet Name="lr_base_user" EntityType="HYDatabaseModel.lr_base_user" />
+          <EntitySet Name="Hy_Recruit_Candidates" EntityType="HYDatabaseModel.Hy_Recruit_Candidates" />
+          <AssociationSet Name="FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates" Association="HYDatabaseModel.FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates">
+            <End Role="Hy_Recruit_Candidates" EntitySet="Hy_Recruit_Candidates" />
+            <End Role="Hy_Recruit_ProcessOperation" EntitySet="Hy_Recruit_ProcessOperation" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Hy_SMS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SendTime" Type="DateTime" Precision="3" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_AgeLimit">
+          <Key>
+            <PropertyRef Name="F_AgeLimitID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PostID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_AgeLimitID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_StartAge" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="F_EndAge" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_Blacklist">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_IDCard" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hy_Recruit_Blacklist1" Relationship="HYDatabaseModel.FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist" FromRole="Hy_Recruit_Blacklist" ToRole="Hy_Recruit_Blacklist1" />
+          <NavigationProperty Name="Hy_Recruit_Blacklist2" Relationship="HYDatabaseModel.FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist" FromRole="Hy_Recruit_Blacklist1" ToRole="Hy_Recruit_Blacklist" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_CardInfo">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Birthday" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CardID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_IssueOrgan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ValidStart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ValidEnd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_SexCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_AppendMsg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_PhotoBase64" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="F_PhotoBase64_F" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="photoBase64_ZF" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="strIDUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_ContractTemplateManagement">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ContractContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="F_PreviewtheContract" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="F_Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_InfoTips">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubProcessId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_Interview">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CandidatesID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Content" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_InterviewResult" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="F_IDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_StartTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EndTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_InterviewQuestionBank">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="Int32" />
+          <Property Name="F_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Question" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="F_Answer" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="F_Fraction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_MainProcess">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PorcessSort" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hy_Recruit_SubProcess" Relationship="HYDatabaseModel.FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess" FromRole="Hy_Recruit_MainProcess" ToRole="Hy_Recruit_SubProcess" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_ProcessOperation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubProcessId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OperationStatus" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OperationContent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CandidatesId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OperationTime" Type="DateTime" Precision="3" />
+          <Property Name="Operator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hy_Recruit_Candidates" Relationship="HYDatabaseModel.FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates" FromRole="Hy_Recruit_ProcessOperation" ToRole="Hy_Recruit_Candidates" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_ReportNodeApproval">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="F_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CardId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_StoryTime" Type="DateTime" Precision="3" />
+          <Property Name="F_WhetherTheAudit" Type="Int32" />
+          <Property Name="F_DormitoryButton" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_ReportNotice">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_SubProcessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="f_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_SubProcess">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MainProcessId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hy_Recruit_MainProcess" Relationship="HYDatabaseModel.FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess" FromRole="Hy_Recruit_SubProcess" ToRole="Hy_Recruit_MainProcess" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_TheEmployeeHandbook">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Content" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Preview" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Version" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_TheTrainingContent">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="F_Version" Type="Int32" />
+          <Property Name="F_Preview" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_WrittenExamination">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Score" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="F_WrittenTestQuestionBankId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CandidatesID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hy_Recruit_WrittenExamination1" Relationship="HYDatabaseModel.FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination" FromRole="Hy_Recruit_WrittenExamination" ToRole="Hy_Recruit_WrittenExamination1" />
+          <NavigationProperty Name="Hy_Recruit_WrittenExamination2" Relationship="HYDatabaseModel.FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination" FromRole="Hy_Recruit_WrittenExamination1" ToRole="Hy_Recruit_WrittenExamination" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_WrittenExaminationQuestionBank">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_TestPaperName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_Content" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="F_MinimumScore" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_WrittenExaminationQuestions">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Questions" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="F_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_QuestionsType" Type="Int32" Nullable="false" />
+          <Property Name="F_AnswerContent" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="F_Answer" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="F_Score" Type="Int32" Nullable="false" />
+          <Property Name="F_QuestionsBankID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist">
+          <End Type="HYDatabaseModel.Hy_Recruit_Blacklist" Role="Hy_Recruit_Blacklist" Multiplicity="1" />
+          <End Type="HYDatabaseModel.Hy_Recruit_Blacklist" Role="Hy_Recruit_Blacklist1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Hy_Recruit_Blacklist">
+              <PropertyRef Name="F_ID" />
+            </Principal>
+            <Dependent Role="Hy_Recruit_Blacklist1">
+              <PropertyRef Name="F_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess">
+          <End Type="HYDatabaseModel.Hy_Recruit_MainProcess" Role="Hy_Recruit_MainProcess" Multiplicity="1" />
+          <End Type="HYDatabaseModel.Hy_Recruit_SubProcess" Role="Hy_Recruit_SubProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hy_Recruit_MainProcess">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hy_Recruit_SubProcess">
+              <PropertyRef Name="MainProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination">
+          <End Type="HYDatabaseModel.Hy_Recruit_WrittenExamination" Role="Hy_Recruit_WrittenExamination" Multiplicity="1" />
+          <End Type="HYDatabaseModel.Hy_Recruit_WrittenExamination" Role="Hy_Recruit_WrittenExamination1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Hy_Recruit_WrittenExamination">
+              <PropertyRef Name="F_Id" />
+            </Principal>
+            <Dependent Role="Hy_Recruit_WrittenExamination1">
+              <PropertyRef Name="F_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="lr_base_user">
+          <Key>
+            <PropertyRef Name="F_UserId" />
+          </Key>
+          <Property Name="F_UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Secretkey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_HeadIcon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_QuickQuery" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_SimpleSpelling" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_Gender" Type="Int32" />
+          <Property Name="F_Birthday" Type="DateTime" Precision="3" />
+          <Property Name="F_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OICQ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_WeChat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_MSN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CompanyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DepartmentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SecurityLevel" Type="Int32" />
+          <Property Name="F_OpenId" Type="Int32" />
+          <Property Name="F_Question" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_AnswerQuestion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CheckOnLine" Type="Int32" />
+          <Property Name="F_AllowStartTime" Type="DateTime" Precision="3" />
+          <Property Name="F_AllowEndTime" Type="DateTime" Precision="3" />
+          <Property Name="F_LockStartDate" Type="DateTime" Precision="3" />
+          <Property Name="F_LockEndDate" Type="DateTime" Precision="3" />
+          <Property Name="F_SortCode" Type="Int32" />
+          <Property Name="F_DeleteMark" Type="Int32" />
+          <Property Name="F_EnabledMark" Type="Int32" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PrimaryOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SecondaryOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_TertiaryOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_FourLevelOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_FiveLevelOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SixLevelOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RecruitmentChannels" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Entrydate" Type="DateTime" Precision="3" />
+          <Property Name="F_ConfirmationDate" Type="DateTime" Precision="3" />
+          <Property Name="F_DepartureDate" Type="DateTime" Precision="3" />
+          <Property Name="F_Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SalaryMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PayModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_WorkingSystem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_BankCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_BankDeposit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DateHoldingPost" Type="DateTime" Precision="3" />
+          <Property Name="F_IsTrainingAgreement" Type="Int32" />
+          <Property Name="F_StartDateService" Type="DateTime" Precision="3" />
+          <Property Name="F_EndDateService" Type="DateTime" Precision="3" />
+          <Property Name="F_EmployeeNature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EmployeeNatureChangeDate" Type="DateTime" Precision="3" />
+          <Property Name="F_PieceworkType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_TimeBecomeRegular" Type="DateTime" Precision="3" />
+          <Property Name="F_TimeShiftWorkSystem" Type="DateTime" Precision="3" />
+          <Property Name="F_TypesResignation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_MakeUpTime" Type="DateTime" Precision="3" />
+          <Property Name="F_PostId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SalaryCalculation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Age" Type="Int32" />
+          <Property Name="F_DocumentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_NationAlity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Nation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RRNature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PoliticalOutlook" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_NativePlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OnJobStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IDCardStartDate" Type="DateTime" Precision="3" />
+          <Property Name="F_IDCardEndDate" Type="DateTime" Precision="3" />
+          <Property Name="F_OneCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SalaryStructureType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SalaryType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PersonnelCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_JoiningGroupDate" Type="DateTime" Precision="3" />
+          <Property Name="F_EntryChannel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OfflineDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_LaborRecruitmentDate" Type="DateTime" Precision="3" />
+          <Property Name="F_RecruitmentCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_GraduationUniversitie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_MajorStudied" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EducationStartDate" Type="DateTime" Precision="3" />
+          <Property Name="F_EducationEndDate" Type="DateTime" Precision="3" />
+          <Property Name="F_EducationalMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ForeignLanguageLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IsQualified" Type="Int32" />
+          <Property Name="F_QualificationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_GetTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalTitleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalTitleDate" Type="DateTime" Precision="3" />
+          <Property Name="F_SocialTitleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SocialTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SocialTitleDate" Type="DateTime" Precision="3" />
+          <Property Name="F_IDCardAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PermanentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ResidentialAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CurrentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EmergencyContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EContactRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ContactAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_laborContractStartDate" Type="DateTime" Precision="3" />
+          <Property Name="F_laborContractEndDate" Type="DateTime" Precision="3" />
+          <Property Name="F_LaborContractStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_AttendanceDeadline" Type="DateTime" Precision="3" />
+          <Property Name="F_IsEsignationCertificate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Depreciation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_UserState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hy_Recruit_Candidates">
+          <Key>
+            <PropertyRef Name="F_UserId" />
+          </Key>
+          <Property Name="F_UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RealName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="F_CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="F_ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IDCard" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RecruitmentChannels" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Education" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DocumentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_NationAlity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Nation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RRNature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_NativePlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IDCardStartDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IDCardEndDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OneCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EntryChannel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_InternalCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_LaborRecruitmentDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_RecruitmentCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_IDCardAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ExpectedentryDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Gender" Type="Int32" />
+          <Property Name="F_Dormitory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_HeadIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_EnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DepartmentNmae" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Entrydate" Type="DateTime" Precision="3" />
+          <Property Name="F_MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Birthday" Type="DateTime" Precision="3" />
+          <Property Name="F_ResidentialAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CurrentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EducationStartDate" Type="DateTime" Precision="3" />
+          <Property Name="F_EducationEndDate" Type="DateTime" Precision="3" />
+          <Property Name="F_GraduationUniversitie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_MajorStudied" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_ForeignLanguageLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_BankDeposit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_BankCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_PoliticalOutlook" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EmergencyContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EContactRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_EContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_OneWorkexperience" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="F_TwoWorkexperience" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Hy_Recruit_ProcessOperation" Relationship="HYDatabaseModel.FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates" FromRole="Hy_Recruit_Candidates" ToRole="Hy_Recruit_ProcessOperation" />
+        </EntityType>
+        <Association Name="FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates">
+          <End Type="HYDatabaseModel.Hy_Recruit_Candidates" Role="Hy_Recruit_Candidates" Multiplicity="1" />
+          <End Type="HYDatabaseModel.Hy_Recruit_ProcessOperation" Role="Hy_Recruit_ProcessOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hy_Recruit_Candidates">
+              <PropertyRef Name="F_UserId" />
+            </Principal>
+            <Dependent Role="Hy_Recruit_ProcessOperation">
+              <PropertyRef Name="CandidatesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HYDatabaseModelStoreContainer" CdmEntityContainer="HYDatabaseEntities">
+          <EntitySetMapping Name="lr_base_company">
+            <EntityTypeMapping TypeName="HYDatabaseModel.lr_base_company">
+              <MappingFragment StoreEntitySet="lr_base_company">
+                <ScalarProperty Name="F_CompanyId" ColumnName="F_CompanyId" />
+                <ScalarProperty Name="F_Category" ColumnName="F_Category" />
+                <ScalarProperty Name="F_ParentId" ColumnName="F_ParentId" />
+                <ScalarProperty Name="F_EnCode" ColumnName="F_EnCode" />
+                <ScalarProperty Name="F_ShortName" ColumnName="F_ShortName" />
+                <ScalarProperty Name="F_FullName" ColumnName="F_FullName" />
+                <ScalarProperty Name="F_Nature" ColumnName="F_Nature" />
+                <ScalarProperty Name="F_OuterPhone" ColumnName="F_OuterPhone" />
+                <ScalarProperty Name="F_InnerPhone" ColumnName="F_InnerPhone" />
+                <ScalarProperty Name="F_Fax" ColumnName="F_Fax" />
+                <ScalarProperty Name="F_Postalcode" ColumnName="F_Postalcode" />
+                <ScalarProperty Name="F_Email" ColumnName="F_Email" />
+                <ScalarProperty Name="F_Manager" ColumnName="F_Manager" />
+                <ScalarProperty Name="F_ProvinceId" ColumnName="F_ProvinceId" />
+                <ScalarProperty Name="F_CityId" ColumnName="F_CityId" />
+                <ScalarProperty Name="F_CountyId" ColumnName="F_CountyId" />
+                <ScalarProperty Name="F_Address" ColumnName="F_Address" />
+                <ScalarProperty Name="F_WebAddress" ColumnName="F_WebAddress" />
+                <ScalarProperty Name="F_FoundedTime" ColumnName="F_FoundedTime" />
+                <ScalarProperty Name="F_BusinessScope" ColumnName="F_BusinessScope" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lr_base_department">
+            <EntityTypeMapping TypeName="HYDatabaseModel.lr_base_department">
+              <MappingFragment StoreEntitySet="lr_base_department">
+                <ScalarProperty Name="F_DepartmentId" ColumnName="F_DepartmentId" />
+                <ScalarProperty Name="F_CompanyId" ColumnName="F_CompanyId" />
+                <ScalarProperty Name="F_ParentId" ColumnName="F_ParentId" />
+                <ScalarProperty Name="F_EnCode" ColumnName="F_EnCode" />
+                <ScalarProperty Name="F_FullName" ColumnName="F_FullName" />
+                <ScalarProperty Name="F_ShortName" ColumnName="F_ShortName" />
+                <ScalarProperty Name="F_Nature" ColumnName="F_Nature" />
+                <ScalarProperty Name="F_Manager" ColumnName="F_Manager" />
+                <ScalarProperty Name="F_OuterPhone" ColumnName="F_OuterPhone" />
+                <ScalarProperty Name="F_InnerPhone" ColumnName="F_InnerPhone" />
+                <ScalarProperty Name="F_Email" ColumnName="F_Email" />
+                <ScalarProperty Name="F_Fax" ColumnName="F_Fax" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lr_base_img">
+            <EntityTypeMapping TypeName="HYDatabaseModel.lr_base_img">
+              <MappingFragment StoreEntitySet="lr_base_img">
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="F_ExName" ColumnName="F_ExName" />
+                <ScalarProperty Name="F_Content" ColumnName="F_Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lr_base_log">
+            <EntityTypeMapping TypeName="HYDatabaseModel.lr_base_log">
+              <MappingFragment StoreEntitySet="lr_base_log">
+                <ScalarProperty Name="F_LogId" ColumnName="F_LogId" />
+                <ScalarProperty Name="F_CategoryId" ColumnName="F_CategoryId" />
+                <ScalarProperty Name="F_SourceObjectId" ColumnName="F_SourceObjectId" />
+                <ScalarProperty Name="F_SourceContentJson" ColumnName="F_SourceContentJson" />
+                <ScalarProperty Name="F_OperateTime" ColumnName="F_OperateTime" />
+                <ScalarProperty Name="F_OperateUserId" ColumnName="F_OperateUserId" />
+                <ScalarProperty Name="F_OperateAccount" ColumnName="F_OperateAccount" />
+                <ScalarProperty Name="F_OperateTypeId" ColumnName="F_OperateTypeId" />
+                <ScalarProperty Name="F_OperateType" ColumnName="F_OperateType" />
+                <ScalarProperty Name="F_Module" ColumnName="F_Module" />
+                <ScalarProperty Name="F_IPAddress" ColumnName="F_IPAddress" />
+                <ScalarProperty Name="F_IPAddressName" ColumnName="F_IPAddressName" />
+                <ScalarProperty Name="F_Host" ColumnName="F_Host" />
+                <ScalarProperty Name="F_Browser" ColumnName="F_Browser" />
+                <ScalarProperty Name="F_ExecuteResult" ColumnName="F_ExecuteResult" />
+                <ScalarProperty Name="F_ExecuteResultJson" ColumnName="F_ExecuteResultJson" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lr_base_post">
+            <EntityTypeMapping TypeName="HYDatabaseModel.lr_base_post">
+              <MappingFragment StoreEntitySet="lr_base_post">
+                <ScalarProperty Name="F_PostId" ColumnName="F_PostId" />
+                <ScalarProperty Name="F_ParentId" ColumnName="F_ParentId" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="F_EnCode" ColumnName="F_EnCode" />
+                <ScalarProperty Name="F_CompanyId" ColumnName="F_CompanyId" />
+                <ScalarProperty Name="F_DepartmentId" ColumnName="F_DepartmentId" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lr_base_role">
+            <EntityTypeMapping TypeName="HYDatabaseModel.lr_base_role">
+              <MappingFragment StoreEntitySet="lr_base_role">
+                <ScalarProperty Name="F_RoleId" ColumnName="F_RoleId" />
+                <ScalarProperty Name="F_Category" ColumnName="F_Category" />
+                <ScalarProperty Name="F_EnCode" ColumnName="F_EnCode" />
+                <ScalarProperty Name="F_FullName" ColumnName="F_FullName" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_SMS">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_SMS">
+              <MappingFragment StoreEntitySet="Hy_SMS">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="VCode" ColumnName="VCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_AgeLimit">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_AgeLimit">
+              <MappingFragment StoreEntitySet="Hy_Recruit_AgeLimit">
+                <ScalarProperty Name="F_EndAge" ColumnName="F_EndAge" />
+                <ScalarProperty Name="F_StartAge" ColumnName="F_StartAge" />
+                <ScalarProperty Name="F_AgeLimitID" ColumnName="F_AgeLimitID" />
+                <ScalarProperty Name="F_PostID" ColumnName="F_PostID" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_Blacklist">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_Blacklist">
+              <MappingFragment StoreEntitySet="Hy_Recruit_Blacklist">
+                <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+                <ScalarProperty Name="F_UserName" ColumnName="F_UserName" />
+                <ScalarProperty Name="F_IDCard" ColumnName="F_IDCard" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_CardInfo">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_CardInfo">
+              <MappingFragment StoreEntitySet="Hy_Recruit_CardInfo">
+                <ScalarProperty Name="strIDUID" ColumnName="strIDUID" />
+                <ScalarProperty Name="photoBase64_ZF" ColumnName="photoBase64_ZF" />
+                <ScalarProperty Name="F_PhotoBase64_F" ColumnName="F_PhotoBase64_F" />
+                <ScalarProperty Name="F_PhotoBase64" ColumnName="F_PhotoBase64" />
+                <ScalarProperty Name="F_AppendMsg" ColumnName="F_AppendMsg" />
+                <ScalarProperty Name="F_SexCode" ColumnName="F_SexCode" />
+                <ScalarProperty Name="F_ValidEnd" ColumnName="F_ValidEnd" />
+                <ScalarProperty Name="F_ValidStart" ColumnName="F_ValidStart" />
+                <ScalarProperty Name="F_IssueOrgan" ColumnName="F_IssueOrgan" />
+                <ScalarProperty Name="F_CardID" ColumnName="F_CardID" />
+                <ScalarProperty Name="F_Address" ColumnName="F_Address" />
+                <ScalarProperty Name="F_Birthday" ColumnName="F_Birthday" />
+                <ScalarProperty Name="F_Sex" ColumnName="F_Sex" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_ContractTemplateManagement">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_ContractTemplateManagement">
+              <MappingFragment StoreEntitySet="Hy_Recruit_ContractTemplateManagement">
+                <ScalarProperty Name="F_Url" ColumnName="F_Url" />
+                <ScalarProperty Name="F_PreviewtheContract" ColumnName="F_PreviewtheContract" />
+                <ScalarProperty Name="F_ContractContent" ColumnName="F_ContractContent" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="F_Type" ColumnName="F_Type" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_InfoTips">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_InfoTips">
+              <MappingFragment StoreEntitySet="Hy_Recruit_InfoTips">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="SubProcessId" ColumnName="SubProcessId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_Interview">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_Interview">
+              <MappingFragment StoreEntitySet="Hy_Recruit_Interview">
+                <ScalarProperty Name="F_EndTime" ColumnName="F_EndTime" />
+                <ScalarProperty Name="F_StartTime" ColumnName="F_StartTime" />
+                <ScalarProperty Name="F_Education" ColumnName="F_Education" />
+                <ScalarProperty Name="F_Mobile" ColumnName="F_Mobile" />
+                <ScalarProperty Name="F_Gender" ColumnName="F_Gender" />
+                <ScalarProperty Name="F_RealName" ColumnName="F_RealName" />
+                <ScalarProperty Name="F_IDCard" ColumnName="F_IDCard" />
+                <ScalarProperty Name="F_InterviewResult" ColumnName="F_InterviewResult" />
+                <ScalarProperty Name="F_Content" ColumnName="F_Content" />
+                <ScalarProperty Name="F_CandidatesID" ColumnName="F_CandidatesID" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_InterviewQuestionBank">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_InterviewQuestionBank">
+              <MappingFragment StoreEntitySet="Hy_Recruit_InterviewQuestionBank">
+                <ScalarProperty Name="F_Fraction" ColumnName="F_Fraction" />
+                <ScalarProperty Name="F_Answer" ColumnName="F_Answer" />
+                <ScalarProperty Name="F_Question" ColumnName="F_Question" />
+                <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_MainProcess">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_MainProcess">
+              <MappingFragment StoreEntitySet="Hy_Recruit_MainProcess">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="PorcessSort" ColumnName="PorcessSort" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_ProcessOperation">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_ProcessOperation">
+              <MappingFragment StoreEntitySet="Hy_Recruit_ProcessOperation">
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="OperationTime" ColumnName="OperationTime" />
+                <ScalarProperty Name="CandidatesId" ColumnName="CandidatesId" />
+                <ScalarProperty Name="OperationContent" ColumnName="OperationContent" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="OperationStatus" ColumnName="OperationStatus" />
+                <ScalarProperty Name="SubProcessId" ColumnName="SubProcessId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_ReportNodeApproval">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_ReportNodeApproval">
+              <MappingFragment StoreEntitySet="Hy_Recruit_ReportNodeApproval">
+                <ScalarProperty Name="F_DormitoryButton" ColumnName="F_DormitoryButton" />
+                <ScalarProperty Name="F_WhetherTheAudit" ColumnName="F_WhetherTheAudit" />
+                <ScalarProperty Name="F_StoryTime" ColumnName="F_StoryTime" />
+                <ScalarProperty Name="F_CardId" ColumnName="F_CardId" />
+                <ScalarProperty Name="F_UserName" ColumnName="F_UserName" />
+                <ScalarProperty Name="F_UserId" ColumnName="F_UserId" />
+                <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_ReportNotice">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_ReportNotice">
+              <MappingFragment StoreEntitySet="Hy_Recruit_ReportNotice">
+                <ScalarProperty Name="f_Content" ColumnName="f_Content" />
+                <ScalarProperty Name="F_SubProcessId" ColumnName="F_SubProcessId" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_SubProcess">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_SubProcess">
+              <MappingFragment StoreEntitySet="Hy_Recruit_SubProcess">
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MainProcessId" ColumnName="MainProcessId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_TheEmployeeHandbook">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_TheEmployeeHandbook">
+              <MappingFragment StoreEntitySet="Hy_Recruit_TheEmployeeHandbook">
+                <ScalarProperty Name="F_Version" ColumnName="F_Version" />
+                <ScalarProperty Name="F_Preview" ColumnName="F_Preview" />
+                <ScalarProperty Name="F_Url" ColumnName="F_Url" />
+                <ScalarProperty Name="F_Content" ColumnName="F_Content" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_TheTrainingContent">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_TheTrainingContent">
+              <MappingFragment StoreEntitySet="Hy_Recruit_TheTrainingContent">
+                <ScalarProperty Name="F_Preview" ColumnName="F_Preview" />
+                <ScalarProperty Name="F_Version" ColumnName="F_Version" />
+                <ScalarProperty Name="F_Content" ColumnName="F_Content" />
+                <ScalarProperty Name="F_Type" ColumnName="F_Type" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_WrittenExamination">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_WrittenExamination">
+              <MappingFragment StoreEntitySet="Hy_Recruit_WrittenExamination">
+                <ScalarProperty Name="F_Education" ColumnName="F_Education" />
+                <ScalarProperty Name="F_Mobile" ColumnName="F_Mobile" />
+                <ScalarProperty Name="F_Gender" ColumnName="F_Gender" />
+                <ScalarProperty Name="F_RealName" ColumnName="F_RealName" />
+                <ScalarProperty Name="F_IDCard" ColumnName="F_IDCard" />
+                <ScalarProperty Name="F_CandidatesID" ColumnName="F_CandidatesID" />
+                <ScalarProperty Name="F_WrittenTestQuestionBankId" ColumnName="F_WrittenTestQuestionBankId" />
+                <ScalarProperty Name="F_Score" ColumnName="F_Score" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_WrittenExaminationQuestionBank">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_WrittenExaminationQuestionBank">
+              <MappingFragment StoreEntitySet="Hy_Recruit_WrittenExaminationQuestionBank">
+                <ScalarProperty Name="F_MinimumScore" ColumnName="F_MinimumScore" />
+                <ScalarProperty Name="F_Content" ColumnName="F_Content" />
+                <ScalarProperty Name="F_TestPaperName" ColumnName="F_TestPaperName" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_WrittenExaminationQuestions">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_WrittenExaminationQuestions">
+              <MappingFragment StoreEntitySet="Hy_Recruit_WrittenExaminationQuestions">
+                <ScalarProperty Name="F_QuestionsBankID" ColumnName="F_QuestionsBankID" />
+                <ScalarProperty Name="F_Score" ColumnName="F_Score" />
+                <ScalarProperty Name="F_Answer" ColumnName="F_Answer" />
+                <ScalarProperty Name="F_AnswerContent" ColumnName="F_AnswerContent" />
+                <ScalarProperty Name="F_QuestionsType" ColumnName="F_QuestionsType" />
+                <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+                <ScalarProperty Name="Questions" ColumnName="Questions" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lr_base_user">
+            <EntityTypeMapping TypeName="HYDatabaseModel.lr_base_user">
+              <MappingFragment StoreEntitySet="lr_base_user">
+                <ScalarProperty Name="F_UserState" ColumnName="F_UserState" />
+                <ScalarProperty Name="F_Depreciation" ColumnName="F_Depreciation" />
+                <ScalarProperty Name="F_IsEsignationCertificate" ColumnName="F_IsEsignationCertificate" />
+                <ScalarProperty Name="F_AttendanceDeadline" ColumnName="F_AttendanceDeadline" />
+                <ScalarProperty Name="F_LaborContractStatus" ColumnName="F_LaborContractStatus" />
+                <ScalarProperty Name="F_laborContractEndDate" ColumnName="F_laborContractEndDate" />
+                <ScalarProperty Name="F_laborContractStartDate" ColumnName="F_laborContractStartDate" />
+                <ScalarProperty Name="F_ContactAddress" ColumnName="F_ContactAddress" />
+                <ScalarProperty Name="F_EContactNumber" ColumnName="F_EContactNumber" />
+                <ScalarProperty Name="F_EContactRelationship" ColumnName="F_EContactRelationship" />
+                <ScalarProperty Name="F_EmergencyContact" ColumnName="F_EmergencyContact" />
+                <ScalarProperty Name="F_CurrentAddress" ColumnName="F_CurrentAddress" />
+                <ScalarProperty Name="F_ResidentialAddress" ColumnName="F_ResidentialAddress" />
+                <ScalarProperty Name="F_PermanentAddress" ColumnName="F_PermanentAddress" />
+                <ScalarProperty Name="F_IDCardAddress" ColumnName="F_IDCardAddress" />
+                <ScalarProperty Name="F_SocialTitleDate" ColumnName="F_SocialTitleDate" />
+                <ScalarProperty Name="F_SocialTitle" ColumnName="F_SocialTitle" />
+                <ScalarProperty Name="F_SocialTitleType" ColumnName="F_SocialTitleType" />
+                <ScalarProperty Name="F_InternalTitleDate" ColumnName="F_InternalTitleDate" />
+                <ScalarProperty Name="F_InternalTitle" ColumnName="F_InternalTitle" />
+                <ScalarProperty Name="F_InternalTitleType" ColumnName="F_InternalTitleType" />
+                <ScalarProperty Name="F_GetTime" ColumnName="F_GetTime" />
+                <ScalarProperty Name="F_QualificationName" ColumnName="F_QualificationName" />
+                <ScalarProperty Name="F_IsQualified" ColumnName="F_IsQualified" />
+                <ScalarProperty Name="F_ForeignLanguageLevel" ColumnName="F_ForeignLanguageLevel" />
+                <ScalarProperty Name="F_EducationalMode" ColumnName="F_EducationalMode" />
+                <ScalarProperty Name="F_EducationEndDate" ColumnName="F_EducationEndDate" />
+                <ScalarProperty Name="F_EducationStartDate" ColumnName="F_EducationStartDate" />
+                <ScalarProperty Name="F_MajorStudied" ColumnName="F_MajorStudied" />
+                <ScalarProperty Name="F_GraduationUniversitie" ColumnName="F_GraduationUniversitie" />
+                <ScalarProperty Name="F_RecruitmentCompany" ColumnName="F_RecruitmentCompany" />
+                <ScalarProperty Name="F_LaborRecruitmentDate" ColumnName="F_LaborRecruitmentDate" />
+                <ScalarProperty Name="F_InternalCompany" ColumnName="F_InternalCompany" />
+                <ScalarProperty Name="F_InternalName" ColumnName="F_InternalName" />
+                <ScalarProperty Name="F_InternalCode" ColumnName="F_InternalCode" />
+                <ScalarProperty Name="F_OfflineDate" ColumnName="F_OfflineDate" />
+                <ScalarProperty Name="F_EntryChannel" ColumnName="F_EntryChannel" />
+                <ScalarProperty Name="F_JoiningGroupDate" ColumnName="F_JoiningGroupDate" />
+                <ScalarProperty Name="F_PersonnelCategory" ColumnName="F_PersonnelCategory" />
+                <ScalarProperty Name="F_SalaryType" ColumnName="F_SalaryType" />
+                <ScalarProperty Name="F_SalaryStructureType" ColumnName="F_SalaryStructureType" />
+                <ScalarProperty Name="F_OneCardNumber" ColumnName="F_OneCardNumber" />
+                <ScalarProperty Name="F_IDCardEndDate" ColumnName="F_IDCardEndDate" />
+                <ScalarProperty Name="F_IDCardStartDate" ColumnName="F_IDCardStartDate" />
+                <ScalarProperty Name="F_OnJobStatus" ColumnName="F_OnJobStatus" />
+                <ScalarProperty Name="F_NativePlace" ColumnName="F_NativePlace" />
+                <ScalarProperty Name="F_MaritalStatus" ColumnName="F_MaritalStatus" />
+                <ScalarProperty Name="F_PoliticalOutlook" ColumnName="F_PoliticalOutlook" />
+                <ScalarProperty Name="F_RRNature" ColumnName="F_RRNature" />
+                <ScalarProperty Name="F_Nation" ColumnName="F_Nation" />
+                <ScalarProperty Name="F_NationAlity" ColumnName="F_NationAlity" />
+                <ScalarProperty Name="F_DocumentType" ColumnName="F_DocumentType" />
+                <ScalarProperty Name="F_Age" ColumnName="F_Age" />
+                <ScalarProperty Name="F_SalaryCalculation" ColumnName="F_SalaryCalculation" />
+                <ScalarProperty Name="F_PostId" ColumnName="F_PostId" />
+                <ScalarProperty Name="F_MakeUpTime" ColumnName="F_MakeUpTime" />
+                <ScalarProperty Name="F_TypesResignation" ColumnName="F_TypesResignation" />
+                <ScalarProperty Name="F_TimeShiftWorkSystem" ColumnName="F_TimeShiftWorkSystem" />
+                <ScalarProperty Name="F_TimeBecomeRegular" ColumnName="F_TimeBecomeRegular" />
+                <ScalarProperty Name="F_PieceworkType" ColumnName="F_PieceworkType" />
+                <ScalarProperty Name="F_EmployeeNatureChangeDate" ColumnName="F_EmployeeNatureChangeDate" />
+                <ScalarProperty Name="F_EmployeeNature" ColumnName="F_EmployeeNature" />
+                <ScalarProperty Name="F_EndDateService" ColumnName="F_EndDateService" />
+                <ScalarProperty Name="F_StartDateService" ColumnName="F_StartDateService" />
+                <ScalarProperty Name="F_IsTrainingAgreement" ColumnName="F_IsTrainingAgreement" />
+                <ScalarProperty Name="F_DateHoldingPost" ColumnName="F_DateHoldingPost" />
+                <ScalarProperty Name="F_BankDeposit" ColumnName="F_BankDeposit" />
+                <ScalarProperty Name="F_BankCardNumber" ColumnName="F_BankCardNumber" />
+                <ScalarProperty Name="F_WorkingSystem" ColumnName="F_WorkingSystem" />
+                <ScalarProperty Name="F_PayModel" ColumnName="F_PayModel" />
+                <ScalarProperty Name="F_SalaryMethod" ColumnName="F_SalaryMethod" />
+                <ScalarProperty Name="F_Education" ColumnName="F_Education" />
+                <ScalarProperty Name="F_DepartureDate" ColumnName="F_DepartureDate" />
+                <ScalarProperty Name="F_ConfirmationDate" ColumnName="F_ConfirmationDate" />
+                <ScalarProperty Name="F_Entrydate" ColumnName="F_Entrydate" />
+                <ScalarProperty Name="F_RecruitmentChannels" ColumnName="F_RecruitmentChannels" />
+                <ScalarProperty Name="F_SixLevelOrganization" ColumnName="F_SixLevelOrganization" />
+                <ScalarProperty Name="F_FiveLevelOrganization" ColumnName="F_FiveLevelOrganization" />
+                <ScalarProperty Name="F_FourLevelOrganization" ColumnName="F_FourLevelOrganization" />
+                <ScalarProperty Name="F_TertiaryOrganization" ColumnName="F_TertiaryOrganization" />
+                <ScalarProperty Name="F_SecondaryOrganization" ColumnName="F_SecondaryOrganization" />
+                <ScalarProperty Name="F_PrimaryOrganization" ColumnName="F_PrimaryOrganization" />
+                <ScalarProperty Name="F_IDCard" ColumnName="F_IDCard" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_ModifyUserId" ColumnName="F_ModifyUserId" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_CreateUserId" ColumnName="F_CreateUserId" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_EnabledMark" ColumnName="F_EnabledMark" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_SortCode" ColumnName="F_SortCode" />
+                <ScalarProperty Name="F_LockEndDate" ColumnName="F_LockEndDate" />
+                <ScalarProperty Name="F_LockStartDate" ColumnName="F_LockStartDate" />
+                <ScalarProperty Name="F_AllowEndTime" ColumnName="F_AllowEndTime" />
+                <ScalarProperty Name="F_AllowStartTime" ColumnName="F_AllowStartTime" />
+                <ScalarProperty Name="F_CheckOnLine" ColumnName="F_CheckOnLine" />
+                <ScalarProperty Name="F_AnswerQuestion" ColumnName="F_AnswerQuestion" />
+                <ScalarProperty Name="F_Question" ColumnName="F_Question" />
+                <ScalarProperty Name="F_OpenId" ColumnName="F_OpenId" />
+                <ScalarProperty Name="F_SecurityLevel" ColumnName="F_SecurityLevel" />
+                <ScalarProperty Name="F_DepartmentId" ColumnName="F_DepartmentId" />
+                <ScalarProperty Name="F_CompanyId" ColumnName="F_CompanyId" />
+                <ScalarProperty Name="F_MSN" ColumnName="F_MSN" />
+                <ScalarProperty Name="F_WeChat" ColumnName="F_WeChat" />
+                <ScalarProperty Name="F_OICQ" ColumnName="F_OICQ" />
+                <ScalarProperty Name="F_Email" ColumnName="F_Email" />
+                <ScalarProperty Name="F_Telephone" ColumnName="F_Telephone" />
+                <ScalarProperty Name="F_Mobile" ColumnName="F_Mobile" />
+                <ScalarProperty Name="F_Birthday" ColumnName="F_Birthday" />
+                <ScalarProperty Name="F_Gender" ColumnName="F_Gender" />
+                <ScalarProperty Name="F_SimpleSpelling" ColumnName="F_SimpleSpelling" />
+                <ScalarProperty Name="F_QuickQuery" ColumnName="F_QuickQuery" />
+                <ScalarProperty Name="F_HeadIcon" ColumnName="F_HeadIcon" />
+                <ScalarProperty Name="F_NickName" ColumnName="F_NickName" />
+                <ScalarProperty Name="F_RealName" ColumnName="F_RealName" />
+                <ScalarProperty Name="F_Secretkey" ColumnName="F_Secretkey" />
+                <ScalarProperty Name="F_Password" ColumnName="F_Password" />
+                <ScalarProperty Name="F_Account" ColumnName="F_Account" />
+                <ScalarProperty Name="F_EnCode" ColumnName="F_EnCode" />
+                <ScalarProperty Name="F_UserId" ColumnName="F_UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hy_Recruit_Candidates">
+            <EntityTypeMapping TypeName="HYDatabaseModel.Hy_Recruit_Candidates">
+              <MappingFragment StoreEntitySet="Hy_Recruit_Candidates">
+                <ScalarProperty Name="F_TwoWorkexperience" ColumnName="F_TwoWorkexperience" />
+                <ScalarProperty Name="F_OneWorkexperience" ColumnName="F_OneWorkexperience" />
+                <ScalarProperty Name="F_EContactNumber" ColumnName="F_EContactNumber" />
+                <ScalarProperty Name="F_EContactRelationship" ColumnName="F_EContactRelationship" />
+                <ScalarProperty Name="F_EmergencyContact" ColumnName="F_EmergencyContact" />
+                <ScalarProperty Name="F_PoliticalOutlook" ColumnName="F_PoliticalOutlook" />
+                <ScalarProperty Name="F_BankCardNumber" ColumnName="F_BankCardNumber" />
+                <ScalarProperty Name="F_BankDeposit" ColumnName="F_BankDeposit" />
+                <ScalarProperty Name="F_ForeignLanguageLevel" ColumnName="F_ForeignLanguageLevel" />
+                <ScalarProperty Name="F_MajorStudied" ColumnName="F_MajorStudied" />
+                <ScalarProperty Name="F_GraduationUniversitie" ColumnName="F_GraduationUniversitie" />
+                <ScalarProperty Name="F_EducationEndDate" ColumnName="F_EducationEndDate" />
+                <ScalarProperty Name="F_EducationStartDate" ColumnName="F_EducationStartDate" />
+                <ScalarProperty Name="F_PostName" ColumnName="F_PostName" />
+                <ScalarProperty Name="F_CurrentAddress" ColumnName="F_CurrentAddress" />
+                <ScalarProperty Name="F_ResidentialAddress" ColumnName="F_ResidentialAddress" />
+                <ScalarProperty Name="F_Birthday" ColumnName="F_Birthday" />
+                <ScalarProperty Name="F_MaritalStatus" ColumnName="F_MaritalStatus" />
+                <ScalarProperty Name="F_Entrydate" ColumnName="F_Entrydate" />
+                <ScalarProperty Name="F_DepartmentNmae" ColumnName="F_DepartmentNmae" />
+                <ScalarProperty Name="F_EnCode" ColumnName="F_EnCode" />
+                <ScalarProperty Name="F_HeadIcon" ColumnName="F_HeadIcon" />
+                <ScalarProperty Name="F_Dormitory" ColumnName="F_Dormitory" />
+                <ScalarProperty Name="F_Gender" ColumnName="F_Gender" />
+                <ScalarProperty Name="F_PWD" ColumnName="F_PWD" />
+                <ScalarProperty Name="F_ExpectedentryDate" ColumnName="F_ExpectedentryDate" />
+                <ScalarProperty Name="F_IDCardAddress" ColumnName="F_IDCardAddress" />
+                <ScalarProperty Name="F_RecruitmentCompany" ColumnName="F_RecruitmentCompany" />
+                <ScalarProperty Name="F_LaborRecruitmentDate" ColumnName="F_LaborRecruitmentDate" />
+                <ScalarProperty Name="F_InternalCompany" ColumnName="F_InternalCompany" />
+                <ScalarProperty Name="F_InternalName" ColumnName="F_InternalName" />
+                <ScalarProperty Name="F_InternalCode" ColumnName="F_InternalCode" />
+                <ScalarProperty Name="F_EntryChannel" ColumnName="F_EntryChannel" />
+                <ScalarProperty Name="F_OneCardNumber" ColumnName="F_OneCardNumber" />
+                <ScalarProperty Name="F_IDCardEndDate" ColumnName="F_IDCardEndDate" />
+                <ScalarProperty Name="F_IDCardStartDate" ColumnName="F_IDCardStartDate" />
+                <ScalarProperty Name="F_NativePlace" ColumnName="F_NativePlace" />
+                <ScalarProperty Name="F_RRNature" ColumnName="F_RRNature" />
+                <ScalarProperty Name="F_Nation" ColumnName="F_Nation" />
+                <ScalarProperty Name="F_NationAlity" ColumnName="F_NationAlity" />
+                <ScalarProperty Name="F_DocumentType" ColumnName="F_DocumentType" />
+                <ScalarProperty Name="F_Education" ColumnName="F_Education" />
+                <ScalarProperty Name="F_RecruitmentChannels" ColumnName="F_RecruitmentChannels" />
+                <ScalarProperty Name="F_IDCard" ColumnName="F_IDCard" />
+                <ScalarProperty Name="F_ModifyUserName" ColumnName="F_ModifyUserName" />
+                <ScalarProperty Name="F_ModifyDate" ColumnName="F_ModifyDate" />
+                <ScalarProperty Name="F_CreateUserName" ColumnName="F_CreateUserName" />
+                <ScalarProperty Name="F_CreateDate" ColumnName="F_CreateDate" />
+                <ScalarProperty Name="F_Description" ColumnName="F_Description" />
+                <ScalarProperty Name="F_Mobile" ColumnName="F_Mobile" />
+                <ScalarProperty Name="F_RealName" ColumnName="F_RealName" />
+                <ScalarProperty Name="F_UserId" ColumnName="F_UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

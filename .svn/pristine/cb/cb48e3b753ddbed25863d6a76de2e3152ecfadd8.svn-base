@@ -1,0 +1,246 @@
+﻿@{
+    ViewBag.Title = "模板导出";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+@Html.AppendCssFile("/Areas/LR_OAModule/Views/ModuleExport/Index.css")
+
+    <div class="price-box" id="SRform">
+        @*<div class="price-title">
+                华羿微电子股份有限公司
+            </div>
+            <div class="price-subtitle">
+                <p>西安市未央区草滩九路创新花园弘业一路</p>
+                <p>电话：029-86685706</p>
+            </div>*@
+        <img src="~/Areas/LR_OAModule/Views/ModuleExport/Logo.jpg" alt="" width="210" height="50" />
+        <div class="price-title">
+            招&nbsp;&nbsp;聘&nbsp;&nbsp;需&nbsp;&nbsp;求&nbsp;&nbsp;申&nbsp;&nbsp;请&nbsp;&nbsp;表
+        </div>
+        <div class="price-info" style="overflow:scroll; width:800px;height:400px;">
+            <table class="form" border="1">
+                @*<tr>
+                        <td colspan="8"><img src="file:///D/华羿/HY_Project/Learun.Application.Web/Files/untitled.png" alt="" width="210" height="50" /></td>
+                    </tr>*@
+                <tr>
+                    <td colspan="8" align="center"> 华羿微电招聘需求申请表</td>
+                </tr>
+                <tr>
+                    <td colspan="7">&nbsp;</td>
+                    <td width="184">机密等级：一般</td>
+                </tr>
+                <tr>
+                    <td colspan="8" align="center">基本信息</td>
+                </tr>
+                <tr>
+                    <td class="formTitle">需 求 部 门:</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        <div id="F_Department"></div>
+                        @*<input type="text" class="form-control" id="F_Department" value="" />*@
+                    </td>
+                    <td class="formTitle">需求岗位名称:</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        <input type="text" class="form-control" id="F_JobName"  />
+                    </td>
+                    <td class="formTitle">岗位编制人数:</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        <input type="text" class="form-control" id="F_JonNum"  />
+                    </td>
+                    <td class="formTitle">岗位现有人数:</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        <input type="text" class="form-control" id="F_CurrentJobName"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">部门编制人数:</td>
+                    <td>
+                        <input type="text" class="form-control" id="" />
+                    </td>
+                    <td class="formTitle">部门现有人数:</td>
+                    <td>
+                        <input type="text" class="form-control" id=""  />
+                    </td>
+                    <td class="formTitle">申请招聘人数:</td>
+                    <td>
+                        <input type="text" class="form-control" id="F_ApplyRecruitNum" />
+                    </td>
+                    <td class="formTitle">紧 急 程 度:</td>
+                    <td>
+                        <select id="F_DegreeOfEmergency">
+                            <option value="一般" selected="selected">一般</option>
+                            <option value="紧急">紧急</option>
+                            <option value="非常紧急">非常紧急</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">需求类型</td>
+                    <td colspan="3">
+                        <select id="F_RequirementTypes">
+                            <option value="新增人员" selected="selected">新增人员</option>
+                            <option value="离职补缺">离职补缺</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </td>
+                    <td class="formTitle">需求原因说明</td>
+                    <td colspan="3">
+                        <input type="text" class="form-control" id="F_DemandReasonStatement" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">岗级</td>
+                    <td>
+                        <input type="text" class="form-control" id="F_JobRank" />
+                    </td>
+                    <td class="formTitle">岗位类别</td>
+                    <td>
+                        <select id="F_JobType">
+                            <option value="Ⅰ" selected="selected">Ⅰ</option>
+                            <option value="Ⅱ">Ⅱ</option>
+                            <option value="Ⅲ">Ⅲ</option>
+                            <option value="T">T</option>
+                        </select>
+                    </td>
+                    <td class="formTitle">建议薪酬区间</td>
+                    <td colspan="3">
+                        <input type="text" class="form-control" id="F_RecommendedSalaryRange" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">招聘渠道</td>
+                    <td colspan="3">
+                        <select id="F_RecruitmentChannels">
+                            <option value="社会招聘" selected="selected">社会招聘</option>
+                            <option value="内部招聘">内部招聘</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </td>
+                    <td class="formTitle">期望到岗日期</td>
+                    <td>
+                        <input type="text" class="form-control" id="F_ExpectedArrivalDate" />
+                    </td>
+                    <td class="formTitle">申请日期</td>
+                    <td>
+                        <input type="text" class="form-control" id="F_TheSystemTime"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" align="center">部门需求清单</td>
+                </tr>
+                <tr>
+                    <td class="formTitle">岗位描述</td>
+                    <td colspan="7">
+                        <input type="text" class="form-control" id="F_JobDescriptions"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">主要职责</td>
+                    <td colspan="7">
+                        <input type="text" class="form-control" id="F_MainDuties" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">基本条件</td>
+                    <td colspan="7">
+                        <input type="text" class="form-control" id="F_BasicConditions" />
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="5">任职资格</td>
+                    <td class="formTitle">必备知识</td>
+                    <td colspan="6">
+                        <input type="text" class="form-control" id="F_SupposedToKnow" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">必备技能</td>
+                    <td colspan="6">
+                        <input type="text" class="form-control" id="F_EssentialSkill" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">能力要求</td>
+                    <td colspan="6">
+                        <input type="text" class="form-control" id="F_CapacityRequirements" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">经验要求</td>
+                    <td colspan="6">
+                        <input type="text" class="form-control" id="F_ExperienceRequirements" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle">其他特殊要求</td>
+                    <td colspan="6">
+                        <input type="text" class="form-control" id="F_SpecialRequirements"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" align="center">需求审批</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">用人部门</td>
+                    <td colspan="2">用人部门主管</td>
+                    <td colspan="2">部门负责人</td>
+                    <td colspan="3">分管领导</td>
+                </tr>
+                <tr>
+                    <td colspan="2">意见描述： <input type="text" class="form-control" id="F_DepartmentOfOpinion" value="" /></td>
+                    <td colspan="2">意见描述： <input type="text" class="form-control" id="F_DepartmentOfOpinionOne" value="" /></td>
+                    <td colspan="3">意见描述： <input type="text" class="form-control" id="F_DepartmentOfOpinionT" value="" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">签字： <input type="text" class="form-control" id="F_TheSignature_01" value="" /></td>
+                    <td colspan="2">签字： <input type="text" class="form-control" id="F_TheSignature_02" value="" /></td>
+                    <td colspan="3">签字： <input type="text" class="form-control" id="F_TheSignature_03" value="" /></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">人力资源部</td>
+                    <td colspan="2">招聘负责人</td>
+                    <td colspan="2">部门负责人</td>
+                    <td colspan="3">分管领导</td>
+                </tr>
+                <tr>
+                    <td colspan="2">意见描述： <input type="text" class="form-control" id="F_HumanResources" value="" /></td>
+                    <td colspan="2">意见描述： <input type="text" class="form-control" id="F_HumanResourcesOne" value="" /></td>
+                    <td colspan="3">意见描述： <input type="text" class="form-control" id="F_HumanResourcesT" value="" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">签字： <input type="text" class="form-control" id="F_TheSignature_04" value="" /></td>
+                    <td colspan="2">签字： <input type="text" class="form-control" id="F_TheSignature_05" value="" /></td>
+                    <td colspan="3">签字： <input type="text" class="form-control" id="F_TheSignature_06" value="" /></td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        注意事项：<br />
+                        1. 为提高审批效率，需求申请表递交前，建议先与人力资源部社招负责人进行沟通；<br />
+                        2. 此申请表与《部门管理手册》的组织架构图、拟招聘岗位上下级关系作为附件同步递呈；<br />
+                        3. 发起招聘需求申请的前提是组织编制有缺口，如有超编的情况，由部门负责人及分管领导自行走组织变更或编制修改流程；<br />
+                        4. 需求审批部分，用人部门主管是否签批由用人部门自行决定。
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class='panels'>
+            <button class='btn btn-default add' id="btn_export_Insert">提交</button>
+            @*<button class='btn btn-default add' id="btn_export_Excel">导出Excel</button>*@
+            @*<button class='btn btn-default add' id="btn_export_Word">导出Word</button>*@
+            @*<button class='btn btn-default add' id="btn_export_PDF">导出PDF</button>*@
+        </div>
+    </div>
+@Html.AppendJsFile("/Areas/LR_OAModule/Views/ModuleExport/Index.js")
+
+<script src="~/Areas/LR_OAModule/Views/ModuleExport/FileSaver.js"></script>
+<script src="~/Areas/LR_OAModule/Views/ModuleExport/jquery.wordexport.js"></script>
+
+<script type="text/javascript">
+    //$(function () {
+    //    $(".printWord").click(function () {
+    //        $("#Layer1").wordExport(FineName);
+    //    });
+    //});
+</script>
+
+
+
+

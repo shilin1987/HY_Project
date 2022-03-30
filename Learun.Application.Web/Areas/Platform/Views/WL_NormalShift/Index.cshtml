@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = "上岗资格认证表";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="lr-layout lr-layout-left-center" style="padding-left:0px" id="lr_layout">
+    <div class="lr-layout-center">
+        <div class="lr-layout-wrap">
+            <div class="lr-layout-title">上岗资格认证（正常班）</div>
+            <div class="lr-layout-tool">
+                <div class="lr-layout-tool-left">
+                    <div class="lr-layout-tool-item">
+                        <div id="datesearch"></div>
+                    </div>
+                    <div class="lr-layout-tool-item">
+                        <div id="multiple_condition_query">
+                            <div class="lr-query-formcontent">
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">员工编号</div>
+                                    <input id="F_EnCode" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">部门</div>
+                                    <input id="F_FullName" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">审批结果</div>
+                                    <input id="F_States" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lr-layout-tool-right">
+                    <div class=" btn-group btn-group-sm">
+                        <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+                    </div>
+                    <div class=" btn-group btn-group-sm" learun-authorize="yes">
+                        <a id="lr_add" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp;新增</a>
+                        <a id="lr_edit" class="btn btn-default"><i class="fa fa-pencil-square-o"></i>&nbsp;下载PDF</a>
+                        @*<a id="lr_delete" class="btn btn-default"><i class="fa fa-trash-o"></i>&nbsp;删除</a>*@
+                    </div>
+                </div>
+            </div>
+            <div class="lr-layout-body" id="gridtable"></div>
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/WL_NormalShift/Index.js")
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:750px;">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="display: inline;padding-left:1%;" id="contentimg">
+                    <canvas id="myCanvas" class="canvasclass" width="354" height="213" style="background-size: 100% 100%;">
+                        您的浏览器不支持 HTML5 canvas 标签。
+                    </canvas>
+                </div>
+                <div style="display: inline">
+                    <canvas id="othenSideCanvas" class="canvasclass" width="354" height="213" style="background-size:100% 100%;float:left;">
+                        您的浏览器不支持 HTML5 canvas 标签。
+                    </canvas>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 浏览打印（Modal） -->
+<div class="modal fade" id="PreviewModal" style="background-color: rgb(255 255 255);width:800px;margin-left:100px;" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="price-box" style="overflow:scroll; width:100%;height:100%;margin-left:2%;" id="SRform">
+        <img src="~/Content/images/Logo.jpg" alt="" width="210" height="50" />
+        <div class="price-title">
+            员&nbsp;&nbsp;工&nbsp;&nbsp;上&nbsp;&nbsp;岗&nbsp;&nbsp;资&nbsp;&nbsp;格&nbsp;&nbsp;认&nbsp;&nbsp;证&nbsp;&nbsp;表&nbsp;&nbsp;（正常班）
+        </div>
+        <div class="price-info">
+            <table class="form" border="1" method="post" name="form" enctype="multipart/form-data">
+
+                <tr>
+                    <td class="formTitle" align="center">员工编号</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        @*<input type="text" class="form-control" id="F_EnCode" name="F_EnCode" />*@
+                        <label id="F_EnCodes"></label>
+                    </td>
+                    <td class="formTitle" align="center">姓名</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        @*<input type="text" class="form-control" id="F_RealName" readonly="readonly" />*@
+                       <label id="F_RealName"></label>
+                    </td>
+                    <td class="formTitle" align="center">性别</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        @*<input type="text" class="form-control" id="F_Gender" readonly="readonly" />*@
+                        <label id="F_Gender"></label>
+                    </td>
+                    <td class="formTitle" align="center">部门</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        @*<input type="text" class="form-control" id="F_DepartmentName" readonly="readonly" />*@
+                        <label id="F_DepartmentName"></label="F_DepartmentName">
+                    </td>
+                    <td class="formTitle" align="center">工序</td>
+                    <td class="formValue" style="padding-right: 20px;">
+                        @*<input type="text" class="form-control" id="F_FourLevelOrganization" readonly="readonly" />*@
+                        <label id="F_FourLevelOrganization"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" rowspan="2">文化程度</td>
+                    <td class="formValue" style="padding-right: 20px;" rowspan="2">
+                        @*<input type="text" class="form-control" id="F_Education" readonly="readonly" />*@
+                        <label id="F_Education"></label>
+                    </td>
+                    <td class="formTitle" align="center" rowspan="2">人员类别</td>
+                    <td class="formValue" style="padding-right: 20px;" rowspan="2">
+                        @*<input type="text" class="form-control" id="F_PersonnelCategory" />*@
+                        @*<select id="F_PersonnelCategory">
+                            <option value="生产作业类" selected="selected">生产作业类</option>
+                            <option value="品质检验类">品质检验类</option>
+                            <option value="倒班工程类">倒班工程类</option>
+                            <option value="研发类">研发类</option>
+                            <option value="其他">其他</option>
+                        </select>*@
+                        <label id="F_PersonnelCategory"></label>
+                    </td>
+                    <td class="formTitle" align="center" rowspan="2">上岗日期</td>
+                    <td class="formValue" style="padding-right: 20px;" rowspan="2">
+                        @*<input type="text" id="F_AppointmentDate" class="form-control lr-input-wdatepicker" onfocus="WdatePicker()" />*@
+                        <label id="F_AppointmentDate"></label>
+                    </td>
+                    <td class="formTitle" align="center" rowspan="2">
+                        <p>试用期限</p>
+                        <p>[非必填]</p>
+                    </td>
+                    <td class="formTitle" align="center" colspan="3">
+                        @*<input type="text" class="form-control" id="F_ProbationPeriod" />*@
+                        <label id="F_ProbationPeriod"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formValue" style="padding-right: 20px;" colspan="3">
+                        @*<input type="text" class="form-control" id="F_TrialDate" />*@
+                        <label id="F_TrialDate"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2" rowspan="6">考核成绩</td>
+                    <td class="formTitle" align="center" colspan="2">考核项目</td>
+                    <td class="formTitle" align="center" colspan="2">考试标准</td>
+                    <td class="formTitle" align="center" colspan="4">实际得分</td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">应知应会（笔试）</td>
+                    <td class="formTitle" align="center" colspan="2">40</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="4">
+                        @*<input type="text" class="form-control" id="F_writtenExamination" name="text1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" maxlength="5" />*@
+                        <label id="F_writtenExamination"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">实际操作及能力</td>
+                    <td class="formTitle" align="center" colspan="2">30</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="4">
+                        @*<input type="text" class="form-control" id="F_OperationCapability" name="text2" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" maxlength="5" />*@
+                        <label id="F_OperationCapability"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">工作态度及效率</td>
+                    <td class="formTitle" align="center" colspan="2">20</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="4">
+                        @*<input type="text" class="form-control" id="F_workingAttitude" name="text3" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" maxlength="5" />*@
+                        <label id="F_workingAttitude"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">责任感及学习态度</td>
+                    <td class="formTitle" align="center" colspan="2">10</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="4">
+                        @*<input type="text" class="form-control" id="F_Responsibility" name="text4" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" maxlength="5" />*@
+                        <label id="F_Responsibility"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">合计</td>
+                    <td class="formTitle" align="center" colspan="2">100</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="4">
+                        @*<input type="text" class="form-control" id="F_SUM" />*@
+                        <label id="F_SUM"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">部门/工序BPM</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="8">
+                        @*<input type="text" class="form-control" id="F_OperationBPM" readonly="readonly" />*@
+                        <label id="F_OperationBPM"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">部门/工序主管</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="8">
+                        @*<input type="text" class="form-control" id="F_OperationDirector" readonly="readonly" />*@
+                        <label id="F_OperationDirector"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">部门负责人</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="8">
+                        @*<input type="text" class="form-control" id="F_OperationCharge" readonly="readonly" />*@
+                        <label id="F_OperationCharge"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">品质管理部</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="8">
+                        @*<input type="text" class="form-control" id="F_QualityManagement" readonly="readonly" />*@
+                        <label id="F_QualityManagement"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle" align="center" colspan="2">人力资源部</td>
+                    <td class="formValue" style="padding-right: 20px;" colspan="8">
+                        @*<input type="text" class="form-control" id="F_HumanResources" readonly="readonly" />*@
+                        <label id="F_HumanResources"></label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class='panels' style="margin-top:3%;margin-left:80%">
+        <button class='btn btn-default add' id="btn_export_Insert">打印</button>
+        <button class='btn btn-default cancel' id="btn_export_cancel">取消</button>
+    </div>
+</div>

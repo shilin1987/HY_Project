@@ -1,0 +1,10 @@
+.lr-form-row input {
+    text-align: left;
+    width: auto;
+    margin-left: auto;
+}
+
+.lr-form-row label {
+    width: auto;
+}
+

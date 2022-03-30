@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Learun.Cache.Factory</name>
+    </assembly>
+    <members>
+        <member name="T:Learun.Cache.Factory.CacheFactory">
+            <summary>
+            版 本 Learun-ADMS V7.0.6 力软敏捷开发框架
+            Copyright (c) 2013-2020 上海力软信息技术有限公司
+            创建人：力软-框架开发组
+            日 期：2017.03.06
+            描 述：定义缓存工厂类
+            </summary>
+        </member>
+        <member name="M:Learun.Cache.Factory.CacheFactory.CaChe">
+            <summary>
+            获取缓存实例
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

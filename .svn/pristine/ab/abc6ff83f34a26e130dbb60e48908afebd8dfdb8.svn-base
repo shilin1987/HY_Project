@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Frm_wafer_no";
+    Layout = "~/Views/Shared/_FormSub.cshtml";
+}
+
+<div class="lr-form-wrap" id="form">    
+    <div class="col-xs-12 lr-form-item lr-form-item-grid">
+        <div class="lr-layout-body" id="WAFER_NO"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/B2B_Code/Views/CUST_ORDER_CREATE/Frm_wafer_no.js")

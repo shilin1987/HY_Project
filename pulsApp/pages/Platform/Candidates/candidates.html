@@ -1,0 +1,46 @@
+<div style="margin-top:10px;" class="lr-form-container" id="userform">
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>身份证:</label>
+		<input id="F_IDCard" type="text" style="text-align: left;" isvalid="yes" checkexpession="NotNull" errormsg="身份证号码">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>姓名:</label>
+		<input id="F_RealName" type="text" isvalid="yes"  style="text-align: left;" checkexpession="NotNull" errormsg="姓名">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>性别:</label>
+		<div id="F_Gender" checkexpession="NotNull"  errormsg="性别" ></div>
+	</div>
+	<div class="lr-form-row">
+			<font face="宋体">*</font>
+			<label>最高学历:</label>
+			<div id="F_Education"></div>
+		</div>
+	<div class="lr-form-row">
+			<font face="宋体">*</font>
+			<label>期望入职时间:</label>
+			<div id="F_EducationStartDate"></div>
+		</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>手机号:</label>
+		<input id="F_Mobile" type="text" style="width:60%;text-align: left;" isvalid="yes" checkexpession="NotNull" errormsg="手机号码" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label >验证码:</label>
+		<input id="F_VerificationCode" maxlength="4" type="text" style="width:45%;float:left;text-align: left;" isvalid="yes" checkexpession="Num" errormsg="验证码">
+		<button id="vercodeBtn" type="button" style="width:45%;color:white;margin-top:2px;background-color:#ff0000" >
+		   获取验证码
+		</button>
+	</div>
+</div>
+
+<div class="lr-list" style="margin-top:15px;">
+	<div class="lr-list-item" style="color:red;text-align:center;" id="saveUser">
+		保存
+	</div>
+</div>

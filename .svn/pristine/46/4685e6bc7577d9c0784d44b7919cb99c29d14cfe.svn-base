@@ -1,0 +1,89 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：超级管理员
+ * 日  期：2021-11-10 13:46
+ * 描  述：客户端月度来料计划填报
+ */
+var acceptClick;
+var keyValue = request('keyValue');
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            $('.lr-form-wrap').lrscroll();
+            page.bind();
+            page.initData();
+        },
+        bind: function () {
+
+            $('#F_WRITE_MONTH').lrDataItemSelect({ code: 'Month' });
+
+            ///通过后台调取
+            //$('#F_PRODUCT_MODEL').lrDataSourceSelect({ code: 'B2B_MES_PRATID', value: '产品型号', text: '产品型号' });  
+            //$('#F_WIRE_SOLDER_NAME').lrselect({
+            //    url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE_CUST/GetProuduct?custcode=' + $('#F_CUST_CODE').val(),
+            //    text: 'F_WIRE_SOLDER_NAME',
+            //    value: 'F_SHELL_FRAM_CODE',
+            //    allowSearch: true,
+            //    maxHeight: 400
+            //});
+        },
+        initData: function () {
+            if (!!keyValue) {
+                $.lrSetForm(top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE_CUST/GetFormData?keyValue=' + keyValue, function (data) {
+                    for (var id in data) {
+                        if (!!data[id].length && data[id].length > 0) {
+                            $('#' + id).jfGridSet('refreshdata', data[id]);
+                        }
+                        else {
+                            $('[data-table="' + id + '"]').lrSetFormData(data[id]);
+                        }
+                    }
+                });
+            }
+        }
+    };
+    // 保存数据
+    acceptClick = function (callBack) {
+        if (!$('body').lrValidform()) {
+            return false;
+        }
+        var postData = {};
+        postData.strEntitysub = JSON.stringify($('[data-table="B2B_PLAN_INCOMING_MATERIAL_SUB"]').lrGetFormData());
+        postData.strEntity = JSON.stringify($('[data-table="B2B_PLAN_INCOMING_MATERIAL"]').lrGetFormData());
+        $.lrSaveForm(top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE_CUST/AddSaveForm?keyValue=' + keyValue, postData, function (res) {
+            // 保存成功后才回调
+            if (!!callBack) {
+                callBack();
+            }
+        });
+    };
+    page.init();
+
+}
+
+$('#btn_Search').on('click', function () {
+    $.lrSetForm(top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE_CUST/GetProuduct?partid=' + $("#PARTID").val(), function (data) { 
+        $('#F_PRODUCT_MODEL').val(data[0]["F_PRODUCT_MODEL"]);
+        $('#F_PACKAGE_MODEL').val(data[0]["F_PACKAGE_MODEL"]);
+        $('#F_PRODUCT_LEVEL').val(data[0]["F_PRODUCT_LEVEL"]);
+        $('#F_PACKAGING_TYPE').val(data[0]["F_PACKAGING_TYPE"]);
+        $('#F_WAFER_MODEL').val(data[0]["F_WAFER_MODEL"]);
+        $('#F_WAFER_SIZE').val(data[0]["F_WAFER_SIZE"]);
+        $('#F_WIRE_SOLDER_NAME').val(data[0]["F_WIRE_SOLDER_NAME"]);
+        $('#F_SHELL_FRAM_NAME').val(data[0]["F_SHELL_FRAM_NAME"]);
+        $('#F_WIRE_SOLDER_CODE').val(data[0]["F_WIRE_SOLDER_CODE"]);
+        $('#F_SHELL_FRAM_CODE').val(data[0]["F_SHELL_FRAM_CODE"]);
+    });
+});
+
+//$('#F_WIRE_SOLDER_NAME').on('change', function (data) {
+
+//    $('#F_WIRE_SOLDER_NAME').lrselect({
+//        url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE_CUST/GetProuduct?custcode=' + $('#F_CUST_CODE').val(),
+//        text: 'F_SHELL_FRAM_NAME',
+//        value: 'F_SHELL_FRAM_CODE',
+//        allowSearch: true,
+//        maxHeight: 400
+//    });
+//})

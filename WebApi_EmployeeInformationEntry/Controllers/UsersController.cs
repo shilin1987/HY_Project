@@ -1,0 +1,103 @@
+﻿using Learun.Util;
+using Learun.Util.Operat;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using WebApi_EmployeeInformationEntry.Models;
+
+namespace WebApi_EmployeeInformationEntry.Controllers
+{
+    public class UsersController : BaseApiController
+    {
+        private readonly BLL.UserService userService;
+        public UsersController()
+        {
+            userService = new BLL.UserService();
+        }
+
+
+        //[HttpPost]
+        //public ApiModel InitializationUser(UserInitModele userInit)
+        //{
+        //    if (userInit != null)
+        //    {
+        //        var uid = userInit.userId.Replace("\"", "");
+        //        var userEntity = hYDatabase.Hy_Recruit_Candidates.Where(e => e.F_UserId == uid);
+        //        if (userEntity != null && userEntity.Count() > 0)
+        //        {
+        //            //解决自引用问题
+        //            JsonSerializerSettings settings = new JsonSerializerSettings();
+        //            settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        //            var strjson=JsonConvert.SerializeObject(userEntity, settings);
+
+        //            return Success(strjson, "初始化用户信息", OperationType.Update, "", "初始化用户信息成功");
+        //        }
+        //        else
+        //        {
+        //            return Fail(userEntity, "初始化用户信息", OperationType.Exception, "", "初始化用户信息失败");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return Fail(null, "初始化用户信息", OperationType.Exception, "", "传入参数为null");
+        //    }
+        //}
+
+        /// <summary>
+        /// 用户信息完善
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        //[HttpPost]
+        //public ApiModel InformationPerfection(UserViewModele user)
+        //{
+        //    apiModel = userService.InformationPerfection(user);
+        //    if (apiModel.code == ResponseCode.fail)
+        //    {
+        //        return Fail(null, "用户信息完善", OperationType.AppLogin, "", apiModel.info);
+        //    }
+        //    else
+        //    {
+        //        return Success(apiModel.data, "用户信息完善", OperationType.AppLogin, "", apiModel.info);
+        //    }
+        //}
+        /// <summary>
+
+        [HttpPost]
+        public ApiModel getPersonnelInformation(PersonInfoPartDTO userDTO)
+        {
+            apiModel = userService.getPersonnelInformation(userDTO);
+            if (apiModel.code == ResponseCode.fail)
+            {
+                return Fail(null, "手机号不存在,未查到该用户", OperationType.Query, "", apiModel.info);
+            }
+            else
+            {
+                return Success(apiModel.data);
+            }
+        }
+
+        /// <summary>
+        /// 用户信息完善
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ApiModel SaveInformation(UserViewGenModele user)
+        {
+            apiModel = userService.SaveInformation(user);
+            if (apiModel.code == ResponseCode.fail)
+            {
+                return Fail(null, "用户信息完善", OperationType.Update, "", apiModel.info);
+            }
+            else
+            {
+                return Success(apiModel.data, "用户信息完善", OperationType.Update, "", apiModel.info,3);
+            }
+        }
+    }
+}

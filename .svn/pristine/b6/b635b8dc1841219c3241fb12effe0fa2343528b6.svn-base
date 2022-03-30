@@ -1,0 +1,150 @@
+﻿using Learun.Util;
+using System;
+using System.Data;
+using System.Collections.Generic;
+using Learun.Application.Organization.ReturnModel;
+using Learun.Application.Organization;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-07-28 17:38
+    /// 描 述：新员工入职信息临时保存
+    /// </summary>
+    public class candidatesBLL : candidatesIBLL
+    {
+        private UserService userService = new UserService();
+        private candidatesService candidatesService = new candidatesService();
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<Hy_hr_CandidatesEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                return candidatesService.GetPageList(pagination, queryJson);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取Hy_hr_Candidates表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_hr_CandidatesEntity GetHy_hr_CandidatesEntity(string keyValue)
+        {
+            try
+            {
+                return candidatesService.GetHy_hr_CandidatesEntity(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public ReturnCommon DeleteEntity(string keyValue)
+        {
+            return candidatesService.DeleteEntity(keyValue);
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public ReturnCommon SaveEntity(string keyValue, Hy_hr_CandidatesEntity entity)
+        {
+            return candidatesService.SaveEntity(keyValue, entity);
+        }
+
+        /// <summary>
+        /// 手机验证码是否正确
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <param name="vcode"></param>
+        /// <returns></returns>
+        public ReturnCommon CheckVCode(string phone ,int vcode)
+        {
+            var msg = new ReturnCommon();
+
+            msg.Status = false;
+            //验证码是否正确
+            var codeModel = userService.GetVCode(phone);
+            if (codeModel != null)
+            {
+                if (codeModel.F_VCode == Convert.ToInt32(vcode))
+                {
+                   msg.Status= true;
+                }
+                else
+                {
+                    msg.Message = "验证码不正确!";
+                }
+            }
+            else
+            {
+                msg.Message = "未找到验证码或验证码已过期!";
+            }
+
+            return msg;
+        }
+
+        public ReturnCommon GetFormUpdateState(string currentEntityKey, string keyValue)
+        {
+            try
+            { 
+                return candidatesService.GetFormUpdateStateServic(currentEntityKey, keyValue);
+            }
+            catch(Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+}

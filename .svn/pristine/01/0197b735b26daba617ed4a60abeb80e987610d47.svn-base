@@ -1,0 +1,330 @@
+﻿using Dapper;
+using Learun.Application.TwoDevelopment.HR_Code.SalaryGeneration;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.HR_Code
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-06-03 10:51
+    /// 描 述：最终工资结算展示
+    /// </summary>
+    public class SalaryGenerationService : RepositoryFactory
+    {
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<Hy_hr_SalaryGenerationEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                t.F_ID,
+                t.F_UserId,
+                t.F_WagesYearMonth,
+                t.F_AbsenceFromDuty,
+                t.F_RewardPunishmentSubsidy,
+                t.F_FiveInsurancesOneFund,
+                t.F_RoomRate,
+                t.F_OvertimePay,
+                t.F_TotalManagementSystem,
+                t.F_WagesPayable,
+                t.F_PersonalIncomeTax,
+                t.F_ElectricityFees,
+                t.F_PartyMembershipDues,
+                t.F_FinancialDeduction,
+                t.F_NetSalary
+                ");
+                strSql.Append("  FROM Hy_hr_SalaryGeneration t ");
+                strSql.Append("  WHERE 1=1 ");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["StartTime"].IsEmpty() && !queryParam["EndTime"].IsEmpty())
+                {
+                    dp.Add("startTime", queryParam["StartTime"].ToDate(), DbType.DateTime);
+                    dp.Add("endTime", queryParam["EndTime"].ToDate(), DbType.DateTime);
+                    strSql.Append(" AND ( t.F_CreateDate >= @startTime AND t.F_CreateDate <= @endTime ) ");
+                }
+                if (!queryParam["F_UserId"].IsEmpty())
+                {
+                    dp.Add("F_UserId",queryParam["F_UserId"].ToString(), DbType.String);
+                    strSql.Append(" AND t.F_UserId = @F_UserId ");
+                }
+                if (!queryParam["F_WagesYearMonth"].IsEmpty())
+                {
+                    dp.Add("F_WagesYearMonth", "%" + queryParam["F_WagesYearMonth"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_WagesYearMonth Like @F_WagesYearMonth ");
+                }
+                
+                return this.BaseRepository().FindList<Hy_hr_SalaryGenerationEntity>(strSql.ToString(),dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="f_Userid"></param>
+        /// <param name="yearMonth"></param>
+        /// <returns></returns>
+        public IEnumerable<Hy_hr_SalaryGenerationEntity> GetHy_hr_SalaryGenerationEntity(string f_Userid, string yearMonth)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                t.F_ID,
+                t.F_UserId,
+                t.F_WagesYearMonth,
+                t.F_AbsenceFromDuty,
+                t.F_RewardPunishmentSubsidy,
+                t.F_FiveInsurancesOneFund,
+                t.F_RoomRate,
+                t.F_OvertimePay,
+                t.F_TotalManagementSystem,
+                t.F_WagesPayable,
+                t.F_PersonalIncomeTax,
+                t.F_ElectricityFees,
+                t.F_PartyMembershipDues,
+                t.F_FinancialDeduction,
+                t.F_NetSalary
+                ");
+                strSql.Append("  FROM Hy_hr_SalaryGeneration t ");
+                strSql.Append("  WHERE 1=1 ");
+                strSql.Append("  and  t.F_UserId= '"+ f_Userid + "' and  t.F_WagesYearMonth= '"+ yearMonth + "' ");
+
+                return this.BaseRepository().FindList<Hy_hr_SalaryGenerationEntity>(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="f_Userid"></param>
+        /// <param name="yearMonth"></param>
+        /// <returns></returns>
+        public IEnumerable<SalaryGenerationEntityDTO> GetSalaryGenerationEntityList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                t.F_ID,
+                t.F_UserId,
+                s.f_ps03 NAME,
+                s.f_ps04 F_BasePay,
+                s.f_ps14 F_PerformancePay,
+                s.f_ps05 F_SkillSalary,
+                s.f_ps09 F_HousingSubsidy,
+                s.f_ps08 F_TransportationSubsidy,
+                s.f_ps10 F_DutyAllowance,
+                s.f_ps07 F_PerfectAttendance,
+                d.F_SocialInsurance F_SocialInsurance,
+                d.F_HousingAccumulationFund F_HousingAccumulationFund,
+                t.F_WagesYearMonth,
+                t.F_AbsenceFromDuty,
+                t.F_RewardPunishmentSubsidy,
+                t.F_FiveInsurancesOneFund,
+                t.F_RoomRate,
+                t.F_OvertimePay,
+                t.F_TotalManagementSystem,
+                t.F_WagesPayable,
+                t.F_PersonalIncomeTax,
+                t.F_ElectricityFees,
+                t.F_PartyMembershipDues,
+                t.F_FinancialDeduction,
+                t.F_NetSalary
+                ");
+                strSql.Append("  FROM Hy_hr_SalaryGeneration t , Hr_personalStandards_file s ,Hy_hr_FiveInsurancesOneFund d");
+                strSql.Append("  WHERE 1=1 AND t.F_UserId = s.f_ps02 and t.F_UserId = d.F_UserId and d.F_SettlementYearMonth = t.F_WagesYearMonth");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["StartTime"].IsEmpty() && !queryParam["EndTime"].IsEmpty())
+                {
+                    dp.Add("startTime", queryParam["StartTime"].ToDate(), DbType.DateTime);
+                    dp.Add("endTime", queryParam["EndTime"].ToDate(), DbType.DateTime);
+                    strSql.Append(" AND ( t.F_CreateDate >= @startTime AND t.F_CreateDate <= @endTime ) ");
+                }
+                if (!queryParam["F_UserId"].IsEmpty())
+                {
+                    dp.Add("F_UserId", queryParam["F_UserId"].ToString(), DbType.String);
+                    strSql.Append(" AND t.F_UserId = @F_UserId ");
+                }
+                if (!queryParam["F_WagesYearMonth"].IsEmpty())
+                {
+                    dp.Add("F_WagesYearMonth", "%" + queryParam["F_WagesYearMonth"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_WagesYearMonth Like @F_WagesYearMonth ");
+                }
+
+                return this.BaseRepository().FindList<SalaryGenerationEntityDTO>(strSql.ToString(), dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取Hy_hr_SalaryGeneration表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_hr_SalaryGenerationEntity GetHy_hr_SalaryGenerationEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<Hy_hr_SalaryGenerationEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            try
+            {
+                this.BaseRepository().Delete<Hy_hr_SalaryGenerationEntity>(t=>t.F_ID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, Hy_hr_SalaryGenerationEntity entity)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    entity.Modify(keyValue);
+                    this.BaseRepository().Update(entity);
+                }
+                else
+                {
+                    entity.Create();
+                    this.BaseRepository().Insert(entity);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 批量修改数据
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public  int SaveListEntity(List<Hy_hr_SalaryGenerationEntity> entity)
+        {
+            int count = 0;
+            try
+            {
+                count = this.BaseRepository().Update(entity);
+                this.BaseRepository().Commit();
+            }
+            catch (Exception ex)
+            {
+                //出现异常事物回滚
+                this.BaseRepository().Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+            return count;
+        }
+
+
+        #endregion
+
+    }
+}

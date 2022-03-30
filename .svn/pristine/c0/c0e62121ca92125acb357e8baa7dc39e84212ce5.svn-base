@@ -1,0 +1,154 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：B2B_Account
+ * 日  期：2021-10-28 15:35
+ * 描  述：来料计划填报
+ */
+var refreshGirdData;
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            page.initGird();
+            page.bind();
+        },
+        bind: function () {
+            $('#multiple_condition_query').lrMultipleQuery(function (queryJson) {
+                page.search(queryJson);
+            }, 220, 400);
+            $('#F_WRITE_MONTH').lrDataItemSelect({ code: 'Month' });
+            // 刷新
+            $('#lr_refresh').on('click', function () {
+                location.reload();
+            });
+            // 新增
+            $('#lr_add').on('click', function () {
+                learun.layerForm({
+                    id: 'form',
+                    title: '手工录入',
+                    url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_CREATE/Form',
+                    width: 1200,
+                    height: 900,
+                    maxmin: true,
+                    callBack: function (id) {
+                        return top[id].acceptClick(refreshGirdData);
+                    }
+                });
+            });
+            // 编辑
+            $('#lr_edit').on('click', function () {
+                var keyValue = $('#gridtable').jfGridValue('F_GUID');
+                if (learun.checkrow(keyValue)) {
+                    learun.layerForm({
+                        id: 'form',
+                        title: '编辑',
+                        url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_CREATE/Form?keyValue=' + keyValue,
+                        width: 1200,
+                        height: 800,
+                        maxmin: true,
+                        callBack: function (id) {
+                            return top[id].acceptClick(refreshGirdData);
+                        }
+                    });
+                }
+            });
+            // 删除
+            $('#lr_delete').on('click', function () {
+                var keyValue = $('#gridtable').jfGridValue('F_GUID');
+                if (learun.checkrow(keyValue)) {
+                    learun.layerConfirm('是否确认删除该项！', function (res) {
+                        if (res) {
+                            learun.deleteForm(top.$.rootUrl + '/B2B_Code/B2B_PLAN_CREATE/DeleteForm', { keyValue: keyValue}, function () {
+                                refreshGirdData();
+                            });
+                        }
+                    });
+                }
+            });
+            // 打印
+            $('#lr_print').on('click', function () {               
+                learun.download({
+                    method: "POST",
+                    url: '/Utility/ExportExcel',
+                    param: {
+                        fileName: "客户来料计划批量模版-注:在导入时请将标题行删除！",
+                        columnJson: JSON.stringify([
+                            { "label": "F_PRODUCT_MODEL", "name": "F_PRODUCT_MODEL", "width": 100, "align": "center" },
+                            { "label": "F_PACKAGE_MODEL", "name": "F_PACKAGE_MODEL", "width": 100, "align": "center" },
+                            { "label": "F_WAFER_MODEL", "name": "F_WAFER_MODEL", "width": 100, "align": "center" },
+                            { "label": "F_WAFER_SIZE", "name": "F_WAFER_SIZE", "width": 100, "align": "center" },
+                            { "label": "F_PACKAGING_TYPE", "name": "F_PACKAGING_TYPE", "width": 100, "align": "center" },
+                            { "label": "F_PRODUCT_LEVEL", "name": "F_PRODUCT_LEVEL", "width": 100, "align": "center" },
+                            { "label": "F_MONTH_ONE", "name": "F_MONTH_ONE", "width": 100, "align": "center" },
+                            { "label": "F_MONTH_TWO", "name": "F_MONTH_TWO", "width": 100, "align": "center" },
+                            { "label": "F_MONTH_THREE", "name": "F_MONTH_THREE", "width": 100, "align": "center" },
+                            { "label": "F_MONTH_FOUR", "name": "F_MONTH_FOUR", "width": 100, "align": "center" },
+                            { "label": "F_MONTH_FIVE", "name": "F_MONTH_FIVE", "width": 100, "align": "center" },
+                            { "label": "F_MONTH_SIX", "name": "F_MONTH_SIX", "width": 100, "align": "center" },
+                            { "label": "F_REMARK", "name": "F_REMARK", "width": 100, "align": "center" },
+                            { "label": "F_WIRE_SOLDER_NAME", "name": "F_WIRE_SOLDER_NAME", "width": 100, "align": "center" },
+                            { "label": "F_SHELL_FRAM_NAME", "name": "F_WIRE_SOLDER_NAME", "width": 100, "align": "center" },
+                            { "label": "PARTID", "name": "PARTID", "width": 100, "align": "center" },
+                            { "label": "F_WIRE_SOLDER_CODE", "name": "F_WIRE_SOLDER_CODE", "width": 100, "align": "center" },
+                            { "label": "F_SHELL_FRAM_CODE", "name": "F_SHELL_FRAM_CODE", "width": 100, "align": "center" },
+
+                        ]),
+                        dataJson: JSON.stringify([{
+                            "F_PRODUCT_MODEL": "产品型号", "F_PACKAGE_MODEL": "封装外形", "F_WAFER_MODEL": "芯片型号",
+                            "F_WAFER_SIZE": "晶圆尺寸", "F_PACKAGING_TYPE": "包装方式", "F_PRODUCT_LEVEL": "封装等级",
+                            "F_MONTH_ONE": "填报月份一", "F_MONTH_TWO": "填报月份二", "F_MONTH_THREE": "填报月份三",
+                            "F_MONTH_FOUR": "填报月份四", "F_MONTH_FIVE": "填报月份五", "F_MONTH_SIX": "填报月份六",
+                            "F_REMARK": "备注", "F_WIRE_SOLDER_NAME": "框架描述", "F_SHELL_FRAM_NAME": "框架描述",
+                            "PARTID": "PARTID","F_WIRE_SOLDER_CODE": "焊线编号", "F_SHELL_FRAM_CODE": "框架编号"
+                        }])
+                    }
+                });
+            });
+            //  批量导入
+            $('#B2B_INPUT').on('click', function () {
+                learun.layerForm({
+                    id: 'form',
+                    title: '批导功能',
+                    url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_CREATE/ImportExcel',
+                    width: 380,
+                    height: 400,
+                    maxmin: true,
+                    callBack: function (id) {                                        
+                        return top[id].acceptClick(refreshGirdData);
+                    }
+                });
+            });
+        },
+        // 初始化列表
+        initGird: function () {
+            $('#gridtable').lrAuthorizeJfGrid({
+                url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_CREATE/GetPageList',
+                headData: [
+                    { label: "客户代码", name: "F_CUST_CODE", width: 100, align: "left"},
+                    { label: "填报月份", name: "F_WRITE_MONTH", width: 100, align: "left",
+                        formatterAsync: function (callback, value, row, op,$cell) {
+                             learun.clientdata.getAsync('dataItem', {
+                                 key: value,
+                                 code: 'Month',
+                                 callback: function (_data) {
+                                     callback(_data.text);
+                                 }
+                             });
+                        }},
+                    { label: "填报人员", name: "F_WRITE_PRESON", width: 100, align: "left"},
+                ],
+                mainId:'F_GUID',
+                isPage: true
+            });
+            page.search();
+        },
+        search: function (param) {
+            param = param || {};
+            $('#gridtable').jfGridSet('reload',{ queryJson: JSON.stringify(param) });
+        }
+    };
+    refreshGirdData = function () {
+        $('#gridtable').jfGridSet('reload');
+    };
+    page.init();
+}

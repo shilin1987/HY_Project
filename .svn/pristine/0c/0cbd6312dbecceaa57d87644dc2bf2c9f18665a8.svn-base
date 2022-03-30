@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "作业员招聘信息提示";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">流程名称<font face="宋体">*</font></div>
+        @*<input id="SubProcessId" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />*@
+        <div id="SubProcessId" isvalid="yes" ></div>
+    </div>
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">提示内容<font face="宋体">*</font></div>  
+        <textarea id="Content" class="form-control" style="height:150px;" isvalid="yes" checkexpession="NotNull"></textarea>
+        @*<input id="Content" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />*@
+    </div>
+
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">备注<font face="宋体">*</font></div>
+        <textarea id="Remark" class="form-control" style="height:100px;" isvalid="yes" checkexpession="NotNull"></textarea>
+        @*<input id="Remark" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />*@
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/InfoTips/Form.js")

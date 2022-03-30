@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "来料计划填报";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" style="padding:0;line-height:38px;text-align:center;font-size:20px;font-weight:bold;color:#333;">       
+        <span>
+            <a id="btn_Search03" class="btn btn-primary btn-sm" style="width:200px"><i class="fa fa-search"></i>&nbsp;<span class="lrlg">调取产品信息数据</span></a>
+            <a id="btn_Search01" class="btn btn-primary btn-sm" style="width:220px"><i class="fa fa-search"></i>&nbsp;<span class="lrlg">加载客户产品数据</span></a>
+            <a id="btn_Search02" class="btn btn-primary btn-sm" style="width:220px"><i class="fa fa-search"></i>&nbsp;<span class="lrlg">根据PARTID加载产品信息</span></a>
+            <a id="btn_Downexcel" class="btn btn-primary btn-sm" style="width:220px"><i class="fa fa-download"></i>&nbsp;<span class="lrlg">下载产品信息</span></a>
+            <span><font face="宋体" color="red" size="2">&nbsp;&nbsp;单位：万只</font></span>
+        </span>
+    </div>
+
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL">
+        <div class="lr-form-item-title">客户代码</div>
+        <input id="F_CUST_CODE" name="F_CUST_CODE" type="text" class="form-control" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL">
+        <div class="lr-form-item-title">填报月份</div>
+        <div id="F_WRITE_MONTH"></div>
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL">
+        <div class="lr-form-item-title">填报人员</div>
+        <input id="F_WRITE_PRESON" type="text" class="form-control" value="@Learun.Util.LoginUserInfo.Get().realName" readonly="readonly" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">PARTID<font face="宋体">*</font></div>
+        <input id="PARTID" type="text" class="form-control">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">产品型号</div>
+        <input id="F_PRODUCT_MODEL" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">封装形式</div>
+        <input id="F_PACKAGE_MODEL" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">封装等级</div>
+        <input id="F_PRODUCT_LEVEL" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">包装方式</div>
+        <input id="F_PACKAGING_TYPE" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">芯片型号</div>
+        <input id="F_WAFER_MODEL" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">芯片尺寸</div>
+        <input id="F_WAFER_SIZE" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">焊线描述</div>
+        <input id="F_WIRE_SOLDER_NAME" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB" hidden="hidden">
+        <div class="lr-form-item-title">焊线编号</div>
+        <input id="F_WIRE_SOLDER_CODE" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">框架描述</div>
+        <input id="F_SHELL_FRAM_NAME" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB" hidden="hidden">
+        <div class="lr-form-item-title">框架编号</div>
+        <input id="F_SHELL_FRAM_CODE" type="text" class="form-control" readonly="readonly">
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title" id="MONTH_ONE">1月份<font face="宋体">*</font></div>
+        <input id="F_MONTH_ONE" type="text" class="form-control" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title" id="MONTH_TWO">2月份<font face="宋体">*</font></div>
+        <input id="F_MONTH_TWO" type="text" class="form-control" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title" id="MONTH_THREE">3月份<font face="宋体">*</font></div>
+        <input id="F_MONTH_THREE" type="text" class="form-control" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title" id="MONTH_FOUR">4月份</div>
+        <input id="F_MONTH_FOUR" type="text" class="form-control" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title" id="MONTH_FIVE">5月份</div>
+        <input id="F_MONTH_FIVE" type="text" class="form-control" />
+    </div>
+    <div class="col-xs-4 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title" id="MONTH_SIX">6月份</div>
+        <input id="F_MONTH_SIX" type="text" class="form-control" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="B2B_PLAN_INCOMING_MATERIAL_SUB">
+        <div class="lr-form-item-title">备注</div>
+        <input id="F_REMARK" type="text" class="form-control" />
+    </div>
+    <div div class="col-xs-12 lr-form-item">
+        <table align="center">
+            <tr>
+                <td>
+                    <a id="lr_refresh" class="btn btn-primary btn-sm" style="width:200px"><i class="fa fa-refresh"></i>&nbsp;刷新填写页面</a>
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                    <a id="lr_add_order" class="btn btn-primary btn-sm" style="width:300px"><i class="fa fa-plus"></i>&nbsp;请将填写的内容加载到下面网格中</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-xs-12 lr-form-item lr-form-item-grid">
+        <div id="B2B_PLAN_INCOMING_MATERIAL_SUB"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/B2B_Code/Views/B2B_PLAN_CREATE/Form.js")

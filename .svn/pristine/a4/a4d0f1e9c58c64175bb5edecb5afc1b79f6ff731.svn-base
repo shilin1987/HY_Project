@@ -1,0 +1,1156 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F83D5768-D286-45F5-B45D-97FFE742508E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApi_EmployeeInformationEntry</RootNamespace>
+    <AssemblyName>WebApi_EmployeeInformationEntry</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44348</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Learun.Cache.Base">
+      <HintPath>..\webAPI\Bin\Learun.Cache.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Learun.Cache.Factory">
+      <HintPath>..\webAPI\Bin\Learun.Cache.Factory.dll</HintPath>
+    </Reference>
+    <Reference Include="Learun.Cache.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Learun.Cache.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataBase\UserModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UserModel.Context.cs</LastGenOutput>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataBase\UserModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+      <LastGenOutput>UserModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="register\candidates.css" />
+    <Content Include="register\candidates.html" />
+    <Content Include="register\candidates.js" />
+    <Content Include="register\css\android.css" />
+    <Content Include="register\css\fui.min.css" />
+    <Content Include="register\css\index.css" />
+    <Content Include="register\css\ios.css" />
+    <Content Include="register\css\learun-mobile.css" />
+    <Content Include="register\css\pulsCommon.css" />
+    <Content Include="register\font\iconfont.css" />
+    <Content Include="register\font\iconfont.js" />
+    <Content Include="register\font\iconfont.svg" />
+    <Content Include="register\index.html" />
+    <Content Include="register\js\base.js" />
+    <Content Include="register\js\checkbox.js" />
+    <Content Include="register\js\city.js" />
+    <Content Include="register\js\config.js" />
+    <Content Include="register\js\date.js" />
+    <Content Include="register\js\dropdownbox.js" />
+    <Content Include="register\js\echarts.js" />
+    <Content Include="register\js\form.js" />
+    <Content Include="register\js\fui.min.js" />
+    <Content Include="register\js\gender.js" />
+    <Content Include="register\js\http.js" />
+    <Content Include="register\js\imagepicker.js" />
+    <Content Include="register\js\index.js" />
+    <Content Include="register\js\jquery-1.10.2.min.js" />
+    <Content Include="register\js\jquery.md5.min.js" />
+    <Content Include="register\js\jquery.message.js" />
+    <Content Include="register\js\jquery.mobile.custom.min.js" />
+    <Content Include="register\js\jquery.validate.min.js" />
+    <Content Include="register\js\layer.js" />
+    <Content Include="register\js\learun-custmerform.js" />
+    <Content Include="register\js\listswipe.js" />
+    <Content Include="register\js\lrmuiex.js" />
+    <Content Include="register\js\multiplequery.js" />
+    <Content Include="register\js\navigation.js" />
+    <Content Include="register\js\pagination.js" />
+    <Content Include="register\js\picker.js" />
+    <Content Include="register\js\platform.js" />
+    <Content Include="register\js\progressbar.js" />
+    <Content Include="register\js\pulscommon.js" />
+    <Content Include="register\js\qrcode.js" />
+    <Content Include="register\js\scan.js" />
+    <Content Include="register\js\searchdate.js" />
+    <Content Include="register\js\storage.js" />
+    <Content Include="register\js\switch.js" />
+    <Content Include="register\js\tab.js" />
+    <Content Include="Web.config" />
+    <Content Include="WebSite\css\android.css" />
+    <Content Include="WebSite\css\fui.min.css" />
+    <Content Include="WebSite\css\index.css" />
+    <Content Include="WebSite\css\ios.css" />
+    <Content Include="WebSite\css\learun-mobile.css" />
+    <Content Include="WebSite\css\pulsCommon.css" />
+    <Content Include="WebSite\font\iconfont.css" />
+    <Content Include="WebSite\font\iconfont.js" />
+    <Content Include="WebSite\font\iconfont.svg" />
+    <Content Include="WebSite\images\1.jpg" />
+    <Content Include="WebSite\images\2.jpg" />
+    <Content Include="WebSite\images\3.jpg" />
+    <Content Include="WebSite\images\4.jpg" />
+    <Content Include="WebSite\images\444.png" />
+    <Content Include="WebSite\images\background.png" />
+    <Content Include="WebSite\images\banner.jpg" />
+    <Content Include="WebSite\images\banner.png" />
+    <Content Include="WebSite\images\banner1.png" />
+    <Content Include="WebSite\images\banner160.png" />
+    <Content Include="WebSite\images\logo.png" />
+    <Content Include="WebSite\images\myCardBg.jpg" />
+    <Content Include="WebSite\images\myCardBg.png" />
+    <Content Include="WebSite\images\notification.png" />
+    <Content Include="WebSite\images\on-boy.jpg" />
+    <Content Include="WebSite\images\on-girl.jpg" />
+    <Content Include="WebSite\images\SOLGEN.png" />
+    <Content Include="WebSite\images\tab10.png" />
+    <Content Include="WebSite\images\tab101.png" />
+    <Content Include="WebSite\images\tab11.png" />
+    <Content Include="WebSite\images\tab111.png" />
+    <Content Include="WebSite\images\tab20.png" />
+    <Content Include="WebSite\images\tab21.png" />
+    <Content Include="WebSite\images\tab30.png" />
+    <Content Include="WebSite\images\tab31.png" />
+    <Content Include="WebSite\images\tab40.png" />
+    <Content Include="WebSite\images\tab401.png" />
+    <Content Include="WebSite\images\tab41.png" />
+    <Content Include="WebSite\images\tab410.png" />
+    <Content Include="WebSite\images\wechat.jpg" />
+    <Content Include="WebSite\images\welcomeBanner.jpg" />
+    <Content Include="WebSite\images\小线段.png" />
+    <Content Include="WebSite\images\版权信息.png" />
+    <Content Include="WebSite\images\登录框1.png" />
+    <Content Include="WebSite\images\登录框2.png" />
+    <Content Include="WebSite\index.html" />
+    <Content Include="WebSite\js\base.js" />
+    <Content Include="WebSite\js\checkbox.js" />
+    <Content Include="WebSite\js\city.js" />
+    <Content Include="WebSite\js\config.js" />
+    <Content Include="WebSite\js\date.js" />
+    <Content Include="WebSite\js\dropdownbox.js" />
+    <Content Include="WebSite\js\echarts.js" />
+    <Content Include="WebSite\js\form.js" />
+    <Content Include="WebSite\js\fui.min.js" />
+    <Content Include="WebSite\js\gender.js" />
+    <Content Include="WebSite\js\http.js" />
+    <Content Include="WebSite\js\imagepicker.js" />
+    <Content Include="WebSite\js\index.js" />
+    <Content Include="WebSite\js\jquery-1.10.2.min.js" />
+    <Content Include="WebSite\js\jquery.md5.min.js" />
+    <Content Include="WebSite\js\jquery.message.js" />
+    <Content Include="WebSite\js\jquery.mobile.custom.min.js" />
+    <Content Include="WebSite\js\jquery.validate.min.js" />
+    <Content Include="WebSite\js\layer.js" />
+    <Content Include="WebSite\js\learun-custmerform.js" />
+    <Content Include="WebSite\js\listswipe.js" />
+    <Content Include="WebSite\js\lrmuiex.js" />
+    <Content Include="WebSite\js\multiplequery.js" />
+    <Content Include="WebSite\js\navigation.js" />
+    <Content Include="WebSite\js\pagination.js" />
+    <Content Include="WebSite\js\picker.js" />
+    <Content Include="WebSite\js\platform.js" />
+    <Content Include="WebSite\js\progressbar.js" />
+    <Content Include="WebSite\js\pulscommon.js" />
+    <Content Include="WebSite\js\qrcode.js" />
+    <Content Include="WebSite\js\scan.js" />
+    <Content Include="WebSite\js\searchdate.js" />
+    <Content Include="WebSite\js\storage.js" />
+    <Content Include="WebSite\js\switch.js" />
+    <Content Include="WebSite\js\tab.js" />
+    <Content Include="WebSite\pages\chat\chat.css" />
+    <Content Include="WebSite\pages\chat\chat.html" />
+    <Content Include="WebSite\pages\chat\chat.js" />
+    <Content Include="WebSite\pages\contacts\contacts.css" />
+    <Content Include="WebSite\pages\contacts\contacts.html" />
+    <Content Include="WebSite\pages\contacts\contacts.js" />
+    <Content Include="WebSite\pages\contacts\search\search.css" />
+    <Content Include="WebSite\pages\contacts\search\search.html" />
+    <Content Include="WebSite\pages\contacts\search\search.js" />
+    <Content Include="WebSite\pages\crm\invoice\form\form.css" />
+    <Content Include="WebSite\pages\crm\invoice\form\form.html" />
+    <Content Include="WebSite\pages\crm\invoice\form\form.js" />
+    <Content Include="WebSite\pages\crm\invoice\invoice.css" />
+    <Content Include="WebSite\pages\crm\invoice\invoice.html" />
+    <Content Include="WebSite\pages\crm\invoice\invoice.js" />
+    <Content Include="WebSite\pages\crm\order\form\form.css" />
+    <Content Include="WebSite\pages\crm\order\form\form.html" />
+    <Content Include="WebSite\pages\crm\order\form\form.js" />
+    <Content Include="WebSite\pages\crm\order\order.css" />
+    <Content Include="WebSite\pages\crm\order\order.html" />
+    <Content Include="WebSite\pages\crm\order\order.js" />
+    <Content Include="WebSite\pages\custmerform\custmerform.css" />
+    <Content Include="WebSite\pages\custmerform\custmerform.html" />
+    <Content Include="WebSite\pages\custmerform\custmerform.js" />
+    <Content Include="WebSite\pages\custmerform\form\form.css" />
+    <Content Include="WebSite\pages\custmerform\form\form.html" />
+    <Content Include="WebSite\pages\custmerform\form\form.js" />
+    <Content Include="WebSite\pages\demo\actionsheet\actionsheet.css" />
+    <Content Include="WebSite\pages\demo\actionsheet\actionsheet.html" />
+    <Content Include="WebSite\pages\demo\actionsheet\actionsheet.js" />
+    <Content Include="WebSite\pages\demo\amap\amap.css" />
+    <Content Include="WebSite\pages\demo\amap\amap.html" />
+    <Content Include="WebSite\pages\demo\amap\amap.js" />
+    <Content Include="WebSite\pages\demo\badge\badge.css" />
+    <Content Include="WebSite\pages\demo\badge\badge.html" />
+    <Content Include="WebSite\pages\demo\badge\badge.js" />
+    <Content Include="WebSite\pages\demo\button\button.css" />
+    <Content Include="WebSite\pages\demo\button\button.html" />
+    <Content Include="WebSite\pages\demo\button\button.js" />
+    <Content Include="WebSite\pages\demo\cardview\cardview.css" />
+    <Content Include="WebSite\pages\demo\cardview\cardview.html" />
+    <Content Include="WebSite\pages\demo\cardview\cardview.js" />
+    <Content Include="WebSite\pages\demo\demo.css" />
+    <Content Include="WebSite\pages\demo\demo.html" />
+    <Content Include="WebSite\pages\demo\demo.js" />
+    <Content Include="WebSite\pages\demo\dialog\dialog.css" />
+    <Content Include="WebSite\pages\demo\dialog\dialog.html" />
+    <Content Include="WebSite\pages\demo\dialog\dialog.js" />
+    <Content Include="WebSite\pages\demo\formvalidator\formvalidator.css" />
+    <Content Include="WebSite\pages\demo\formvalidator\formvalidator.html" />
+    <Content Include="WebSite\pages\demo\formvalidator\formvalidator.js" />
+    <Content Include="WebSite\pages\demo\form\form.css" />
+    <Content Include="WebSite\pages\demo\form\form.html" />
+    <Content Include="WebSite\pages\demo\form\form.js" />
+    <Content Include="WebSite\pages\demo\getpage\getpage.css" />
+    <Content Include="WebSite\pages\demo\getpage\getpage.html" />
+    <Content Include="WebSite\pages\demo\getpage\getpage.js" />
+    <Content Include="WebSite\pages\demo\grid\grid.css" />
+    <Content Include="WebSite\pages\demo\grid\grid.html" />
+    <Content Include="WebSite\pages\demo\grid\grid.js" />
+    <Content Include="WebSite\pages\demo\iconlist2\iconlist2.css" />
+    <Content Include="WebSite\pages\demo\iconlist2\iconlist2.html" />
+    <Content Include="WebSite\pages\demo\iconlist2\iconlist2.js" />
+    <Content Include="WebSite\pages\demo\iconlist\iconlist.css" />
+    <Content Include="WebSite\pages\demo\iconlist\iconlist.html" />
+    <Content Include="WebSite\pages\demo\iconlist\iconlist.js" />
+    <Content Include="WebSite\pages\demo\icon\icon.css" />
+    <Content Include="WebSite\pages\demo\icon\icon.html" />
+    <Content Include="WebSite\pages\demo\icon\icon.js" />
+    <Content Include="WebSite\pages\demo\layer\layer.css" />
+    <Content Include="WebSite\pages\demo\layer\layer.html" />
+    <Content Include="WebSite\pages\demo\layer\layer.js" />
+    <Content Include="WebSite\pages\demo\listbadge\listbadge.css" />
+    <Content Include="WebSite\pages\demo\listbadge\listbadge.html" />
+    <Content Include="WebSite\pages\demo\listbadge\listbadge.js" />
+    <Content Include="WebSite\pages\demo\listmedia\listmedia.css" />
+    <Content Include="WebSite\pages\demo\listmedia\listmedia.html" />
+    <Content Include="WebSite\pages\demo\listmedia\listmedia.js" />
+    <Content Include="WebSite\pages\demo\listmulti\listmulti.css" />
+    <Content Include="WebSite\pages\demo\listmulti\listmulti.html" />
+    <Content Include="WebSite\pages\demo\listmulti\listmulti.js" />
+    <Content Include="WebSite\pages\demo\listswipe\listswipe.css" />
+    <Content Include="WebSite\pages\demo\listswipe\listswipe.html" />
+    <Content Include="WebSite\pages\demo\listswipe\listswipe.js" />
+    <Content Include="WebSite\pages\demo\list\list.css" />
+    <Content Include="WebSite\pages\demo\list\list.html" />
+    <Content Include="WebSite\pages\demo\list\list.js" />
+    <Content Include="WebSite\pages\demo\loaddata\loaddata.css" />
+    <Content Include="WebSite\pages\demo\loaddata\loaddata.html" />
+    <Content Include="WebSite\pages\demo\loaddata\loaddata.js" />
+    <Content Include="WebSite\pages\demo\login\login.css" />
+    <Content Include="WebSite\pages\demo\login\login.html" />
+    <Content Include="WebSite\pages\demo\login\login.js" />
+    <Content Include="WebSite\pages\demo\my\my.css" />
+    <Content Include="WebSite\pages\demo\my\my.html" />
+    <Content Include="WebSite\pages\demo\my\my.js" />
+    <Content Include="WebSite\pages\demo\page\cpage\cpage.css" />
+    <Content Include="WebSite\pages\demo\page\cpage\cpage.html" />
+    <Content Include="WebSite\pages\demo\page\cpage\cpage.js" />
+    <Content Include="WebSite\pages\demo\page\page.css" />
+    <Content Include="WebSite\pages\demo\page\page.html" />
+    <Content Include="WebSite\pages\demo\page\page.js" />
+    <Content Include="WebSite\pages\demo\pictureupload\pictureupload.css" />
+    <Content Include="WebSite\pages\demo\pictureupload\pictureupload.html" />
+    <Content Include="WebSite\pages\demo\pictureupload\pictureupload.js" />
+    <Content Include="WebSite\pages\demo\picture\picture.css" />
+    <Content Include="WebSite\pages\demo\picture\picture.html" />
+    <Content Include="WebSite\pages\demo\picture\picture.js" />
+    <Content Include="WebSite\pages\demo\progressbar\progressbar.css" />
+    <Content Include="WebSite\pages\demo\progressbar\progressbar.html" />
+    <Content Include="WebSite\pages\demo\progressbar\progressbar.js" />
+    <Content Include="WebSite\pages\demo\pulltorefresh2\pulltorefresh2.css" />
+    <Content Include="WebSite\pages\demo\pulltorefresh2\pulltorefresh2.html" />
+    <Content Include="WebSite\pages\demo\pulltorefresh2\pulltorefresh2.js" />
+    <Content Include="WebSite\pages\demo\pulltorefresh\pulltorefresh.css" />
+    <Content Include="WebSite\pages\demo\pulltorefresh\pulltorefresh.html" />
+    <Content Include="WebSite\pages\demo\pulltorefresh\pulltorefresh.js" />
+    <Content Include="WebSite\pages\demo\scan\scan.css" />
+    <Content Include="WebSite\pages\demo\scan\scan.html" />
+    <Content Include="WebSite\pages\demo\scan\scan.js" />
+    <Content Include="WebSite\pages\demo\timeline\timeline.css" />
+    <Content Include="WebSite\pages\demo\timeline\timeline.html" />
+    <Content Include="WebSite\pages\demo\timeline\timeline.js" />
+    <Content Include="WebSite\pages\demo\toptab\toptab.css" />
+    <Content Include="WebSite\pages\demo\toptab\toptab.html" />
+    <Content Include="WebSite\pages\demo\toptab\toptab.js" />
+    <Content Include="WebSite\pages\demo\webstorage\webstorage.css" />
+    <Content Include="WebSite\pages\demo\webstorage\webstorage.html" />
+    <Content Include="WebSite\pages\demo\webstorage\webstorage.js" />
+    <Content Include="WebSite\pages\describe\describe.css" />
+    <Content Include="WebSite\pages\describe\describe.html" />
+    <Content Include="WebSite\pages\describe\describe.js" />
+    <Content Include="WebSite\pages\login\login.css" />
+    <Content Include="WebSite\pages\login\login.html" />
+    <Content Include="WebSite\pages\login\login.js" />
+    <Content Include="WebSite\pages\login\phoneLogin\phoneLogin.html" />
+    <Content Include="WebSite\pages\login\phoneLogin\phoneLogin.js" />
+    <Content Include="WebSite\pages\lrselect\company\company.css" />
+    <Content Include="WebSite\pages\lrselect\company\company.html" />
+    <Content Include="WebSite\pages\lrselect\company\company.js" />
+    <Content Include="WebSite\pages\lrselect\department\department.css" />
+    <Content Include="WebSite\pages\lrselect\department\department.html" />
+    <Content Include="WebSite\pages\lrselect\department\department.js" />
+    <Content Include="WebSite\pages\lrselect\layer\layer.css" />
+    <Content Include="WebSite\pages\lrselect\layer\layer.html" />
+    <Content Include="WebSite\pages\lrselect\layer\layer.js" />
+    <Content Include="WebSite\pages\lrselect\user\user.css" />
+    <Content Include="WebSite\pages\lrselect\user\user.html" />
+    <Content Include="WebSite\pages\lrselect\user\user.js" />
+    <Content Include="WebSite\pages\message\message.css" />
+    <Content Include="WebSite\pages\message\message.html" />
+    <Content Include="WebSite\pages\message\message.js" />
+    <Content Include="WebSite\pages\my\aboutadms\aboutadms.css" />
+    <Content Include="WebSite\pages\my\aboutadms\aboutadms.html" />
+    <Content Include="WebSite\pages\my\aboutadms\aboutadms.js" />
+    <Content Include="WebSite\pages\my\aboutlearun\aboutlearun.css" />
+    <Content Include="WebSite\pages\my\aboutlearun\aboutlearun.html" />
+    <Content Include="WebSite\pages\my\aboutlearun\aboutlearun.js" />
+    <Content Include="WebSite\pages\newcandidates\abouthuayi\abouthuayi.css" />
+    <Content Include="WebSite\pages\newcandidates\abouthuayi\abouthuayi.html" />
+    <Content Include="WebSite\pages\newcandidates\abouthuayi\abouthuayi.js" />
+    <Content Include="WebSite\pages\newcandidates\candidates\candidates.css" />
+    <Content Include="WebSite\pages\newcandidates\candidates\candidates.html" />
+    <Content Include="WebSite\pages\newcandidates\candidates\candidates.js" />
+    <Content Include="WebSite\pages\my\contactInfo\contactInfo.css" />
+    <Content Include="WebSite\pages\my\contactInfo\contactInfo.html" />
+    <Content Include="WebSite\pages\my\contactInfo\contactInfo.js" />
+    <Content Include="WebSite\pages\my\modifypassword\modifypassword.css" />
+    <Content Include="WebSite\pages\my\modifypassword\modifypassword.html" />
+    <Content Include="WebSite\pages\my\modifypassword\modifypassword.js" />
+    <Content Include="WebSite\pages\my\my.css" />
+    <Content Include="WebSite\pages\my\my.html" />
+    <Content Include="WebSite\pages\my\my.js" />
+    <Content Include="WebSite\pages\my\mycode\mycode.css" />
+    <Content Include="WebSite\pages\my\mycode\mycode.html" />
+    <Content Include="WebSite\pages\my\mycode\mycode.js" />
+    <Content Include="WebSite\pages\my\userInfo\userInfo.css" />
+    <Content Include="WebSite\pages\my\userInfo\userInfo.html" />
+    <Content Include="WebSite\pages\my\userInfo\userInfo.js" />
+    <Content Include="WebSite\pages\newcandidates\Informationperfection\Informationperfection.css" />
+    <Content Include="WebSite\pages\newcandidates\Informationperfection\Informationperfection.html" />
+    <Content Include="WebSite\pages\newcandidates\Informationperfection\Informationperfection.js" />
+    <Content Include="WebSite\pages\newcandidates\interview\interview.css" />
+    <Content Include="WebSite\pages\newcandidates\interview\interview.html" />
+    <Content Include="WebSite\pages\newcandidates\interview\interview.js" />
+    <Content Include="WebSite\pages\newcandidates\mynode\mynode.css" />
+    <Content Include="WebSite\pages\newcandidates\mynode\mynode.html" />
+    <Content Include="WebSite\pages\newcandidates\mynode\mynode.js" />
+    <Content Include="WebSite\pages\newcandidates\newcandidates.css" />
+    <Content Include="WebSite\pages\newcandidates\newcandidates.html" />
+    <Content Include="WebSite\pages\newcandidates\newcandidates.js" />
+    <Content Include="WebSite\pages\newcandidates\pictureupload\js\jquery.min.js" />
+    <Content Include="WebSite\pages\newcandidates\pictureupload\pictureupload.css" />
+    <Content Include="WebSite\pages\newcandidates\pictureupload\pictureupload.html" />
+    <Content Include="WebSite\pages\newcandidates\pictureupload\pictureupload.js" />
+    <Content Include="WebSite\pages\newcandidates\reportnotice\reportnotice.css" />
+    <Content Include="WebSite\pages\newcandidates\reportnotice\reportnotice.html" />
+    <Content Include="WebSite\pages\newcandidates\reportnotice\reportnotice.js" />
+    <Content Include="WebSite\pages\newcandidates\writtenexamination\writtenexamination.css" />
+    <Content Include="WebSite\pages\newcandidates\writtenexamination\writtenexamination.html" />
+    <Content Include="WebSite\pages\newcandidates\writtenexamination\writtenexamination.js" />
+    <Content Include="WebSite\pages\newpage\newpage.css" />
+    <Content Include="WebSite\pages\newpage\newpage.html" />
+    <Content Include="WebSite\pages\newpage\newpage.js" />
+    <Content Include="WebSite\pages\nworkflow\againcreateflow\againcreateflow.css" />
+    <Content Include="WebSite\pages\nworkflow\againcreateflow\againcreateflow.html" />
+    <Content Include="WebSite\pages\nworkflow\againcreateflow\againcreateflow.js" />
+    <Content Include="WebSite\pages\nworkflow\audit\audit.css" />
+    <Content Include="WebSite\pages\nworkflow\audit\audit.html" />
+    <Content Include="WebSite\pages\nworkflow\audit\audit.js" />
+    <Content Include="WebSite\pages\nworkflow\audit\sign\sign.css" />
+    <Content Include="WebSite\pages\nworkflow\audit\sign\sign.html" />
+    <Content Include="WebSite\pages\nworkflow\audit\sign\sign.js" />
+    <Content Include="WebSite\pages\nworkflow\audit\verify\verify.css" />
+    <Content Include="WebSite\pages\nworkflow\audit\verify\verify.html" />
+    <Content Include="WebSite\pages\nworkflow\audit\verify\verify.js" />
+    <Content Include="WebSite\pages\nworkflow\chlidaudit\chlidaudit.css" />
+    <Content Include="WebSite\pages\nworkflow\chlidaudit\chlidaudit.html" />
+    <Content Include="WebSite\pages\nworkflow\chlidaudit\chlidaudit.js" />
+    <Content Include="WebSite\pages\nworkflow\chlidlook\chlidlook.css" />
+    <Content Include="WebSite\pages\nworkflow\chlidlook\chlidlook.html" />
+    <Content Include="WebSite\pages\nworkflow\chlidlook\chlidlook.js" />
+    <Content Include="WebSite\pages\nworkflow\createflow\createflow.css" />
+    <Content Include="WebSite\pages\nworkflow\createflow\createflow.html" />
+    <Content Include="WebSite\pages\nworkflow\createflow\createflow.js" />
+    <Content Include="WebSite\pages\nworkflow\createflow\form\form.css" />
+    <Content Include="WebSite\pages\nworkflow\createflow\form\form.html" />
+    <Content Include="WebSite\pages\nworkflow\createflow\form\form.js" />
+    <Content Include="WebSite\pages\nworkflow\draft\draft.css" />
+    <Content Include="WebSite\pages\nworkflow\draft\draft.html" />
+    <Content Include="WebSite\pages\nworkflow\draft\draft.js" />
+    <Content Include="WebSite\pages\nworkflow\draft\form\form.css" />
+    <Content Include="WebSite\pages\nworkflow\draft\form\form.html" />
+    <Content Include="WebSite\pages\nworkflow\draft\form\form.js" />
+    <Content Include="WebSite\pages\nworkflow\myflow\myflow.css" />
+    <Content Include="WebSite\pages\nworkflow\myflow\myflow.html" />
+    <Content Include="WebSite\pages\nworkflow\myflow\myflow.js" />
+    <Content Include="WebSite\pages\nworkflow\myprocessInfo\myprocessInfo.css" />
+    <Content Include="WebSite\pages\nworkflow\myprocessInfo\myprocessInfo.html" />
+    <Content Include="WebSite\pages\nworkflow\myprocessInfo\myprocessInfo.js" />
+    <Content Include="WebSite\pages\nworkflow\processInfo\processInfo.css" />
+    <Content Include="WebSite\pages\nworkflow\processInfo\processInfo.html" />
+    <Content Include="WebSite\pages\nworkflow\processInfo\processInfo.js" />
+    <Content Include="WebSite\pages\nworkflow\refer\refer.css" />
+    <Content Include="WebSite\pages\nworkflow\refer\refer.html" />
+    <Content Include="WebSite\pages\nworkflow\refer\refer.js" />
+    <Content Include="WebSite\pages\nworkflow\releasetask\releasetask.css" />
+    <Content Include="WebSite\pages\nworkflow\releasetask\releasetask.html" />
+    <Content Include="WebSite\pages\nworkflow\releasetask\releasetask.js" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\signAudit.css" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\signAudit.html" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\signAudit.js" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\sign\sign.css" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\sign\sign.html" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\sign\sign.js" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\verify\verify.css" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\verify\verify.html" />
+    <Content Include="WebSite\pages\nworkflow\signAudit\verify\verify.js" />
+    <Content Include="WebSite\pages\Platform\ApplicationInformation\ApplicationInformation.css" />
+    <Content Include="WebSite\pages\Platform\ApplicationInformation\ApplicationInformation.html" />
+    <Content Include="WebSite\pages\Platform\ApplicationInformation\ApplicationInformation.js" />
+    <Content Include="WebSite\pages\Platform\Candidates\candidates.css" />
+    <Content Include="WebSite\pages\Platform\Candidates\candidates.html" />
+    <Content Include="WebSite\pages\Platform\Candidates\candidates.js" />
+    <Content Include="WebSite\pages\search\search.css" />
+    <Content Include="WebSite\pages\search\search.html" />
+    <Content Include="WebSite\pages\search\search.js" />
+    <Content Include="WebSite\pages\workflow\againbootstraper\againbootstraper.css" />
+    <Content Include="WebSite\pages\workflow\againbootstraper\againbootstraper.html" />
+    <Content Include="WebSite\pages\workflow\againbootstraper\againbootstraper.js" />
+    <Content Include="WebSite\pages\workflow\againbootstraper\form\form.css" />
+    <Content Include="WebSite\pages\workflow\againbootstraper\form\form.html" />
+    <Content Include="WebSite\pages\workflow\againbootstraper\form\form.js" />
+    <Content Include="WebSite\pages\workflow\audit\audit.css" />
+    <Content Include="WebSite\pages\workflow\audit\audit.html" />
+    <Content Include="WebSite\pages\workflow\audit\audit.js" />
+    <Content Include="WebSite\pages\workflow\audit\sign\sign.css" />
+    <Content Include="WebSite\pages\workflow\audit\sign\sign.html" />
+    <Content Include="WebSite\pages\workflow\audit\sign\sign.js" />
+    <Content Include="WebSite\pages\workflow\audit\verify\verify.css" />
+    <Content Include="WebSite\pages\workflow\audit\verify\verify.html" />
+    <Content Include="WebSite\pages\workflow\audit\verify\verify.js" />
+    <Content Include="WebSite\pages\workflow\bootstraper\bootstraper.css" />
+    <Content Include="WebSite\pages\workflow\bootstraper\bootstraper.html" />
+    <Content Include="WebSite\pages\workflow\bootstraper\bootstraper.js" />
+    <Content Include="WebSite\pages\workflow\bootstraper\form\form.css" />
+    <Content Include="WebSite\pages\workflow\bootstraper\form\form.html" />
+    <Content Include="WebSite\pages\workflow\bootstraper\form\form.js" />
+    <Content Include="WebSite\pages\workflow\mytask\mytask.css" />
+    <Content Include="WebSite\pages\workflow\mytask\mytask.html" />
+    <Content Include="WebSite\pages\workflow\mytask\mytask.js" />
+    <Content Include="WebSite\pages\workflow\processInfo\processInfo.css" />
+    <Content Include="WebSite\pages\workflow\processInfo\processInfo.html" />
+    <Content Include="WebSite\pages\workflow\processInfo\processInfo.js" />
+    <Content Include="WebSite\pages\workflow\releasetask\releasetask.css" />
+    <Content Include="WebSite\pages\workflow\releasetask\releasetask.html" />
+    <Content Include="WebSite\pages\workflow\releasetask\releasetask.js" />
+    <Content Include="WebSite\puls\barcode_scan.html" />
+    <Content Include="WebSite\puls\maps_map.html" />
+    <Content Include="WebSite\puls\maps_map_sub.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\css\android.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\css\fui.min.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\css\index.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\css\ios.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\css\learun-mobile.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\css\pulsCommon.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\font\iconfont.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\font\iconfont.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\font\iconfont.svg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\1.jpg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\2.jpg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\3.jpg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\4.jpg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\banner.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\banner1.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\banner160.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\logo.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\myCardBg.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\notification.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\on-boy.jpg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\on-girl.jpg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\tab10.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\tab11.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\tab20.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\tab21.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\tab30.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\tab31.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\tab40.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\tab41.png" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\wechat.jpg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\images\welcomeBanner.jpg" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\index.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\base.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\checkbox.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\city.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\config.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\date.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\echarts.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\fui.min.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\http.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\imagepicker.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\index.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\jquery-1.10.2.min.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\jquery.md5.min.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\jquery.mobile.custom.min.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\layer.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\learun-custmerform.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\listswipe.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\lrmuiex.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\multiplequery.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\navigation.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\pagination.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\picker.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\platform.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\progressbar.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\pulscommon.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\qrcode.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\scan.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\searchdate.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\storage.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\switch.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\js\tab.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\chat\chat.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\chat\chat.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\chat\chat.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\contacts\contacts.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\contacts\contacts.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\contacts\contacts.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\contacts\search\search.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\contacts\search\search.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\contacts\search\search.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\invoice\form\form.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\invoice\form\form.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\invoice\form\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\invoice\invoice.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\invoice\invoice.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\invoice\invoice.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\order\form\form.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\order\form\form.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\order\form\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\order\order.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\order\order.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\crm\order\order.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\custmerform\custmerform.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\custmerform\custmerform.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\custmerform\custmerform.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\custmerform\form\form.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\custmerform\form\form.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\custmerform\form\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\actionsheet\actionsheet.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\actionsheet\actionsheet.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\actionsheet\actionsheet.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\amap\amap.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\amap\amap.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\amap\amap.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\badge\badge.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\badge\badge.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\badge\badge.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\button\button.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\button\button.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\button\button.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\cardview\cardview.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\cardview\cardview.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\cardview\cardview.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\demo.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\demo.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\demo.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\dialog\dialog.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\dialog\dialog.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\dialog\dialog.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\formvalidator\formvalidator.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\formvalidator\formvalidator.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\formvalidator\formvalidator.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\form\form.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\form\form.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\form\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\getpage\getpage.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\getpage\getpage.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\getpage\getpage.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\grid\grid.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\grid\grid.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\grid\grid.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\iconlist2\iconlist2.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\iconlist2\iconlist2.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\iconlist2\iconlist2.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\iconlist\iconlist.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\iconlist\iconlist.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\iconlist\iconlist.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\icon\icon.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\icon\icon.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\icon\icon.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\layer\layer.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\layer\layer.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\layer\layer.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listbadge\listbadge.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listbadge\listbadge.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listbadge\listbadge.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listmedia\listmedia.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listmedia\listmedia.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listmedia\listmedia.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listmulti\listmulti.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listmulti\listmulti.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listmulti\listmulti.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listswipe\listswipe.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listswipe\listswipe.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\listswipe\listswipe.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\list\list.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\list\list.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\list\list.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\loaddata\loaddata.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\loaddata\loaddata.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\loaddata\loaddata.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\login\login.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\login\login.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\login\login.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\my\my.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\my\my.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\my\my.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\page\cpage\cpage.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\page\cpage\cpage.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\page\cpage\cpage.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\page\page.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\page\page.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\page\page.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pictureupload\pictureupload.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pictureupload\pictureupload.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pictureupload\pictureupload.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\picture\picture.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\picture\picture.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\picture\picture.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\progressbar\progressbar.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\progressbar\progressbar.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\progressbar\progressbar.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh2\pulltorefresh2.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh2\pulltorefresh2.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh2\pulltorefresh2.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh\pulltorefresh.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh\pulltorefresh.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh\pulltorefresh.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\scan\scan.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\scan\scan.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\scan\scan.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\timeline\timeline.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\timeline\timeline.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\timeline\timeline.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\toptab\toptab.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\toptab\toptab.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\toptab\toptab.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\webstorage\webstorage.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\webstorage\webstorage.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\demo\webstorage\webstorage.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\describe\describe.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\describe\describe.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\describe\describe.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\login\login.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\login\login.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\login\login.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\company\company.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\company\company.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\company\company.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\department\department.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\department\department.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\department\department.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\layer\layer.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\layer\layer.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\layer\layer.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\user\user.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\user\user.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\lrselect\user\user.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\message\message.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\message\message.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\message\message.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\aboutadms\aboutadms.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\aboutadms\aboutadms.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\aboutadms\aboutadms.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\aboutlearun\aboutlearun.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\aboutlearun\aboutlearun.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\aboutlearun\aboutlearun.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\contactInfo\contactInfo.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\contactInfo\contactInfo.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\contactInfo\contactInfo.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\modifypassword\modifypassword.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\modifypassword\modifypassword.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\modifypassword\modifypassword.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\my.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\my.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\my.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\mycode\mycode.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\mycode\mycode.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\mycode\mycode.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\userInfo\userInfo.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\userInfo\userInfo.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\my\userInfo\userInfo.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\newpage\newpage.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\newpage\newpage.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\newpage\newpage.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\againcreateflow\againcreateflow.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\againcreateflow\againcreateflow.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\againcreateflow\againcreateflow.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\audit.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\audit.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\audit.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\sign\sign.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\sign\sign.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\sign\sign.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\verify\verify.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\verify\verify.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\verify\verify.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidaudit\chlidaudit.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidaudit\chlidaudit.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidaudit\chlidaudit.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidlook\chlidlook.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidlook\chlidlook.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidlook\chlidlook.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\createflow.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\createflow.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\createflow.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\form\form.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\form\form.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\form\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\draft.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\draft.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\draft.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\form\form.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\form\form.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\form\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\myflow\myflow.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\myflow\myflow.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\myflow\myflow.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\myprocessInfo\myprocessInfo.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\myprocessInfo\myprocessInfo.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\myprocessInfo\myprocessInfo.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\processInfo\processInfo.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\processInfo\processInfo.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\processInfo\processInfo.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\refer\refer.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\refer\refer.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\refer\refer.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\releasetask\releasetask.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\releasetask\releasetask.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\releasetask\releasetask.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\signAudit.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\signAudit.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\signAudit.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\sign\sign.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\sign\sign.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\sign\sign.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\verify\verify.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\verify\verify.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\verify\verify.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\search\search.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\search\search.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\search\search.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\againbootstraper.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\againbootstraper.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\againbootstraper.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\form\form.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\form\form.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\form\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\audit.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\audit.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\audit.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\sign\sign.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\sign\sign.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\sign\sign.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\verify\verify.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\verify\verify.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\audit\verify\verify.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\bootstraper.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\bootstraper.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\bootstraper.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\form\form.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\form\form.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\form\form.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\mytask\mytask.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\mytask\mytask.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\mytask\mytask.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\processInfo\processInfo.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\processInfo\processInfo.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\processInfo\processInfo.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\releasetask\releasetask.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\releasetask\releasetask.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workflow\releasetask\releasetask.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\listdetaile\listdetaile.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\listdetaile\listdetaile.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\listdetaile\listdetaile.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\edit\edit.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\edit\edit.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\edit\edit.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\modulelist.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\modulelist.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\modulelist.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\search\search.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\search\search.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\search\search.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\workspace.css" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\workspace.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\pages\workspace\workspace.js" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\puls\barcode_scan.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\puls\maps_map.html" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\puls\maps_map_sub.html" />
+    <Content Include="WebSite\unpackage\res\icons\120x120.png" />
+    <Content Include="WebSite\unpackage\res\icons\144x144.png" />
+    <Content Include="WebSite\unpackage\res\icons\152x152.png" />
+    <Content Include="WebSite\unpackage\res\icons\167x167.png" />
+    <Content Include="WebSite\unpackage\res\icons\180x180.png" />
+    <Content Include="WebSite\unpackage\res\icons\192x192.png" />
+    <Content Include="WebSite\unpackage\res\icons\20x20.png" />
+    <Content Include="WebSite\unpackage\res\icons\29x29.png" />
+    <Content Include="WebSite\unpackage\res\icons\40x40.png" />
+    <Content Include="WebSite\unpackage\res\icons\48x48.png" />
+    <Content Include="WebSite\unpackage\res\icons\58x58.png" />
+    <Content Include="WebSite\unpackage\res\icons\60x60.png" />
+    <Content Include="WebSite\unpackage\res\icons\72x72.png" />
+    <Content Include="WebSite\unpackage\res\icons\76x76.png" />
+    <Content Include="WebSite\unpackage\res\icons\80x80.png" />
+    <Content Include="WebSite\unpackage\res\icons\87x87.png" />
+    <Content Include="WebSite\unpackage\res\icons\96x96.png" />
+    <Content Include="WebSite\uploadimg.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BLL\BaseService.cs" />
+    <Compile Include="BLL\DepartmentService.cs" />
+    <Compile Include="BLL\InterviewService.cs" />
+    <Compile Include="BLL\LoginService.cs" />
+    <Compile Include="BLL\NodeService.cs" />
+    <Compile Include="BLL\RegisteredService.cs" />
+    <Compile Include="BLL\UserService.cs" />
+    <Compile Include="BLL\WrittenExaminationService.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\InterviewController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NodeController.cs" />
+    <Compile Include="Controllers\RegisteredController.cs" />
+    <Compile Include="Controllers\SendReportController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WrittenExaminationController.cs" />
+    <Compile Include="DataBase\Hy_Recruit_AgeLimit.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_Blacklist.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_Candidates.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_CardInfo.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_ContractTemplateManagement.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_InfoTips.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_Interview.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_InterviewQuestionBank.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_MainProcess.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_ProcessOperation.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_ReportNodeApproval.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_ReportNotice.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_SubProcess.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_TheEmployeeHandbook.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_TheTrainingContent.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_WrittenExamination.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_WrittenExaminationQuestionBank.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_Recruit_WrittenExaminationQuestions.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hy_SMS.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_company.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_department.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_img.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_log.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_post.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_role.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_user.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_userrelation.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\UserModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\UserModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\UserModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiModel.cs" />
+    <Compile Include="Models\InterviewModele.cs" />
+    <Compile Include="Models\IsDoptModele.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PersonInfoPartDTO.cs" />
+    <Compile Include="Models\RegisteredViewModel.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\RevisePasswordModel.cs" />
+    <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserViewModele.cs" />
+    <Compile Include="Models\VCodeModel.cs" />
+    <Compile Include="Models\WrittenExaminationQuestionsModel.cs" />
+    <Compile Include="Models\WrittenExaminationResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataBase\UserModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataBase\UserModel.edmx.diagram">
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="register\font\iconfont.eot" />
+    <Content Include="register\font\iconfont.ttf" />
+    <Content Include="register\font\iconfont.woff" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="WebSite\font\iconfont.eot" />
+    <Content Include="WebSite\font\iconfont.ttf" />
+    <Content Include="WebSite\font\iconfont.woff" />
+    <Content Include="WebSite\manifest.json" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\font\iconfont.eot" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\font\iconfont.ttf" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\font\iconfont.woff" />
+    <Content Include="WebSite\unpackage\resources\H529E6E2B\www\manifest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="register\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Learun.Application.Organization\Learun.Application.Organization.csproj">
+      <Project>{E9877A25-801B-4605-AD35-E6306916513C}</Project>
+      <Name>Learun.Application.Organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Learun.Framework.Module\Learun.Application.Module\Learun.Application.TwoDevelopment\Learun.Application.TwoDevelopment.csproj">
+      <Project>{56F9A112-FD96-4809-98F4-0D7C5DE0711B}</Project>
+      <Name>Learun.Application.TwoDevelopment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Learun.Framework.Module\Learun.Util\Learun.Util.Operat\Learun.Util.Operat.csproj">
+      <Project>{AD556B7A-E0D1-41BD-9D5B-18F8502E9F33}</Project>
+      <Name>Learun.Util.Operat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Learun.Framework.Module\Learun.Util\Learun.Util\Learun.Util.csproj">
+      <Project>{CF8AE293-88AB-436C-9720-A8386BA5D7B7}</Project>
+      <Name>Learun.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61805</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44348/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

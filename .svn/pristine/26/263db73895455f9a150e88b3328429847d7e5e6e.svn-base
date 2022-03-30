@@ -1,0 +1,332 @@
+﻿using Learun.Util;
+using System.Data;
+using Learun.Application.TwoDevelopment.HR_Code;
+using System.Web.Mvc;
+using System.Collections.Generic;
+using Learun.Application.TwoDevelopment.HR_Code.MonthlySettlements;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using System.Configuration;
+using NPOI.SS.UserModel;
+using System;
+using System.IO;
+using NPOI.XSSF.UserModel;
+using NPOI.HSSF.UserModel;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Text;
+using System.Data.SqlClient;
+using Learun.Application.Base.SystemModule;
+using Learun.DataBase;
+using Learun.DataBase.Repository;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Linq;
+using System.Dynamic;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel;
+using NPOI.SS.Formula.Functions;
+
+namespace Learun.Application.Web.Areas.HR_Code.Controllers
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-06-03 10:51
+    /// 描 述：最终工资结算展示
+    /// </summary>
+    public class SalaryGenerationController : MvcControllerBase
+    {
+        private SalaryGenerationIBLL salaryGenerationIBLL = new SalaryGenerationBLL();
+        /// <summary>
+        /// 数据库操作接口
+        /// </summary>
+        public IDatabase db;
+
+        #region 视图功能
+
+        /// <summary>
+        /// 主页面
+        /// <summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Index()
+        {
+             return View();
+        }
+        /// <summary>
+        /// 表单页
+        /// <summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Form()
+        {
+             return View();
+        }
+        #endregion
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        [HttpGet]
+        [AjaxOnly]
+        public ActionResult GetPageList(string pagination, string queryJson)
+        {
+            Pagination paginationobj = pagination.ToObject<Pagination>();
+            var data = salaryGenerationIBLL.GetSalaryGenerationEntity(paginationobj, queryJson);
+            var jsonData = new
+            {
+                rows = data,
+                total = paginationobj.total,
+                page = paginationobj.page,
+                records = paginationobj.records
+            };
+            return Success(jsonData);
+        }
+        /// <summary>
+        /// 获取表单数据
+        /// <summary>
+        /// <returns></returns>
+        [HttpGet]
+        [AjaxOnly]
+        public ActionResult GetFormData(string keyValue)
+        {
+            var Hy_hr_SalaryGenerationData = salaryGenerationIBLL.GetHy_hr_SalaryGenerationEntity( keyValue );
+            var jsonData = new {
+                Hy_hr_SalaryGeneration = Hy_hr_SalaryGenerationData,
+            };
+            return Success(jsonData);
+        }
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        [HttpPost]
+        [AjaxOnly]
+        public ActionResult DeleteForm(string keyValue)
+        {
+            salaryGenerationIBLL.DeleteEntity(keyValue);
+            return Success("删除成功！");
+        }
+
+        [HttpPost]
+        [AjaxOnly]
+        public ActionResult CalculateMonthlySettlement()
+        {
+            MonthlySettlementsIBLL monthlySettlementsIBLL = new MonthlySettlementsIBLLImpl();
+            ReturnCommon rs =  monthlySettlementsIBLL.monthlyCalculation("202108");
+            if (rs.Status)
+            {
+                return Success("计算成功！");
+            }
+            else
+            {
+                return Fail(rs.Message + "计算失败！");
+            }
+        }
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AjaxOnly]
+        public ActionResult SaveForm(string keyValue, string strEntity)
+        {
+            Hy_hr_SalaryGenerationEntity entity = strEntity.ToObject<Hy_hr_SalaryGenerationEntity>();
+            salaryGenerationIBLL.SaveEntity(keyValue,entity);
+            if (string.IsNullOrEmpty(keyValue))
+            {
+            }
+            return Success("保存成功！");
+        }
+
+        [HttpPost]
+        [AjaxOnly]
+        public ActionResult Excelreport(DataTable data , string sheetName, bool isColumnWritten)
+        {
+            IRepository db = new RepositoryFactory().BaseRepository().BeginTrans();
+
+            DataTable dt = new DataTable();
+            string name = "月工资结算";
+            dt.Columns.Add("序号");//序号
+            dt.Columns.Add("月份");
+            dt.Columns.Add("类别");
+            dt.Columns.Add("岗级");
+            dt.Columns.Add("员工编号");
+            dt.Columns.Add("姓名");
+            dt.Columns.Add("部门");
+            dt.Columns.Add("岗位");
+            dt.Columns.Add("入职时间");
+            dt.Columns.Add("员工状态");
+            dt.Columns.Add("离职时间");
+            dt.Columns.Add("工资标准");
+            dt.Columns.Add("基本工资");
+            dt.Columns.Add("绩效工资");
+            dt.Columns.Add("技能工资");
+            dt.Columns.Add("住房补贴");
+            dt.Columns.Add("交通补贴");
+            dt.Columns.Add("值班补贴");
+            dt.Columns.Add("全勤奖（应发）");
+            dt.Columns.Add("缺勤扣款");
+            dt.Columns.Add("奖惩补贴");
+            dt.Columns.Add("法定节假日加班工资");
+            dt.Columns.Add("通讯补贴");
+            dt.Columns.Add("工龄工资（倒班）");
+            dt.Columns.Add("延时工资（倒班）");
+            dt.Columns.Add("夜班津贴（倒班）");
+            dt.Columns.Add("应发工资");
+            dt.Columns.Add("社会保险");
+            dt.Columns.Add("住房公积金");
+            dt.Columns.Add("个税缴纳");
+            dt.Columns.Add("房费");
+            dt.Columns.Add("电费");
+            dt.Columns.Add("党费");
+            dt.Columns.Add("财务扣款");
+            dt.Columns.Add("实发工资");
+            dt.Columns.Add("备注");
+
+
+            string date = DateTime.Now.ToString("yyyyMM");
+            string strSql = "select s.F_WagesYearMonth as 月份,u.F_WorkingSystem as 类别,u.F_SalaryMethod as 岗级,u.F_EnCode as 员工编号,u.F_RealName as 姓名," +
+            "de.F_FullName AS  部门,p.F_Name AS 岗位,u.F_Entrydate as 入职时间,u.F_DepartureDate as 离职时间,f.f_ps15 as 工资标准,f.f_ps04 as 基本工资," +
+            "f.f_ps14 as 绩效工资,f.f_ps05 as 技能工资,f.f_ps09 as 住房补贴,f.f_ps08 as 交通补贴,f.f_ps10 as 值班补贴,"+
+            "s.F_TotalManagementSystem as 全勤奖应发,s.F_AbsenceFromDuty as 缺勤扣款,s.F_RewardPunishmentSubsidy as 奖惩补贴," +
+            "s.F_OvertimePay as 法定节假日加班工资,s.F_WagesPayable as 应发工资, d.F_SocialInsurance as 社会保险," +
+            "d.F_HousingAccumulationFund as 住房公积金,s.F_PersonalIncomeTax as 个税缴纳,s.F_RoomRate as 房费,"+
+            "s.F_ElectricityFees as 电费,s.F_PartyMembershipDues as 党费,s.F_FinancialDeduction as 财务扣款,s.F_NetSalary as 实发工资,s.F_Description as 备注 " +
+            " from  Hy_hr_SalaryGeneration as s,lr_base_user as u ,Hr_personalStandards_file as f,Hy_hr_FiveInsurancesOneFund as d,lr_base_department as de,lr_base_post as p " +
+            " where s.F_UserId=u.F_UserId and s.F_UserId=f.f_ps02 and s.F_UserId=d.F_UserId and u.F_SecondaryOrganization=de.F_DepartmentId and (u.F_TertiaryOrganization=p.F_DepartmentId or u.F_FourLevelOrganization=p.F_DepartmentId)";
+
+             data= db.FindTable(strSql);
+
+            if (data?.Rows.Count > 0)
+            {
+                int idx = 1;
+                foreach (DataRow dr in data.Rows)
+                {
+                    DataRow row = dt.NewRow();
+                    row[0] = idx.ToString();
+                    row[1] = dr["月份"].ToString();
+                    row[2] = dr["类别"].ToString();
+                    row[3] = dr["岗级"].ToString();
+                    row[4] = dr["员工编号"].ToString();
+                    row[5] = dr["姓名"].ToString();
+                    row[6] = dr["部门"].ToString();
+                    row[7] = dr["岗位"].ToString();
+                    row[8] = dr["入职时间"].ToString();
+                    row[9] = "";
+                    row[10] = dr["离职时间"].ToString();
+                    row[11] = dr["工资标准"].ToString();
+                    row[12] = dr["基本工资"].ToString();
+                    row[13] = dr["绩效工资"].ToString();
+                    row[14] = dr["技能工资"].ToString();
+                    row[15] = dr["住房补贴"].ToString();
+                    row[16] = dr["交通补贴"].ToString();
+                    row[17] = dr["值班补贴"].ToString();
+                    row[18] = dr["全勤奖应发"].ToString();
+                    row[19] = dr["缺勤扣款"].ToString();
+                    row[20] = dr["奖惩补贴"].ToString();
+                    row[21] = dr["法定节假日加班工资"].ToString();
+                    row[22] = "0";
+                    row[23] = "0";
+                    row[24] = "0";
+                    row[25] = "0";
+                    row[26] = dr["应发工资"].ToString();
+                    row[27] = dr["社会保险"].ToString();
+                    row[28] = dr["住房公积金"].ToString();
+                    row[29] = dr["个税缴纳"].ToString();
+                    row[30] = dr["房费"].ToString();
+                    row[31] = dr["电费"].ToString();
+                    row[32] = dr["党费"].ToString();
+                    row[33] = dr["财务扣款"].ToString();
+                    row[34] = dr["实发工资"].ToString();
+                    row[35] = dr["备注"].ToString();
+                    dt.Rows.Add(row);
+                    }
+                   
+                    idx++;
+                }
+            DTableToExcel(dt, name, true);
+            if (isColumnWritten==true)
+            {
+                return Success("导出成功！");
+            }
+            else
+            {
+                return Success("导出失败！");
+            }
+        }
+
+        private static bool DTableToExcel(DataTable data, string sheetName, bool isColumnWritten)
+        {
+            int i = 0;
+            int j = 0;
+            int count = 0;
+            string DefaultPath = "D:/华羿/HY_Project/Learun.Application.Web/Files/" /*ConfigurationManager.AppSettings["CommonExcelPath"]*/;
+            IWorkbook workbook = null;//操作Excel2007的版本，扩展名是.xlsx
+            ISheet sheet = null;
+            string fileName = "月工资结算.xlsx";
+            string Path = DefaultPath + DateTime.Now.ToString("yyyyMM") + fileName;//文件路径
+            FileStream fs = new FileStream(Path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            if (fileName.IndexOf(".xlsx") > 0) // 2007版本
+                workbook = new XSSFWorkbook();
+            else if (fileName.IndexOf(".xls") > 0) // 2003版本
+                workbook = new HSSFWorkbook();
+            try
+            {
+                if (workbook != null)
+                {
+                    sheet = workbook.CreateSheet(sheetName);
+                }
+                else
+                {
+                    return false;
+                }
+                if (isColumnWritten == true) //写入DataTable的列名
+                {
+                    IRow row = sheet.CreateRow(0);
+                    for (j = 0; j < data.Columns.Count; ++j)
+                    {
+                        row.CreateCell(j).SetCellValue(data.Columns[j].ColumnName);
+                    }
+                    count = 1;
+                }
+                else
+                {
+                    count = 0;
+                }
+                for (i = 0; i < data.Rows.Count; ++i)
+                {
+                    IRow row = sheet.CreateRow(count);
+                    for (j = 0; j < data.Columns.Count; ++j)
+
+                    {
+                        row.CreateCell(j).SetCellValue(data.Rows[i][j].ToString());
+                    }
+                    ++count;
+                }
+                workbook.Write(fs); //写入到excel
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+                return false;
+            }
+        }
+
+    }
+        #endregion
+
+
+}

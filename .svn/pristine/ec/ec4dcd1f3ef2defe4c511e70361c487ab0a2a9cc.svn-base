@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9089f8ff2ca7415ebbc756ca5750d68a" Name="Diagram1" ZoomLevel="76">
+        <EntityTypeShape EntityType="HYDatabaseModel.lr_base_company" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HYDatabaseModel.lr_base_department" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HYDatabaseModel.lr_base_img" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HYDatabaseModel.lr_base_log" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HYDatabaseModel.lr_base_post" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HYDatabaseModel.lr_base_role" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_SMS" Width="1.5" PointX="14.375" PointY="15.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_AgeLimit" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_Blacklist" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_CardInfo" Width="1.5" PointX="11.75" PointY="13.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_ContractTemplateManagement" Width="1.5" PointX="13.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_InfoTips" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_Interview" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_InterviewQuestionBank" Width="1.5" PointX="4.75" PointY="15.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_MainProcess" Width="1.5" PointX="11.75" PointY="1.125" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_ProcessOperation" Width="1.5" PointX="14" PointY="7.25" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_ReportNodeApproval" Width="1.5" PointX="15.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_ReportNotice" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_SubProcess" Width="1.5" PointX="14" PointY="1" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_TheEmployeeHandbook" Width="1.5" PointX="16.75" PointY="5.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_TheTrainingContent" Width="1.5" PointX="16.75" PointY="15.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_WrittenExamination" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_WrittenExaminationQuestionBank" Width="1.5" PointX="17.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_WrittenExaminationQuestions" Width="1.5" PointX="18.75" PointY="0.75" />
+        <AssociationConnector Association="HYDatabaseModel.FK_Hy_Platform_Blacklist_Hy_Platform_Blacklist" />
+        <AssociationConnector Association="HYDatabaseModel.FK_Hy_Recruit_SubProcess_Hy_Recruit_MainProcess" />
+        <AssociationConnector Association="HYDatabaseModel.FK_Hy_Recruit_WrittenExamination_Hy_Recruit_WrittenExamination" />
+        <EntityTypeShape EntityType="HYDatabaseModel.lr_base_user" Width="1.5" PointX="7.375" PointY="10.75" />
+        <EntityTypeShape EntityType="HYDatabaseModel.Hy_Recruit_Candidates" Width="1.5" PointX="11.75" PointY="20.125" />
+        <AssociationConnector Association="HYDatabaseModel.FK_Hy_Recruit_ProcessOperation_Hy_Recruit_Candidates" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

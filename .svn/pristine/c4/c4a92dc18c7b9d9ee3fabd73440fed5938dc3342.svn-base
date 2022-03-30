@@ -1,0 +1,922 @@
+﻿using Learun.Application.TwoDevelopment.HR_Code.FSConsumptionRecord;
+using Learun.Application.TwoDevelopment.HR_Code.MonthlyAttendanceDataAutoClass;
+using Learun.Application.TwoDevelopment.HY_Logistics;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.HR_Code.NewVegetablePrices
+{
+    public class VegetablePricesService : RepositoryFactory
+    {
+        private FSConsumptionRecordIBLL fsConsumptionRecordBLL = new FSConsumptionRecordBLL();
+        private MealSubsidyRulesClassIBLL msrIBLL = new MealSubsidyRulesClassBLL();
+        private FSVegetablePricesCalculationIBLL fsvpcIBLL = new FSVegetablePricesCalculationBLL();
+        private MonthlyAttendanceDataAutoClassIBLL mdIBLL = new MonthlyAttendanceDataAutoClassBLL();
+        private AttendanceMaintenanceClassIBLL amIBLL = new AttendanceMaintenanceClassBLL();
+        private FSVegetablePriceSubsidyMonthlyDetailsIBLL fsConsumptionRecordDetailsBLL = new FSVegetablePriceSubsidyMonthlyDetailsBLL();
+        private Hr_MealAllowanceStandardEntity breakfastEntity = null;
+        private Hr_MealAllowanceStandardEntity lunchEntity = null;
+        private Hr_MealAllowanceStandardEntity dinnerEntity = null;
+        private Hr_MealAllowanceStandardEntity nightEntity = null;
+        public VegetablePricesService() {
+             breakfastEntity = msrIBLL.GetVgOneMealAllowanceStandardEntity("早餐");
+             lunchEntity = msrIBLL.GetVgOneMealAllowanceStandardEntity("午餐");
+             dinnerEntity = msrIBLL.GetVgOneMealAllowanceStandardEntity("晚餐");
+             nightEntity = msrIBLL.GetVgOneMealAllowanceStandardEntity("夜宵");
+        }
+    //消费记录
+
+
+        public ReturnCommon CalculateVegetablePrice()
+        {
+            try
+            {
+
+                ReturnCommon rc = new ReturnCommon();
+                rc.Status = true;
+                /**
+                 * 业务逻辑代码
+                 */
+                //1.生成人员信息
+
+                string year = DateTime.Now.Year + "";
+                string month = DateTime.Now.Month + "";
+                if (DateTime.Now.Month == 1)
+                {
+                    year = DateTime.Now.Year - 1 +"";
+                    month = "12";
+                }
+                else
+                {
+                    month = DateTime.Now.Month -1 + "";
+                }
+                //存放数据 
+                List<FS_VegetablePricesEntity> FS_VegetablePricesList = new List<FS_VegetablePricesEntity>();
+                List<FS_VegetablePricesEntity> FS_VegetablePricesValueList = new List<FS_VegetablePricesEntity>();
+
+                IEnumerable<AttendanceUserDTO> AttendanceUserDTOList =  mdIBLL.GetInitPageList(year,month);
+
+                IEnumerable<FS_VegetablePricesEntity> FS_VegetablePriceList = fsvpcIBLL.GetList(year, month);
+                if (AttendanceUserDTOList.Count() == FS_VegetablePriceList.Count())
+                {
+                    //var data = FS_VegetablePriceList.Where(e => e.F_UserId == "HY000663").ToList();
+                    var data = FS_VegetablePriceList.ToList();
+                    //foreach (var  entity in FS_VegetablePriceList)
+                   // int i = 0;
+                    foreach (var entity in data)
+                    {
+                        //初始化
+                        entity.F_MonBreakfastTogether = 0;
+                        entity.F_MonDinnerTogether = 0;
+                        entity.F_MonLunchTogether = 0;
+                        entity.F_MonSupperTogether = 0;
+                        entity.F_CountMoney = 0;
+
+                        FS_VegetablePricesEntity entityValue = getSubsidiesInformation(entity);
+                        //int count1 = this.BaseRepository().Update(entityValue);
+                        FS_VegetablePricesValueList.Add(entityValue);
+       
+                    }
+                    int count1 = this.BaseRepository().Update(FS_VegetablePricesValueList);
+                    if (count1 > 0)
+                    {
+                        rc.Status = true;
+                        rc.Message = "菜价补贴计算成功!!!";
+                    }
+                    else
+                    {
+                        rc.Status = false;
+                        rc.Message = "菜价补贴计算失败!!!"  ;
+                    }
+
+                }
+                else
+                {
+                    List<string> bigDataTemp = new List<string>();
+                    if (AttendanceUserDTOList.Count() > FS_VegetablePriceList.Count())
+                    {
+                        var bigDataList  = AttendanceUserDTOList.ToList();
+                        var litleDataList = FS_VegetablePriceList.ToList();
+                        foreach (var  data  in bigDataList)
+                        {
+                            bigDataTemp.Add(data.user_code);
+                        }
+                        foreach (var data in litleDataList)
+                        {
+                            bigDataTemp.Remove(data.F_UserId);
+                        }
+                    }
+                    else
+                    {
+                        var bigDataList = FS_VegetablePriceList.ToList();
+                        var litleDataList = AttendanceUserDTOList.ToList(); 
+                        foreach (var data in bigDataList)
+                        {
+                            bigDataTemp.Add(data.F_UserId);
+                        }
+                        foreach (var data in litleDataList)
+                        {
+                            bigDataTemp.Remove(data.user_code);
+                        }
+                    }
+                    var dataList = AttendanceUserDTOList.Where(e => bigDataTemp.Contains(e.user_code));
+                    foreach (var AttendanceUser in AttendanceUserDTOList)
+                    {
+                        FS_VegetablePricesEntity fsEnrity = new FS_VegetablePricesEntity();
+                        fsEnrity = new FS_VegetablePricesEntity();
+                        fsEnrity.Create();
+                        fsEnrity.F_UserId = AttendanceUser.user_code;
+                        fsEnrity.F_UserName = AttendanceUser.user_name;
+                        fsEnrity.F_Year = AttendanceUser.yearno;
+                        fsEnrity.F_Month = AttendanceUser.monthno;
+                        fsEnrity.F_DeptId = AttendanceUser.deptid;
+                        fsEnrity.F_DeptName = AttendanceUser.deptname;
+                        fsEnrity.F_CostCenterno = AttendanceUser.center_cost_code;
+                        fsEnrity.F_CostCenterName = AttendanceUser.center_cost;
+                        fsEnrity.F_MonBreakfastTogether = 0;
+                        fsEnrity.F_MonDinnerTogether = 0;
+                        fsEnrity.F_MonLunchTogether = 0;
+                        fsEnrity.F_MonSupperTogether = 0;
+                        fsEnrity.F_CountMoney = 0;
+                        FS_VegetablePricesList.Add(fsEnrity);
+                    }
+                    this.BaseRepository().Insert(FS_VegetablePricesList);
+                    foreach (var entity in FS_VegetablePricesList)
+                    {
+                        //2查找人员本人当前的考勤信息
+                        FS_VegetablePricesEntity entityValue = getSubsidiesInformation(entity);
+                        FS_VegetablePricesValueList.Add(entityValue);
+                      
+                    }
+                    int count1 = this.BaseRepository().Update(FS_VegetablePricesValueList);
+                    if (count1 > 0)
+                    {
+
+                    }
+                    else
+                    {
+                        rc.Status = false;
+                        rc.Message = "菜价补贴计算失败!!!" ;
+                    }
+
+                }
+                return rc;
+            }
+             catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        public FS_VegetablePricesEntity getSubsidiesInformation(FS_VegetablePricesEntity entity)
+        {
+       
+            try
+            {
+                FS_VegetablePricesEntity entityDTO = new FS_VegetablePricesEntity();
+                entityDTO = entity;
+
+                //查询签卡记录
+                IEnumerable<QkAndShiftDTO> qkAndShiftList = mdIBLL.GetQkAndShiftPageList(entity.F_Year, entity.F_Month, entity.F_UserId).Where(e =>e.countTime > 0);
+
+                //1.根据班次查询对应班次时长如果大于等于班次时长补贴金额，否则不补贴金额
+                var qkAndShiftLists = qkAndShiftList.ToList().Where(e =>e.countTime > 0);
+                foreach (var qkAndShiftEntity in qkAndShiftLists)
+                {
+                    Hr_SHIFTTIMETAB_fileEntity shiftEntity = amIBLL.GetOneSHIFTTIMETAB_fileEntity(qkAndShiftEntity.bc);
+                    if (shiftEntity == null)
+                    {
+                        entityDTO.F_Description = "未在班次基础资料找到该班次,请维护好重新计算";
+                    }
+                    else
+                    {
+                        if (qkAndShiftEntity.countTime - shiftEntity.timelimit >=0)
+                        {
+                         
+
+                            //符合班次时间补贴,寻找当前班次
+                            entityDTO = NumberOfCalculationsVersion(entityDTO, qkAndShiftEntity, shiftEntity);
+                        }
+                        else
+                        {
+                            //缺勤或者旷工不符合不计算
+                            entityDTO.F_Description = "警告"+ qkAndShiftEntity.rq +"考勤缺,请补签卡,确定是否事情";
+                        }
+                    }
+                }
+
+                return entityDTO;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+
+        }
+        
+        
+
+        private FS_VegetablePricesEntity NumberOfCalculations(FS_VegetablePricesEntity entity, QkAndShiftDTO qkAndShiftEntity, Hr_SHIFTTIMETAB_fileEntity shiftEntity)
+        {
+            try
+            {
+
+
+                //长白班或者长夜班
+                if (shiftEntity.timelimit >8)
+                {
+            
+                    if ("夜班".Equals(shiftEntity.shift_type))
+                    {
+                        //补贴四次
+                        //早餐
+                        IEnumerable<FSRecordsOfConsumptionDTO> breakfastDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, breakfastEntity, "1"); ;
+
+                        if (breakfastDTO.Count() == 0)
+                        {
+                            entity.F_MonBreakfastTogether = entity.F_MonBreakfastTogether;
+                            entity.F_CountMoney = entity.F_CountMoney;
+                        }
+                        else
+                        {
+                            entity.F_MonBreakfastTogether += 1;
+                            if (breakfastDTO.ToList()[0].countMoney >= breakfastEntity.mas_money)
+                            {
+                                entity.F_CountMoney += breakfastEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += breakfastDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //午餐
+                        IEnumerable<FSRecordsOfConsumptionDTO> lunchDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, lunchEntity, "2");
+
+                        if (lunchDTO.Count() == 0)
+                        {
+                            entity.F_MonLunchTogether = entity.F_MonLunchTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonLunchTogether += 1;
+                            if (lunchDTO.ToList()[0].countMoney >= lunchEntity.mas_money)
+                            {
+                                entity.F_CountMoney += lunchEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += lunchDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //晚餐 
+                        IEnumerable<FSRecordsOfConsumptionDTO> dinnerDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, dinnerEntity, "3");
+                        if (dinnerDTO.Count() == 0)
+                        {
+                            entity.F_MonDinnerTogether = entity.F_MonDinnerTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonDinnerTogether += 1;
+                            if (dinnerDTO.ToList()[0].countMoney >= dinnerEntity.mas_money)
+                            {
+                                entity.F_CountMoney += dinnerEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += dinnerDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //夜宵
+                        IEnumerable<FSRecordsOfConsumptionDTO> nightDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, nightEntity, "4");
+                        if (nightDTO.Count() == 0)
+                        {
+                            entity.F_MonSupperTogether = entity.F_MonSupperTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonSupperTogether += 1;
+                            if (nightDTO.ToList()[0].countMoney >= nightEntity.mas_money)
+                            {
+                                entity.F_CountMoney += nightEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += nightDTO.ToList()[0].countMoney;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //长白班补贴四次
+                        //补贴四次
+                        //早餐
+                        IEnumerable<FSRecordsOfConsumptionDTO> breakfastDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, breakfastEntity, "1"); ;
+                       
+                        if (breakfastDTO.Count() ==  0)
+                        {
+                            entity.F_MonBreakfastTogether = entity.F_MonBreakfastTogether;
+                            entity.F_CountMoney = entity.F_CountMoney;
+                        }
+                        else
+                        {
+                            entity.F_MonBreakfastTogether += 1;
+                            if (breakfastDTO.ToList()[0].countMoney >= breakfastEntity.mas_money)
+                            {
+                                entity.F_CountMoney += breakfastEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += breakfastDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //午餐
+                        IEnumerable<FSRecordsOfConsumptionDTO> lunchDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, lunchEntity, "2");
+
+                        if (lunchDTO.Count() == 0)
+                        {
+                            entity.F_MonLunchTogether = entity.F_MonLunchTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonLunchTogether += 1;
+                            if (lunchDTO.ToList()[0].countMoney >= lunchEntity.mas_money)
+                            {
+                                entity.F_CountMoney += lunchEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += lunchDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //晚餐 
+                        IEnumerable<FSRecordsOfConsumptionDTO> dinnerDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, dinnerEntity, "3");
+                        if (dinnerDTO.Count() == 0)
+                        {
+                            entity.F_MonDinnerTogether = entity.F_MonDinnerTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonDinnerTogether += 1;
+                            if (dinnerDTO.ToList()[0].countMoney >= dinnerEntity.mas_money)
+                            {
+                                entity.F_CountMoney += dinnerEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += dinnerDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //夜宵
+                        IEnumerable<FSRecordsOfConsumptionDTO> nightDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, nightEntity, "4");
+                        if (nightDTO.Count() == 0)
+                        {
+                            entity.F_MonSupperTogether = entity.F_MonSupperTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonSupperTogether += 1;
+                            if (nightDTO.ToList()[0].countMoney >= nightEntity.mas_money)
+                            {
+                                entity.F_CountMoney += nightEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += nightDTO.ToList()[0].countMoney;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if ("夜班".Equals(shiftEntity.shift_type))
+                    {
+                        //补贴三次
+                        //晚餐 
+                        IEnumerable<FSRecordsOfConsumptionDTO> dinnerDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, dinnerEntity, "3");
+                        if (dinnerDTO.Count() == 0)
+                        {
+                            entity.F_MonDinnerTogether = entity.F_MonDinnerTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonDinnerTogether += 1;
+                            if (dinnerDTO.ToList()[0].countMoney >= dinnerEntity.mas_money)
+                            {
+                                entity.F_CountMoney += dinnerEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += dinnerDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //夜宵
+                        IEnumerable<FSRecordsOfConsumptionDTO> nightDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, nightEntity, "4");
+                        if (nightDTO.Count() == 0)
+                        {
+                            entity.F_MonSupperTogether = entity.F_MonSupperTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonSupperTogether += 1;
+                            if (nightDTO.ToList()[0].countMoney >= nightEntity.mas_money)
+                            {
+                                entity.F_CountMoney += nightEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += nightDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //早餐
+             
+                        IEnumerable<FSRecordsOfConsumptionDTO> breakfastDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, breakfastEntity, "1"); ;
+
+                        if (breakfastDTO.Count() == 0)
+                        {
+                            entity.F_MonBreakfastTogether = entity.F_MonBreakfastTogether;
+                            entity.F_CountMoney = entity.F_CountMoney;
+                        }
+                        else
+                        {
+                            entity.F_MonBreakfastTogether += 1;
+                            if (breakfastDTO.ToList()[0].countMoney >= breakfastEntity.mas_money)
+                            {
+                                entity.F_CountMoney += breakfastEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += breakfastDTO.ToList()[0].countMoney;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //补贴三次
+                        //早餐
+                        IEnumerable<FSRecordsOfConsumptionDTO> breakfastDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, breakfastEntity, "1"); ;
+
+                        if (breakfastDTO.Count() == 0)
+                        {
+                            entity.F_MonBreakfastTogether = entity.F_MonBreakfastTogether;
+                            entity.F_CountMoney = entity.F_CountMoney;
+                        }
+                        else
+                        {
+                            entity.F_MonBreakfastTogether += 1;
+                            if (breakfastDTO.ToList()[0].countMoney >= breakfastEntity.mas_money)
+                            {
+                                entity.F_CountMoney += breakfastEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += breakfastDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //午餐
+                        IEnumerable<FSRecordsOfConsumptionDTO> lunchDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, lunchEntity, "2");
+
+                        if (lunchDTO.Count() == 0)
+                        {
+                            entity.F_MonLunchTogether = entity.F_MonLunchTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonLunchTogether += 1;
+                            if (lunchDTO.ToList()[0].countMoney >= lunchEntity.mas_money)
+                            {
+                                entity.F_CountMoney += lunchEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += lunchDTO.ToList()[0].countMoney;
+                            }
+                        }
+                        //晚餐 
+                        IEnumerable<FSRecordsOfConsumptionDTO> dinnerDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkAndShiftEntity.user_code, qkAndShiftEntity.yearno, qkAndShiftEntity.monthno, qkAndShiftEntity.rq, dinnerEntity, "3");
+                        if (dinnerDTO.Count() == 0)
+                        {
+                            entity.F_MonDinnerTogether = entity.F_MonDinnerTogether;
+                        }
+                        else
+                        {
+                            entity.F_MonDinnerTogether += 1;
+                            if (dinnerDTO.ToList()[0].countMoney >= dinnerEntity.mas_money)
+                            {
+                                entity.F_CountMoney += dinnerEntity.mas_money;
+                            }
+                            else
+                            {
+                                entity.F_CountMoney += dinnerDTO.ToList()[0].countMoney;
+                            }
+                        }
+                    }
+                    //正常白班或者夜班
+                }
+                return entity;
+            }
+             catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ReturnCommon CalculateVegetablePriceDetil()
+        {
+            try
+            {
+                ReturnCommon rc = new ReturnCommon();
+                //查询所用的签卡记录
+                rc.Status = true;
+                /**
+                 * 业务逻辑代码
+                 */
+                //1.生成人员信息
+
+                string year = DateTime.Now.Year + "";
+                string month = DateTime.Now.Month + "";
+                if (DateTime.Now.Month == 1)
+                {
+                    year = DateTime.Now.Year - 1 + "";
+                    month = "12";
+                }
+                else
+                {
+                    month = DateTime.Now.Month - 1 + "";
+                }
+                IEnumerable<QkAndShiftDTO> qkAndShiftList = mdIBLL.GetQkAndShiftPageListDetil(year, month);
+                IEnumerable<FS_VegetablePriceSubsidyMonthlyDetailsEntity> FS_VegetablePriceSubsidyMonthlyDetaiList = fsConsumptionRecordDetailsBLL.GetAllList(year, month);
+                if (qkAndShiftList.Count() == FS_VegetablePriceSubsidyMonthlyDetaiList.Count())
+                {
+                    //更新
+                    var query = from qkAndShift in qkAndShiftList
+                                join fs in FS_VegetablePriceSubsidyMonthlyDetaiList
+                                on qkAndShift.user_code equals fs.F_UserId
+                                where qkAndShift.countTime - fs.F_Time > 0
+                                select qkAndShift;
+                    if(query.Count() > 0)
+                    {
+                        List<FS_VegetablePriceSubsidyMonthlyDetailsEntity>
+                      list = new List<FS_VegetablePriceSubsidyMonthlyDetailsEntity>();
+                        foreach (var qkEntity in qkAndShiftList)
+                        {
+                            FS_VegetablePriceSubsidyMonthlyDetailsEntity entity = new FS_VegetablePriceSubsidyMonthlyDetailsEntity();
+                            entity.F_UserId = qkEntity.user_code;
+                            entity.F_UserName = qkEntity.user_name;
+                            entity.F_Year = qkEntity.yearno;
+                            entity.F_Month = qkEntity.monthno;
+                            entity.F_Qk = Time.ToDate(qkEntity.rq);
+                            entity.F_ShiftType = qkEntity.bc;
+                            entity.F_Time = qkEntity.countTime;
+                            entity.F_Breakfast = 0;
+                            entity.F_Lunch = 0;
+                            entity.F_Dinner = 0;
+                            entity.F_Night = 0;
+                            entity.F_StandardCombined = 0;
+                            entity.Create();
+                            IEnumerable<FSRecordsOfConsumptionDTO> breakfastDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkEntity.user_code, qkEntity.yearno, qkEntity.monthno, qkEntity.rq, breakfastEntity, "1"); ;
+
+                            if (breakfastDTO.Count() == 0)
+                            {
+                                entity.F_Breakfast = entity.F_Breakfast;
+                                entity.F_StandardCombined = entity.F_StandardCombined;
+                            }
+                            else
+                            {
+
+                                if (breakfastDTO.ToList()[0].countMoney >= breakfastEntity.mas_money)
+                                {
+                                    entity.F_Breakfast += breakfastEntity.mas_money;
+                                }
+                            }
+                            //午餐
+                            IEnumerable<FSRecordsOfConsumptionDTO> lunchDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkEntity.user_code, qkEntity.yearno, qkEntity.monthno, qkEntity.rq, lunchEntity, "2");
+
+                            if (lunchDTO.Count() == 0)
+                            {
+                                entity.F_Lunch = entity.F_Lunch;
+                            }
+                            else
+                            {
+                                if (lunchDTO.ToList()[0].countMoney >= lunchEntity.mas_money)
+                                {
+                                    entity.F_Lunch += lunchEntity.mas_money;
+                                }
+                            }
+                            //晚餐 
+                            IEnumerable<FSRecordsOfConsumptionDTO> dinnerDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkEntity.user_code, qkEntity.yearno, qkEntity.monthno, qkEntity.rq, dinnerEntity, "3");
+                            if (dinnerDTO.Count() == 0)
+                            {
+                                entity.F_Dinner = entity.F_Dinner;
+                            }
+                            else
+                            {
+                                if (dinnerDTO.ToList()[0].countMoney >= dinnerEntity.mas_money)
+                                {
+                                    entity.F_Dinner += dinnerEntity.mas_money;
+                                }
+                            }
+                            //夜宵
+                            IEnumerable<FSRecordsOfConsumptionDTO> nightDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkEntity.user_code, qkEntity.yearno, qkEntity.monthno, qkEntity.rq, nightEntity, "4");
+                            if (nightDTO.Count() == 0)
+                            {
+                                entity.F_Night = entity.F_Night;
+                            }
+                            else
+                            {
+                                if (nightDTO.ToList()[0].countMoney >= nightEntity.mas_money)
+                                {
+                                    entity.F_Night += nightEntity.mas_money;
+                                }
+                            }
+                            entity.F_StandardCombined = entity.F_Breakfast + entity.F_Lunch + entity.F_Dinner + entity.F_Night;
+                            list.Add(entity);
+                        }
+                        int count = this.BaseRepository().Insert(list);
+                        if (count > 0)
+                        {
+
+                        }
+                        else
+                        {
+                            rc.Status = false;
+                            rc.Message = "菜价补贴计算失败!!!";
+                        }
+                    }
+                    else
+                    {
+                        rc.Status = true;
+                        rc.Message = "菜价补贴计算成功!!!";
+                    }
+                
+                }
+                else
+                {
+                    if (FS_VegetablePriceSubsidyMonthlyDetaiList.Count() == 0)
+                    {
+                        List<FS_VegetablePriceSubsidyMonthlyDetailsEntity>
+                       list = new List<FS_VegetablePriceSubsidyMonthlyDetailsEntity>();
+                        foreach (var qkEntity in qkAndShiftList)
+                        {
+                            FS_VegetablePriceSubsidyMonthlyDetailsEntity entity = new FS_VegetablePriceSubsidyMonthlyDetailsEntity();
+                            entity.F_UserId = qkEntity.user_code;
+                            entity.F_UserName = qkEntity.user_name;
+                            entity.F_Year = qkEntity.yearno;
+                            entity.F_Month = qkEntity.monthno;
+                            entity.F_Qk = Time.ToDate(qkEntity.rq);
+                            entity.F_ShiftType = qkEntity.bc;
+                            entity.F_Time = qkEntity.countTime;
+                            entity.F_Breakfast = 0;
+                            entity.F_Lunch = 0;
+                            entity.F_Dinner = 0;
+                            entity.F_Night = 0;
+                            entity.F_StandardCombined = 0;
+                            entity.Create();
+                            IEnumerable<FSRecordsOfConsumptionDTO> breakfastDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkEntity.user_code, qkEntity.yearno, qkEntity.monthno, qkEntity.rq, breakfastEntity, "1"); ;
+
+                            if (breakfastDTO.Count() == 0)
+                            {
+                                entity.F_Breakfast = entity.F_Breakfast;
+                                entity.F_StandardCombined = entity.F_StandardCombined;
+                            }
+                            else
+                            {
+ 
+                                if (breakfastDTO.ToList()[0].countMoney >= breakfastEntity.mas_money)
+                                {
+                                    entity.F_Breakfast += breakfastEntity.mas_money;
+                                }
+                                else
+                                {
+                                    entity.F_Lunch = breakfastDTO.ToList()[0].countMoney;
+                                }
+                            }
+                            //午餐
+                            IEnumerable<FSRecordsOfConsumptionDTO> lunchDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkEntity.user_code, qkEntity.yearno, qkEntity.monthno, qkEntity.rq, lunchEntity, "2");
+
+                            if (lunchDTO.Count() == 0)
+                            {
+                                entity.F_Lunch = entity.F_Lunch;
+                            }
+                            else
+                            {
+                                if (lunchDTO.ToList()[0].countMoney >= lunchEntity.mas_money)
+                                {
+                                    entity.F_Lunch += lunchEntity.mas_money;
+                                }
+                                else
+                                {
+                                    entity.F_Lunch = lunchDTO.ToList()[0].countMoney;
+                                }
+                            }
+                            //晚餐 
+                            IEnumerable<FSRecordsOfConsumptionDTO> dinnerDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkEntity.user_code, qkEntity.yearno, qkEntity.monthno, qkEntity.rq, dinnerEntity, "3");
+                            if (dinnerDTO.Count() == 0)
+                            {
+                                entity.F_Dinner = entity.F_Dinner;
+                            }
+                            else
+                            {
+                                if (dinnerDTO.ToList()[0].countMoney >= dinnerEntity.mas_money)
+                                {
+                                    entity.F_Dinner += dinnerEntity.mas_money;
+                                }
+                                else
+                                {
+                                    entity.F_Lunch = dinnerDTO.ToList()[0].countMoney;
+                                }
+                            }
+                            //夜宵
+                            IEnumerable<FSRecordsOfConsumptionDTO> nightDTO = fsConsumptionRecordBLL.GetOneMonthlyconsumptiondataEntity(qkEntity.user_code, qkEntity.yearno, qkEntity.monthno, qkEntity.rq, nightEntity, "4");
+                            if (nightDTO.Count() == 0)
+                            {
+                                entity.F_Night = entity.F_Night;
+                            }
+                            else
+                            {
+                                if (nightDTO.ToList()[0].countMoney >= nightEntity.mas_money)
+                                {
+                                    entity.F_Night += nightEntity.mas_money;
+                                }
+                                else
+                                {
+                                    entity.F_Lunch = nightDTO.ToList()[0].countMoney;
+                                }
+                            }
+                            entity.F_StandardCombined = entity.F_Breakfast + entity.F_Lunch + entity.F_Dinner + entity.F_Night;
+                            list.Add(entity);
+                        }
+                        int count = this.BaseRepository().Insert(list);
+                        if (count > 0)
+                        {
+
+                        }
+                        else
+                        {
+                            rc.Status = false;
+                            rc.Message = "菜价补贴计算失败!!!";
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                  
+                }
+
+
+                return rc;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        private FS_VegetablePricesEntity NumberOfCalculationsVersion(FS_VegetablePricesEntity entity, QkAndShiftDTO qkAndShiftEntity, Hr_SHIFTTIMETAB_fileEntity shiftEntity)
+        {
+            try
+            {
+                string breakfastBegan = breakfastEntity.startime;
+                string breakfastEnd = breakfastEntity.endtime;
+                string LunchBegan = lunchEntity.startime;
+                string LunchEnd = lunchEntity.endtime;
+                string dinnerBegan = dinnerEntity.startime;
+                string dinnerEnd = dinnerEntity.endtime;
+                string nightBegan = nightEntity.startime;
+                string nightEnd = nightEntity.endtime;
+                //长白班或者长夜班
+                //补贴四次
+                //早餐
+                IEnumerable<FSRecordsConsumptionDTO> subsidiesDTO = fsConsumptionRecordBLL.GetMonthlyconsumptiondataList(qkAndShiftEntity.user_code, qkAndShiftEntity.rq, breakfastBegan, breakfastEnd,
+   LunchBegan, LunchEnd, dinnerBegan, dinnerEnd, nightBegan, nightEnd);
+
+                if (subsidiesDTO.Count() == 0)
+                {
+                    entity.F_MonBreakfastTogether = entity.F_MonBreakfastTogether;
+                    entity.F_CountMoney = entity.F_CountMoney;
+                }
+                else
+                {
+                    //早餐
+                    if (subsidiesDTO.ToList()[0].zc == null)
+                    {
+                        subsidiesDTO.ToList()[0].zc = 0;
+                    }
+                    else
+                    {
+                        entity.F_MonBreakfastTogether += 1;
+                        if (subsidiesDTO.ToList()[0].zc >= breakfastEntity.mas_money)
+                        {
+                            entity.F_CountMoney += breakfastEntity.mas_money;
+                        }
+                        else
+                        {
+                            entity.F_CountMoney += subsidiesDTO.ToList()[0].zc;
+                        }
+                    }
+                    //午餐
+
+                    if (subsidiesDTO.ToList()[0].wc == null)
+                    {
+                        subsidiesDTO.ToList()[0].wc = 0;
+                    }
+                    else
+                    {
+                        entity.F_MonLunchTogether += 1;
+                        if (subsidiesDTO.ToList()[0].wc >= lunchEntity.mas_money)
+                        {
+                            entity.F_CountMoney += lunchEntity.mas_money;
+                        }
+                        else
+                        {
+                            entity.F_CountMoney += subsidiesDTO.ToList()[0].wc;
+                        }
+                    }
+
+                    //晚餐
+                    if (subsidiesDTO.ToList()[0].wcc == null)
+                    {
+
+                    }
+                    else
+                    {
+                        entity.F_MonDinnerTogether += 1;
+                        if (subsidiesDTO.ToList()[0].wc >= dinnerEntity.mas_money)
+                        {
+                            entity.F_CountMoney += dinnerEntity.mas_money;
+                        }
+                        else
+                        {
+                            entity.F_CountMoney += subsidiesDTO.ToList()[0].wcc;
+                        }
+                    }
+                    //夜宵
+
+                    if (subsidiesDTO.ToList()[0].yx == null)
+                    {
+
+                    }
+                    else
+                    {
+                        entity.F_MonSupperTogether += 1;
+                        if (subsidiesDTO.ToList()[0].wc >= nightEntity.mas_money)
+                        {
+                            entity.F_CountMoney += nightEntity.mas_money;
+                        }
+                        else
+                        {
+                            entity.F_CountMoney += subsidiesDTO.ToList()[0].yx;
+                        }
+                    }
+                }
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+    }
+}

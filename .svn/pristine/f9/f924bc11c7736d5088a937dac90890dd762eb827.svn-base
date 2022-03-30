@@ -1,0 +1,68 @@
+
+<div style="margin-top:10px;" class="lr-form-container" id="userform">
+    <div class="lr-form-row">
+        <label style="font-family:Arial,SimSun;">应聘者姓名:</label>
+        <div id="F_RealName" name="F_RealName" isvalid="yes"></div>
+    </div>
+    <div class="lr-list" style="margin-top:-4px;">
+        <div class="lr-list-item" style="color:green;text-align:center;font-weight:bold;" id="selectuser">
+            开始面试
+        </div>
+    </div>
+</div>
+<div style="margin-top:10px;font-size:10px;" id="userinfoform">
+    <table style="width: 100%;height: 50%;font-size: 13px;font-family: Arial,SimSun;">
+        <tr style="width: 90%;height: 20px;">
+            <td><label>入职渠道：</label><label id="F_EntryChannel" name="F_EntryChannel"></label></td>
+            <td><label>身份证号：</label><label id="F_IDCard" name="F_IDCard"></label></td>
+        </tr>
+        <tr style="width:90%;height:20px">
+            <td><label>学历：</label><label id="F_Education"></label></td>
+            <td><label>联系方式：</label><label id="F_Mobile"></label></td>
+        </tr>
+        <tr>
+            <td><label>民族：</label><label id="F_Nation"></label></td>
+            <td><label>毕业院校：</label><label id="F_GraduationUniversitie"></label></td>
+        </tr>
+        <tr>
+            <td><label>国籍：</label><label id="F_NationAlity"></label></td>
+            <td><label>所学专业：</label><label id="F_MajorStudied"></label></td>
+        </tr>
+        <tr>
+            <td><label>工作经历一：</label><label id="F_OneWorkexperience"></label></td>
+        </tr>
+        <tr>
+            <td><label>工作经历二：</label><label id="F_TwoWorkexperience"></label></td>
+        </tr>
+    </table>
+</div>
+<!--<div class="lr-list" style="margin-top:15px;">
+    <div class="lr-list-item" style="color:green;text-align:center;" id="saveUser">
+        开始面试
+    </div>
+</div>-->
+<div style="margin-top: 10px;margin-left: -87px;font-family: Arial,SimSun;font-size: 13px;line-height:20px;" 
+     class="lr-form-container" >
+    <div class="lr-form-row" id="questionList" style="font-family: Arial,SimSun;font-size: 13px;">
+    </div>
+</div>
+<div style="margin-top:10px; margin-left:-100px;" class="lr-form-container" id="interuserform">
+    <div class="lr-form-row">
+        <div class="lr-form-row" ">
+            <label style="font-family:Arial,SimSun;">面试结果:</label>
+            <div id="F_InterviewResult" name="F_InterviewResult" isvalid="yes"></div>
+        </div>
+        <div class="lr-form-row">
+            <label style="font-family:Arial,SimSun;">
+            备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注:
+            </label>
+            <textarea id="F_Content" name="F_Content" style="border:#ffffff;"></textarea>
+        </div>
+    </div>
+</div>
+<div class="lr-list" style="margin-top:15px;">
+    <div class="lr-list-item" style="color:red;text-align:center;font-weight:bold;" id="saveInterview">
+        保存
+    </div>
+</div>
+<script src="../WebSite/pages/newcandidates/interview/interview.js"></script>

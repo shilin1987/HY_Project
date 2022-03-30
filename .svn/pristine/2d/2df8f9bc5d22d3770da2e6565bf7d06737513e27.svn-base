@@ -1,0 +1,47 @@
+﻿using Learun.Util;
+using System.Data;
+using System.Collections.Generic;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using Learun.Application.TwoDevelopment.HR_SocialRecruitment;
+using Learun.Application.Organization;
+
+namespace Learun.Application.TwoDevelopment.HR_SocialRecruitment
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-06-28 14:04
+    /// 描 述：岗级工资和基本工资维护
+    /// </summary>
+    public interface SR_RecruitmentIBLL
+    {
+        /// <summary>
+        /// 人员
+        /// <summary>
+        /// <param name="F_EnCode">主表主键单号</param>
+        /// <returns></returns>
+        IEnumerable<UserEntityDTO> GetDepartmentList(string F_EnCode);
+        #region 提交数据
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        ReturnCommon DeleteEntity(string keyValue);
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        ReturnCommon SaveEntity(SR_RecruitmentEntity entity);
+        /// <summary>
+        /// 修改实体数据
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        ReturnCommon UpdateEntity(SR_RecruitmentEntity entity);
+        #endregion
+
+    }
+}

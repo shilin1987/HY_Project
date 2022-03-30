@@ -1,0 +1,15 @@
+﻿(function () {
+
+    var info = learun.storage.get('candidatesresult');//获取应聘者节点结果
+    var page = {
+        isScroll: true,
+        init: function ($page) {
+            //learun.layer.loading(true, "正在查询，请稍后");
+            //获取当前登录者流程节点
+            $("#mynodeid").html(info.info);
+        }
+    };
+
+
+    return page;
+})();

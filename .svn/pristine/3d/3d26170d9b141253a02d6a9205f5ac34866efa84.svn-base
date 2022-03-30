@@ -1,0 +1,7 @@
+<div class="lr-about-page" style="padding-left: 10px; padding-right: 10px; color: #666; font-size: 14px; overflow: auto;">
+    
+    <span style="font-size: large; font-weight: bold;margin-top:50px;" id="mynodeid">
+        您当前在笔试环节，请进行笔试。
+    </span>
+</div>
+<!--<div class="ver">当前版本:v1.0.0</div>-->

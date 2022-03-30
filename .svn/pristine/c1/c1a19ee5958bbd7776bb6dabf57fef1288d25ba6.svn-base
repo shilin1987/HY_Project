@@ -1,0 +1,122 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：超级管理员
+ * 日  期：2021-06-29 16:05
+ * 描  述：考勤工资表达式
+ */
+var acceptClick;
+var keyValue = request('keyValue');
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            $('#computNo').hide();
+            $('.lr-form-wrap').lrscroll();
+            page.bind();
+            page.initData();
+        },
+        bind: function () {
+            $('#parentItem').lrDataSourceSelect({ code: 'IncomePay', value: 'f_itemid', text: 'f_item' });//通过创建字典来改变获取的项目分类
+            $('#F_ShiftType').lrDataItemSelect({ code: 'AttendanceFormulaType' });
+            $('#F_ShiftNo').lrDataSourceSelect({ code: 'FormulaNumber', value: 'f_formulaid', text: 'f_formulacode' });//通过创建字典来改变获取的项目分类
+            // 组合表达式
+            $('#plusitem').on('click', function () {
+
+
+                var val2 = $("#F_ShiftNo div").html();
+              
+                //checkValueCalculated($("#parentItem div").html(), $("#F_ShiftNo div").html());
+                var calculatedVal = $("#calculatedValue").val();
+                if ($("#parentItem div").html() == "==请选择==" && calculatedVal == "" && val2 == "==请选择==") {
+                    return learun.alert.warning('请选择计算项或者计算数值或者计算公式只能选一个');
+                } else if ($("#parentItem div").html() != "==请选择==" && calculatedVal != "" && val2 != "==请选择==") {
+                    return learun.alert.warning('计算项和计算数值和计算公式同时只能填一个');
+                } else if ($("#parentItem div").html() != "==请选择==" && calculatedVal == "" && val2 != "==请选择==") {
+                    return learun.alert.warning('计算项计算公式同时只能填一个');
+                } else if ($("#parentItem div").html() != "==请选择==" && calculatedVal != "" && val2 == "==请选择==") {
+                    return learun.alert.warning('计算项计算值同时只能填一个');
+                } else if ($("#parentItem div").html() == "==请选择==" && calculatedVal != "" && val2 != "==请选择==") {
+                    return learun.alert.warning('计算值计算公式同时只能填一个');
+                }
+                else {
+                    var txtarea = $.trim($("#F_Expression").val());
+                    if (calculatedVal != "") {
+                        txtarea += "@" + calculatedVal + "@"
+                    } else if ($("#parentItem div").html() != "==请选择==") {
+                        txtarea += "@" + $("#parentItem div").html() + "@"
+                    } else if ($("#F_ShiftNo div").html() != "==请选择==") {
+                        txtarea += "@" + $("#F_ShiftNo div").html() + "@"
+                    }
+
+                    //计算公式取消只读
+                    $("#F_Expression").attr('readonly', false);
+                    //表达式赋值
+                    $("#F_Expression").val(txtarea);
+                    //计算公式设置只读
+                    $("#F_Expression").attr('readonly', true);
+                }
+            });
+            // 清空表达式
+            $('#clearformula').on('click', function () {
+                $("#F_Expression").val("");
+            });
+        },
+        initData: function () {
+            if (!!keyValue) {
+                $.lrSetForm(top.$.rootUrl + '/HR_Code/AttendanceSalaryFormula/GetFormData?keyValue=' + keyValue, function (data) {
+                    for (var id in data) {
+                        if (!!data[id].length && data[id].length > 0) {
+                            $('#' + id ).jfGridSet('refreshdata', data[id]);
+                        }
+                        else {
+                            $('[data-table="' + id + '"]').lrSetFormData(data[id]);
+                        }
+                    }
+                });
+            }
+        }
+    };
+    // 保存数据
+    acceptClick = function (callBack) {
+        if (!$('body').lrValidform()) {
+            return false;
+        }
+        var postData = {
+            strEntity: JSON.stringify($('body').lrGetFormData())
+        };
+        $.lrSaveForm(top.$.rootUrl + '/HR_Code/AttendanceSalaryFormula/SaveForm?keyValue=' + keyValue, postData, function (res) {
+            // 保存成功后才回调
+            if (!!callBack) {
+                callBack();
+            }
+        });
+    };
+    page.init();
+}
+
+function addFormula(obj)
+{
+    var txtarea = $.trim($("#F_Expression").val())+$(obj).val();
+
+    //计算公式取消只读
+    $("#F_Expression").attr('readonly', false);
+    //表达式赋值
+    $("#F_Expression").val(txtarea);
+    //计算公式设置只读
+    $("#F_Expression").attr('readonly', true);
+}
+
+$("#F_ShiftType").change(function () {
+    if ($(".lr-select-placeholder").html() == '正常班考勤总公式' || $(".lr-select-placeholder").html() == '倒班考勤总公式') {
+        $('#computNo').show();
+
+    } else {
+        if ($(".lr-select-placeholder").html() == '' || $(".lr-select-placeholder").html() == 'null' || $(".lr-select-placeholder").html() == null) {
+            //初始化啥也不做
+            $('#computNo').show();
+        } else {
+            $('#computNo').show();
+        }
+        //console.log('33333333333333333333333333333333333')
+    }
+});

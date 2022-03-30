@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "最终工资结算展示";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">员工账号<font face="宋体">*</font></div>
+        <div id="F_UserId" isvalid="yes" checkexpession="NotNull" ></div>
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">结算日期<font face="宋体">*</font></div>
+        <input id="F_WagesYearMonth" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">缺勤扣款<font face="宋体">*</font></div>
+        <input id="F_AbsenceFromDuty" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">奖惩补贴<font face="宋体">*</font></div>
+        <input id="F_RewardPunishmentSubsidy" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">五险一金<font face="宋体">*</font></div>
+        <input id="F_FiveInsurancesOneFund" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">房费<font face="宋体">*</font></div>
+        <input id="F_RoomRate" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">加班工资<font face="宋体">*</font></div>
+        <input id="F_OvertimePay" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">全勤奖加回<font face="宋体">*</font></div>
+        <input id="F_TotalManagementSystem" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">应发工资<font face="宋体">*</font></div>
+        <input id="F_WagesPayable" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">个税<font face="宋体">*</font></div>
+        <input id="F_PersonalIncomeTax" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">电费<font face="宋体">*</font></div>
+        <input id="F_ElectricityFees" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">党费<font face="宋体">*</font></div>
+        <input id="F_PartyMembershipDues" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">财务扣款<font face="宋体">*</font></div>
+        <input id="F_FinancialDeduction" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_hr_SalaryGeneration" >
+        <div class="lr-form-item-title">实发工资<font face="宋体">*</font></div>
+        <input id="F_NetSalary" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/SalaryGeneration/Form.js")

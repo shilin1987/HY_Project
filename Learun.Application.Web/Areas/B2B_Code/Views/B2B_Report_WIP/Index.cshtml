@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "WIP产品报表";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="lr-layout "  >
+    <div class="lr-layout-center">
+        <div class="lr-layout-wrap lr-layout-wrap-notitle ">
+            <div class="lr-layout-tool">
+                <div class="lr-layout-tool-left">
+                    <div id="multiple_condition_query">
+                        <div class="lr-query-formcontent">
+                            <div class="col-xs-12 lr-form-item">
+                                <div class="lr-form-item-title">客户代码</div>
+                                <input id="customer" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-12 lr-form-item">
+                                <div class="lr-form-item-title">客户PO</div>
+                                <input id="cust_po" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-12 lr-form-item">
+                                <div class="lr-form-item-title">产品型号</div>
+                                <input id="custpartin" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-12 lr-form-item">
+                                <div class="lr-form-item-title">封装形式</div>
+                                <input id="package_code" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-12 lr-form-item">
+                                <div class="lr-form-item-title">芯片型号</div>
+                                <input id="custdevice" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-12 lr-form-item">
+                                <div class="lr-form-item-title">批号</div>
+                                <input id="waferlotno" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lr-layout-tool-right">
+                    <div class=" btn-group btn-group-sm">
+                        <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+                    </div>
+                    <div class=" btn-group btn-group-sm" learun-authorize="yes">
+                        <a id="lr_print" class="btn btn-default"><i class="fa fa-print"></i>&nbsp;打印</a>                      
+                    </div>
+                </div>
+            </div>
+            <div class="lr-layout-body" id="gridtable"></div>
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/B2B_Code/Views/B2B_Report_WIP/Index.js")

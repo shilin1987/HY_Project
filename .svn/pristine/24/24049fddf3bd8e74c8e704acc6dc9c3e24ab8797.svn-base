@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "考勤工资表达式";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item" data-table="Hy_hr_AttendanceSalaryFormula">
+        <div class="lr-form-item-title">公式编号<font face="宋体">*</font></div>
+        <input id="F_FormulaCode" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item" data-table="Hy_hr_AttendanceSalaryFormula">
+        <div class="lr-form-item-title">公式描述<font face="宋体">*</font></div>
+        <input id="F_FormulaName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" style="padding:0;line-height:38px;text-align:center;font-size:20px;font-weight:bold;color:#333;">
+        <span>计算公式组合</span>
+    </div>
+    <div class="col-xs-6 lr-form-item">
+        <div class="lr-form-item-title">计算公式分类</div>
+        <div id="F_ShiftType" checkexpession="NotNull"></div>
+    </div>
+    <div id="computNo">
+        <div class="col-xs-6 lr-form-item">
+            <div class="lr-form-item-title">公式编号</div>
+            <div id="F_ShiftNo" checkexpession="NotNull"></div>
+        </div>
+    </div>
+    <div class="col-xs-6 lr-form-item">
+        <div class="lr-form-item-title">计算项目</div>
+        <div id="parentItem" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-6 lr-form-item">
+        <div class="lr-form-item-title">计算数值</div>
+        <input id="calculatedValue" type="text" class="form-control" maxlength="10" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">计算公式</div>
+        <div id="formula" checkexpession="NotNull">
+            <table style="width:100%">
+                <tr>
+                    <td width="12%"><input id="plusFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white;" type="button" class="form-control" value="+" /></td>
+                    <td width="12%"><input id="minusFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="-" /></td>
+                    <td width="12%"><input id="multiplicationFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="*" /></td>
+                    <td width="12%"><input id="divisionFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="/" /></td>
+                    <td width="12%"><input id="surplusFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="%" /></td>
+                    <td width="12%"><input id="leftBracketFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="(" /></td>
+                    <td width="12%"><input id="rightBracketFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value=")" /></td>
+                </tr>
+                <tr>
+                    <td width="12%"><input id="maxFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white;" type="button" class="form-control" value=">" /></td>
+                    <td width="12%"><input id="maxequealFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value=">=" /></td>
+                    <td width="12%"><input id="minFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="<" /></td>
+                    <td width="12%"><input id="minequealFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="<=" /></td>
+                    <td width="12%"><input id="noEqealFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="不等于" /></td>
+                    <td width="12%"><input id="ifFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="IF()" /></td>
+                    <td width="12%"><input id="roundFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="ROUND()" /></td>
+                </tr>
+                <tr>
+                    <td width="12%"><input id="dhFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white;" type="button" class="form-control" value="," /></td>
+                    <td width="12%"><input id="equalFormula" onclick="addFormula(this)" style="background-color: #7d99fa; color: white; " type="button" class="form-control" value="==" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">表达式操作</div>
+        <input id="plusitem" style="background-color: #48D4D7; color: white; width: 150px; float: left;" type="button"  value="组合表达式" />
+        <input id="abdicationformula" style="background-color: #808080; color: white;  width: 150px ;" type="button"  value="退位<---" />
+        <input id="clearformula" style="background-color: #808080; color: white;  width: 150px; " type="button" value="清空表达式" /> 
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_AttendanceSalaryFormula">
+        <div class="lr-form-item-title">计算表达式<font face="宋体">*</font></div>
+        <textarea id="F_Expression" class="form-control" style="height:120px;" maxlength="255" isvalid="yes" checkexpession="NotNull"></textarea>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/AttendanceSalaryFormula/Form.js")

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "菜价补贴月数据";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="lr-layout "  >
+    <div class="lr-layout-center">
+        <div class="lr-layout-wrap lr-layout-wrap-notitle ">
+            <div class="lr-layout-tool">
+                <div class="lr-layout-tool-left">
+                    <div class="lr-layout-tool-item">
+                        <div id="multiple_condition_query">
+                            <div class="lr-query-formcontent">
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">员工编号</div>
+                                    <input id="user_code" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">员工姓名</div>
+                                    <input id="user_name" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">部门编号</div>
+                                    <input id="deptid" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">部门名称</div>
+                                    <input id="deptname" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">成本中心编号</div>
+                                    <input id="cost_centerno" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">成本中心名称</div>
+                                    <input id="cost_center" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">年份</div>
+                                    <input id="yearno" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">月份</div>
+                                    <input id="monthno" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lr-layout-tool-right">
+                    <div class=" btn-group btn-group-sm">
+                        <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+                    </div>
+                    <div class=" btn-group btn-group-sm" learun-authorize="yes">
+                        <a id="lr_emport"   class="btn btn-default"><i class="fa fa-plus"></i>&nbsp; 导出</a>
+                    </div>
+                </div>
+            </div>
+            <div class="lr-layout-body" id="gridtable"></div>
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/HrvpsmonthdataTab/Index.js")

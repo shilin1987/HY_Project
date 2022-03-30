@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "薪酬计算财务扣款";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item"  data-table="Hr_FinancialDeductions" >
+        <div class="lr-form-item-title">员工账号</div>
+        <div id="F_UserID"  ></div>
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hr_FinancialDeductions" >
+        <div class="lr-form-item-title">员工姓名<font face="宋体">*</font></div>
+        <input id="F_UserName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hr_FinancialDeductions" >
+        <div class="lr-form-item-title">扣款年月<font face="宋体">*</font></div>
+        <input id="F_MonthFinancial" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hr_FinancialDeductions" >
+        <div class="lr-form-item-title">扣款金额<font face="宋体">*</font></div>
+        <input id="F_DeductionsMoney" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/FinancialDeductionsClass/Form.js")

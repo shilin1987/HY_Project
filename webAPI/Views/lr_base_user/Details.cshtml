@@ -1,0 +1,987 @@
+﻿@model webAPI.DataBase.lr_base_user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lr_base_user</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EnCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EnCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Account)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Secretkey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Secretkey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_RealName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_RealName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_HeadIcon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_HeadIcon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_QuickQuery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_QuickQuery)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SimpleSpelling)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SimpleSpelling)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Telephone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Telephone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_OICQ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_OICQ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_WeChat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_WeChat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_MSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_MSN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_CompanyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_CompanyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_DepartmentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_DepartmentId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SecurityLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SecurityLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_OpenId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_OpenId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Question)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Question)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_AnswerQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_AnswerQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_CheckOnLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_CheckOnLine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_AllowStartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_AllowStartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_AllowEndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_AllowEndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_LockStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_LockStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_LockEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_LockEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SortCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SortCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_DeleteMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_DeleteMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EnabledMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EnabledMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_CreateUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_CreateUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_CreateUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_CreateUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_ModifyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_ModifyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_ModifyUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_ModifyUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_ModifyUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_ModifyUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_IDCard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_IDCard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_PrimaryOrganization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_PrimaryOrganization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SecondaryOrganization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SecondaryOrganization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_TertiaryOrganization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_TertiaryOrganization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_FourLevelOrganization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_FourLevelOrganization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_FiveLevelOrganization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_FiveLevelOrganization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SixLevelOrganization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SixLevelOrganization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_RecruitmentChannels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_RecruitmentChannels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Entrydate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Entrydate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_ConfirmationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_ConfirmationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_DepartureDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_DepartureDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Education)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Education)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SalaryMethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SalaryMethod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_PayModel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_PayModel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_WorkingSystem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_WorkingSystem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_BankCardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_BankCardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_BankDeposit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_BankDeposit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_DateHoldingPost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_DateHoldingPost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_IsTrainingAgreement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_IsTrainingAgreement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_StartDateService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_StartDateService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EndDateService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EndDateService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EmployeeNature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EmployeeNature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EmployeeNatureChangeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EmployeeNatureChangeDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_PieceworkType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_PieceworkType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_TimeBecomeRegular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_TimeBecomeRegular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_TimeShiftWorkSystem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_TimeShiftWorkSystem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_TypesResignation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_TypesResignation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_MakeUpTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_MakeUpTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_PostId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_PostId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SalaryCalculation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SalaryCalculation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_DocumentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_DocumentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_NationAlity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_NationAlity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Nation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Nation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_RRNature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_RRNature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_PoliticalOutlook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_PoliticalOutlook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_MaritalStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_MaritalStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_NativePlace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_NativePlace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_OnJobStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_OnJobStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_IDCardStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_IDCardStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_IDCardEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_IDCardEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_OneCardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_OneCardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SalaryStructureType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SalaryStructureType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SalaryType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SalaryType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_PersonnelCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_PersonnelCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_JoiningGroupDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_JoiningGroupDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EntryChannel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EntryChannel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_OfflineDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_OfflineDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_InternalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_InternalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_InternalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_InternalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_InternalCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_InternalCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_LaborRecruitmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_LaborRecruitmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_RecruitmentCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_RecruitmentCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_GraduationUniversitie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_GraduationUniversitie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_MajorStudied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_MajorStudied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EducationStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EducationStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EducationEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EducationEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EducationalMode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EducationalMode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_ForeignLanguageLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_ForeignLanguageLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_IsQualified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_IsQualified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_QualificationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_QualificationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_GetTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_GetTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_InternalTitleType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_InternalTitleType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_InternalTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_InternalTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_InternalTitleDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_InternalTitleDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SocialTitleType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SocialTitleType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SocialTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SocialTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_SocialTitleDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_SocialTitleDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_IDCardAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_IDCardAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_PermanentAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_PermanentAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_ResidentialAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_ResidentialAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_CurrentAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_CurrentAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EmergencyContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EmergencyContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EContactRelationship)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EContactRelationship)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EContactNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EContactNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_ContactAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_ContactAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_laborContractStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_laborContractStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_laborContractEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_laborContractEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_LaborContractStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_LaborContractStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_AttendanceDeadline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_AttendanceDeadline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_IsEsignationCertificate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_IsEsignationCertificate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_Depreciation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_Depreciation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_UserState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_UserState)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.F_UserId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

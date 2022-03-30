@@ -1,0 +1,138 @@
+﻿using Learun.Application.TwoDevelopment.HR_SocialRecruitment;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+
+namespace Learun.Application.TwoDevelopment.HR_Code.HeterogeneousSystemInterface
+{
+    public class HeterogeneousHrToOABLL : HeterogeneousHrToOAIBLL
+    {
+        ReturnCommon  _return;
+
+        #region 构造方法
+        public HeterogeneousHrToOABLL()
+        {
+            _return = new ReturnCommon();
+        }
+        #endregion
+
+        #region 调用OA接口
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ojb"></param>
+        /// <returns></returns>
+        public ReturnCommon crateOAandHRForm(SR_RecruitmentEntity entity)
+        {
+            try
+            {
+                //1.查询对应对应实体数据
+
+                ReturnCommon rc = new ReturnCommon();
+
+                JObject json = new JObject();
+
+                Dictionary<string, string> dr = new Dictionary<string, string>();
+
+                Dictionary<string, string> drAttachment = new Dictionary<string, string>();
+
+                dr.Add("F_Department", entity.F_Department);
+                dr.Add("F_JobName", entity.F_JobName);
+                dr.Add("F_JonNum", entity.F_JonNum + "");
+                dr.Add("F_CurrentJobName", entity.F_CurrentJobName + "");
+                dr.Add("F_ApplyRecruitNum", entity.F_ApplyRecruitNum + "");
+                dr.Add("F_DegreeOfEmergency", entity.F_DegreeOfEmergency);
+                dr.Add("F_RequirementTypes", entity.F_RequirementTypes);
+                dr.Add("F_DemandReasonStatement", entity.F_DemandReasonStatement);
+                dr.Add("F_JobRank", entity.F_JobRank);
+                dr.Add("F_JobType", entity.F_JobType);
+                dr.Add("F_RecommendedSalaryRange", entity.F_RecommendedSalaryRange);
+                dr.Add("F_RecruitmentChannels", entity.F_RecruitmentChannels);
+                dr.Add("F_ExpectedArrivalDate", entity.F_ExpectedArrivalDate);
+                dr.Add("F_TheSystemTime", entity.F_TheSystemTime);
+                dr.Add("F_JobDescriptions", entity.F_JobDescriptions);
+                dr.Add("F_MainDuties", entity.F_MainDuties);
+                dr.Add("F_BasicConditions", entity.F_BasicConditions);
+                dr.Add("F_SupposedToKnow", entity.F_SupposedToKnow);
+                dr.Add("F_EssentialSkill", entity.F_EssentialSkill);
+                dr.Add("F_CapacityRequirements", entity.F_CapacityRequirements);
+                dr.Add("F_ExperienceRequirements", entity.F_ExperienceRequirements);
+                dr.Add("F_SpecialRequirements", entity.F_SpecialRequirements);
+                dr.Add("F_DepartmentOfOpinion", entity.F_DepartmentOfOpinion);
+                dr.Add("F_DepartmentOfOpinionOne", entity.F_DepartmentOfOpinionOne);
+                dr.Add("F_DepartmentOfOpinionT", entity.F_DepartmentOfOpinionT);
+                dr.Add("F_HumanResources", entity.F_HumanResources);
+                dr.Add("F_HumanResourcesOne", entity.F_HumanResourcesOne);
+                dr.Add("F_HumanResourcesT", entity.F_HumanResourcesT);
+
+                json.Add("HEADER", JToken.FromObject(dr));
+
+                drAttachment.Add("F_Attachment01", entity.F_Attachment01);
+                drAttachment.Add("F_AttachmentVal01", "");
+                drAttachment.Add("F_Attachment02", entity.F_Attachment02);
+                drAttachment.Add("F_AttachmentVal02", "");
+                drAttachment.Add("F_Attachment03", entity.F_Attachment03);
+                drAttachment.Add("F_AttachmentVal03", "");
+
+                json.Add("ATTACHMENT", JToken.FromObject(drAttachment));
+                //拼json字符串完成
+
+                //请求wsdl路径
+                string m_WebServiceUrl = "http://192.168.98.150:8088//services/HyRecruitingService?wsdl/SendOa";
+
+                string jsonStr = JsonNewtonsoft.ToJSON(json).ToString();
+
+                string soap = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:hy=\"http://localhost/hy.webservice.hr.HyRecruitingService\">\r\n" +
+                    "<soapenv:Header/>\r\n" +
+                    "<soapenv:Body>\r\n" +
+                       "<hy:SendOa>\r\n" +
+                          "<hy:strJson>" + jsonStr + "</hy:strJson>\r\n" +
+                          "<hy:workcode>HY004699</hy:workcode>\r\n" +
+                       "</hy:SendOa>\r\n" +
+                    "</soapenv:Body>\r\n" +
+                 "</soapenv:Envelope>\r\n";
+
+
+                ///获取请求数据拼接请求json体
+                string url = m_WebServiceUrl;
+                string result = HttpHelper.Helper.GetSOAPReSource(m_WebServiceUrl, soap);
+                //var doc = new XmlDocument();
+
+                if (string.IsNullOrEmpty(result))
+                {
+                    rc.Status = false;
+                    rc.Message = "创建OA流程失败";
+                }
+                else
+                {
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.LoadXml(result);//Load加载XML文件，LoadXML加载XML字符串
+                    string status = xmlDoc.DocumentElement["soap:Body"]["ns1:SendOaResponse"]["ns1:ReturnIfo"]["isSuccess"].InnerXml;
+                    string mes = xmlDoc.DocumentElement["soap:Body"]["ns1:SendOaResponse"]["ns1:ReturnIfo"]["message"].InnerXml;
+                    if ("S".Equals(status))
+                    {
+                        rc.Status = true;
+                        rc.Message = mes;
+                    }
+                    else
+                    {
+                        rc.Status = false;
+                        rc.Message = mes;
+                    }
+                }
+                _return = rc;
+                return _return;
+            } catch (Exception e) {
+                throw new NotImplementedException();
+            }
+        }
+        #endregion
+    }
+}

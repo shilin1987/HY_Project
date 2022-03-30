@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Learun.Ioc</name>
+    </assembly>
+    <members>
+        <member name="T:Learun.Ioc.UnityIocHelper">
+            <summary>
+            版 本 Learun-ADMS V7.0.6 力软敏捷开发框架
+            Copyright (c) 2013-2020 上海力软信息技术有限公司
+            创建人：力软-框架开发组
+            日 期：2017.03.03
+            描 述：UnityIoc
+            </summary>
+        </member>
+        <member name="M:Learun.Ioc.UnityIocHelper.#ctor(System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="containerName">容器名称</param>
+        </member>
+        <member name="F:Learun.Ioc.UnityIocHelper._container">
+            <summary>
+            容器
+            </summary>
+        </member>
+        <member name="F:Learun.Ioc.UnityIocHelper.instance">
+            <summary>
+            容器实例
+            </summary>
+        </member>
+        <member name="F:Learun.Ioc.UnityIocHelper.wfInstance">
+            <summary>
+            容器实例
+            </summary>
+        </member>
+        <member name="F:Learun.Ioc.UnityIocHelper.tsInstance">
+            <summary>
+            容器实例
+            </summary>
+        </member>
+        <member name="P:Learun.Ioc.UnityIocHelper.Instance">
+            <summary>
+            UnityIoc容器实例
+            </summary>
+        </member>
+        <member name="P:Learun.Ioc.UnityIocHelper.WfInstance">
+            <summary>
+            流程
+            </summary>
+        </member>
+        <member name="P:Learun.Ioc.UnityIocHelper.TsInstance">
+            <summary>
+            定时任务
+            </summary>
+        </member>
+        <member name="M:Learun.Ioc.UnityIocHelper.GetService``1">
+            <summary>
+            获取实现类(默认映射)
+            </summary>
+            <typeparam name="T">接口类型</typeparam>
+            <returns>接口</returns>
+        </member>
+        <member name="M:Learun.Ioc.UnityIocHelper.GetService``1(Microsoft.Practices.Unity.ParameterOverride[])">
+            <summary>
+            获取实现类(默认映射)带参数的
+            </summary>
+            <typeparam name="T">接口类型</typeparam>
+            <param name="parameter">参数</param>
+            <returns>接口</returns>
+        </member>
+        <member name="M:Learun.Ioc.UnityIocHelper.GetService``1(System.String,Microsoft.Practices.Unity.ParameterOverride[])">
+            <summary>
+            获取实现类(指定映射)带参数的
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="parameter"></param>
+            <returns>接口</returns>
+        </member>
+        <member name="M:Learun.Ioc.UnityIocHelper.IsResolve``1">
+            <summary>
+            判断接口是否被实现了
+            </summary>
+            <typeparam name="T">接口类型</typeparam>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Learun.Ioc.UnityIocHelper.IsResolve``1(System.String)">
+            <summary>
+            判断接口是否被实现了
+            </summary>
+            <typeparam name="T">接口类型</typeparam>
+            <param name="name">映射名称</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

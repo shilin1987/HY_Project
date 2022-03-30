@@ -1,0 +1,168 @@
+﻿using Learun.Application.TwoDevelopment.Platform;
+using Learun.Cache.Base;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using WebApi_EmployeeInformationEntry.DataBase;
+using WebApi_EmployeeInformationEntry.Models;
+
+namespace WebApi_EmployeeInformationEntry.BLL
+{
+    public class InterviewService : BaseService
+    {
+
+
+        /// <summary>
+        /// 查询面试环节人员信息
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public async Task<ApiModel> SelectInteriewInfo()
+        {
+            var AllList = new ALLInterviewModele();
+            var candidaesInfo = new List<InterviewModele>();
+           //var Candidates=new List<CandidatesEntity>();
+           //var InterviewQuestionBank = new List<Hy_Recruit_InterviewQuestionBankEntity>();
+            try
+            {
+                //面试人员查询
+                var sql = @"select c.F_RealName,c.F_Gender,c.F_IDCard,c.F_Mobile,* from dbo.Hy_Recruit_Interview t ,dbo.Hy_Recruit_Candidates c where   t.F_CandidatesID=c.F_UserId  and  t.F_InterviewResult=-1 ";
+                var list = await hYDatabase.Database.SqlQuery<CandidatesEntity>(sql).ToListAsync();
+               //面试题查询
+                var sqlInterviewQuestion = @" select F_Question,F_Answer from  dbo.Hy_Recruit_InterviewQuestionBank";
+                var InterviewQuestionList= await hYDatabase.Database.SqlQuery<Hy_Recruit_InterviewQuestionBankEntity>(sqlInterviewQuestion).ToListAsync();
+                if (list.Count() > 0)
+                {
+                    foreach (var item in list)
+                    {
+                        InterviewModele model = new InterviewModele()
+                        {
+                            value = item.F_UserId,
+                            text = item.F_RealName,
+                        };
+                        candidaesInfo.Add(model);
+                    }
+
+                    AllList.InterviewModeleor = candidaesInfo;
+                    AllList.InterviewQuestionBank = InterviewQuestionList;
+                    result.code = ResponseCode.success;
+                    result.data = AllList;
+                }
+                else
+                {
+                    result.info = "没有可面试人员信息";
+                }
+            }
+            catch (Exception ex)
+            {
+                result.info = ex.Message;
+            }
+            return result;
+        }
+        /// <summary>
+        /// 根据ID查询面试者信息
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public async Task<ApiModel> SelectUserInfo(string userid)
+        {
+            if (userid != null)
+            {
+                try
+                {
+                    var sql = @"select * from  dbo.Hy_Recruit_Candidates  where F_RealName='" + userid+"'";
+                    var list = await hYDatabase.Database.SqlQuery<CandidatesEntity>(sql).ToListAsync();
+                    //var newUser = hYDatabase.Hy_Recruit_Candidates.Where(e => e.F_UserId == userid);
+                    if (list.Count() > 0)
+                    {
+                        result.code = ResponseCode.success;
+                        result.data = list;
+                        UserSave(userid);
+                    }
+                    else
+                    {
+                        result.info = "无该员工信息";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result.info = ex.Message;
+                }
+            }
+            else
+            {
+                result.info = "无该员工信息！";
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 签到
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public ApiModel UserSave(string KeyValue)
+        {
+            if (KeyValue != null)
+            {
+                    try
+                    {
+                        var sql = @" update dbo.Hy_Recruit_Interview set F_StartTime='"+DateTime.Now.ToString()+ "' where F_CandidatesID=(select f_userid from  Hy_Recruit_Candidates where F_RealName='"+KeyValue+"')";
+                        var i = hYDatabase.Database.ExecuteSqlCommand(sql);
+                        if (i>0) 
+                        {
+                            result.code = ResponseCode.success;
+                            result.info = "请对该员工进行面试！";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.info = ex.Message;
+                    }
+            }
+            else
+            {
+                result.code = ResponseCode.fail;
+                result.info = "无该员工信息！";
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 签到
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public ApiModel saveInterviewSave(IsDoptModele entity)
+        {
+            if (entity.F_CandidatesID != null)
+            {
+                try
+                {
+                    var sql = @" update dbo.Hy_Recruit_Interview set F_EndTime='" + DateTime.Now.ToString() + "',F_ModifyUserName=(select f_Userid from  lr_base_user where F_Mobile='" + entity.F_ModifyUserId + "'),F_InterviewResult= '" + entity.F_InterviewResult + "',F_Content='" + entity.F_Content+"' where F_CandidatesID=(select f_userid from  Hy_Recruit_Candidates where F_RealName='" + entity.F_CandidatesID + "')";
+                    var i = hYDatabase.Database.ExecuteSqlCommand(sql);
+                    if (i > 0)
+                    {
+                        result.code = ResponseCode.success;
+                        result.info = "该员工面试结束！";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result.info = ex.Message;
+                }
+            }
+            else
+            {
+                result.code = ResponseCode.fail;
+                result.info = "无该员工信息！";
+            }
+
+            return result;
+        }
+    }
+}

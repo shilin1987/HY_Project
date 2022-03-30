@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "收支分类子项";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_OperationItems">
+        <div class="lr-form-item-title">项目编号<font face="宋体">*</font></div>
+        <input id="F_ItemCode" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_OperationItems">
+        <div class="lr-form-item-title">项目名称<font face="宋体">*</font></div>
+        <input id="F_Item" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_OperationItems">
+        <div class="lr-form-item-title">所属分类<font face="宋体">*</font></div>
+        <div id="F_HRClassify" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_OperationItems">
+        <div class="lr-form-item-title">所属表名<font face="宋体">*</font></div>
+        <div id="F_TableName" isvalid="yes"></div>
+    </div> 
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_OperationItems">
+        <div class="lr-form-item-title">所属字段名<font face="宋体">*</font></div>
+        <div id="F_FiledName" isvalid="yes"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/OperationItems/Form.js")

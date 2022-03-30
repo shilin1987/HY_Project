@@ -1,0 +1,7 @@
+﻿<div class="lr-about-page" style="padding-left: 10px; padding-right: 10px; color: #666; font-size: 14px; overflow: auto;">
+    <i class="iconfont icon-timefill"></i>
+    <span style="font-size: large; font-weight: bold" id="showtime">
+    </span>
+    <hr>
+</div>
+<!--<div class="ver">当前版本:v1.0.0</div>-->

@@ -1,0 +1,214 @@
+﻿using Learun.Util;
+using System;
+using System.Linq;
+using System.Data;
+using System.Collections.Generic;
+using Learun.Application.TwoDevelopment.HR_Code.SalaryGeneration;
+
+namespace Learun.Application.TwoDevelopment.HR_Code
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-06-03 10:51
+    /// 描 述：最终工资结算展示
+    /// </summary>
+    public class SalaryGenerationBLL : SalaryGenerationIBLL
+    {
+        //private SalaryGenerationIBLL sgIBLL = new SalaryGenerationBLL();
+        private SalaryGenerationService salaryGenerationService = new SalaryGenerationService();
+        private FiveInsurancesOneFundIBLL fiveInsurancesOneFundBLL = new FiveInsurancesOneFundBLL();
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<Hy_hr_SalaryGenerationEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                return salaryGenerationService.GetPageList(pagination, queryJson);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取Hy_hr_SalaryGeneration表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_hr_SalaryGenerationEntity GetHy_hr_SalaryGenerationEntity(string keyValue)
+        {
+            try
+            {
+                return salaryGenerationService.GetHy_hr_SalaryGenerationEntity(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="F_Userid"></param>
+        /// <param name="yearMonth"></param>
+        /// <returns></returns>
+        public IEnumerable<Hy_hr_SalaryGenerationEntity> GetHy_hr_SalaryGenerationEntity(string F_Userid, string yearMonth)
+        {
+            try
+            {
+                return salaryGenerationService.GetHy_hr_SalaryGenerationEntity(F_Userid,yearMonth);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="F_Userid"></param>
+        /// <param name="yearMonth"></param>
+        /// <returns></returns>
+        public IEnumerable<SalaryGenerationEntityDTO> GetSalaryGenerationEntity(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                /*
+                IEnumerable<SalaryGenerationEntityDTO> lists = salaryGenerationService.GetSalaryGenerationEntityList(pagination, queryJson);
+                foreach (var list in lists)
+                {
+                    MyProperty myProperty = new MyProperty();
+                    IEnumerable<Hy_hr_FiveInsurancesOneFundEntity> fiveIsoList = fiveInsurancesOneFundBLL.GetFiveInsurancesOneFundListFirst(list.F_UserId, list.F_WagesYearMonth+"");
+                    myProperty.F_HousingAccumulationFund = fiveIsoList.ToList()[0].F_SocialInsurance;
+                    myProperty.F_SocialInsurance = fiveIsoList.ToList()[0].F_HousingAccumulationFund;
+                    list.myProperty = myProperty;
+                }
+                */
+                return salaryGenerationService.GetSalaryGenerationEntityList(pagination, queryJson);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            try
+            {
+                salaryGenerationService.DeleteEntity(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, Hy_hr_SalaryGenerationEntity entity)
+        {
+            try
+            {
+                salaryGenerationService.SaveEntity(keyValue, entity);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 传入实体
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public int SaveEntity(List<Hy_hr_SalaryGenerationEntity> entity)
+        {   
+            try
+            {
+                return salaryGenerationService.SaveListEntity(entity);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+
+            }
+        }
+
+
+
+        #endregion
+
+    }
+}

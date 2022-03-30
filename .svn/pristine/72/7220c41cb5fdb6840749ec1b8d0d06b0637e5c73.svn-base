@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "笔试题得分";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_WrittenExamination" >
+        <div class="lr-form-item-title">新员工<font face="宋体">*</font></div>
+        <div id="F_CandidatesID" isvalid="yes" checkexpession="NotNull" ></div>
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_WrittenExamination" >
+        <div class="lr-form-item-title">笔试题<font face="宋体">*</font></div>
+        <div id="F_WrittenTestQuestions" isvalid="yes" checkexpession="NotNull" ></div>
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_WrittenExamination" >
+        <div class="lr-form-item-title">得分<font face="宋体">*</font></div>
+        <input id="F_Score" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/WrittenExamination/Form.js")

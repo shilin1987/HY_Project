@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.HR_Code.HeterogeneousSystemInterface
+{
+    public class DETAILS
+    {
+        private Dictionary<string, string> subFiled;
+
+        public Dictionary<string, string> SubFiled { get => subFiled; set => subFiled = value; }
+    }
+}

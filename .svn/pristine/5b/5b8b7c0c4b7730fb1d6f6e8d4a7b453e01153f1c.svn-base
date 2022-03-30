@@ -1,0 +1,245 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：B2B_Account
+ * 日  期：2021-10-28 15:35
+ * 描  述：来料计划填报
+ */
+var acceptClick;
+var keyValue = request('keyValue');
+var cust="";
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            $('.lr-form-wrap').lrscroll();             
+            page.bind();
+            page.initData();           
+        },
+        bind: function () {
+            if (!keyValue.length == 0) {              
+                $("#F_CUST_CODE").attr("readOnly",false);
+            };
+            $('#F_WRITE_MONTH').lrDataItemSelect({ code: 'Month' });  
+
+            $('#B2B_PLAN_INCOMING_MATERIAL_SUB').jfGrid({
+                rowHeight: 30,
+                headData: [
+                    {
+                        label: '产品型号', name: 'F_PRODUCT_MODEL', width: 100, align: 'center'
+                        , edit: {
+                            type: 'layer',
+                            init: function () {},
+                            bind: function () {},
+                            change: function (data, rownum, selectData) {                               
+                                data.PARTID = selectData.partid;
+                                data.F_WAFER_MODEL = selectData.芯片型号;
+                                data.F_PRODUCT_MODEL = selectData.产品型号;
+                                data.F_PACKAGE_MODEL = selectData.内部封装外形;
+                                data.F_PRODUCT_LEVEL = selectData.封装等级;
+                                data.F_WAFER_SIZE = selectData.晶圆尺寸;
+                                data.F_PACKAGING_TYPE = selectData.包装方式;
+                                data.F_SHELL_FRAM_CODE = selectData.框架物料编码;
+                                data.F_SHELL_FRAM_NAME = selectData.框架物料描述;
+                                data.F_WIRE_SOLDER_CODE = selectData.焊线物料编码;
+                                data.F_WIRE_SOLDER_NAME = selectData.焊线物料描述;
+                                $('#B2B_PLAN_INCOMING_MATERIAL_SUB').jfGridSet('updateRow', rownum);
+                            },
+                            op: {
+                                width: 1200,
+                                height: 800,
+                                colData: [
+                                    { label: "ID", name: "F_ID", width: 0, align: "center", ishide: true },
+                                    { label: "PARTID", name: "partid", width: 100, align: "center" },
+                                    { label: "芯片型号", name: "芯片型号", width: 100, align: "center" },
+                                    { label: "产品型号", name: "产品型号", width: 100, align: "center" },
+                                    { label: "封装形式", name: "内部封装外形", width: 100, align: "center" },
+                                    { label: "封装等级", name: "封装等级", width: 100, align: "center" },
+                                    { label: "晶圆尺寸", name: "晶圆尺寸", width: 100, align: "center" },
+                                    { label: "包装方式", name: "包装方式", width: 100, align: "center" },
+                                    { label: "", name: "框架物料编码", width: 0, align: "center", ishide: true },
+                                    { label: "框架", name: "框架物料描述", width: 100, align: "center" },
+                                    { label: "", name: "焊线物料编码", width: 0, align: "center", ishide: true },
+                                    { label: "焊线", name: "焊线物料描述", width: 100, align: "center" },
+                                ],
+                                url: top.$.rootUrl + '/LR_SystemModule/DataSource/GetDataTable',
+                                param: {
+                                    code: 'B2B_MES_PRATID',
+                                    /*strWhere: "客户代码=" + keyValue,*/
+                                },                                
+                            }
+                        }
+                    },
+                    {
+                        label: '封装外形', name: 'F_PACKAGE_MODEL', width: 100, align: 'center'
+                    },
+                    {
+                        label: '芯片型号', name: 'F_WAFER_MODEL', width: 100, align: 'center'
+                    },
+                    {
+                        label: '晶圆尺寸', name: 'F_WAFER_SIZE', width: 70, align: 'center'
+                    },
+                    {
+                        label: '包装方式', name: 'F_PACKAGING_TYPE', width: 70, align: 'center'
+                    },
+                    {
+                        label: '封装等级', name: 'F_PRODUCT_LEVEL', width: 70, align: 'center'
+                    },
+                    {
+                        label: '填报月份', name: 'A', width: 70, align: 'center',
+                        children: [
+                            {
+                                label: '一', name: 'F_MONTH_ONE', width: 60, align: 'center'
+                                , edit: {
+                                    type: 'input'
+                                }
+                            },
+                            {
+                                label: '二', name: 'F_MONTH_TWO', width: 60, align: 'left'
+                                , edit: {
+                                    type: 'input'
+                                }
+                            },
+                            {
+                                label: '三', name: 'F_MONTH_THREE', width: 60, align: 'left'
+                                , edit: {
+                                    type: 'input'
+                                }
+                            },
+                            {
+                                label: '四', name: 'F_MONTH_FOUR', width: 60, align: 'left'
+                                , edit: {
+                                    type: 'input'
+                                }
+                            },
+                            {
+                                label: '五', name: 'F_MONTH_FIVE', width: 60, align: 'left'
+                                , edit: {
+                                    type: 'input'
+                                }
+                            },
+                            {
+                                label: '六', name: 'F_MONTH_SIX', width: 60, align: 'left'
+                                , edit: {
+                                    type: 'input'
+                                }
+                            },
+                        ]
+                    },
+                    {
+                        label: '备注', name: 'F_REMARK', width: 100, align: 'left'
+                        , edit: {
+                            type: 'input'
+                        }
+                    },
+                    {
+                        label: '焊线描述', name: 'F_WIRE_SOLDER_NAME', width: 100, align: 'left'
+                    },
+                    {
+                        label: '框架描述', name: 'F_SHELL_FRAM_NAME', width: 100, align: 'left'
+                    },
+                    {
+                        label: 'PARTID', name: 'PARTID', width: 100, align: 'left'
+                    },
+                    {
+                        label: '焊线编号', name: 'F_WIRE_SOLDER_CODE', width: 0, align: 'left', ishide: true
+                    },
+                    {
+                        label: '框架编号', name: 'F_SHELL_FRAM_CODE', width: 0, align: 'left', ishide: true
+                    },
+                ],
+                isEdit: true,
+                height: 580
+            });
+        },
+        initData: function () {
+            
+            if (!!keyValue) {
+                $.lrSetForm(top.$.rootUrl + '/B2B_Code/B2B_PLAN_CREATE/GetFormData?keyValue=' + keyValue, function (data) {
+                    for (var id in data) {
+                        if (!!data[id].length && data[id].length > 0) {
+                            $('#' + id).jfGridSet('refreshdata', data[id]);
+                        }
+                        else {
+                            $('[data-table="' + id + '"]').lrSetFormData(data[id]);
+                        }
+                    }
+                });
+            }
+        }
+    };
+    // 保存数据
+    acceptClick = function (callBack) {
+        if ($("#F_CUST_CODE").val() == "" || $("#F_CUST_CODE").val() == null) {      
+            learun.alert.warning('请选择客户代码后在提交数据！');
+        };
+
+        if (!$('body').lrValidform()) {
+            return false;
+        }
+        var postData = {};
+        postData.strEntitysub = JSON.stringify($('#B2B_PLAN_INCOMING_MATERIAL_SUB').jfGridGet('rowdatas'));
+        postData.strEntity = JSON.stringify($('[data-table="B2B_PLAN_INCOMING_MATERIAL"]').lrGetFormData());
+        $.lrSaveForm(top.$.rootUrl + '/B2B_Code/B2B_PLAN_CREATE/SaveForm?keyValue=' + keyValue, postData, function (res) {
+            // 保存成功后才回调
+            if (!!callBack) {
+                callBack();
+            }
+        });
+    };
+    page.init();
+
+    $("#btn_Downexcel").on('click', function () {       
+
+        if ($("#F_CUST_CODE").val() == "" || $("#F_CUST_CODE").val() == null) {          
+            learun.alert.warning('请填写客户代码后在进行查询！');
+        }
+        else if ($('#B2B_PLAN_INCOMING_MATERIAL_SUB').jfGridGet('rowdatas').length==0) {
+            learun.alert.warning('请查询客户对应的产品信息后在进行下载！');
+        }
+
+        else {
+            learun.download({
+                method: "POST",
+                url: '/Utility/ExportExcel',
+                param: {
+                    fileName: "客户产品信息",
+                    columnJson: JSON.stringify([                       
+                        { "label": "PARTID", "name": "PARTID", "width": 100, "align": "center" },
+                        { "label": "F_PRODUCT_MODEL", "name": "F_PRODUCT_MODEL", "width": 100, "align": "center" },
+                        { "label": "F_PACKAGE_MODEL", "name": "F_PACKAGE_MODEL", "width": 100, "align": "center" },
+                        { "label": "F_PRODUCT_LEVEL", "name": "F_PRODUCT_LEVEL", "width": 100, "align": "center" },
+                        { "label": "F_WAFER_MODEL", "name": "F_WAFER_MODEL", "width": 100, "align": "center" },
+                        { "label": "F_WAFER_SIZE", "name": "F_WAFER_SIZE", "width": 100, "align": "center" },
+                        { "label": "F_PACKAGING_TYPE", "name": "F_PACKAGING_TYPE", "width": 100, "align": "center" },
+                        { "label": "F_WIRE_SOLDER_CODE", "name": "F_WIRE_SOLDER_CODE", "width": 100, "align": "center" },
+                        { "label": "F_WIRE_SOLDER_NAME", "name": "F_WIRE_SOLDER_NAME", "width": 100, "align": "center" },
+                        { "label": "F_SHELL_FRAM_CODE", "name": "F_SHELL_FRAM_CODE", "width": 100, "align": "center" },
+                        { "label": "F_SHELL_FRAM_NAME", "name": "F_SHELL_FRAM_NAME", "width": 100, "align": "center" },
+                        { "label": "F_MONTH_ONE", "name": "F_MONTH_ONE", "width": 100, "align": "center" },
+                        { "label": "F_MONTH_TWO", "name": "F_MONTH_TWO", "width": 100, "align": "center" },
+                        { "label": "F_MONTH_THREE", "name": "F_MONTH_THREE", "width": 100, "align": "center" },
+                        { "label": "F_MONTH_FOUR", "name": "F_MONTH_FOUR", "width": 100, "align": "center" },
+                        { "label": "F_MONTH_FIVE", "name": "F_MONTH_FIVE", "width": 100, "align": "center" },
+                        { "label": "F_MONTH_SIX", "name": "F_MONTH_SIX", "width": 100, "align": "center" },
+                        { "label": "F_REMARK", "name": "F_REMARK", "width": 100, "align": "center" }]),
+                    dataJson: JSON.stringify($('#B2B_PLAN_INCOMING_MATERIAL_SUB').jfGridGet('settingInfo').rowdatas)
+                }
+            });
+        }
+
+    })
+}
+$('#btn_Search').on('click', function () {
+    if ($("#F_CUST_CODE").val() == "" || $("#F_CUST_CODE").val() == null) {    
+        learun.alert.warning('请选择客户代码后在进行查询！');
+    }
+    else {
+        $.lrSetForm(top.$.rootUrl + '/B2B_Code/B2B_PLAN_CREATE/GetPartidData?custcode=' + $("#F_CUST_CODE").val(), function (data) {
+            for (var id in data) {
+                if (!!data[id].length && data[id].length > 0) {
+                    $('#' + id).jfGridSet('refreshdata', data[id]);
+                }
+            }
+        });
+    }
+});

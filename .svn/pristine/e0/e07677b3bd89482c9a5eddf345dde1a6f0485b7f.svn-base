@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "薪酬计算党费";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item"  data-table="Hr_PayDuesTable" >
+        <div class="lr-form-item-title">人员工号<font face="宋体">*</font></div>
+        <div id="F_Userid" isvalid="yes" checkexpession="NotNull" ></div>
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hr_PayDuesTable" >
+        <div class="lr-form-item-title">人员姓名<font face="宋体">*</font></div>
+        <input id="F_UserName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_PayDuesTable" >
+        <div class="lr-form-item-title">缴费年月<font face="宋体">*</font></div>
+        <input id="F_YearMonth" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_PayDuesTable" >
+        <div class="lr-form-item-title">党费金额<font face="宋体">*</font></div>
+        <input id="F_PayMoney" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/Hr_PayDuesClass/Form.js")

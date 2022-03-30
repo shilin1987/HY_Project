@@ -1,0 +1,23 @@
+<div class="lr-login-page background-img" >
+	
+    <div class="login-content">
+        <img src="images/logo.png" style="float:content;" />
+        <div><img src="images/SOLGEN.png" style="float:content;width:60%;margin-top: 5%;" /></div>
+        <div class="line" style="margin-top: 40px;">
+            <i class="iconfont icon-friend_light"></i>
+            <input id="account" type="text" maxlength="20" placeholder="员工工号/手机号">
+        </div>
+        <div class="line">
+            <i class="iconfont icon-lock"></i>
+            <input id="password" type="password" maxlength="20" placeholder="密码(默认密码为身份证号后六位)">
+        </div>
+        <!--<button id="loginBtn" type="button" class="lr-btn-primary lr-btn-block" style="background-color: #CF2D28;width: 60%;border-radius:16px;">
+        员 工 登 录
+    </button>-->
+        <!-- <button type="button" class="lr-btn-outlined lr-btn-primary" id="signInQuickly" style="width: 60%;border-radius:16px;margin-top: 8px;color:white">手机号快捷登录</button> -->
+        <button type="button" class="lr-btn-outlined lr-btn-primary" id="CandidateLogin" style="width: 60%;border-radius:16px;margin-top: 15px;color:white">应聘者登录</button>
+        <button type="button" class="lr-btn-outlined lr-btn-primary" id="loginBtn" style="width: 60%;border-radius:16px;margin-top: 15px;color:white;background-color:#031554">面试官登录</button>
+        <button type="button" class="lr-btn-outlined lr-btn-primary" id="register" style="width: 60%; border-radius: 16px; margin-top: 15px; color: white;  background: rgba(255, 255, 255, 0.3); ">应聘者注册</button>
+    </div>
+    <div class="version">Copyright © 2022 西安华羿微电子有限公司</div>
+</div>

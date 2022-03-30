@@ -1,0 +1,615 @@
+/*/*$("body").on("touchend","todetail")*/
+    (function () {
+    var path = config.webapi;
+    var userinfo = learun.storage.get('logininfo');
+
+    var page = {
+        
+        isScroll: true,
+       
+        init: function ($page, param) {
+            // 性别
+            $page.find('#F_Gender').lrpicker({
+                placeholder: '请选择(必填)',
+                data: genderData
+            });
+            // 证件类型
+            $page.find('#F_DocumentType').lrpicker({
+                placeholder: '请选择(必填)',
+                data: documentType
+            });
+            // 国籍
+            //$page.find('#F_NationAlity').lrpicker({
+            //    placeholder: '请选择(必填)',
+            //    data: nationAlity
+            //});
+            // 民族
+            $page.find('#F_Nation').lrpicker({
+                placeholder: '请选择(必填)',
+                data: nation
+            });
+            // 户籍性质
+            $page.find('#F_RRNature').lrpicker({
+                placeholder: '请选择(必填)',
+                data: householdRegister
+            });
+            // 政治面貌
+            $page.find('#F_PoliticalOutlook').lrpicker({
+                placeholder: '请选择(必填)',
+                data: politicalOutlook
+            });
+            // 婚姻状况
+            $page.find('#F_MaritalStatus').lrpicker({
+                placeholder: '请选择(必填)',
+                data: maritalStatus
+            });
+            //籍贯
+            $page.find('#F_NativePlace').lrpicker({
+                placeholder: '请选择(必填)',
+                data: cityData,
+                level: 2
+            });
+            //入职渠道
+            $page.find('#F_RecruitmentChannels').lrpicker({
+                placeholder: '请选择(必填)',
+                data: entryChannel,
+            });
+            //学历
+            $page.find('#F_Education').lrpicker({
+                placeholder: '请选择(必填)',
+                data: education,
+            });
+            //教育方式
+            $page.find('#F_EducationalMode').lrpicker({
+                placeholder: '请选择(必填)',
+                data: educationalMode,
+            });
+            //外语水平
+            $page.find('#F_ForeignLanguageLevel').lrpicker({
+                placeholder: '请选择(必填)',
+                data: englishLevel,
+            });
+            //是否有资格证书
+            //$page.find('#F_IsQualified').lrpicker({
+            //    placeholder: '请选择(必填)',
+            //    data: yesNo,
+            //});
+
+            //紧急联系人关系
+            $page.find('#F_EContactRelationship').lrpicker({
+                placeholder: '请选择(必填)',
+                data: kinship,
+            });
+            // -------------------日期-----------------------
+            //证件日期开始
+            $page.find('#F_IDCardStartDate').lrdate({
+                type: 'date'
+            });
+            //证件日期结束
+            $page.find('#F_IDCardEndDate').lrdate({
+                type: 'date'
+            });
+            //入职日期
+            $page.find('#F_Entrydate').lrdate({
+                type: 'date'
+            });
+            //入职集团日期
+            //$page.find('#F_JoiningGroupDate').lrdate({
+            //    type: 'date'
+            //});
+            //最高学历开始时间
+            $page.find('#F_EducationStartDate').lrdate({
+                type: 'date'
+            });
+            //最高学历结束时间
+            $page.find('#F_EducationEndDate').lrdate({
+                type: 'date'
+            });
+            //证书获取日期
+            //$page.find('#F_GetTime').lrdate({
+            //    type: 'date'
+            //});
+            //绑定后台获取的数据,没有下拉框数据不显示
+
+            page.bind($page, param);
+            //保存
+            $page.find('#btnbackup').on('tap', function () {
+                $("#F_RealName").focus();
+            });
+
+
+            //保存
+            $page.find('#saveUser').on('tap', function () {
+                //console.log("---->" + $("#F_DocumentType").text())
+                ///证件类型验证
+                if (!$('#userform').lrformValid()) {
+                    return false;
+                };
+                var documentType = $('#F_DocumentType').text();
+                var idCard = $('#F_IDCard').val();
+                if (documentType == '身份证') {
+                    //身份证验证
+                    if (idCard.length == 18) {
+                        var idCard_string = JSON.stringify(idCard);
+                        var spstr = idCard_string.split("");
+                        var x = spstr[spstr.length - 2];
+                        console.log(spstr)
+                        if (x === "x") {
+                            $('#F_IDCard').focus();
+                            return learun.layer.warning('身份证号最后一位X为大写！', function () { }, '消息提示',
+                                '关闭');
+                        }
+                        var reg = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/);
+                        var arrSplit = idCard.match(reg); //检查生日日期是否正确，value就是身份证号
+                        if (!arrSplit) {
+                            $('#F_IDCard').focus();
+                            return learun.layer.warning('身份证号格式有问题，请重新输入！', function () { }, '消息提示',
+                                '关闭');
+                        }
+                        var dtmBirth = new Date(arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[
+                            4]);
+                        var bGoodDay;
+                        bGoodDay = (dtmBirth.getFullYear() == Number(arrSplit[2])) && ((dtmBirth
+                            .getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() ==
+                                Number(arrSplit[4]));
+                        if (!bGoodDay) {
+                            $('#F_IDCard').focus();
+                            return learun.layer.warning('身份证号中的出生日期不正确！', function () { }, '消息提示',
+                                '关闭');
+                        } else {
+                            //检验18位身份证的校验码是否正确。 //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+                            var valnum;
+                            var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4,
+                                2);
+                            var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3',
+                                '2');
+                            var nTemp = 0,
+                                i;
+                            for (i = 0; i < 17; i++) {
+                                nTemp += idCard.substr(i, 1) * arrInt[i];
+                            }
+                            valnum = arrCh[nTemp % 11];
+                            if (valnum != idCard.substr(17, 1)) {
+                                $('#F_IDCard').focus();
+                                return learun.layer.warning('18位身份证的校验码不正确！应该为：' + valnum,
+                                    function () { }, '消息提示', '关闭');
+                            }
+                        }
+                    } else {
+                        $('#F_IDCard').focus();
+                        return learun.layer.warning('身份证号码长度应为18位!',
+                            function () { }, '消息提示', '关闭');
+                    };
+                } else {
+                    //护照编号验证
+                    if (idCard.length != 9) {
+                        $('#F_IDCard').focus();
+                        return learun.layer.warning('护照号码长度为9位，请重新输入！', function () { }, '消息提示',
+                            '关闭');
+                    }
+                }
+                //if (!$('#userform').lrformValid()) {
+                //    return false;
+                //};
+                ///证件类型验证
+
+                if (documentType == "请选择(必填)") {
+                    return learun.layer.warning('请选择证件类型！', function () { }, '消息提示', '关闭');
+                }
+                //性别
+                if ($('#F_Gender').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择性别！', function () { }, '消息提示', '关闭');
+                }
+                //证件开始日期
+                if ($('#F_IDCardStartDate').text() == "请选择") {
+                    return learun.layer.warning('请选择证件开始日期！', function () { }, '消息提示', '关闭');
+                }
+
+                //证件结束日期
+                if ($('#F_IDCardEndDate').text() == "请选择") {
+                    return learun.layer.warning('请选择证件结束日期！', function () { }, '消息提示', '关闭');
+                }
+                //民族
+                if ($('#F_Nation').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择民族！', function () { }, '消息提示', '关闭');
+                }
+
+                //户籍性质
+                if ($('#F_RRNature').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择户籍性质！', function () { }, '消息提示', '关闭');
+                }
+
+                //政治面貌
+                if ($('#F_PoliticalOutlook').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择政治面貌！', function () { }, '消息提示', '关闭');
+                }
+
+                //婚姻状况
+                if ($('#F_MaritalStatus').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择婚姻状况！', function () { }, '消息提示', '关闭');
+                }
+
+                //籍贯
+                if ($('#F_NativePlace').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择籍贯！', function () { }, '消息提示', '关闭');
+                }
+
+                //入职日期
+                if ($('#F_Entrydate').text() == "请选择") {
+                    return learun.layer.warning('请选择入职日期！', function () { }, '消息提示', '关闭');
+                }
+
+                //入职渠道
+                //if ($('#F_EntryChannel').text() == "请选择(必填)") {
+                //    return learun.layer.warning('请选择入职渠道！', function () { }, '消息提示', '关闭');
+                //}
+
+                //最高学历
+                if ($('#F_Education').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择最高学历！', function () { }, '消息提示', '关闭');
+                }
+
+                //最高学历开始时间
+                if ($('#F_EducationStartDate').text() == "请选择") {
+                    return learun.layer.warning('请选择最高学历开始时间！', function () { }, '消息提示', '关闭');
+                }
+
+                //最高学历结束时间
+                if ($('#F_EducationEndDate').text() == "请选择") {
+                    return learun.layer.warning('请选择最高学历结束时间！', function () { }, '消息提示', '关闭');
+                }
+
+                //教育方式
+                if ($('#F_EducationalMode').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择教育方式！', function () { }, '消息提示', '关闭');
+                }
+
+                //外语水平
+                if ($('#F_ForeignLanguageLevel').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择外语水平！', function () { }, '消息提示', '关闭');
+                }
+
+                //资格证书
+                if ($('#F_IsQualified').text() == "请选择(必填)") {
+                    return learun.layer.warning('请选择资格证书！', function () { }, '消息提示', '关闭');
+                }
+
+                //联系人关系
+                if ($('#F_EContactRelationship').text() == "请选择(必填)") {
+                        return learun.layer.warning('请选择联系人关系！', function () { }, '消息提示', '关闭');
+                    }
+                //if ($('#F_RecruitmentChannels').text() == "内部推荐") {
+                //    //内部推荐人工号
+                //    if ($('#F_InternalCode').val() != "" || $('#F_InternalCode').val() != "null" || $('#F_InternalCode').val() != null) {
+                //        if ($('#F_InternalCode').val().length == 8 && $('#F_InternalCode').val().indexOf('HY') > -1) {
+
+                //        } else {
+                //            return learun.layer.warning('内部推荐人工号必须为8位,并且以HY开头！', function () { }, '消息提示', '关闭');
+                //        }
+                //    }
+                //}
+
+                //证件开始过期日期验证
+                var startDate = new Date($('#F_IDCardStartDate').val().replace("-", "/").replace(
+                    "-", "/"));
+                var endDate = new Date($('#F_IDCardEndDate').val().replace("-", "/").replace("-",
+                    "/"));
+                if (endDate < startDate) {
+                    $('#F_IDCardStartDate').focus();
+                    return learun.layer.warning('开始时间不能大于结束日期！', function () { }, '消息提示', '关闭');
+                }
+
+                //手机号码验证
+                var mobile = $('#F_Mobile').val();
+                if (!(/^1[3456789]\d{9}$/.test(mobile))) {
+                    $('#F_Mobile').focus();
+                    return learun.layer.warning('请输入正确手机号码！', function () { }, '消息提示', '关闭');
+                };
+                mobile = $('#F_EContactNumber').val();
+                if (!(/^1[3456789]\d{9}$/.test(mobile))) {
+                    $('#F_EContactNumber').focus();
+                    return learun.layer.warning('请输入正确联系人手机号码！', function () { }, '消息提示', '关闭');
+                };
+                //入学和毕业日期验证
+                startDate = new Date($('#F_EducationStartDate').val().replace("-", "/").replace("-",
+                    "/"));
+                endDate = new Date($('#F_EducationEndDate').val().replace("-", "/").replace("-",
+                    "/"));
+                if (endDate < startDate) {
+                    $('#F_EducationStartDate').focus();
+                    return learun.layer.warning('入学时间不能大于毕业时间！', function () { }, '消息提示', '关闭');
+                };
+
+                //获取毕业证日期
+
+                ////资格证书有无
+                //if ($('#F_IsQualified').text() == "有") {
+                //    if ($('#F_QualificationName').val() == '' || $('#F_GetTime').text() == "请选择") {
+                //        $('#F_QualificationName').focus();
+                //        return learun.layer.warning('请输入证书名称和证书获取日期！', function () { }, '消息提示', '关闭');
+                //    }
+                //};
+
+                ////入职渠道
+                //if ($('#F_RecruitmentChannels').text() == "劳务" || $('#F_RecruitmentChannels').text() == "劳务代招" || $('#F_RecruitmentChannels').text() == "劳务转自招") {
+                //    if ($('#F_RecruitmentCompany').val() == '') {
+                //        $('#F_RecruitmentCompany').focus();
+                //        return learun.layer.warning('请输入劳务公司！', function () { }, '消息提示', '关闭');
+                //    }
+                //}
+
+                //保存完善资料
+                var user = {
+                    F_RealName: $('#F_RealName').val(),
+                    F_DepartmentNmae: $('#F_DepartmentNmae').val(),
+                    F_Gender: $('#F_Gender').text() == "男" ? 1 : 0,
+                    F_DocumentType: $('#F_DocumentType').text(),
+                    F_MaritalStatus: $('#F_MaritalStatus').text(),
+                    F_IDCard: $('#F_IDCard').val(),
+                    F_IDCardStartDate: $('#F_IDCardStartDate').text(),
+                    F_IDCardEndDate: $('#F_IDCardEndDate').text(),
+                    F_Birthday: $('#F_IDCardEndDate').val(),
+                    F_Nation: $('#F_Nation').text(),
+                    F_RRNature: $('#F_RRNature').text(),
+                    F_Mobile: $('#F_Mobile').val(),
+                    F_PoliticalOutlook: $('#F_PoliticalOutlook').text(),
+                    F_NativePlace: $('#F_NativePlace').text(),
+                    F_BankCardNumber: $('#F_BankCardNumber').val(),
+                    F_BankDeposit: $('#F_BankDeposit').val(),
+                    F_PostName: $('#F_PostName').val(),
+                    F_EntryChannel: $('#F_EntryChannel').text(),
+                    F_Education: $('#F_Education').text(),
+                    F_GraduationUniversitie: $('#F_GraduationUniversitie').val(),
+                    F_MajorStudied: $('#F_MajorStudied').val(),
+                    F_EducationStartDate: $('#F_EducationStartDate').text(),
+                    F_EducationEndDate: $('#F_EducationEndDate').text(),
+                    F_EducationalMode: $('#F_EducationalMode').text(),
+                    F_ForeignLanguageLevel: $('#F_ForeignLanguageLevel').text(),
+                    F_IDCardAddress: $('#F_IDCardAddress').val(),
+                    F_ResidentialAddress: $('#F_ResidentialAddress').val(),
+                    F_CurrentAddress: $('#F_CurrentAddress').val(),
+                    F_EmergencyContact: $('#F_EmergencyContact').val(),
+                    F_EContactRelationship: $('#F_EContactRelationship').text(),
+                    F_EContactNumber: $('#F_EContactNumber').val(),
+                    F_InternalCode: $('#F_InternalCode').val(),
+                    F_InternalName: $('#F_InternalName').val(),
+                    F_InternalCompany: $('#F_InternalCompany').val(),
+                    F_OneWorkexperience: $('#F_OneWorkexperience').val(),
+                    F_TwoWorkexperience: $('#F_TwoWorkexperience').val()
+                };
+                console.log("user" + user);
+                var postdata = {
+                    token: "",
+                    loginMark: learun.deviceId(), // 正式请换用设备号
+                    data: user
+                };
+                console.log("postdata" + postdata);
+                var path = config.webapi + "Users/SaveInformation";
+                learun.layer.loading(true, "正在保存，请稍后");
+                $.ajax({
+                    type: "post",
+                    url: path,
+                    data: postdata,
+                    dataType: "json",
+                    success: function (res) {
+                        learun.layer.loading(false);
+                        if (res === null) {
+                            learun.layer.warning('无法连接服务器,请检测网络！', function () { },
+                                '消息提示',
+                                '关闭');
+                            return;
+                        }
+                        if (res.code === 200) {
+                            learun.layer.toast(res.info);
+                            // learun.tab.go('my');
+                        } else {
+                            learun.layer.warning(res.info, function () { }, '消息提示',
+                                '关闭');
+                        }
+                    }
+                });
+            });
+        },
+        bind: function ($page, param) {
+            path = config.webapi;
+            userinfo = learun.storage.get('logininfo');
+            var person = {
+                F_Mobile: userinfo.account
+            };
+
+            $.ajax({
+                type: "post",
+                url: path + "Users/getPersonnelInformation",
+                data: person,
+                cache: false,
+                async: false,
+                dataType: "json",
+                success: function (res) {
+                    learun.layer.loading(false);
+                    if (res === null) {
+                        learun.layer.warning('无法连接服务器,请检测网络！', function () { },
+                            '消息提示',
+                            '关闭');
+                        return;
+                    }
+                    if (res.code === 200) {
+                        //初始化数据
+                        //   debugger;
+                        var userInfo1 = res.data;
+                        //姓名 
+                        if (userInfo1.F_RealName != null && userInfo1.F_RealName != "null") {
+                            $('#F_RealName').val(userInfo1.F_RealName);
+                        }
+                        if (userInfo1.F_DepartmentNmae != null && userInfo1.F_DepartmentNmae != "null") {
+                            $('#F_DepartmentNmae').val(userInfo1.F_DepartmentNmae);
+                        } else {
+                            $('#F_DepartmentNmae').val("制造部");
+                        }
+                        // 证件类型 
+                        if (userInfo1.F_DocumentType != null && userInfo1.F_DocumentType != "null") {
+                            $('#F_DocumentType').html("<div class=\"text\">" + userInfo1.F_DocumentType + "</div>");
+                        } else {
+                            $('#F_DocumentType').html("<div class=\"text\">" + "身份证" + "</div>");
+                        }
+                        // 身份证号 
+                        if (userInfo1.F_IDCard != null && userInfo1.F_IDCard != "null") {
+                            $('#F_IDCard').val(userInfo1.F_IDCard);
+                        }
+                        //婚姻状况 
+                        if (userInfo1.F_MaritalStatus != null && userInfo1.F_MaritalStatus != "null") {
+                            $('#F_MaritalStatus').html("<div class=\"text\">" + userInfo1.F_MaritalStatus + "</div>");
+                        }
+                        if (userInfo1.F_IDCard != null && userInfo1.F_IDCard != "null") {
+                            var info = getBirthdayAndSex(userInfo1.F_IDCard);
+                            $('#F_Birthday').val(info.birthDay);
+                            $('#F_Gender').html("<div class=\"text\">" + info.sex + "</div>");
+                        }
+
+                        // // 出生日期 
+
+                        // // 性别 
+                        if (userInfo1.F_Gender != null && userInfo1.F_Gender != "null") {
+                            var sex = (userInfo1.F_IDCard == 18) ? userInfo1.F_IDCard.slice(-2, -1) : userInfo1.F_IDCard.slice(-1) % 2 == 1 ? "男" : "女"
+                            $('#F_Gender').html("<div class=\"text\">" + sex + "</div>");
+                        }
+                        //  籍贯 
+                        if (userInfo1.F_NativePlace != null && userInfo1.F_NativePlace != "null") {
+                            $('#F_NativePlace').html("<div class=\"text\">" + userInfo1.F_NativePlace + "</div>");
+                        }
+                        //  家庭居住地 
+                        if (userInfo1.F_ResidentialAddress != null && userInfo1.F_ResidentialAddress != "null") {
+                            $('#F_ResidentialAddress').val(userInfo1.F_ResidentialAddress);
+                        }
+                        //  联系方式 
+                        if (userInfo1.F_Mobile != null && userInfo1.F_Mobile != "null") {
+                            $('#F_Mobile').val(userInfo1.F_Mobile);
+                        }
+                        // 通讯地址 
+                        if (userInfo1.F_CurrentAddress != null && userInfo1.F_CurrentAddress != "null") {
+                            $('#F_CurrentAddress').val(userInfo1.F_CurrentAddress);
+                        }
+                        //  户籍地址 
+                        if (userInfo1.F_IDCardAddress != null && userInfo1.F_IDCardAddress != "null") {
+                            $('#F_IDCardAddress').val(userInfo1.F_IDCardAddress);
+                        }
+                        // 职业名称 
+                        if (userInfo1.F_PostName != null && userInfo1.F_PostName != "null") {
+                            $('#F_PostName').val(userInfo1.F_PostName);
+                        }
+                        // 户籍性质 
+                        if (userInfo1.F_RRNature != null && userInfo1.F_RRNature != "null") {
+                            $('#F_RRNature').html("<div class=\"text\">" + userInfo1.F_RRNature + "</div>");
+                        }
+                        //民族 
+                        if (userInfo1.F_Nation != null && userInfo1.F_Nation != "null") {
+                            $('#F_Nation').html("<div class=\"text\">" + userInfo1.F_Nation + "</div>");
+                        }
+                        //最高学历开始时间 
+                        if (userInfo1.F_EducationStartDate != null && userInfo1.F_EducationStartDate != "null") {
+                            $('#F_EducationStartDate').html("<div class=\"text\">" + userInfo1.F_EducationStartDate.split(' ')[0] + "</div>");
+                        }
+                        //最高学历结束时间 
+                        if (userInfo1.F_EducationEndDate != null && userInfo1.F_EducationEndDate != "null") {
+                            $('#F_EducationEndDate').html("<div class=\"text\">" + userInfo1.F_EducationEndDate.split(' ')[0] + "</div>");
+                        }
+                        //学历 
+                        if (userInfo1.F_Education != null && userInfo1.F_Education != "null") {
+                            $('#F_Education').html("<div class=\"text\">" + userInfo1.F_Education + "</div>");
+                        }
+                        // 毕业院校 
+                        if (userInfo1.F_GraduationUniversitie != null && userInfo1.F_GraduationUniversitie != "null") {
+                            $('#F_GraduationUniversitie').val(userInfo1.F_GraduationUniversitie);
+                        }
+                        //专业 
+                        if (userInfo1.F_MajorStudied != null && userInfo1.F_MajorStudied != "null") {
+                            $('#F_MajorStudied').val(userInfo1.F_MajorStudied);
+                        }
+                        //外语水平 
+                        if (userInfo1.F_ForeignLanguageLevel != null && userInfo1.F_ForeignLanguageLevel != "null") {
+                            $('#F_ForeignLanguageLevel').html("<div class=\"text\">" + userInfo1.F_ForeignLanguageLevel + "</div>");
+                        }
+                        //开户银行 
+                        if (userInfo1.F_BankDeposit != null && userInfo1.F_BankDeposit != "null") {
+                            $('#F_BankDeposit').val(userInfo1.F_BankDeposit);
+                        }
+                        // 银行卡号 
+                        if (userInfo1.F_BankCardNumber != null && userInfo1.F_BankCardNumber != "null") {
+                            $('#F_BankCardNumber').val(userInfo1.F_BankCardNumber);
+                        }
+                        //内部推荐人公司 
+                        //if (userInfo1.F_InternalCompany != null && userInfo1.F_InternalCompany != "null") {
+                        //    $('#F_InternalCompany').val(userInfo1.F_InternalCompany);
+                        //}
+                        //// 内部推荐人编码 
+                        //if (userInfo1.F_InternalCode != null && userInfo1.F_InternalCode != "null") {
+                        //    $('#F_InternalCode').val(userInfo1.F_InternalCode);
+                        //}
+                        ////内部推荐人姓名 
+                        //if (userInfo1.F_InternalName != null && userInfo1.F_InternalName != "null") {
+                        //    $('#F_InternalName').val(userInfo1.F_InternalName);
+                        //}
+                        //身份证开始日期 
+                        if (userInfo1.F_IDCardStartDate != null && userInfo1.F_IDCardStartDate != "null") {
+                            $('#F_IDCardStartDate').html("<div class=\"text\">" + userInfo1.F_IDCardStartDate + "</div>");
+                        }
+                        //身份证结束日期 
+                        if (userInfo1.F_IDCardEndDate != null && userInfo1.F_IDCardEndDate != "null") {
+                            $('#F_IDCardEndDate').html("<div class=\"text\">" + userInfo1.F_IDCardEndDate + "</div>");
+                        }
+                        // 政治面貌 
+                        if (userInfo1.F_PoliticalOutlook != null && userInfo1.F_PoliticalOutlook != "null") {
+                            $('#F_PoliticalOutlook').html("<div class=\"text\">" + userInfo1.F_PoliticalOutlook + "</div>");
+                        }
+                        //紧急联系人 
+                        if (userInfo1.F_EmergencyContact != null && userInfo1.F_EmergencyContact != "null") {
+                            $('#F_EmergencyContact').val(userInfo1.F_EmergencyContact);
+                        }
+                        //debugger;
+                        //紧急联系人关系 
+                        if (userInfo1.F_EContactRelationship != null && userInfo1.F_EContactRelationship != "null") {
+                            $('#F_EContactRelationship').html("<div class=\"text\">" + userInfo1.F_EContactRelationship + "</div>");
+                        }
+                        //紧急联系人电话 
+                        if (userInfo1.F_EContactNumber != null && userInfo1.F_EContactNumber != "null") {
+                            $('#F_EContactNumber').val(userInfo1.F_EContactNumber);
+                        }
+                        //else {
+                        //    $('#F_EContactRelationship').html("<div class=\"text\">" + userInfo1.F_PoliticalOutlook + "</div>");
+                        //}
+                        //招聘渠道 
+                        //if (userInfo1.F_RecruitmentChannels != null && userInfo1.F_RecruitmentChannels != "null") {
+                        //    $('#F_RecruitmentChannels').html("<div class=\"text\">" + userInfo1.F_RecruitmentChannels + "</div>");
+                        //}
+                        //第一工作经历 
+                        if (userInfo1.F_OneWorkexperience != null && userInfo1.F_OneWorkexperience != "null") {
+                            $('#F_OneWorkexperience').val(userInfo1.F_OneWorkexperience);
+                        }
+                        // 第二工作经历 
+                        if (userInfo1.F_TwoWorkexperience != null && userInfo1.F_TwoWorkexperience != "null") {
+                            $('#F_TwoWorkexperience').val(userInfo1.F_TwoWorkexperience);
+                        }
+                    } else {
+                        learun.layer.warning(res.info, function () { }, '消息提示',
+                            '关闭');
+                    }
+                }
+            });
+        },
+    };
+    return page;
+})();
+function getBirthdayAndSex(idCard) {
+    var info = {};
+    var birth = (idCard.length === 18) ? idCard.slice(6, 14) : idCard.slice(6, 12);
+    // 18位：提取第17位数字；15位：提取最后一位数字
+    var order = (idCard.length == 18) ? idCard.slice(-2, -1) : idCard.slice(-1);
+    info.birthDay = (idCard.length === 18) ? ([birth.slice(0, 4),
+    birth.slice(4, 6), birth.slice(-2)
+    ]).join('-') : ([
+        '19' + birth.slice(0, 2), birth.slice(2, 4),
+        birth.slice(-2)
+    ]).join('-');
+    // 余数为0代表女性，不为0代表男性        
+    info.sex = (order % 2 === 0 ? "女" : "男");
+    return info;
+}

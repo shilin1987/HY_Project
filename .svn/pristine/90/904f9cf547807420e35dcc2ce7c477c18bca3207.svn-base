@@ -1,0 +1,95 @@
+(function () {
+    var page = {
+        isScroll: true,
+        init: function ($page) {
+            $page.find('#outloginbtn').on('tap', function () {
+                learun.layer.confirm('确定要退出账号?', function (_index) {
+                    if (_index === '1') {
+                        learun.isOutLogin = true;
+                        learun.storage.set('logininfo', null);
+                        learun.nav.go({ path: 'login', isBack: false, isHead: false });
+                    }
+
+                }, '', ['取消', '退出']);
+            });
+            var candidatesresult = learun.storage.get('candidatesresult');//获取应聘者节点结果
+
+            $page.find('#candidates').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/candidates',
+                    title: "常见员工招聘、培训问题解答"
+                });
+            });
+            $page.find('#reportnotice').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/reportnotice',
+                    title: "报到须知"
+                });
+            });
+            $page.find('#mynode').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/mynode',
+                    title: "我的应聘节点"
+                });
+            });
+            $page.find('#mywrittenexamination').on('tap', function () {
+                if (candidatesresult.info.indexOf("笔试") != -1) {
+                    if (candidatesresult.state == 1) {
+                        //跳转页面
+                        learun.nav.go({
+                            path: 'newcandidates/writtenexamination',
+                            title: "笔试"
+                        });
+                    } else {
+                        learun.layer.toast("您笔试未通过,请联系工作人员");
+                    }
+                } else {
+                    learun.layer.toast(candidatesresult.info);
+                }
+            });
+            $page.find('#myInformationperfection').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/Informationperfection',
+                    title: "作业员基础信息完善"
+                });
+            });
+            //$page.find('#myinterview').on('tap', function () {
+            //    //跳转页面
+            //    learun.nav.go({
+            //        path: 'newcandidates/interview',
+            //        title: "面试"
+            //    });
+            //});
+            $page.find('#myIDPhoto').on('tap', function () {
+                //跳转页面
+                if (candidatesresult.info.indexOf("报到") == -1) {
+                    if (candidatesresult.state == -1) {
+                        learun.layer.toast("您报到信息未上传成功,请重新上传");
+                    }
+                    //跳转页面
+                    learun.nav.go({
+                        path: 'newcandidates/pictureupload',
+                        title: "报到信息上传"
+                    });
+                } else {
+                    learun.layer.toast(candidatesresult.info);
+                }
+            });
+            $page.find('#abouthuayi').on('tap', function () {
+                //跳转页面
+                learun.nav.go({
+                    path: 'newcandidates/abouthuayi',
+                    title: "关于华羿"
+                });
+            });
+        },
+        reload: function ($page, pageinfo) {
+
+        }
+    };
+    return page;
+})();

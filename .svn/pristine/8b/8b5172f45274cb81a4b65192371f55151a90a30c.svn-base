@@ -1,0 +1,77 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：超级管理员
+ * 日  期：2021-10-26 14:46
+ * 描  述：父子类功能
+ */
+var acceptClick;
+var keyValue = request('keyValue');
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            $('.lr-form-wrap').lrscroll();
+            page.bind();
+            page.initData();
+        },
+        bind: function () {
+            $('#SUBTABLE').jfGrid({
+                headData: [
+                    {
+                        label: '父表ID', name: 'F_PARENTID', width:100, align: 'left'                    },
+                    {
+                        label: '使用用户', name: 'F_USERID', width:100, align: 'left'
+                        ,edit:{
+                            type:'select',
+                            datatype: 'dataSource',
+                            code:'userdata',
+                            op:{
+                                value: 'f_userid',
+                                text:'f_encode',
+                                title:'f_encode'
+                            }
+                        }
+                    },
+                    {
+                        label: '测试列', name: 'F_COLUMNS', width:100, align: 'left'
+                        ,edit:{
+                            type:'input'
+                        }
+                    },
+                ],
+                isEdit: true,
+                height: 400
+            });
+        },
+        initData: function () {
+            if (!!keyValue) {
+                $.lrSetForm(top.$.rootUrl + '/B2B_Code/ParentCalsss/GetFormData?keyValue=' + keyValue, function (data) {
+                    for (var id in data) {
+                        if (!!data[id].length && data[id].length > 0) {
+                            $('#' + id ).jfGridSet('refreshdata', data[id]);
+                        }
+                        else {
+                            $('[data-table="' + id + '"]').lrSetFormData(data[id]);
+                        }
+                    }
+                });
+            }
+        }
+    };
+    // 保存数据
+    acceptClick = function (callBack) {
+        if (!$('body').lrValidform()) {
+            return false;
+        }
+        var postData = {};
+        postData.strEntity = JSON.stringify($('[data-table="PARENTTABLE"]').lrGetFormData());
+        postData.strsUBTABLEList = JSON.stringify($('#SUBTABLE').jfGridGet('rowdatas'));
+        $.lrSaveForm(top.$.rootUrl + '/B2B_Code/ParentCalsss/SaveForm?keyValue=' + keyValue, postData, function (res) {
+            // 保存成功后才回调
+            if (!!callBack) {
+                callBack();
+            }
+        });
+    };
+    page.init();
+}

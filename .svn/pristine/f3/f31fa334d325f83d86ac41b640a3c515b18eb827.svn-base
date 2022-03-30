@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "RWrittenExamination";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Interview">
+        <div class="lr-form-item-title">员工姓名<font face="宋体">*</font></div>
+        <div id="F_CandidatesID" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Interview">
+        <div class="lr-form-item-title">笔试内容<font face="宋体">*</font></div>
+        <textarea id="F_WrittenTestQuestionBankId" class="form-control" style="height:150px;" isvalid="yes" checkexpession="NotNull"></textarea>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Interview">
+        <div class="lr-form-item-title">分数<font face="宋体">*</font></div>
+        <input id="F_Score" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/RWrittenExamination/Form.js")

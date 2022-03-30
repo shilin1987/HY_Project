@@ -1,0 +1,104 @@
+﻿using Dapper;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using System.Data;
+using System.Text;
+using Learun.Application.TwoDevelopment.HR_SocialRecruitment;
+
+namespace Learun.Application.TwoDevelopment.HR_SocialRecruitment
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-06-28 14:04
+    /// 描 述：岗级工资和基本工资维护
+    /// </summary>
+    public class SR_RecruitmentService : RepositoryFactory
+    {
+        ReturnCommon _return;
+        public SR_RecruitmentService()
+        {
+            _return = new ReturnCommon();
+        }
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public ReturnCommon DeleteEntity(string keyValue)
+        {
+            try
+            {
+                var isDel = this.BaseRepository("SRDB").Delete<SR_RecruitmentEntity>(t => t.F_ID == keyValue);
+                if (isDel > 0)
+                {
+                    _return.Status = true;
+                    _return.Message = "删除成功";
+                }
+                else
+                {
+                    _return.Status = false;
+                    _return.Message = "删除失败";
+                }
+            }
+            catch (Exception ex)
+            {
+                _return.Status = false;
+                _return.Message = ex.Message;
+            }
+
+            return _return;
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public ReturnCommon SaveEntity(SR_RecruitmentEntity entity)
+        {
+            try
+            {
+                int addOrEdit = 0;
+                    entity.Create();
+                    string StrSql = "INSERT INTO SocialRecruitment.dbo.SR_Recruitment(F_EnabledMark ,F_CreateUserId,F_ModifyUserName,F_ModifyUserId" +
+                       ",F_DeleteMark,F_SortCode,F_ModifyDate,F_CreateUserName,F_CreateDate,F_Description,F_ID,F_Department,F_JobName,F_JonNum,F_CurrentJobName,F_ApplyRecruitNum,F_DegreeOfEmergency" +
+                       ",F_RequirementTypes,F_DemandReasonStatement,F_JobRank,F_JobType,F_RecommendedSalaryRange,F_RecruitmentChannels,F_ExpectedArrivalDate,F_TheSystemTime,F_JobDescriptions,F_MainDuties" +
+                       ",F_BasicConditions,F_SupposedToKnow,F_EssentialSkill ,F_CapacityRequirements,F_ExperienceRequirements,F_SpecialRequirements,F_DepartmentOfOpinion,F_DepartmentOfOpinionOne,F_DepartmentOfOpinionT" +
+                       ",F_HumanResources,F_HumanResourcesOne,F_HumanResourcesT,F_TheSignature_01,F_TheSignature_02,F_TheSignature_03,F_TheSignature_04,F_TheSignature_05,F_TheSignature_06,F_Attachment01,F_Attachment02,F_Attachment03)" +
+                       " VALUES('" + entity.F_EnabledMark + "','" + entity.F_CreateUserId + "','" + entity.F_ModifyUserName + "','" + entity.F_ModifyUserId + "','" + entity.F_DeleteMark + "','" + entity.F_SortCode + "'" +
+                       ",'" + entity.F_ModifyDate + "','" + entity.F_CreateUserName + "','" + entity.F_CreateDate + "','" + entity.F_Description + "','" + entity.F_ID + "','" + entity.F_Department + "','" + entity.F_JobName + "','" + entity.F_JonNum + "','" + entity.F_CurrentJobName + "','" + entity.F_ApplyRecruitNum + "','" + entity.F_DegreeOfEmergency + "'" +
+                       ",'" + entity.F_RequirementTypes + "','" + entity.F_DemandReasonStatement + "','" + entity.F_JobRank + "','" + entity.F_JobType + "','" + entity.F_RecommendedSalaryRange + "','" + entity.F_RecruitmentChannels + "','" + entity.F_ExpectedArrivalDate + "','" + entity.F_TheSystemTime + "','" + entity.F_JobDescriptions + "','" + entity.F_MainDuties + "'" +
+                       ",'" + entity.F_BasicConditions + "','" + entity.F_SupposedToKnow + "','" + entity.F_EssentialSkill + "','" + entity.F_CapacityRequirements + "','" + entity.F_ExperienceRequirements + "','" + entity.F_SpecialRequirements + "','" + entity.F_DepartmentOfOpinion + "','" + entity.F_DepartmentOfOpinionOne + "','" + entity.F_DepartmentOfOpinionT + "'" +
+                       ",'" + entity.F_HumanResources + "','" + entity.F_HumanResourcesOne + "','" + entity.F_HumanResourcesT + "','" + entity.F_TheSignature_01 + "','" + entity.F_TheSignature_02 + "','" + entity.F_TheSignature_03 + "','" + entity.F_TheSignature_04 + "','" + entity.F_TheSignature_05 + "','" + entity.F_TheSignature_06 + "','" + entity.F_Attachment01 + "','" + entity.F_Attachment02 + "','" + entity.F_Attachment03 + "')";
+
+                    addOrEdit = this.BaseRepository("SRDB").ExecuteBySql(StrSql);
+                if (addOrEdit > 0)
+                {
+                    _return.Status = true;
+                    _return.Message = "保存成功";
+                }
+                else
+                {
+                    _return.Status = false;
+                    _return.Message = "保存失败";
+                }
+            }
+            catch (Exception ex)
+            {
+                _return.Status = false;
+                _return.Message = ex.Message;
+            }
+            return _return;
+        }
+        #endregion
+
+    }
+}

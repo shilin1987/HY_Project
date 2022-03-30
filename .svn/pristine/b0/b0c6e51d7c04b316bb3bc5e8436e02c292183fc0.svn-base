@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Work\HR系统\APP_Api_Release</_PublishTargetUrl>
+    <History>True|2021-07-29T07:10:08.0705257Z;True|2021-07-29T14:27:25.1464356+08:00;True|2021-07-29T14:00:24.9163753+08:00;True|2021-07-29T11:58:21.3187079+08:00;True|2021-07-28T18:42:26.5658559+08:00;True|2021-07-28T18:40:44.0674608+08:00;False|2021-07-28T18:39:37.9618232+08:00;True|2021-07-28T14:51:27.1099839+08:00;True|2021-07-28T10:57:06.8388323+08:00;True|2021-07-28T10:52:15.5545490+08:00;True|2021-07-28T10:41:19.8175996+08:00;True|2021-07-28T09:49:32.8013409+08:00;True|2021-07-28T09:46:27.4217486+08:00;True|2021-07-27T18:22:29.4792052+08:00;True|2021-07-27T18:13:11.9539073+08:00;True|2021-07-27T18:00:40.3073461+08:00;True|2021-07-27T16:47:40.5984648+08:00;True|2021-07-27T16:27:05.5827682+08:00;False|2021-07-27T15:28:01.8232024+08:00;False|2021-07-27T15:25:41.1209025+08:00;False|2021-07-27T15:23:47.2567339+08:00;True|2021-07-27T10:45:02.4815042+08:00;True|2021-07-27T10:14:12.6194600+08:00;True|2021-07-26T17:32:45.7378602+08:00;True|2021-07-26T16:01:10.1043293+08:00;True|2021-07-23T11:12:58.9248735+08:00;True|2021-07-23T10:30:31.0282663+08:00;True|2021-07-23T10:05:50.2643621+08:00;True|2021-07-21T18:22:39.3382164+08:00;True|2021-07-21T15:12:40.6211800+08:00;True|2021-07-21T09:48:58.8172601+08:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Common.Logging.dll">
+      <publishTime>07/07/2021 15:10:52</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.pdb">
+      <publishTime>07/07/2021 15:10:52</publishTime>
+    </File>
+    <File Include="bin/CommonServiceLocator.dll">
+      <publishTime>07/07/2021 15:10:52</publishTime>
+    </File>
+    <File Include="bin/Dapper.dll">
+      <publishTime>07/07/2021 15:10:52</publishTime>
+    </File>
+    <File Include="bin/EcmaScript.NET.dll">
+      <publishTime>07/07/2021 15:11:06</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>07/07/2021 15:11:16</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>07/07/2021 15:11:16</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>07/07/2021 15:12:48</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.AppMagager.dll">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.AppMagager.dll.config">
+      <publishTime>07/07/2021 15:05:33</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.AppMagager.pdb">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Base.dll">
+      <publishTime>07/29/2021 15:09:58</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Base.dll.config">
+      <publishTime>07/07/2021 15:05:45</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Base.pdb">
+      <publishTime>07/29/2021 15:09:58</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.BaseModule.dll">
+      <publishTime>03/21/2018 13:30:04</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.BaseModule.dll.config">
+      <publishTime>11/13/2017 13:47:26</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.BaseModule.pdb">
+      <publishTime>03/21/2018 13:30:04</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.CRM.dll">
+      <publishTime>07/27/2021 18:22:15</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.CRM.dll.config">
+      <publishTime>07/07/2021 15:05:52</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.CRM.pdb">
+      <publishTime>07/27/2021 18:22:15</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Excel.dll">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Excel.dll.config">
+      <publishTime>07/07/2021 15:06:27</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Excel.pdb">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Form.dll">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Form.dll.config">
+      <publishTime>07/07/2021 15:06:35</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Form.pdb">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.IM.dll">
+      <publishTime>07/27/2021 18:22:15</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.IM.dll.config">
+      <publishTime>07/07/2021 15:06:43</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.IM.pdb">
+      <publishTime>07/27/2021 18:22:15</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Language.dll">
+      <publishTime>07/30/2018 15:54:44</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Language.dll.config">
+      <publishTime>06/29/2018 17:11:26</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Language.pdb">
+      <publishTime>07/30/2018 15:54:44</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Mapping.dll">
+      <publishTime>07/29/2021 15:10:04</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Mapping.dll.config">
+      <publishTime>07/07/2021 15:05:22</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Mapping.pdb">
+      <publishTime>07/29/2021 15:10:04</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Message.dll">
+      <publishTime>07/29/2021 15:10:01</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Message.dll.config">
+      <publishTime>07/07/2021 15:06:51</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Message.pdb">
+      <publishTime>07/29/2021 15:10:01</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.OA.dll">
+      <publishTime>07/27/2021 18:22:15</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.OA.dll.config">
+      <publishTime>07/07/2021 15:07:54</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.OA.pdb">
+      <publishTime>07/27/2021 18:22:15</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Organization.dll">
+      <publishTime>07/29/2021 15:09:56</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Organization.dll.config">
+      <publishTime>07/07/2021 15:09:53</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Organization.pdb">
+      <publishTime>07/29/2021 15:09:56</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Report.dll">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Report.dll.config">
+      <publishTime>07/07/2021 15:08:03</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.Report.pdb">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.TwoDevelopment.dll">
+      <publishTime>07/29/2021 15:10:02</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.TwoDevelopment.dll.config">
+      <publishTime>07/07/2021 15:04:16</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.TwoDevelopment.pdb">
+      <publishTime>07/29/2021 15:10:02</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.WebApi.dll">
+      <publishTime>07/29/2021 15:10:06</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.WebApi.pdb">
+      <publishTime>07/29/2021 15:10:06</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.WeChat.dll">
+      <publishTime>07/27/2021 18:22:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.WeChat.dll.config">
+      <publishTime>07/07/2021 15:08:10</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.WeChat.pdb">
+      <publishTime>07/27/2021 18:22:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.WorkFlow.dll">
+      <publishTime>07/29/2021 15:10:03</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.WorkFlow.dll.config">
+      <publishTime>07/07/2021 15:08:21</publishTime>
+    </File>
+    <File Include="bin/Learun.Application.WorkFlow.pdb">
+      <publishTime>07/29/2021 15:10:03</publishTime>
+    </File>
+    <File Include="bin/Learun.Cache.Base.dll">
+      <publishTime>07/08/2021 13:35:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Cache.Base.pdb">
+      <publishTime>07/08/2021 13:35:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Cache.Factory.dll">
+      <publishTime>07/27/2021 18:22:13</publishTime>
+    </File>
+    <File Include="bin/Learun.Cache.Factory.pdb">
+      <publishTime>07/27/2021 18:22:13</publishTime>
+    </File>
+    <File Include="bin/Learun.Cache.Redis.dll">
+      <publishTime>07/27/2021 18:22:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Cache.Redis.pdb">
+      <publishTime>07/27/2021 18:22:09</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.dll">
+      <publishTime>07/27/2021 18:22:09</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.dll.config">
+      <publishTime>07/07/2021 15:08:36</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.MySqlEx.dll">
+      <publishTime>07/27/2021 18:22:12</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.MySqlEx.dll.config">
+      <publishTime>07/07/2021 15:09:12</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.MySqlEx.pdb">
+      <publishTime>07/27/2021 18:22:12</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.Oracle.dll">
+      <publishTime>07/27/2021 18:22:12</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.Oracle.dll.config">
+      <publishTime>07/07/2021 15:08:49</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.Oracle.pdb">
+      <publishTime>07/27/2021 18:22:12</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.pdb">
+      <publishTime>07/27/2021 18:22:09</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.Repository.dll">
+      <publishTime>07/27/2021 18:22:12</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.Repository.dll.config">
+      <publishTime>07/07/2021 15:09:18</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.Repository.pdb">
+      <publishTime>07/27/2021 18:22:12</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.SqlServer.dll">
+      <publishTime>07/27/2021 18:22:12</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.SqlServer.dll.config">
+      <publishTime>07/07/2021 15:09:03</publishTime>
+    </File>
+    <File Include="bin/Learun.DataBase.SqlServer.pdb">
+      <publishTime>07/27/2021 18:22:12</publishTime>
+    </File>
+    <File Include="bin/Learun.Ioc.dll">
+      <publishTime>07/08/2021 13:35:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Ioc.pdb">
+      <publishTime>07/08/2021 13:35:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Loger.dll">
+      <publishTime>07/08/2021 13:35:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Loger.pdb">
+      <publishTime>07/08/2021 13:35:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Util.dll">
+      <publishTime>07/08/2021 13:40:25</publishTime>
+    </File>
+    <File Include="bin/Learun.Util.dll.config">
+      <publishTime>07/07/2021 15:09:26</publishTime>
+    </File>
+    <File Include="bin/Learun.Util.Operat.dll">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Util.Operat.dll.config">
+      <publishTime>07/07/2021 15:09:33</publishTime>
+    </File>
+    <File Include="bin/Learun.Util.Operat.pdb">
+      <publishTime>07/29/2021 15:10:00</publishTime>
+    </File>
+    <File Include="bin/Learun.Util.pdb">
+      <publishTime>07/08/2021 13:40:25</publishTime>
+    </File>
+    <File Include="bin/Learun.Workflow.Engine.dll">
+      <publishTime>07/27/2021 18:22:09</publishTime>
+    </File>
+    <File Include="bin/Learun.Workflow.Engine.dll.config">
+      <publishTime>07/07/2021 15:09:40</publishTime>
+    </File>
+    <File Include="bin/Learun.Workflow.Engine.pdb">
+      <publishTime>07/27/2021 18:22:09</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>07/07/2021 15:12:55</publishTime>
+    </File>
+    <File Include="bin/LumiSoft.Net.dll">
+      <publishTime>07/07/2021 15:12:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.Client.dll">
+      <publishTime>07/07/2021 15:12:27</publishTime>
+    </File>
+    <File Include="bin/Microsoft.mshtml.dll">
+      <publishTime>07/06/2021 10:46:56</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
+      <publishTime>06/05/2018 10:31:51</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.pdb">
+      <publishTime>06/05/2018 10:31:51</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.Configuration.dll">
+      <publishTime>07/07/2021 15:12:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.dll">
+      <publishTime>07/07/2021 15:12:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.RegistrationByConvention.dll">
+      <publishTime>07/07/2021 15:12:52</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>07/07/2021 15:12:29</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>07/07/2021 15:12:29</publishTime>
+    </File>
+    <File Include="bin/Nancy.dll">
+      <publishTime>07/07/2021 15:12:36</publishTime>
+    </File>
+    <File Include="bin/Nancy.Hosting.Aspnet.dll">
+      <publishTime>07/07/2021 15:12:36</publishTime>
+    </File>
+    <File Include="bin/netstandard.dll">
+      <publishTime>07/06/2021 10:46:33</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/07/2021 15:12:39</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.pdb">
+      <publishTime>07/07/2021 15:12:39</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>07/07/2021 15:12:35</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>07/07/2021 15:12:35</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>07/07/2021 15:12:35</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>07/07/2021 15:12:35</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.dll">
+      <publishTime>07/07/2021 15:12:43</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.EntityFramework.dll">
+      <publishTime>07/07/2021 15:12:43</publishTime>
+    </File>
+    <File Include="bin/Pechkin.dll">
+      <publishTime>07/07/2021 15:10:51</publishTime>
+    </File>
+    <File Include="bin/Pechkin.Synchronized.dll">
+      <publishTime>07/07/2021 15:10:51</publishTime>
+    </File>
+    <File Include="bin/Pipelines.Sockets.Unofficial.dll">
+      <publishTime>07/07/2021 15:12:43</publishTime>
+    </File>
+    <File Include="bin/Quartz.dll">
+      <publishTime>07/07/2021 15:12:48</publishTime>
+    </File>
+    <File Include="bin/Quartz.pdb">
+      <publishTime>07/07/2021 15:12:48</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Common.dll">
+      <publishTime>06/05/2018 10:32:08</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Interfaces.dll">
+      <publishTime>06/05/2018 10:32:08</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Redis.dll">
+      <publishTime>06/05/2018 10:32:09</publishTime>
+    </File>
+    <File Include="bin/ServiceStack.Text.dll">
+      <publishTime>06/05/2018 10:32:10</publishTime>
+    </File>
+    <File Include="bin/Spire.Doc.dll">
+      <publishTime>07/07/2021 15:12:22</publishTime>
+    </File>
+    <File Include="bin/Spire.License.dll">
+      <publishTime>07/07/2021 15:12:22</publishTime>
+    </File>
+    <File Include="bin/Spire.Pdf.dll">
+      <publishTime>07/07/2021 15:12:22</publishTime>
+    </File>
+    <File Include="bin/Spire.XLS.dll">
+      <publishTime>07/07/2021 15:12:22</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.dll">
+      <publishTime>07/07/2021 15:12:49</publishTime>
+    </File>
+    <File Include="bin/System.Buffers.dll">
+      <publishTime>07/07/2021 15:12:50</publishTime>
+    </File>
+    <File Include="bin/System.IO.Compression.dll">
+      <publishTime>07/06/2021 10:46:34</publishTime>
+    </File>
+    <File Include="bin/System.IO.Pipelines.dll">
+      <publishTime>07/07/2021 15:12:50</publishTime>
+    </File>
+    <File Include="bin/System.Memory.dll">
+      <publishTime>07/07/2021 15:12:51</publishTime>
+    </File>
+    <File Include="bin/System.Net.Sockets.dll">
+      <publishTime>07/06/2021 10:46:34</publishTime>
+    </File>
+    <File Include="bin/System.Numerics.Vectors.dll">
+      <publishTime>07/07/2021 15:12:51</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
+      <publishTime>07/07/2021 15:12:52</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>07/06/2021 10:46:34</publishTime>
+    </File>
+    <File Include="bin/System.Threading.Channels.dll">
+      <publishTime>07/07/2021 15:12:52</publishTime>
+    </File>
+    <File Include="bin/System.Threading.Tasks.Extensions.dll">
+      <publishTime>07/07/2021 15:12:52</publishTime>
+    </File>
+    <File Include="bin/Yahoo.Yui.Compressor.dll">
+      <publishTime>07/07/2021 15:12:53</publishTime>
+    </File>
+    <File Include="Content/images/head/on-boy.jpg">
+      <publishTime>07/07/2021 15:10:17</publishTime>
+    </File>
+    <File Include="Content/images/head/on-girl.jpg">
+      <publishTime>07/07/2021 15:10:17</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>07/07/2021 15:10:17</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>07/07/2021 15:10:17</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/07/2021 15:10:17</publishTime>
+    </File>
+    <File Include="port.png">
+      <publishTime>07/07/2021 15:10:17</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/21/2021 09:48:57</publishTime>
+    </File>
+    <File Include="XmlConfig/database.config">
+      <publishTime>07/21/2021 09:50:57</publishTime>
+    </File>
+    <File Include="XmlConfig/ioc.config">
+      <publishTime>07/07/2021 15:10:17</publishTime>
+    </File>
+    <File Include="XmlConfig/log4net.config">
+      <publishTime>07/07/2021 15:10:17</publishTime>
+    </File>
+    <File Include="XmlConfig/redis.config">
+      <publishTime>06/05/2018 10:30:05</publishTime>
+    </File>
+    <File Include="XmlConfig/system.config">
+      <publishTime>07/28/2021 11:11:37</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

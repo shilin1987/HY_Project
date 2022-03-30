@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "父子类功能";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item"  data-table="PARENTTABLE" >
+        <div class="lr-form-item-title">字段一<font face="宋体">*</font></div>
+        <input id="F_COLUMNS" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="PARENTTABLE" >
+        <div class="lr-form-item-title">字段二<font face="宋体">*</font></div>
+        <input id="F_COLUMNSTWO" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item lr-form-item-grid" >
+        <div id="SUBTABLE"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/B2B_Code/Views/ParentCalsss/Form.js")

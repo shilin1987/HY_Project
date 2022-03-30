@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<appSettings>
+  <!-- ================== 1：开发系统相关配置 ================== -->
+  <!-- 启用系统日志-->
+  <add key="IsLog" value="true" />
+  <!-- 是否启用js、css压缩-->
+  <add key="JsCompressor" value="false" />
+  <!-- 是否启用js、css缓存-->
+  <add key="JsCompressorCache" value="false" />
+  <!-- 代码生成器路径-->
+  <add key="BackProject" value="Learun.Application.TwoDevelopment" />
+  <add key="MappingDirectory" value="\Learun.Framework.Module\Learun.Application.Module\Learun.Application.Mapping" />
+  <add key="ServiceDirectory" value="\Learun.Framework.Module\Learun.Application.Module\Learun.Application.TwoDevelopment" />
+  <add key="WebDirectory" value="\Learun.Application.Web" />
+  <add key="ApiDirectory" value="\Learun.Application.WebApi" />
+  <add key="AppDirectory" value="\pulsApp" />
+  <add key="WxDirectory" value="\uniApp" />
+  <!-- ================== 2：这里主要是微信配置项内容部分 ================== -->
+  <!--企业号CorpId -->
+  <add key="CorpId" value="wxa2c39f6194f34344ff4" />
+  <!--企业号凭证密钥 -->
+  <add key="CorpSecret" value="LmYickyCL7sc1oVyUnUhXo24brefyM3AQbZnL347CP7Xs" />
+  <!--开放平台AppId -->
+  <add key="AppId" value="wxd75b6651c86f34816b" />
+  <!--开放平台凭证密钥 -->
+  <add key="AppSecret" value="a198e160569ccb134eabad28c2431e6e1b" />
+  <!-- ================== 3：访问过滤配置 ================== -->
+  <!--设置IP过滤 -->
+  <add key="FilterIP" value="false" />
+  <!--设置时段过滤 -->
+  <add key="FilterTime" value="false" />
+  <!-- ================== 4：系统软件参数配置 ================== -->
+  <!-- 联系我们 -->
+  <add key="Contact" value="www.learun.cn" />
+  <!-- 公司名称 -->
+  <add key="CustomerCompanyName" value="西安华羿微电子股份有限公司" />
+  <!-- 系统名称 -->
+  <add key="SystemName" value="华羿敏捷开发框架" />
+  <!-- 软件名称 -->
+  <add key="SoftName" value="华羿敏捷开发框架" />
+  <!-- 软件版本 -->
+  <add key="Version" value="1.0.1" />
+  <!-- 软件注册码，备用 -->
+  <add key="RegisterKey" value="NO:LR20190418003" />
+  <!-- ================== 5：外部邮件参数 ================== -->
+  <!-- 系统错误自动发送邮件 -->
+  <add key="ErrorToMail" value="false" />
+  <!-- 接收错误信息的邮箱 -->
+  <add key="RereceiveErrorMail" value="lin.shi@hymexa.com" />
+  <!-- 发出邮箱的名称 -->
+  <add key="MailName" value="华羿邮件中心" />
+  <!-- 发出邮箱的地址 -->
+  <add key="MailUserName" value="lin.shi@hymexa.com" />
+  <!-- 发出邮箱的密码 -->
+  <add key="MailPassword" value="1234.com" />
+  <!-- 发出邮箱设置邮箱主机 -->
+  <add key="MailHost" value="smtp.ym.163.com" />
+  <!-- ================== 6：即时通信参数 ================== -->
+  <!-- SignalR服务接口-->
+  <add key="IMUrl" value="http://localhost:8012/signalr" />
+  <add key="IMOpen" value="true" />
+  
+  <add key="userKey" value="14B417B0-463D-4F2B-8075-0A20EEDB773A" />
+  <!-- ================== 7：附件上传地址 ================== -->
+  <add key="AnnexesFile" value="C:/fileAnnexes" />
+  <!-- ================== 8：流程服务地址 ================== -->
+  <add key="workflowapi" value="http://localhost:8013" />
+  <!--Redis 缓存前缀 -->
+  <add key="RedisPrev" value="LRADMS" />
+  <!--head 头像存储地址 -->
+  <add key="fileHeadImg" value="C:/fileHeadImg" />
+  <add key="fileAppDTImg" value="C:/fileAppDTImg" />
+  <add key="fileLogoImg" value="C:/fileLogoImg" />
+  <!--印章管理存储图片路径 -->
+  <add key="Stamp" value="C:/StampImg" />
+  <!--缓存链接配置-->
+  <add key="RedisExchangeHosts" value="127.0.0.1:6379,allowadmin=true"/>
+  <!--附件路径-->
+  <add key="CommonExcelPath" value="C:\file\" />
+  <!--配置OA测试区webService url-->
+  <add key="webServiceurlunProduct" value="http://192.168.98.150:8088//services/HyRecruitingService?wsdl/SendOa" />
+  <!--配置OA正式区webService url-->
+  <add key="webServiceurlProduct" value="http://192.168.98.151:8088//services/HyRecruitingService?wsdl/SendOa" />
+  <!--配置OA测试区webService url-->
+  <add key="webServiceurlgenunProduct" value="http://192.168.98.150:8088//services/GeneralAutoFlowService?wsdl/TriggerOaFlow" />
+  <!--配置OA正式区webService url-->
+  <add key="webServiceurlgenProduct" value="http://192.168.98.151:8088//services/GeneralAutoFlowService?wsdl/TriggerOaFlow" />
+  <!--身份证识别URL-->
+  <add key="identificationCard" value="http://127.0.0.1:38088/card=idcard" />
+  <!--报到通知单URL-->
+  <add key="SendNotice" value="http://10.100.200.42:8013/api/SendReport/SetSendReport" />
+  <!--发送频率限制(秒)-->
+  <add key="MsgTimeLimit" value="10"/>
+  <!--图片路径URL-->
+  <add key="ImgUrl" value="http://10.100.200.42:8012/Content/images/EmployeeAvatar/" />
+</appSettings>

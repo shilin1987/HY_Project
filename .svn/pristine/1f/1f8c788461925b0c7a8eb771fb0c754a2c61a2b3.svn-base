@@ -1,0 +1,10 @@
+﻿(function () {
+    var page = {
+        isScroll: true,
+        init: function ($page) {
+            var img = $page.find('#picture1').imagepicker();
+            alert(img);
+        }
+    };
+    return page;
+})();

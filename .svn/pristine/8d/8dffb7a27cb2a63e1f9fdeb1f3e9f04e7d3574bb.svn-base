@@ -1,0 +1,12 @@
+﻿.photo {
+    width: 150px;
+    height: 210px;
+    margin: auto;
+    margin-top: 10px;
+    background: #0cc;
+}
+
+.photo img {
+    width: 150px;
+    height: 210px;
+}

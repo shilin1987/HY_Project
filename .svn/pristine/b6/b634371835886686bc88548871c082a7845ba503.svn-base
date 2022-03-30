@@ -1,0 +1,766 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Learun.DataBase.Repository</name>
+    </assembly>
+    <members>
+        <member name="T:Learun.DataBase.Repository.DbFactory">
+            <summary>
+            版 本 Learun-ADMS V7.0.6 力软敏捷开发框架
+            Copyright (c) 2013-2020 上海力软信息技术有限公司
+            创建人：力软-框架开发组
+            日 期：2017.03.04
+            描 述：数据库建立工厂
+            </summary>
+        </member>
+        <member name="M:Learun.DataBase.Repository.DbFactory.GetIDatabaseType">
+            <summary>
+            获取基础库数据库类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.DbFactory.GetIDatabase">
+            <summary>
+            连接基础库
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.DbFactory.GetIDatabase(System.String,Learun.DataBase.DatabaseType)">
+            <summary>
+            连接数据库
+            </summary>
+            <param name="connString">连接字符串</param>
+            <param name="dbType">数据库类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.DbFactory.GetIDatabase(System.String,System.String)">
+            <summary>
+            连接数据库
+            </summary>
+            <param name="connString">连接字符串</param>
+            <param name="dbType">数据库类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.DbFactory.GetIDatabase(System.String)">
+            <summary>
+            连接数据库
+            </summary>
+            <param name="name">连接配置名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.DbFactory.GetIDatabaseByIoc(System.String,System.String)">
+            <summary>
+            连接数据库
+            </summary>
+            <param name="name">数据库类型</param>
+            <param name="connString">连接字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.DbFactory.GetDbType(System.String)">
+            <summary>
+            获取数据库类型
+            </summary>
+            <param name="providerName">驱动名称</param>
+            <returns></returns>
+        </member>
+        <member name="T:Learun.DataBase.Repository.Repository">
+            <summary>
+            版 本 Learun-ADMS V7.0.6 力软敏捷开发框架
+            Copyright (c) 2013-2020 上海力软信息技术有限公司
+            创建人：力软-框架开发组
+            日 期：2017.03.04
+            描 述：定义仓储模型中的数据标准操作
+            </summary>
+        </member>
+        <member name="F:Learun.DataBase.Repository.Repository.db">
+            <summary>
+            数据库操作接口
+            </summary>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.#ctor(Learun.DataBase.IDatabase)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="idatabase"></param>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.getDbConnection">
+            <summary>
+            获取连接上下文
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.BeginTrans">
+            <summary>
+            开始事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Commit">
+            <summary>
+            提交
+            </summary>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Rollback">
+            <summary>
+            回滚
+            </summary>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.ExecuteBySql(System.String)">
+            <summary>
+            执行sql语句
+            </summary>
+            <param name="strSql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.ExecuteBySql(System.String,System.Object)">
+            <summary>
+            执行sql语句
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.ExecuteByProc(System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.ExecuteByProc(System.String,System.Object)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.ExecuteByProc``1(System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.ExecuteByProc``1(System.String,System.Object)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.QueryByProc``1(System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.QueryByProc``1(System.String,System.Object)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Insert``1(``0)">
+            <summary>
+            插入实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Insert``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量插入实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entities">实体数据列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Delete``1(``0)">
+            <summary>
+            删除实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entity">实体数据（需要主键赋值）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Delete``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量删除实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entities">实体数据列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Delete``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            删除表数据（根据Lambda表达式）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Update``1(``0)">
+            <summary>
+            更新实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.UpdateEx``1(``0)">
+            <summary>
+            更新实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.Update``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量更新实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entities">实体数据列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindEntity``1(System.Object)">
+            <summary>
+            查找一个实体根据主键
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="keyValue">主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindEntity``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            查找一个实体（根据表达式）
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="condition">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindEntity``1(System.String,System.Object)">
+            <summary>
+            查找一个实体（根据sql）
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.IQueryable``1">
+            <summary>
+            获取IQueryable表达式
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.IQueryable``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取IQueryable表达式(根据表达式)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="condition">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindList``1">
+            <summary>
+            查询列表（获取表所有数据）
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindList``1(System.String)">
+            <summary>
+            查询列表根据sql语句
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindList``1(System.String,System.Object)">
+            <summary>
+            查询列表根据sql语句(带参数)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindList``1(Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindList``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="condition">表达式</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindList``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            查询数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="condition">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindList``1(System.String,Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">SQL语句</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindList``1(System.String,System.Object,Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">SQL语句</param>
+            <param name="dbParameter">参数</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindTable(System.String)">
+            <summary>
+            查询数据
+            </summary>
+            <param name="strSql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindTable(System.String,System.Object)">
+            <summary>
+            查询数据
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindTable(System.String,Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindTable(System.String,System.Object,Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindObject(System.String)">
+            <summary>
+            获取查询对象
+            </summary>
+            <param name="strSql">SQL语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.FindObject(System.String,System.Object)">
+            <summary>
+            获取查询对象
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.GetDBTable``1">
+            <summary>
+            获取数据库表数据
+            </summary>
+            <typeparam name="T">反序列化类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.Repository.GetDBTableFields``1(System.String)">
+            <summary>
+            获取数据库表字段数据
+            </summary>
+            <typeparam name="T">反序列化类型</typeparam>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="T:Learun.DataBase.Repository.IRepository">
+            <summary>
+            版 本 Learun-ADMS V7.0.6 力软敏捷开发框架
+            Copyright (c) 2013-2020 上海力软信息技术有限公司
+            创建人：力软-框架开发组
+            日 期：2017.03.04
+            描 述：定义仓储模型中的数据标准操作接口
+            </summary>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.getDbConnection">
+            <summary>
+            获取连接上下文
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.BeginTrans">
+            <summary>
+            开始事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Commit">
+            <summary>
+            提交
+            </summary>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Rollback">
+            <summary>
+            回滚
+            </summary>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.ExecuteBySql(System.String)">
+            <summary>
+            执行sql语句
+            </summary>
+            <param name="strSql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.ExecuteBySql(System.String,System.Object)">
+            <summary>
+            执行sql语句
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.ExecuteByProc(System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.ExecuteByProc(System.String,System.Object)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.ExecuteByProc``1(System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.ExecuteByProc``1(System.String,System.Object)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.QueryByProc``1(System.String)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.QueryByProc``1(System.String,System.Object)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="procName">存储过程名称</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Insert``1(``0)">
+            <summary>
+            插入实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Insert``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量插入实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entities">实体数据列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Delete``1(``0)">
+            <summary>
+            删除实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entity">实体数据（需要主键赋值）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Delete``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量删除实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entities">实体数据列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Delete``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            删除表数据（根据Lambda表达式）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Update``1(``0)">
+            <summary>
+            更新实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.UpdateEx``1(``0)">
+            <summary>
+            更新实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entity">实体数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.Update``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量更新实体数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="entities">实体数据列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindEntity``1(System.Object)">
+            <summary>
+            查找一个实体根据主键
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="keyValue">主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindEntity``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            查找一个实体（根据表达式）
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="condition">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindEntity``1(System.String,System.Object)">
+            <summary>
+            查找一个实体（根据sql）
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.IQueryable``1">
+            <summary>
+            获取IQueryable表达式
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.IQueryable``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取IQueryable表达式(根据表达式)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="condition">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindList``1">
+            <summary>
+            查询列表（获取表所有数据）
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindList``1(System.String)">
+            <summary>
+            查询列表根据sql语句
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindList``1(System.String,System.Object)">
+            <summary>
+            查询列表根据sql语句(带参数)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindList``1(Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindList``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="condition">表达式</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindList``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            查询数据
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="condition">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindList``1(System.String,Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">SQL语句</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindList``1(System.String,System.Object,Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="strSql">SQL语句</param>
+            <param name="dbParameter">参数</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindTable(System.String)">
+            <summary>
+            查询数据
+            </summary>
+            <param name="strSql">sql语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindTable(System.String,System.Object)">
+            <summary>
+            查询数据
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindTable(System.String,Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindTable(System.String,System.Object,Learun.Util.Pagination)">
+            <summary>
+            查询列表(分页)
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <param name="pagination">分页数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindObject(System.String)">
+            <summary>
+            获取查询对象
+            </summary>
+            <param name="strSql">SQL语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.FindObject(System.String,System.Object)">
+            <summary>
+            获取查询对象
+            </summary>
+            <param name="strSql">sql语句</param>
+            <param name="dbParameter">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.GetDBTable``1">
+            <summary>
+            获取数据库表数据
+            </summary>
+            <typeparam name="T">反序列化类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.IRepository.GetDBTableFields``1(System.String)">
+            <summary>
+            获取数据库表字段数据
+            </summary>
+            <typeparam name="T">反序列化类型</typeparam>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="T:Learun.DataBase.Repository.RepositoryFactory">
+            <summary>
+            版 本 Learun-ADMS V7.0.6 力软敏捷开发框架
+            Copyright (c) 2013-2020 上海力软信息技术有限公司
+            创建人：力软-框架开发组
+            日 期：2017.03.04
+            描 述：定义仓储模型工厂
+            </summary>
+        </member>
+        <member name="M:Learun.DataBase.Repository.RepositoryFactory.BaseRepository(System.String,Learun.DataBase.DatabaseType)">
+            <summary>
+            定义仓储
+            </summary>
+            <param name="connString">连接字符串</param>
+            <param name="type">数据库类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.RepositoryFactory.BaseRepository(System.String,System.String)">
+            <summary>
+            定义仓储
+            </summary>
+            <param name="connString">连接字符串</param>
+            <param name="type">数据库类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.RepositoryFactory.BaseRepository(System.String)">
+            <summary>
+            定义仓储
+            </summary>
+            <param name="name">连接配置名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.DataBase.Repository.RepositoryFactory.BaseRepository">
+            <summary>
+            定义仓储（基础库）
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,67 @@
+﻿using Learun.Util;
+using Learun.Util.DataBase;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using WebApi_EmployeeInformationEntry.DataBase;
+using WebApi_EmployeeInformationEntry.Models;
+
+namespace WebApi_EmployeeInformationEntry.BLL
+{
+    /// <summary>
+    /// 节点相关信息
+    /// </summary>
+    public class NodeService : BaseService
+    {
+        /// <summary>
+        /// 保存用户信息
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public ApiModel CurrentNodeInfo(LoginModel login)
+        {
+            if (login != null)
+            {
+                if (login.username != null)
+                {
+                    try
+                    {
+                        //var pomodel = hYDatabase.Hy_Recruit_ProcessOperation;
+                        //var candidates = hYDatabase.Hy_Recruit_Candidates.Where(e=>e.F_Mobile== login.username).ToList();
+
+                        var nodeModel = hYDatabase.Hy_Recruit_ProcessOperation.Where(e=>e.OperationStatus==0 && e.CandidatesId == login.username).ToList();
+                        //                       var sql = string.Format(@"select a.* from Hy_Recruit_ProcessOperation a left join  Hy_Recruit_Candidates b
+                        //on a.CandidatesId = b.F_UserId where OperationStatus = 0 and b.F_Mobile = '{0}'", SQLOperation.ReplaceSQLChar(login.username));
+
+                        //var nodeModel = hYDatabase.Database.SqlQuery<Hy_Recruit_ProcessOperation>(sql);
+
+                        if (nodeModel != null && nodeModel.Count() > 0)
+                        {
+                            result.code = ResponseCode.success;
+                            result.data = "您当前所处应聘流程是:" + nodeModel.FirstOrDefault().OperationContent;
+                        }
+                        else
+                        {
+                            result.info = "您已通过应聘！欢迎加入华羿微电大家庭!";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        result.info = "应聘流程查询失败,请联系工作人员.异常信息:" + ex.Message;
+                    }
+                }
+                else
+                {
+                    result.info = "查询失败:用户信息为传输";
+                }
+            }
+            else
+            {
+                result.info = "查询失败:请求参数为空(null)";
+            }
+
+            return result;
+        }
+    }
+}

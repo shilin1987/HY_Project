@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "附件上传";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="SR_Recruitment">
+        <div class="lr-form-item-title">部门组织架构图</div>
+        <div id="F_Attachment01"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="SR_Recruitment">
+        <div class="lr-form-item-title">上下级关系图</div>
+        <div id="F_Attachment02"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="SR_Recruitment">
+        <div class="lr-form-item-title">部门人员明细表</div>
+        <div id="F_Attachment03"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/LR_OAModule/Views/ModuleExport/Form.js")

@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.HR_Code.FSConsumptionRecord
+{
+    public class FSRecordsOfConsumptionDTO
+    {
+        public string Person_No { get; set; }
+        public decimal? year { get; set; }
+        public decimal? month { get; set; }
+        public decimal? countMoney { get; set; }
+
+        public DateTime? Comsume_Date{ get; set; }
+    }
+}

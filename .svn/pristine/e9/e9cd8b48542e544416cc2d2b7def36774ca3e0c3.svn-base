@@ -1,0 +1,287 @@
+﻿using Dapper;
+using Learun.Application.TwoDevelopment.HR_WorkPermitModule;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-11-30 09:14
+    /// 描 述：上岗资格认证表
+    /// </summary>
+    public class WL_NormalShiftService : RepositoryFactory
+    {
+        #region 构造函数和属性
+
+        private string fieldSql;
+        public WL_NormalShiftService()
+        {
+            fieldSql= @"
+                t.F_EnabledMark,
+                t.F_CreateUserId,
+                t.F_ModifyUserName,
+                t.F_ModifyUserId,
+                t.F_DeleteMark,
+                t.F_SortCode,
+                t.F_ModifyDate,
+                t.F_CreateUserName,
+                t.F_CreateDate,
+                t.F_Description,
+                t.F_ID,
+                t.F_UserID,
+                t.F_FourLevelOrganization,
+                t.F_Education,
+                t.F_PersonnelCategory,
+                CONVERT(varchar(12) ,t.[F_AppointmentDate], 111 ) AS F_AppointmentDate,
+                t.F_ProbationPeriod,
+                t.F_writtenExamination,
+                t.F_OperationCapability,
+                t.F_workingAttitude,
+                t.F_Responsibility,
+                t.F_SUM,
+                t.F_OperationBPM,
+                t.F_OperationDirector,
+                t.F_OperationCharge,
+                t.F_QualityManagement,
+                t.F_HumanResources,
+                t.F_NO,
+                t.F_IsDownload,
+                t.F_EnCode,
+                t.F_RealName,
+                t.F_Gender,
+                t.F_DepartmentName
+            ";
+        }
+        #endregion
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取列表数据
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<Hy_Wl_NormalShiftEntity> GetList( string queryJson )
+        {
+            try
+            {
+                //参考写法
+                //var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                //var dp = new DynamicParameters(new { });
+                //dp.Add("startTime", queryParam["StartTime"].ToDate(), DbType.DateTime);
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql);
+                strSql.Append(" FROM Hy_Wl_NormalShift t ");
+                return this.BaseRepository().FindList<Hy_Wl_NormalShiftEntity>(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取列表分页数据
+        /// <param name="pagination">分页参数</param>
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<Hy_Wl_NormalShiftEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql);
+                strSql.Append(" FROM Hy_Wl_NormalShift t ");
+                return this.BaseRepository().FindList<Hy_Wl_NormalShiftEntity>(strSql.ToString(), pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_Wl_NormalShiftEntity GetEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<Hy_Wl_NormalShiftEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public ReturnComment UpdateEntity(Hy_Wl_ChangeShiftsEntity entity)
+        {
+            try
+            {
+                ReturnComment rc = new ReturnComment();
+               int count =  this.BaseRepository().Update(entity);
+                if (count > 0)
+                {
+                    rc.State = "S";
+                    rc.Mes = "修改流程状态成功";
+                }
+                else
+                {
+                    rc.State = "F";
+                    rc.Mes = "修改流程状态失败";
+                }
+                return rc;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 获取页面显示子表数据
+        /// <summary>
+        /// <param name="fno">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<Hy_Wl_OaReturnInfo_itemEntity> GetSubList(string fno)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                u.F_RealName as F_TheApprover,
+                a.F_Opinion,
+                a.F_ApprovalTime ,
+                a.F_whetherthrough 
+                ");
+                strSql.Append("  from lr_base_user u , Hy_Wl_OaReturnInfo_item  a ,dbo.Hy_Wl_NormalShift ns");
+                strSql.Append("  WHERE a.f_no='" + fno + "' and u.F_EnCode=a.F_TheApprover  and ns.F_no=a.F_no");
+                strSql.Append("  order by a.F_ApprovalTime ");
+                return this.BaseRepository().FindList<Hy_Wl_OaReturnInfo_itemEntity>(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            try
+            {
+                this.BaseRepository().Delete<Hy_Wl_NormalShiftEntity>(t=>t.F_ID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, Hy_Wl_NormalShiftEntity entity)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    entity.Modify(keyValue);
+                    this.BaseRepository().Update(entity);
+                }
+                else
+                {
+                    //var isExistItem = this.BaseRepository().FindEntity<Hy_Wl_NormalShiftEntity>(t => t.F_EnCode == entity.F_EnCode && t.F_RealName == entity.F_RealName);
+                        entity.Create();
+                        entity.F_NO = "NS-" + DateTime.Now.ToString("yyMMdHHmmss");
+                        entity.F_SUM = entity.F_writtenExamination + entity.F_OperationCapability + entity.F_workingAttitude + entity.F_Responsibility;
+                        entity.F_IsDownload = "否";
+                        this.BaseRepository().Insert(entity);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+}

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "个人标准工资维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_EverybodyStandardWage">
+        <div class="lr-form-item-title">员工账号<font face="宋体">*</font></div>
+        <div id="F_UserId" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-6 lr-form-item" data-table="Hy_hr_EverybodyStandardWage">
+        <div class="lr-form-item-title">岗级工资</div>
+        <label id="Postlevellabstart" class="form-control" />
+    </div>
+    <div class="col-xs-6 lr-form-item" data-table="Hy_hr_EverybodyStandardWage">
+        <div class="lr-form-item-title" style="text-align:center;">到</div>
+        <label id="Postlevellabend" class="form-control" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_EverybodyStandardWage">
+        <div class="lr-form-item-title">标准工资<font face="宋体">*</font></div>
+        <input id="F_StandardWage" type="text" class="form-control" isvalid="yes" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_EverybodyStandardWage">
+        <div class="lr-form-item-title">基本工资</div>
+        <label id="BasePaylab" class="form-control" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/EverybodyStandardWage/Form.js")

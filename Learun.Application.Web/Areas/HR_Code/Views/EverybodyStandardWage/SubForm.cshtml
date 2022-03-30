@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "个人标准工资子项维护";
+    Layout = "~/Views/Shared/_FormSub.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item subname" data-table="Hy_hr_EverybodyStandardWageSub">
+        <div class="lr-form-item-title">子项目<font face="宋体">*</font></div>
+        <div id="F_ItemId" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item subname" data-table="Hy_hr_EverybodyStandardWageSub">
+        <div class="lr-form-item-title">子项金额<font face="宋体">*</font></div>
+        <input id="F_Cost" type="text" isvalid="yes" checkexpession="NotNull" class="form-control" maxlength="10" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/EverybodyStandardWage/SubForm.js")

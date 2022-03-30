@@ -1,0 +1,206 @@
+<div style="margin-top:10px;" class="lr-form-container" id="userform">
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>性别:</label>
+		<div id="F_Gender" name="F_Age" isvalid="yes" checkexpession="NotNull" errormsg="性别"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>证件类型:</label>
+		<div id="F_DocumentType" isvalid="yes" checkexpession="NotNull" errormsg="证件类型"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>证件号码:</label>
+		<input id="F_IDCard" type="text" maxlength="18" isvalid="yes" checkexpession="NotNull" errormsg="证件号码" onkeyup="(this.v=function(){this.value=this.value.replace(/[^\w\.\/]/ig,'');}).call(this)" onblur="ageBlur(this)">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>年龄:</label>
+		<input id="F_Age" name="F_Age" type="text" maxlength="3" isvalid="yes" checkexpession="NotNull" errormsg="年龄" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>证件开始日期:</label>
+		<div id="F_IDCardStartDate" checkexpession="NotNull" isvalid="yes" errormsg="身份证开始日期"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>证件结束日期:</label>
+		<div id="F_IDCardEndDate" checkexpession="NotNull" isvalid="yes" errormsg="身份证结束日期"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>国籍:</label>
+		<div id="F_NationAlity" isvalid="yes" checkexpession="NotNull" errormsg="国籍"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>民族:</label>
+		<div id="F_Nation" isvalid="yes" checkexpession="NotNull" errormsg="民族"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>户籍性质:</label>
+		<div id="F_RRNature" isvalid="yes" checkexpession="NotNull" errormsg="户籍性质"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>手机号码:</label>
+		<input id="F_Mobile" type="text" maxlength="11" isvalid="yes" checkexpession="NotNull" errormsg="手机号码">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>政治面貌:</label>
+		<div id="F_PoliticalOutlook" isvalid="yes" checkexpession="NotNull" errormsg="政治面貌"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>婚姻状况:</label>
+		<div id="F_MaritalStatus" isvalid="yes" checkexpession="NotNull" errormsg="婚姻状况"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>籍贯:</label>
+		<div id="F_NativePlace" isvalid="yes" checkexpession="NotNull" errormsg="籍贯"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>银行卡号:</label>
+		<input id="F_BankCardNumber" maxlength="20" type="text" isvalid="yes" checkexpession="NotNull" errormsg="银行卡卡号" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>银行卡开户行:</label>
+		<input id="F_BankDeposit" type="text" maxlength="30" isvalid="yes" checkexpession="NotNull" errormsg="银行卡开户行">
+	</div>
+	<!--<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>岗位名称:</label>
+		<div id="F_PostId" checkexpession="NotNull" isvalid="yes"  errormsg="岗位名称" ></div>
+	</div>-->
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>入职日期:</label>
+		<div id="F_Entrydate" checkexpession="NotNull" isvalid="yes" errormsg="入职日期"></div>
+	</div>
+	<div class="lr-form-row">
+		<label style="width:30%;">入职集团日期:</label>
+		<div id="F_JoiningGroupDate" errormsg="入职集团日期"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>入职渠道:</label>
+		<div id="F_EntryChannel" checkexpession="NotNull" isvalid="yes" errormsg="入职渠道"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>最高学历:</label>
+		<div id="F_Education" checkexpession="NotNull" isvalid="yes" errormsg="最高学历"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>毕业院校:</label>
+		<input id="F_GraduationUniversitie" maxlength="30" type="text" isvalid="yes" checkexpession="NotNull" errormsg="毕业院校">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>专业:</label>
+		<input id="F_MajorStudied" maxlength="30" type="text" isvalid="yes" checkexpession="NotNull" errormsg="专业">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>入学时间:</label>
+		<div id="F_EducationStartDate" checkexpession="NotNull" isvalid="yes" errormsg="学历开始日期"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>毕业时间:</label>
+		<div id="F_EducationEndDate" checkexpession="NotNull" isvalid="yes" errormsg="学历结束日期"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>教育方式:</label>
+		<div id="F_EducationalMode" checkexpession="NotNull" isvalid="yes" errormsg="教育方式"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>外语水平:</label>
+		<div id="F_ForeignLanguageLevel" checkexpession="NotNull" isvalid="yes" errormsg="外语水平"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>资格证书:</label>
+		<div id="F_IsQualified" name="F_IsQualified" checkexpession="NotNull" isvalid="yes" errormsg="资格证书"></div>
+	</div>
+	<div class="lr-form-row">
+		<label>证书名称:</label>
+		<input id="F_QualificationName" maxlength="30" type="text">
+	</div>
+	<div class="lr-form-row">
+		<label>获取日期:</label>
+		<div id="F_GetTime"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>身份证地址:</label>
+		<input id="F_IDCardAddress" type="text" maxlength="50" isvalid="yes" checkexpession="NotNull" errormsg="身份证地址">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>户籍地址:</label>
+		<input id="F_PermanentAddress" type="text" maxlength="50" isvalid="yes" checkexpession="NotNull" errormsg="户籍地址">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>居住地址:</label>
+		<input id="F_ResidentialAddress" type="text" maxlength="50" isvalid="yes" checkexpession="NotNull" errormsg="居住地址">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>现住地址:</label>
+		<input id="F_CurrentAddress" type="text" maxlength="50" isvalid="yes" checkexpession="NotNull" errormsg="现住地址">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>紧急联系人:</label>
+		<input id="F_EmergencyContact" type="text" maxlength="50" isvalid="yes" checkexpession="NotNull" errormsg="紧急联系人">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>联系人关系:</label>
+		<div id="F_EContactRelationship" checkexpession="NotNull" isvalid="yes" errormsg="紧急联系关系"></div>
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>联系人电话:</label>
+		<input id="F_EContactNumber" type="text" maxlength="11" isvalid="yes" checkexpession="NotNull" errormsg="紧急联系人电话">
+	</div>
+	<div class="lr-form-row">
+		<font face="宋体">*</font>
+		<label>联系地址:</label>
+		<input id="F_ContactAddress" type="text" maxlength="50" isvalid="yes" checkexpession="NotNull" errormsg="紧急联系地址">
+	</div>
+	<div class="lr-form-row">
+		<label>内部推荐人编码:</label>
+		<input id="F_InternalCode" style="margin-left:8%;width:92%" type="text" maxlength="30">
+	</div>
+	<div class="lr-form-row">
+		<label>内部推荐人姓名:</label>
+		<input id="F_InternalName" style="margin-left:8%;width:92%" type="text" maxlength="30">
+	</div>
+	<div class="lr-form-row">
+		<label>内部推荐人公司:</label>
+		<input id="F_InternalCompany" style="margin-left:8%;width:92%" type="text" maxlength="30">
+	</div>
+	<div class="lr-form-row">
+		<label>劳务公司:</label>
+		<input id="F_RecruitmentCompany" type="text" maxlength="30" isvalid="yes">
+	</div>
+</div>
+
+<div class="lr-list" style="margin-top:15px;">
+	<div class="lr-list-item" style="color:red;text-align:center;" id="saveUser">
+		保存
+	</div>
+</div>

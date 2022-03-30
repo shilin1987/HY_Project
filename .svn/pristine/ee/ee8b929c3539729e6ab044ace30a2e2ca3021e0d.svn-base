@@ -1,0 +1,61 @@
+﻿using IdentityAuthentication.Models;
+using IdentityAuthenticationController.Controllers;
+using Learun.Application.TwoDevelopment.Platform;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace IdentityAuthentication.Controllers
+{
+    public class IdentityAuthenticationController : BaseApiController
+    {
+
+        /// <summary>
+        /// 测试接口
+        /// </summary>
+        /// <param name="idCard"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ApiModel test(IdCardModel idCard)
+        {
+            if (idCard.keyValue != null)
+            {
+                return Success("测试成功", "自动对比成功");
+            }
+            else
+            {
+                return Fail(null, "测试传入参数身份证为空(null)");
+            }
+        }
+
+        /// <summary>
+        /// 根据身份证获取基础信息
+        /// </summary>
+        /// <param name="idCard"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ApiModel IdentityAuthentication(IdCardModel idCard)
+        {
+            if (idCard.keyValue != null)
+            { 
+                ComparisonOfIdCardVerificationClassIBLL comparisonOfIdCardVerificationClassIBLL = new ComparisonOfIdCardVerificationClassBLL();
+                var rc = comparisonOfIdCardVerificationClassIBLL.VerifyIDCardAjxaData(idCard.keyValue);
+                if (rc.Status)
+                {
+                    return Success("",rc.Message + "！");
+                }
+                else
+                {
+                    return Fail("", rc.Message.ToString());
+                }
+            }
+            else
+            {
+                return Fail(null,"传入参数身份证为空(null)");
+            }
+        }
+    }
+}

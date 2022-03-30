@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "新菜价补贴计算";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">员工编号<font face="宋体">*</font></div>
+        <input id="F_UserId" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">员工姓名<font face="宋体">*</font></div>
+        <input id="F_UserName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">补贴年份<font face="宋体">*</font></div>
+        <input id="F_Year" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">补贴月份<font face="宋体">*</font></div>
+        <input id="F_Month" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">所属部门<font face="宋体">*</font></div>
+        <input id="F_DeptId" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">部门名称<font face="宋体">*</font></div>
+        <input id="F_DeptName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">成本中心编号<font face="宋体">*</font></div>
+        <input id="F_CostCenterno" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">成本中心名称<font face="宋体">*</font></div>
+        <input id="F_CostCenterName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">月早餐补贴次数<font face="宋体">*</font></div>
+        <input id="F_MonBreakfastTogether" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">月午餐补贴次数<font face="宋体">*</font></div>
+        <input id="F_MonLunchTogether" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">月晚餐补贴次数</div>
+        <input id="F_MonDinnerTogether" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">月夜宵补贴次数<font face="宋体">*</font></div>
+        <input id="F_MonSupperTogether" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="FS_VegetablePrices" >
+        <div class="lr-form-item-title">月补贴金额合计<font face="宋体">*</font></div>
+        <input id="F_CountMoney" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/FSVegetablePricesCalculation/Form.js")

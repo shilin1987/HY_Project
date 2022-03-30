@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "人员消费记录查询";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="hr_Monthlyconsumptiondata" >
+        <div class="lr-form-item-title">人员编号<font face="宋体">*</font></div>
+        <input id="Person_No" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="hr_Monthlyconsumptiondata" >
+        <div class="lr-form-item-title">员工姓名<font face="宋体">*</font></div>
+        <input id="Person_Name" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="hr_Monthlyconsumptiondata" >
+        <div class="lr-form-item-title">餐台编号<font face="宋体">*</font></div>
+        <input id="Tabie_ID" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="hr_Monthlyconsumptiondata" >
+        <div class="lr-form-item-title">餐台名称<font face="宋体">*</font></div>
+        <input id="Tabie_Name" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="hr_Monthlyconsumptiondata" >
+        <div class="lr-form-item-title">消费时间<font face="宋体">*</font></div>
+        <input id="Comsume_Date" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="hr_Monthlyconsumptiondata" >
+        <div class="lr-form-item-title">消费金额<font face="宋体">*</font></div>
+        <input id="Comsume_Sum" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/FSConsumptionRecord/Form.js")

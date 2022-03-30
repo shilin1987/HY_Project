@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "通知单管理";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">流程名称<font face="宋体">*</font></div>
+        <div id="SubProcessId" isvalid="yes"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_Recruit_ReportNotice">
+        <div class="lr-form-item-title">内容</div>
+        <div id="f_Content" style="height:200px;"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">备注<font face="宋体">*</font></div>
+        <textarea id="F_Description" class="form-control" style="height:100px;" isvalid="yes" checkexpession="NotNull"></textarea>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/RecruitReportNotice/Form.js")

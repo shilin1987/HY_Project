@@ -1,0 +1,208 @@
+﻿using Dapper;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-12-21 16:25
+    /// 描 述：WrittenExamination
+    /// </summary>
+    public class WrittenExaminationService : RepositoryFactory
+    {
+        #region 构造函数和属性
+
+        private string fieldSql;
+        public WrittenExaminationService()
+        {
+            fieldSql = @"
+           t.F_Id,
+           t.F_Score, 
+           t.F_CandidatesID,
+           c.F_IDCard as F_IDCard,
+                t.F_CreateUserName ,
+                t.F_CreateDate,
+                t.F_WrittenTestQuestionBankId 
+            ";
+        }
+        #endregion
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取列表数据
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<Hy_hr_WrittenExaminationEntity> GetList( string queryJson )
+        {
+            try
+            {
+                //参考写法
+                //var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                //var dp = new DynamicParameters(new { });
+                //dp.Add("startTime", queryParam["StartTime"].ToDate(), DbType.DateTime);
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql);
+                strSql.Append(" from dbo.Hy_Recruit_WrittenExamination  t,Hy_Recruit_Candidates c where t.F_CandidatesID=c.F_UserId");
+                //strSql.Append(" left join dbo.Hy_Recruit_WrittenExamination w on r.CandidatesId = w.F_CandidatesID left join dbo.Hy_Recruit_SubProcess s on r.SubProcessId = s.ID ");
+                //strSql.Append(" left join dbo.Hy_Recruit_MainProcess m on s.MainProcessId = m.ID where r.OperationStatus = 0 ");
+                return this.BaseRepository().FindList<Hy_hr_WrittenExaminationEntity>(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取列表分页数据
+        /// <param name="pagination">分页参数</param>
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<Hy_hr_WrittenExaminationEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql);
+                strSql.Append("from dbo.Hy_Recruit_WrittenExamination  t,Hy_Recruit_Candidates c where t.F_CandidatesID=c.F_UserId");
+                //strSql.Append(" left join dbo.Hy_Recruit_WrittenExamination w on r.CandidatesId = w.F_CandidatesID left join dbo.Hy_Recruit_SubProcess s on r.SubProcessId = s.ID ");
+                //strSql.Append(" left join dbo.Hy_Recruit_MainProcess m on s.MainProcessId = m.ID where r.OperationStatus = 0 ");
+                return this.BaseRepository().FindList<Hy_hr_WrittenExaminationEntity>(strSql.ToString(), pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_hr_WrittenExaminationEntity GetEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<Hy_hr_WrittenExaminationEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            try
+            {
+                this.BaseRepository().Delete<Hy_hr_WrittenExaminationEntity>(t=>t.F_Id == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, Hy_hr_WrittenExaminationEntity entity)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    entity.Modify(keyValue);
+                    this.BaseRepository().Update(entity);
+                }
+                else
+                {
+                    Hy_hr_InterviewEntity ie = new Hy_hr_InterviewEntity();
+                    InterviewService s = new InterviewService();
+                    var strSql = new StringBuilder();
+                    strSql.Append("SELECT ");
+                    strSql.Append(@"* ");
+                    strSql.Append("  from Hy_Recruit_Candidates ");
+                    strSql.Append("  WHERE F_RealName='" + entity.F_CandidatesID + "'");
+                    var newuserModel = this.BaseRepository().FindList<Hy_hr_CandidatesEntity>(strSql.ToString());
+                   
+                    entity.Create();
+                    entity.F_CandidatesID= newuserModel.First().F_UserId;
+                    this.BaseRepository().Insert(entity);
+                    if (entity.F_Score >= 80)
+                    {
+                        ie.Create();
+                        ie.F_CandidatesID = newuserModel.First().F_UserId;
+                        s.SaveEntity(keyValue, ie);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+}

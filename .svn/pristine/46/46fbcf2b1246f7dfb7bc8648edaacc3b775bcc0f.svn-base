@@ -1,0 +1,430 @@
+﻿using Dapper;
+using Learun.Application.Organization;
+using Learun.Application.Organization.ReturnModel;
+using Learun.Application.TwoDevelopment.HR_SocialRecruitment;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-07-28 17:38
+    /// 描 述：新员工入职信息临时保存
+    /// </summary>
+    public class candidatesService : RepositoryFactory
+    {
+        ReturnCommon _return;
+        public candidatesService()
+        {
+            _return = new ReturnCommon();
+        }
+
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<Hy_hr_CandidatesEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                       t.[F_UserId]
+                      ,t.[F_EnCode]
+                      ,t.[F_Account]
+                      ,t.[F_Password]
+                      ,t.[F_Secretkey]
+                      ,t.[F_RealName]
+                      ,t.[F_NickName]
+                      ,t.[F_HeadIcon]
+                      ,t.[F_QuickQuery]
+                      ,t.[F_SimpleSpelling]
+                      ,t.[F_Gender]
+                      ,t.[F_Birthday]
+                      ,t.[F_Mobile]
+                      ,t.[F_Telephone]
+                      ,t.[F_Email]
+                      ,t.[F_OICQ]
+                      ,t.[F_WeChat]
+                      ,t.[F_MSN]
+                      ,t.[F_OpenId]
+                      ,t.[F_Question]
+                      ,t.[F_AnswerQuestion]
+                      ,t.[F_CheckOnLine]
+                      ,t.[F_AllowStartTime]
+                      ,t.[F_AllowEndTime]
+                      ,t.[F_LockStartDate]
+                      ,t.[F_LockEndDate]
+                      ,t.[F_SortCode]
+                      ,t.[F_DeleteMark]
+                      ,t.[F_EnabledMark]
+                      ,t.[F_Description]
+                      ,t.[F_CreateDate]
+                      ,t.[F_CreateUserId]
+                      ,t.[F_CreateUserName]
+                      ,t.[F_ModifyDate]
+                      ,t.[F_ModifyUserId]
+                      ,t.[F_ModifyUserName]
+                      ,t.[F_IDCard]
+                      ,t.[F_PrimaryOrganization]
+                      ,t.[F_SecondaryOrganization]
+                      ,t.[F_TertiaryOrganization]
+                      ,t.[F_FourLevelOrganization]
+                      ,t.[F_FiveLevelOrganization]
+                      ,t.[F_SixLevelOrganization]
+                      ,t.[F_RecruitmentChannels]
+                      ,t.[F_Entrydate]
+                      ,t.[F_ConfirmationDate]
+                      ,t.[F_DepartureDate]
+                      ,t.[F_Education]
+                      ,t.[F_SalaryMethod]
+                      ,t.[F_PayModel]
+                      ,t.[F_WorkingSystem]
+                      ,t.[F_BankCardNumber]
+                      ,t.[F_BankDeposit]
+                      ,t.[F_DateHoldingPost]
+                      ,t.[F_IsTrainingAgreement]
+                      ,t.[F_StartDateService]
+                      ,t.[F_EndDateService]
+                      ,t.[F_EmployeeNature]
+                      ,t.[F_EmployeeNatureChangeDate]
+                      ,t.[F_PieceworkType]
+                      ,t.[F_TimeBecomeRegular]
+                      ,t.[F_TimeShiftWorkSystem]
+                      ,t.[F_TypesResignation]
+                      ,t.[F_MakeUpTime]
+                      ,t.[F_PostId]
+                      ,t.[F_SalaryCalculation]
+                      ,t.[F_Age]
+                      ,t.[F_DocumentType]
+                      ,t.[F_NationAlity]
+                      ,t.[F_Nation]
+                      ,t.[F_RRNature]
+                      ,t.[F_PoliticalOutlook]
+                      ,t.[F_MaritalStatus]
+                      ,t.[F_NativePlace]
+                      ,isnull(t.[F_OnJobStatus],'') OnJobStatus
+                      ,t.[F_IDCardStartDate]
+                      ,t.[F_IDCardEndDate]
+                      ,t.[F_OneCardNumber]
+                      ,t.[F_SalaryStructureType]
+                      ,t.[F_SalaryType]
+                      ,t.[F_PersonnelCategory]
+                      ,t.[F_JoiningGroupDate]
+                      ,t.[F_EntryChannel]
+                      ,t.[F_OfflineDate]
+                      ,t.[F_InternalCode]
+                      ,t.[F_InternalName]
+                      ,t.[F_InternalCompany]
+                      ,t.[F_LaborRecruitmentDate]
+                      ,t.[F_RecruitmentCompany]
+                      ,t.[F_GraduationUniversitie]
+                      ,t.[F_MajorStudied]
+                      ,t.[F_EducationStartDate]
+                      ,t.[F_EducationEndDate]
+                      ,t.[F_EducationalMode]
+                      ,t.[F_ForeignLanguageLevel]
+                      ,t.[F_IsQualified]
+                      ,t.[F_QualificationName]
+                      ,t.[F_GetTime]
+                      ,t.[F_InternalTitleType]
+                      ,t.[F_InternalTitle]
+                      ,t.[F_InternalTitleDate]
+                      ,t.[F_SocialTitleType]
+                      ,t.[F_SocialTitle]
+                      ,t.[F_SocialTitleDate]
+                      ,t.[F_IDCardAddress]
+                      ,t.[F_PermanentAddress]
+                      ,t.[F_ResidentialAddress]
+                      ,t.[F_CurrentAddress]
+                      ,t.[F_EmergencyContact]
+                      ,t.[F_EContactRelationship]
+                      ,t.[F_EContactNumber]
+                      ,t.[F_ContactAddress]
+                      ,t.[F_laborContractStartDate]
+                      ,t.[F_laborContractEndDate]
+                      ,t.[F_LaborContractStatus]
+                      ,t.[F_AttendanceDeadline]
+                      ,t.[F_IsEsignationCertificate]
+                      ,t.[F_Depreciation]
+                ");
+                strSql.Append("  FROM Hy_hr_Candidates t ");
+                strSql.Append("  WHERE 1=1 ");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["StartTime"].IsEmpty() && !queryParam["EndTime"].IsEmpty())
+                {
+                    dp.Add("startTime", queryParam["StartTime"].ToDate(), DbType.DateTime);
+                    dp.Add("endTime", queryParam["EndTime"].ToDate(), DbType.DateTime);
+                    strSql.Append(" AND ( t.F_CreateDate >= @startTime AND t.F_CreateDate <= @endTime ) ");
+                }
+                if (!queryParam["F_RealName"].IsEmpty())
+                {
+                    dp.Add("F_RealName", "%" + queryParam["F_RealName"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_RealName Like @F_RealName ");
+                }
+                if (!queryParam["F_Gender"].IsEmpty())
+                {
+                    dp.Add("F_Gender",queryParam["F_Gender"].ToString(), DbType.String);
+                    strSql.Append(" AND t.F_Gender = @F_Gender ");
+                }
+                if (!queryParam["F_Mobile"].IsEmpty())
+                {
+                    dp.Add("F_Mobile", "%" + queryParam["F_Mobile"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_Mobile Like @F_Mobile ");
+                }
+                if (!queryParam["F_IsGetAccommodation"].IsEmpty())
+                {
+                    dp.Add("F_IsGetAccommodation",queryParam["F_IsGetAccommodation"].ToString(), DbType.String);
+                    strSql.Append(" AND t.F_IsGetAccommodation = @F_IsGetAccommodation ");
+                }
+                if (!queryParam["F_IDCard"].IsEmpty())
+                {
+                    dp.Add("F_IDCard", "%" + queryParam["F_IDCard"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_IDCard Like @F_IDCard ");
+                }
+
+                return this.BaseRepository().FindList<Hy_hr_CandidatesEntity>(strSql.ToString(),dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// //1.查询当前关卡subid
+        //2.根据当前表的外键subid去找流程和对下面环节的下一个关卡信息,修改当前表状态
+        //3.人员入职流程记录表里面里面记录一条数据
+        //4.返回需要入职者操作下一个状态
+        /// </summary>
+        /// <param name="keyValue"></param>
+        /// <returns></returns>
+        public ReturnCommon GetFormUpdateStateServic(string currentEntityKey,string keyValue)
+        {
+            try
+            {
+                var db = this.BaseRepository("SRDB").BeginTrans();
+                var hrdb = this.BaseRepository().BeginTrans();
+                try
+                {
+                    //1.查询当前关卡subid
+                    //2.根据当前表的外键subid去找流程和对下面环节的下一个关卡信息,修改当前表状态
+                    SR_ClubResortFunctionIBLL srIBL = new SR_ClubResortFunctionBLL();
+                    SR_ClubResortFunctionEntity srclEntity = srIBL.GetSR_ClubResortFunctionEntity(keyValue);
+                    srclEntity = srIBL.GetSR_ClubResortNextNodeEntity(srclEntity.F_ProcessId, (decimal)srclEntity.F_SortCode+1);
+                    Hy_hr_CandidatesEntity hyEntity = GetHy_hr_CandidatesEntity(currentEntityKey);
+
+                    //修改当前展示位到下一个节点
+                    hyEntity.F_SubID = srclEntity.F_id;
+                    hyEntity.F_ReportsLinkCurrentInfo = srclEntity.F_FunticonName;
+                    hrdb.Update(hyEntity);
+                    //3.人员入职流程记录表里面里面记录一条数据，并且修改上次这个人记录的时间
+                    //在流程节点归档表里面保存数据
+                    SR_RecordOperatorRecruitmentProcessEntity srrpEntity = new SR_RecordOperatorRecruitmentProcessEntity() ;
+                    srrpEntity.Create();
+                    srrpEntity.F_ProcessId = srclEntity.F_ProcessId;
+                    srrpEntity.F_SubProcessId = srclEntity.F_id;
+                    srrpEntity.F_UserId = hyEntity.F_UserId;
+                    srrpEntity.F_State = 0;
+                    srrpEntity.F_StartTime = DateTime.Now;
+                    srrpEntity.F_Sort = srclEntity.F_SortCode;
+                    hrdb.Insert(srrpEntity);
+
+                    //两条数据
+                    //且修改上次这个人记录的结束时间
+                    RecordOperatorRecruitmentProcessClassIBLL rrpIBLL = new RecordOperatorRecruitmentProcessClassBLL();
+                    SR_RecordOperatorRecruitmentProcessEntity srrpEntityBack = rrpIBLL.getRecordOperatorRecruitment(hyEntity.F_UserId, srclEntity.F_ProcessId, (decimal)srclEntity.F_SortCode);
+                    srrpEntityBack.F_EndTime = DateTime.Now;
+                    hrdb.Update(srrpEntityBack);
+
+                    //rrpIBLL.getRecordOperatorRecruitment(string f_userid,string processSubId,string F_SortCode);
+                    //4.返回需要入职者操作下一个状态
+                    _return.Status = true;
+                    _return.Message = srclEntity.F_FunticonName;
+                    db.Commit();
+                    hrdb.Commit();
+                    return _return;
+                }
+                catch (Exception ex)
+                {
+                    db.Rollback();
+                    hrdb.Commit();
+                    if (ex is ExceptionEx)
+                    {
+                        throw;
+                    }
+                    else
+                    {
+                        throw ExceptionEx.ThrowServiceException(ex);
+                    }
+                }
+                return _return;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取Hy_hr_Candidates表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public Hy_hr_CandidatesEntity GetHy_hr_CandidatesEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository().FindEntity<Hy_hr_CandidatesEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public ReturnCommon DeleteEntity(string keyValue)
+        {
+            try
+            {
+                var isDel = this.BaseRepository().Delete<Hy_hr_CandidatesEntity>(t=>t.F_UserId == keyValue);
+                if (isDel > 0)
+                {
+                    _return.Status = true;
+                    _return.Message = "删除成功";
+                }
+                else
+                {
+                    _return.Status = false;
+                    _return.Message = "删除失败";
+                }
+            }
+            catch (Exception ex)
+            {
+                _return.Status = false;
+                _return.Message = ex.Message;
+            }
+
+            return _return;
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public ReturnCommon SaveEntity(string keyValue, Hy_hr_CandidatesEntity entity)
+        {
+            try
+            {
+                int addOrEdit = 0;
+                //员工表中是否已经存在
+                var isExistUser = this.BaseRepository().FindEntity<UserEntity>(t => t.F_RealName == entity.F_RealName || t.F_IDCard == entity.F_IDCard);
+                if (isExistUser != null)
+                {
+                    _return.Status = false;
+                    _return.Message = "手机号或身份证号已被其他在职员工使用.";
+                    return _return;
+                }
+
+                //新员工中是否重复提交
+                var isExistCandidates = this.BaseRepository().FindEntity<Hy_hr_CandidatesEntity>(t => t.F_RealName == entity.F_RealName || t.F_IDCard == entity.F_IDCard);
+
+                //修改
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    if (isExistCandidates != null && isExistCandidates.F_UserId!= keyValue)
+                    {
+                        _return.Status = false;
+                        _return.Message = "姓名或身份证号已被注册(请换其他号码).";
+                        return _return;
+                    }
+                    else
+                    {
+                        entity.Modify(keyValue);
+                        addOrEdit = this.BaseRepository().Update(entity);
+                    }
+                }
+                else
+                {
+                    if (isExistCandidates != null)
+                    {
+                        _return.Status = false;
+                        _return.Message = "手机号或身份证号已被注册(请勿重复提交).";
+                        return _return;
+                    }
+                    else
+                    {
+                        entity.F_EnabledMark = 0;
+                        entity.Create();
+                        entity.F_Account = entity.F_EnCode;
+                        addOrEdit = this.BaseRepository().Insert(entity);
+                    }
+                }
+                if (addOrEdit > 0)
+                {
+                    _return.Status = true;
+                    _return.Message = "保存成功";
+                }
+                else
+                {
+                    _return.Status = false;
+                    _return.Message = "保存失败";
+                }
+            }
+            catch (Exception ex)
+            {
+                _return.Status = false;
+                _return.Message = ex.Message;
+            }
+
+            return _return;
+        }
+
+        #endregion
+
+    }
+}

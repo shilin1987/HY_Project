@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "WrittenExamination";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="lr-layout lr-layout-left-center"  style="padding-left:0px"  id="lr_layout">
+    @*<div class="lr-layout-left">
+        <div class="lr-layout-wrap">
+            <div class="lr-layout-title">树形目录</div>
+            <div id="tree" class="lr-layout-body"></div>
+        </div>
+    </div>*@
+    <div class="lr-layout-center">
+        <div class="lr-layout-wrap">
+            <div class="lr-layout-title">新员工笔试记录</div>
+            <div class="lr-layout-tool">
+                <div class="lr-layout-tool-left">
+                    @*<div class="lr-layout-tool-item">
+                        <div id="datesearch"></div>
+                    </div>*@
+                    <div class="lr-layout-tool-item">
+                        <div id="multiple_condition_query">
+                            <div class="lr-query-formcontent">
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">身份证号</div>
+                                    <input id="F_IDCard" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">姓名</div>
+                                    <input id="F_RealName" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">状态</div>
+                                    <select id="F_Score" class="form-control">
+                                        <option value="通过" selected="selected">通过</option>
+                                        <option value="不通过">不通过</option>
+                                    </select>
+                                    @*<input id="F_EntryChannel" type="text" class="form-control" />*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lr-layout-tool-right">
+                    <div class=" btn-group btn-group-sm">
+                        <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+                    </div>
+                    <div class=" btn-group btn-group-sm" learun-authorize="yes">
+                        <a id="lr_add" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp;新增</a>
+                        <a id="lr_edit" class="btn btn-default"><i class="fa fa-pencil-square-o"></i>&nbsp;编辑</a>
+                        <a id="lr_delete" class="btn btn-default"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+                    </div>
+                </div>
+            </div>
+            <div class="lr-layout-body" id="gridtable"></div>
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/WrittenExamination/Index.js")

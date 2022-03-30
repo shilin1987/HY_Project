@@ -1,0 +1,194 @@
+﻿using Learun.Application.Organization;
+using Learun.Application.TwoDevelopment.HR_Code.HeterogeneousSystemInterface;
+using Learun.Application.TwoDevelopment.Platform;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using Learun.Util;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+
+namespace Learun.Application.TwoDevelopment.HR_WorkPermitModule
+{
+    public class WorkPermitModuleCreateOABLL<T> : WorkPermitModuleCreateOAIBLL<T> where T : class
+    {
+        public ReturnComment crateOAandHRForm(T t) 
+        {   
+            try
+            {
+
+                Wl_ChangeShiftsIBLL wc = new Wl_ChangeShiftsBLL();
+                WL_NormalShiftIBLL wn = new WL_NormalShiftBLL();
+                // Wl_ChangeShiftsIBLL wc = new Wl_ChangeShiftsBLL();
+                ReturnComment rc = new ReturnComment();
+                JObject json = new JObject();
+                UserIBLL userInfo = new UserBLL(); ;
+                Dictionary<string, string> dr = new Dictionary<string, string>();
+                Type t1 = typeof(T);
+
+                dynamic dynamicEnity = t;
+                if ("Hy_Wl_NormalShiftEntity".Equals(t1.Name))
+                {
+                    UserEntity user = userInfo.GetEntityByUserId(dynamicEnity.F_UserID);
+              
+                    dr.Add("F_UserID", string.IsNullOrEmpty(dynamicEnity.F_UserID) || "null".Equals(dynamicEnity.F_UserID) ? "" : dynamicEnity.F_UserID);
+                    dr.Add("F_FourLevelOrganization", string.IsNullOrEmpty(dynamicEnity.F_OperationBPM) || "null".Equals(dynamicEnity.F_OperationBPM) ? "" : dynamicEnity.F_OperationBPM);
+                    dr.Add("F_Education", string.IsNullOrEmpty(user.F_Education) || "null".Equals(user.F_Education) ? "" : user.F_Education);
+                    dr.Add("F_PersonnelCategory", string.IsNullOrEmpty(dynamicEnity.F_PersonnelCategory) || "null".Equals(dynamicEnity.F_PersonnelCategory) ? "" : dynamicEnity.F_PersonnelCategory);
+                    dr.Add("F_Entrydate", string.IsNullOrEmpty(dynamicEnity.F_AppointmentDate) || "null".Equals(dynamicEnity.F_AppointmentDate) ? "" : dynamicEnity.F_AppointmentDate);
+                    dr.Add("F_ProbationPeriod", string.IsNullOrEmpty(dynamicEnity.F_ProbationPeriod) || "null".Equals(dynamicEnity.F_ProbationPeriod) ? "" : dynamicEnity.F_ProbationPeriod);
+                    json.Add("F_writtenExamination", string.IsNullOrEmpty(dynamicEnity.F_writtenExamination) || "null".Equals(dynamicEnity.F_writtenExamination) ? "" : dynamicEnity.F_writtenExamination);
+                    json.Add("F_OperationCapability", string.IsNullOrEmpty(dynamicEnity.F_OperationCapability) || "null".Equals(dynamicEnity.F_OperationCapability) ? "" : dynamicEnity.F_OperationCapability);
+                    json.Add("F_workingAttitude", string.IsNullOrEmpty(dynamicEnity.F_workingAttitude) || "null".Equals(dynamicEnity.F_workingAttitude) ? "" : dynamicEnity.F_workingAttitude);
+                    json.Add("F_Responsibility", string.IsNullOrEmpty(dynamicEnity.F_Responsibility) || "null".Equals(dynamicEnity.F_Responsibility) ? "" : dynamicEnity.F_Responsibility);
+                    json.Add("F_SUM", string.IsNullOrEmpty(dynamicEnity.F_SUM) || "null".Equals(dynamicEnity.F_SUM) ? "" : dynamicEnity.F_SUM);
+                    dr.Add("F_OperationBPM", string.IsNullOrEmpty(dynamicEnity.F_OperationBPM) || "null".Equals(dynamicEnity.F_OperationBPM) ? "" : dynamicEnity.F_OperationBPM);
+                    dr.Add("F_OperationDirector", string.IsNullOrEmpty(dynamicEnity.F_OperationDirector) || "null".Equals(dynamicEnity.F_OperationDirector) ? "" : dynamicEnity.F_OperationDirector);
+                    dr.Add("F_OperationCharge", string.IsNullOrEmpty(dynamicEnity.F_OperationCharge) || "null".Equals(dynamicEnity.F_OperationCharge) ? "" : dynamicEnity.F_OperationCharge);
+                    dr.Add("F_QualityManagement", string.IsNullOrEmpty(dynamicEnity.F_QualityManagement) || "null".Equals(dynamicEnity.F_QualityManagement) ? "" : dynamicEnity.F_QualityManagement);
+                    dr.Add("F_HumanResources", string.IsNullOrEmpty(dynamicEnity.F_HumanResources) || "null".Equals(dynamicEnity.F_HumanResources) ? "" : dynamicEnity.F_HumanResources);
+                    dr.Add("F_NO", string.IsNullOrEmpty(dynamicEnity.F_NO) || "null".Equals(dynamicEnity.F_NO) ? "" : dynamicEnity.F_NO);
+                    dr.Add("xm", string.IsNullOrEmpty(dynamicEnity.F_RealName) || "null".Equals(dynamicEnity.F_RealName) ? "" : dynamicEnity.F_RealName);
+                    dr.Add("xb", string.IsNullOrEmpty(dynamicEnity.F_Gender) || "null".Equals(dynamicEnity.F_Gender) ? "" : dynamicEnity.F_Gender);
+                    dr.Add("bm", string.IsNullOrEmpty(dynamicEnity.F_DepartmentName) || "null".Equals(dynamicEnity.F_DepartmentName) ? "" : dynamicEnity.F_DepartmentName);
+                    dr.Add("F_PostID", string.IsNullOrEmpty(user.F_PostId) || "null".Equals(user.F_PostId) ? "" : user.F_PostId);
+                    dr.Add("F_AssessmentDate", "");
+                    dr.Add("F_AssessmentResults", "");
+                    dr.Add("F_ReasonDescription", "");
+                }
+                else
+                {
+                    dr.Add("F_UserID", string.IsNullOrEmpty(dynamicEnity.F_UserID) || "null".Equals(dynamicEnity.F_UserID) ? "" : dynamicEnity.F_UserID);
+                    dr.Add("F_FourLevelOrganization", string.IsNullOrEmpty(dynamicEnity.F_OperationBPM) || "null".Equals(dynamicEnity.F_OperationBPM) ? "" : dynamicEnity.F_OperationBPM);
+                    dr.Add("F_Education", string.IsNullOrEmpty(dynamicEnity.F_Education) || "null".Equals(dynamicEnity.F_Education) ? "" : dynamicEnity.F_Education);
+                    dr.Add("F_PersonnelCategory", string.IsNullOrEmpty(dynamicEnity.F_PersonnelCategory) || "null".Equals(dynamicEnity.F_PersonnelCategory) ? "" : dynamicEnity.F_PersonnelCategory);
+                    dr.Add("F_Entrydate", string.IsNullOrEmpty(dynamicEnity.F_AppointmentDate) || "null".Equals(dynamicEnity.F_AppointmentDate) ? "" : dynamicEnity.F_AppointmentDate);
+                    dr.Add("F_ProbationPeriod", string.IsNullOrEmpty(dynamicEnity.F_ProbationPeriod) || "null".Equals(dynamicEnity.F_ProbationPeriod) ? "" : dynamicEnity.F_ProbationPeriod);
+                    dr.Add("F_writtenExamination", string.IsNullOrEmpty(dynamicEnity.F_writtenExamination) || "null".Equals(dynamicEnity.F_writtenExamination) ? "" : dynamicEnity.F_writtenExamination);
+                    dr.Add("F_OperationCapability", string.IsNullOrEmpty(dynamicEnity.F_OperationCapability) || "null".Equals(dynamicEnity.F_OperationCapability) ? "" : dynamicEnity.F_OperationCapability);
+                    dr.Add("F_workingAttitude", string.IsNullOrEmpty(dynamicEnity.F_workingAttitude) || "null".Equals(dynamicEnity.F_workingAttitude) ? "" : dynamicEnity.F_workingAttitude);
+                    dr.Add("F_Responsibility", string.IsNullOrEmpty(dynamicEnity.F_Responsibility) || "null".Equals(dynamicEnity.F_Responsibility) ? "" : dynamicEnity.F_Responsibility);
+                    dr.Add("F_SUM", string.IsNullOrEmpty(dynamicEnity.F_SUM) || "null".Equals(dynamicEnity.F_SUM) ? "" : dynamicEnity.F_SUM);
+                    dr.Add("F_OperationBPM", string.IsNullOrEmpty(dynamicEnity.F_OperationBPM) || "null".Equals(dynamicEnity.F_OperationBPM) ? "" : dynamicEnity.F_OperationBPM);
+                    dr.Add("F_OperationDirector", string.IsNullOrEmpty(dynamicEnity.F_OperationDirector) || "null".Equals(dynamicEnity.F_OperationDirector) ? "" : dynamicEnity.F_OperationDirector);
+                    dr.Add("F_OperationCharge", string.IsNullOrEmpty(dynamicEnity.F_OperationCharge) || "null".Equals(dynamicEnity.F_OperationCharge) ? "" : dynamicEnity.F_OperationCharge);
+                    dr.Add("F_QualityManagement", string.IsNullOrEmpty(dynamicEnity.F_QualityManagement) || "null".Equals(dynamicEnity.F_QualityManagement) ? "" : dynamicEnity.F_QualityManagement);
+                    dr.Add("F_HumanResources", string.IsNullOrEmpty(dynamicEnity.F_HumanResources) || "null".Equals(dynamicEnity.F_HumanResources) ? "" : dynamicEnity.F_HumanResources);
+                    dr.Add("F_NO", string.IsNullOrEmpty(dynamicEnity.F_NO) || "null".Equals(dynamicEnity.F_NO) ? "" : dynamicEnity.F_NO);
+                    dr.Add("xm", string.IsNullOrEmpty(dynamicEnity.F_RealName) || "null".Equals(dynamicEnity.F_RealName) ? "" : dynamicEnity.F_RealName);
+                    dr.Add("xb", string.IsNullOrEmpty(dynamicEnity.F_Gender) || "null".Equals(dynamicEnity.F_Gender) ? "" : dynamicEnity.F_Gender);
+                    dr.Add("bm", string.IsNullOrEmpty(dynamicEnity.F_DepartmentName) || "null".Equals(dynamicEnity.F_DepartmentName) ? "" : dynamicEnity.F_DepartmentName);
+                    dr.Add("F_PostID", string.IsNullOrEmpty(dynamicEnity.F_PostID) || "null".Equals(dynamicEnity.F_PostID) ? "" : dynamicEnity.F_PostID);
+                    dr.Add("F_AssessmentDate", string.IsNullOrEmpty(dynamicEnity.F_AssessmentDate) || "null".Equals(dynamicEnity.F_AssessmentDate) ? "" : dynamicEnity.F_AssessmentDate);
+                    dr.Add("F_AssessmentResults", string.IsNullOrEmpty(dynamicEnity.F_AssessmentResults) || "null".Equals(dynamicEnity.F_AssessmentResults) ? "" : dynamicEnity.F_AssessmentResults);
+                    dr.Add("F_ReasonDescription", string.IsNullOrEmpty(dynamicEnity.F_ReasonDescription) || "null".Equals(dynamicEnity.F_ReasonDescription) ? "" : dynamicEnity.F_ReasonDescription);
+                }
+                json.Add("HEADER", JToken.FromObject(dr));
+                json.Add("DETAILS", JToken.FromObject(new object()));
+                
+                string m_WebServiceUrl = "http://192.168.98.150:8088//services/HyRecruitingService?wsdl/SendOa";
+
+                string jsonStr = JsonNewtonsoft.ToJSON(json).ToString();
+                string soap = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:hy=\"http://localhost/hy.webservice.hr.HyRecruitingService\">\r\n" +
+                "<soapenv:Header/>\r\n" +
+                  "<soapenv:Body>\r\n" +
+                     "<hy:SendOa>\r\n" +
+                        "<hy:strJson>" + jsonStr + "</hy:strJson>\r\n" +
+                        "<hy:workcode>" + dynamicEnity.F_CreateUserId + "</hy:workcode>\r\n" +
+                     "</hy:SendOa>\r\n" +
+                  "</soapenv:Body>\r\n" +
+               "</soapenv:Envelope>\r\n";
+                /*
+                   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:htk="http://localhost/htkjjt.webservice.general">
+                   <soapenv:Header/>
+                   <soapenv:Body>
+                      <htk:TriggerOaFlow>
+                         <htk:oAContent>?</htk:oAContent>
+                         <htk:workCode>?</htk:workCode>
+                         <htk:Caller>?</htk:Caller>
+                         <htk:Company>?</htk:Company>
+                         <htk:FlowCode>?</htk:FlowCode>
+                         <htk:isNext>?</htk:isNext>
+                      </htk:TriggerOaFlow>
+                   </soapenv:Body>
+                   </soapenv:Envelope>
+                 */
+
+                ///获取请求数据拼接请求json体
+                string url = m_WebServiceUrl;
+                string result = HttpHelper.Helper.GetSOAPReSource(m_WebServiceUrl, soap);
+                //var doc = new XmlDocument();
+
+                if (string.IsNullOrEmpty(result))
+                {
+                    rc.State = "F";
+                    rc.Mes = "创建OA流程失败";
+                    dynamicEnity.F_Status = "E";
+                    dynamicEnity.F_Mes = "创建OA流程失败";
+                    dynamicEnity.F_Description = jsonStr;
+                    if ("Hy_Wl_NormalShiftEntity".Equals(t1.Name))
+                    {
+                        wn.UpdateEntity(dynamicEnity);
+                    }
+                    else
+                    {
+                        wc.UpdateEntity(dynamicEnity);
+                    }
+            
+                }
+                else
+                {
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.LoadXml(result);//Load加载XML文件，LoadXML加载XML字符串
+                    string status = xmlDoc.DocumentElement["soap:Body"]["ns1:SendOaResponse"]["ns1:ReturnIfo"]["isSuccess"].InnerXml;
+                    string mes = xmlDoc.DocumentElement["soap:Body"]["ns1:SendOaResponse"]["ns1:ReturnIfo"]["message"].InnerXml;
+                    dynamicEnity.F_Status = status;
+                    dynamicEnity.F_Mes = mes;
+                    dynamicEnity.F_Description = jsonStr;
+                    if ("Hy_Wl_NormalShiftEntity".Equals(t1.Name))
+                    {
+                        wn.UpdateEntity(dynamicEnity);
+                    }
+                    else
+                    {
+                        wc.UpdateEntity(dynamicEnity);
+                    }
+        
+                    if ("S".Equals(status))
+                    {
+                        rc.State = "S";
+                        rc.Mes = mes;
+                    }
+                    else
+                    {
+                        rc.State = "F";
+                        rc.Mes = mes;
+                    }
+                }
+        
+
+
+                return rc;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        private Wl_ChangeShiftsIBLL Wl_ChangeShiftsBLL()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

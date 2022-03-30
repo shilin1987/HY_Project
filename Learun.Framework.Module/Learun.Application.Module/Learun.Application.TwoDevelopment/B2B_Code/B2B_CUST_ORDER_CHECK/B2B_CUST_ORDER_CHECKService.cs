@@ -1,0 +1,271 @@
+﻿using Dapper;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Net;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.B2B_Code
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2022-01-24 16:29
+    /// 描 述：客户订单审核
+    /// </summary>
+    public class B2B_CUST_ORDER_CHECKService : RepositoryFactory
+    {
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<B2B_CUST_ORDEREntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                t.FGUID,
+                t.FCUST_CODE,
+                t.FORDER_TYPE,
+                t.FCREATE_DATE,
+                t.FREMARK
+                ");
+                strSql.Append("  FROM B2B_CUST_ORDER t ");               
+                strSql.Append("  WHERE FMANAGE_FLG=0 ");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["t.FCUST_CODE"].IsEmpty())
+                {
+                    dp.Add("t.FCUST_CODE", "%" + queryParam["FCUST_CODE"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.FCUST_CODE Like @FCUST_CODE ");
+                }                
+                return this.BaseRepository("B2BDatabase").FindList<B2B_CUST_ORDEREntity>(strSql.ToString(), dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取B2B_CUST_ORDER表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public B2B_CUST_ORDEREntity GetB2B_CUST_ORDEREntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindEntity<B2B_CUST_ORDEREntity>(t=>t.FGUID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取B2B_CUST_ORDER_PARAM表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<B2B_CUST_ORDER_PARAMEntity> GetB2B_CUST_ORDER_PARAMEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindList<B2B_CUST_ORDER_PARAMEntity>(t=>t.FGUID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取B2B_CUST_ORDER_SUB表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public B2B_CUST_ORDER_SUBEntity GetB2B_CUST_ORDER_SUBEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindEntity<B2B_CUST_ORDER_SUBEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        public IEnumerable<B2B_CUST_ORDER_SUBEntity> GetPageListSub(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindList<B2B_CUST_ORDER_SUBEntity>(t => t.FGUID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            var db = this.BaseRepository("B2BDatabase").BeginTrans();
+            try
+            {             
+                db.Delete<B2B_CUST_ORDEREntity>(t=>t.FGUID == keyValue);
+                db.Delete<B2B_CUST_ORDER_PARAMEntity>(t=>t.FGUID == keyValue);
+                db.Delete<B2B_CUST_ORDER_SUBEntity>(t=>t.FGUID == keyValue);
+                db.Commit();
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        public string CheckEntity(string stroject)
+        {
+            string Get_url = "";
+            Dictionary<String, String> keyValues = new Dictionary<string, string>();          
+            Get_url = "http://10.100.200.42:12345/api/B2B/B2BReleaseBR";
+            //keyValues.Add("B2BOrders", stroject == null ? "" : stroject);
+           
+            HttpWebRequest request = WebRequest.Create(new Uri(Get_url)) as HttpWebRequest;
+            //String paramValue = JsonConvert.SerializeObject(keyValues);
+            byte[] byteData = UTF8Encoding.UTF8.GetBytes(stroject);
+            // Set the content length in the request headers
+            request.ContentLength = byteData.Length;
+            request.Method = "POST";
+            request.ContentType = "application/json";
+
+            // Write data
+            using (Stream postStream = request.GetRequestStream())
+            {
+                postStream.Write(byteData, 0, byteData.Length);
+            }
+
+            using (HttpWebResponse wr = request.GetResponse() as HttpWebResponse)
+            {
+                StreamReader sr = new StreamReader(wr.GetResponseStream()); //创建一个stream读取流
+                return sr.ReadToEnd();   //从头读到尾，放到字符串html
+            }
+        }
+
+        public void UpdateOrder(string keyValue)
+        {
+            var db = this.BaseRepository("B2BDatabase").BeginTrans();
+            B2B_CUST_ORDEREntity entity = new B2B_CUST_ORDEREntity();          
+            try
+            {
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    entity.Modify(keyValue);              
+                    entity.FCHECK_PERSON = "/";
+                    entity.FMANAGE_FLG = "1";
+                    db.Update(entity);                  
+                }
+                db.Commit();
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        public IEnumerable<B2B_CUST_ORDER_PARAMEntity> GetParamtListSub(string keyValue, string partId)
+        {
+            try
+            {
+
+                return this.BaseRepository("B2BDatabase").FindList<B2B_CUST_ORDER_PARAMEntity>(t => t.FGUID == keyValue && t.FPARTID == partId);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+    }
+}

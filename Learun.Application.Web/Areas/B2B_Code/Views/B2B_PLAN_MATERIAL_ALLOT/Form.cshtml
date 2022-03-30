@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "来料计划产能分配";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" style="padding:0;line-height:38px;text-align:center;font-size:20px;font-weight:bold;color:#333;">
+        <span>产能分配</span>
+    </div>
+    <div class="col-xs-3 lr-form-item" data-table="B2B_PLAN_MATERIAL_ALLOT">
+        <div class="lr-form-item-title">分配月份<font face="宋体">*</font></div>
+        <div id="F_ALLOT_MONTH" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-3 lr-form-item" data-table="B2B_PLAN_MATERIAL_ALLOT">
+        <div class="lr-form-item-title">分配人员<font face="宋体">*</font></div>
+        <input id="F_ALLOT_PERSON" type="text" class="form-control" isvalid="yes" readonly="readonly" checkexpession="NotNull" value="@Learun.Util.LoginUserInfo.Get().realName"/>
+    </div>
+    <div class="col-xs-3 lr-form-item" data-table="B2B_PLAN_MATERIAL_ALLOT">
+        <a id="btn_Search" class="btn btn-primary btn-sm"><i class="fa fa-search"></i>&nbsp;<span class="lrlg">查询已合并的计划信息</span></a>
+    </div>
+    <div class="col-xs-3 lr-form-item" data-table="B2B_PLAN_MATERIAL_ALLOT">
+        <a id="btn_Downexcel" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp;<span class="lrlg">下载已合并的计划信息</span></a>
+    </div>
+    <div class="col-xs-12 lr-form-item lr-form-item-grid">
+        <div id="B2B_PLAN_MATERIAL_ALLOT_SUB"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/B2B_Code/Views/B2B_PLAN_MATERIAL_ALLOT/Form.js")

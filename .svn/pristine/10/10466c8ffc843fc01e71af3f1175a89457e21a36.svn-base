@@ -1,0 +1,109 @@
+﻿using Learun.Application.TwoDevelopment.HR_SocialRecruitment;
+using Learun.Application.TwoDevelopment.ReturnModel;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.HR_Code.HeterogeneousSystemInterface
+{
+    public class HeterogeneousHrToOABLL : HeterogeneousHrToOAIBLL
+    {
+        ReturnCommon  _return;
+
+        #region 构造方法
+        public HeterogeneousHrToOABLL()
+        {
+            _return = new ReturnCommon();
+        }
+        #endregion
+
+        #region 调用OA接口
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ojb"></param>
+        /// <returns></returns>
+        public ReturnCommon crateOAandHRForm(SR_RecruitmentEntity obj)
+        {
+            try
+            {
+                
+                OatoCreateRequestDTO oadata = new OatoCreateRequestDTO();
+                //主表赋值
+                oadata.HEADER.MainFiled.Add("F_EnabledMark", obj.F_EnabledMark+"");
+                oadata.HEADER.MainFiled.Add("F_CreateUserId", obj.F_CreateUserId);
+                oadata.HEADER.MainFiled.Add("F_ModifyUserName", obj.F_ModifyUserName);
+                oadata.HEADER.MainFiled.Add("F_ModifyUserId", obj.F_ModifyUserId);
+                oadata.HEADER.MainFiled.Add("F_DeleteMark", obj.F_DeleteMark +"");
+                oadata.HEADER.MainFiled.Add("F_SortCode", obj.F_SortCode+"");
+                oadata.HEADER.MainFiled.Add("F_ModifyDate", obj.F_ModifyDate+"");
+                oadata.HEADER.MainFiled.Add("F_CreateUserName", obj.F_CreateUserName);
+                oadata.HEADER.MainFiled.Add("F_CreateDate", obj.F_CreateDate+"");
+                oadata.HEADER.MainFiled.Add("F_Description", obj.F_Description);
+                oadata.HEADER.MainFiled.Add("F_ID", obj.F_ID);
+                oadata.HEADER.MainFiled.Add("F_Department", obj.F_Department);
+                oadata.HEADER.MainFiled.Add("F_JobName", obj.F_JobName);
+                oadata.HEADER.MainFiled.Add("F_JonNum", obj.F_JonNum+"");
+                oadata.HEADER.MainFiled.Add("F_CurrentJobName", obj.F_CurrentJobName+"");
+                oadata.HEADER.MainFiled.Add("F_ApplyRecruitNum", obj.F_ApplyRecruitNum+"");
+                oadata.HEADER.MainFiled.Add("F_DegreeOfEmergency", obj.F_DegreeOfEmergency);
+                oadata.HEADER.MainFiled.Add("F_RequirementTypes", obj.F_RequirementTypes);
+                oadata.HEADER.MainFiled.Add("F_DemandReasonStatement", obj.F_DemandReasonStatement);
+                oadata.HEADER.MainFiled.Add("F_JobRank", obj.F_JobRank);
+                oadata.HEADER.MainFiled.Add("F_JobType", obj.F_JobType);
+                oadata.HEADER.MainFiled.Add("F_RecommendedSalaryRange", obj.F_RecommendedSalaryRange);
+                oadata.HEADER.MainFiled.Add("F_RecruitmentChannels", obj.F_RecruitmentChannels);
+                oadata.HEADER.MainFiled.Add("F_ExpectedArrivalDate", obj.F_ExpectedArrivalDate);
+                oadata.HEADER.MainFiled.Add("F_TheSystemTime", obj.F_TheSystemTime);
+                oadata.HEADER.MainFiled.Add("F_JobDescriptions", obj.F_JobDescriptions);
+                oadata.HEADER.MainFiled.Add("F_MainDuties", obj.F_MainDuties);
+                oadata.HEADER.MainFiled.Add("F_BasicConditions", obj.F_BasicConditions);
+                oadata.HEADER.MainFiled.Add("F_SupposedToKnow", obj.F_SupposedToKnow);
+                oadata.HEADER.MainFiled.Add("F_EssentialSkill", obj.F_EssentialSkill);
+                oadata.HEADER.MainFiled.Add("F_CapacityRequirements", obj.F_CapacityRequirements);
+                oadata.HEADER.MainFiled.Add("F_ExperienceRequirements", obj.F_ExperienceRequirements);
+                oadata.HEADER.MainFiled.Add("F_SpecialRequirements", obj.F_SpecialRequirements);
+                oadata.HEADER.MainFiled.Add("F_DepartmentOfOpinion", obj.F_DepartmentOfOpinion);
+                oadata.HEADER.MainFiled.Add("F_DepartmentOfOpinionOne", obj.F_DepartmentOfOpinionOne);
+                oadata.HEADER.MainFiled.Add("F_DepartmentOfOpinionT", obj.F_DepartmentOfOpinionT);
+                oadata.HEADER.MainFiled.Add("F_HumanResources", obj.F_HumanResources);
+                oadata.HEADER.MainFiled.Add("F_HumanResourcesOne", obj.F_HumanResourcesOne);
+                oadata.HEADER.MainFiled.Add("F_HumanResourcesT", obj.F_HumanResourcesT);
+                oadata.HEADER.MainFiled.Add("F_TheSignature_01", obj.F_TheSignature_01);
+                oadata.HEADER.MainFiled.Add("F_TheSignature_02", obj.F_TheSignature_02);
+                oadata.HEADER.MainFiled.Add("F_TheSignature_03", obj.F_TheSignature_03);
+                oadata.HEADER.MainFiled.Add("F_TheSignature_04", obj.F_TheSignature_04);
+                oadata.HEADER.MainFiled.Add("F_TheSignature_05", obj.F_TheSignature_05);
+                oadata.HEADER.MainFiled.Add("F_TheSignature_06", obj.F_TheSignature_06);
+                List<FILE> File = new List<FILE>();
+                for (int i = 0;i < 3; i++)
+                {
+                    FILE file = new FILE();
+                    file.Filename = "F_Attachment01";
+                    //file.Filevalue = "";
+                }
+                string jsonStr = JsonNewtonsoft.ToJSON(oadata);
+                //oadata.FILE.Add("F_Attachment01", obj.F_Attachment01);
+                //oadata.HEADER.MainFiled.Add("F_Attachment02", obj.F_Attachment02);
+                //oadata.HEADER.MainFiled.Add("F_Attachment03", obj.F_Attachment03);
+                string strJson = "";
+                string m_WebServiceUrl = "http://192.168.98.150:8088//services/DETAILSTEST?wsdl/SendOa";
+
+                ///获取请求数据拼接请求json体
+                string url = m_WebServiceUrl ;
+                Dictionary<string, string> parameters = new Dictionary<string, string> { { "strJson", strJson }, { "workcode", "00000182" } };
+                string result = HttpHelper.Helper.GetResponseString(url, ERequestMode.Post, parameters, Encoding.Default, Encoding.UTF8);
+                
+
+                return _return;
+            } catch (Exception e) {
+                throw new NotImplementedException();
+            }
+        }
+        #endregion
+    }
+}

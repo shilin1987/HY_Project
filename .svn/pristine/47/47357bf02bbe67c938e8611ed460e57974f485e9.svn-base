@@ -1,0 +1,198 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：超级管理员
+ * 日  期：2021-11-30 09:14
+ * 描  述：上岗资格认证表
+ */
+var selectedRow;
+var refreshGirdData;
+var bootstrap = function ($, learun) {
+    "use strict";
+    var startTime;
+    var endTime;
+    var page = {
+        init: function () {
+            page.initGird();
+            page.bind();
+        },
+        bind: function () {
+            // 时间搜索框
+            $('#datesearch').lrdate({
+                dfdata: [
+                    { name: '今天', begin: function () { return learun.getDate('yyyy-MM-dd 00:00:00') }, end: function () { return learun.getDate('yyyy-MM-dd 23:59:59') } },
+                    { name: '近7天', begin: function () { return learun.getDate('yyyy-MM-dd 00:00:00', 'd', -6) }, end: function () { return learun.getDate('yyyy-MM-dd 23:59:59') } },
+                    { name: '近1个月', begin: function () { return learun.getDate('yyyy-MM-dd 00:00:00', 'm', -1) }, end: function () { return learun.getDate('yyyy-MM-dd 23:59:59') } },
+                    { name: '近3个月', begin: function () { return learun.getDate('yyyy-MM-dd 00:00:00', 'm', -3) }, end: function () { return learun.getDate('yyyy-MM-dd 23:59:59') } }
+                ],
+                // 月
+                mShow: false,
+                premShow: false,
+                // 季度
+                jShow: false,
+                prejShow: false,
+                // 年
+                ysShow: false,
+                yxShow: false,
+                preyShow: false,
+                yShow: false,
+                // 默认
+                dfvalue: '1',
+                selectfn: function (begin, end) {
+                    startTime = begin;
+                    endTime = end;
+                    page.search();
+                }
+            });
+            $('#multiple_condition_query').lrMultipleQuery(function (queryJson) {
+                page.search(queryJson);
+            }, 220, 400);
+            // 刷新
+            $('#lr_refresh').on('click', function () {
+                location.reload();
+            });
+            // 新增
+            $('#lr_add').on('click', function () {
+                selectedRow = null;
+                learun.layerForm({
+                    id: 'form',
+                    title: '新增',
+                    url: top.$.rootUrl + '/Platform/WL_NormalShift/Form',
+                    width: 1200,
+                    height: 900,
+                    callBack: function (id) {
+                        return top[id].acceptClick(refreshGirdData);
+                    }
+                });
+            });
+            // 编辑
+            $('#lr_edit').on('click', function () {
+                var keyValue = $('#gridtable').jfGridValue('F_ID');
+                selectedRow = $('#gridtable').jfGridGet('rowdata');
+                if (learun.checkrow(keyValue)) {
+                    learun.layerForm({
+                        id: 'form',
+                        title: '编辑',
+                        url: top.$.rootUrl + '/Platform/WL_NormalShift/Form?keyValue=' + keyValue,
+                        width: 700,
+                        height: 400,
+                        callBack: function (id) {
+                            return top[id].acceptClick(refreshGirdData);
+                        }
+                    });
+                }
+            });
+            // 删除
+            $('#lr_delete').on('click', function () {
+                var keyValue = $('#gridtable').jfGridValue('F_ID');
+                if (learun.checkrow(keyValue)) {
+                    learun.layerConfirm('是否确认删除该项！', function (res) {
+                        if (res) {
+                            learun.deleteForm(top.$.rootUrl + '/Platform/WL_NormalShift/DeleteForm', { keyValue: keyValue}, function () {
+                            });
+                        }
+                    });
+                }
+            });
+
+           
+        },
+        initGird: function () {
+            $('#gridtable').lrAuthorizeJfGrid({
+                url: top.$.rootUrl + '/Platform/WL_NormalShift/GetPageList',
+                headData: [
+                    { label: "资格认证编号", name: "F_NO", width: 250, align: "left" },
+                    { label: "员工编号", name: "F_EnCode", width: 250, align: "left" },
+                    //{
+                    //    label: "员工编号", name: "F_EnCode", width: 120, align: "center", frozen: true,
+                    //    formatterAsync: function (callback, value, row, op, $cell) {
+                    //        learun.clientdata.getAsync('custmerData', {
+                    //            url: '/LR_SystemModule/DataSource/GetDataTable?code=' + 'userdata',
+                    //            key: value,
+                    //            keyId: 'f_userid',
+                    //            callback: function (_data) {
+                    //                callback(_data['f_encode']);
+                    //            }
+                    //        });
+                    //    }
+                    //},
+                    { label: "姓名", name: "F_RealName", width: 100, align: "left" },
+                    //{
+                    //    label: "姓名", name: "F_RealName", width: 120, align: "center", frozen: true,
+                    //    formatterAsync: function (callback, value, row, op, $cell) {
+                    //        learun.clientdata.getAsync('custmerData', {
+                    //            url: '/LR_SystemModule/DataSource/GetDataTable?code=' + 'userdata',
+                    //            key: value,
+                    //            keyId: 'f_userid',
+                    //            callback: function (_data) {
+                    //                callback(_data['f_realname']);
+                    //            }
+                    //        });
+                    //    }
+                    //},
+                    { label: "部门", name: "F_FullName", width: 100, align: "left" },
+                    //{
+                    //    label: "部门", name: "F_SecondaryOrganization", width: 150, align: "left",
+                    //    formatterAsync: function (callback, value, row, op, $cell) {
+                    //        learun.clientdata.getAsync('custmerData', {
+                    //            url: '/LR_SystemModule/DataSource/GetDataTable?code=' + 'department',
+                    //            key: value,
+                    //            keyId: 'f_departmentid',
+                    //            callback: function (_data) {
+                    //                callback(_data['f_fullname']);
+                    //            }
+                    //        });
+                    //    }
+                    //},
+                    //{ label: "工序", name: "F_FourLevelOrganization", width: 100, align: "left" },
+                    {
+                        label: "工序", name: "F_FourLevelOrganization", width: 100, align: "left",
+                        formatterAsync: function (callback, value, row, op, $cell) {
+                            learun.clientdata.getAsync('custmerData', {
+                                url: '/LR_SystemModule/DataSource/GetDataTable?code=' + 'department',
+                                key: value,
+                                keyId: 'f_departmentid',
+                                callback: function (_data) {
+                                    callback(_data['f_fullname']);
+                                }
+                            });
+                        }
+                    },
+                    { label: "文化程度", name: "F_Education", width: 100, align: "left" },
+                    { label: "人员类别", name: "F_PersonnelCategory", width: 100, align: "left" },
+                    { label: "上岗日期", name: "F_AppointmentDate", width: 100, align: "left" },
+                    { label: "试用期限", name: "F_ProbationPeriod", width: 100, align: "left" },
+                    { label: "预览", name: "F_Redel", width: 100, align: "left" },
+                    { label: "审批结果", name: "F_States", width: 100, align: "left" },
+                    { label: "是否下载", name: "F_IsDownload", width: 100, align: "left" }
+
+                ],
+                mainId: 'F_NO',
+                isPage: true,
+                reloadSelected: true,
+                isSubGrid: true,
+                subGridExpanded: function (subid, rowdata) {
+                    $('#' + subid).jfGrid({
+                        url: top.$.rootUrl + '/Platform/WL_NormalShift/GetSubList',
+                        headData: [
+                            { label: "审批人", name: "F_TheApprover", width: 100, align: "left" },
+                            { label: "审批结果", name: "F_WhetherThrough", width: 200, align: "left" },
+                            { label: "审批日期", name: "F_ApprovalTime", width: 200, align: "left" },
+                            { label: "审批意见", name: "F_Opinion", width: 100, align: "left" }
+                        ]
+                    });
+                    $('#' + subid).jfGridSet('reload', { fno: rowdata.F_NO });
+                }
+            });
+            page.search();
+        },
+        search: function (param) {
+            param = param || {};
+            $('#gridtable').jfGridSet('reload', { queryJson: JSON.stringify(param) });
+        }
+    };
+    refreshGirdData = function () {
+        $('#gridtable').jfGridSet('reload');
+    };
+   
+    page.init();
+}

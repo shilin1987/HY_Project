@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "客户订单维护";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="lr-layout "  >
+    <div class="lr-layout-center">
+        <div class="lr-layout-wrap lr-layout-wrap-notitle ">
+            <div class="lr-layout-tool">
+                <div class="lr-layout-tool-left">
+                    <div class="lr-layout-tool-item">
+                        <div id="datesearch"></div>
+                    </div>
+                    <div class="lr-layout-tool-item">
+                        <div id="multiple_condition_query">
+                            <div class="lr-query-formcontent">
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">客户代码</div>
+                                    <input id="FCUST_CODE" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">芯片型号</div>
+                                    <input id="FWAFER_TYPE" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">产品型号</div>
+                                    <input id="FPRODUCT_TYPE" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">封装形式</div>
+                                    <input id="FPACKAGE_TYPE" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">订单状态</div>
+                                    <input id="FMANAGE_FLG" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lr-layout-tool-right">
+                    <div class=" btn-group btn-group-sm">
+                        <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+                    </div>
+                    <div class=" btn-group btn-group-sm" learun-authorize="yes">
+                        <a id="lr_add" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp;在线订单填写</a>
+                        <a id="lr_import" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp;按模板批导入</a>           
+                        <a id="lr_edit" class="btn btn-default"><i class="fa fa-pencil-square-o"></i>&nbsp;编辑</a>
+                        <a id="lr_delete" class="btn btn-default"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+                    </div>
+                </div>
+            </div>
+            <div class="lr-layout-body" id="B2B_CUST_ORDER"></div>
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/B2B_Code/Views/CUST_ORDER_CREATE/Index.js")

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "新员工入职信息临时保存";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Candidates">
+        <div class="lr-form-item-title">姓名<font face="宋体">*</font></div>
+        <input id="F_RealName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Candidates">
+        <div class="lr-form-item-title">性别<font face="宋体">*</font></div>
+        <div id="F_Gender" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Candidates">
+        <div class="lr-form-item-title">身份证号<font face="宋体">*</font></div>
+        <input id="F_IDCard" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Candidates">
+        <div class="lr-form-item-title">手机号<font face="宋体">*</font></div>
+        <input id="F_Mobile" type="text" class="form-control" isvalid="yes" checkexpession="Mobile" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Candidates">
+        <div class="lr-form-item-title">是否住宿<font face="宋体">*</font></div>
+        <div id="F_IsGetAccommodation" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Candidates">
+        <div class="lr-form-item-title">员工状态<font face="宋体">*</font></div>
+        <div id="F_EnabledMark" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/candidates/Form.js")

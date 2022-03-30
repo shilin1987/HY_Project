@@ -1,0 +1,93 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：超级管理员
+ * 日  期：2021-12-21 16:25
+ * 描  述：WrittenExamination
+ */
+var selectedRow;
+var refreshGirdData;
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            page.initGird();
+            page.bind();
+        },
+        bind: function () {
+            // 查询
+            $('#btn_Search').on('click', function () {
+                var keyword = $('#txt_Keyword').val();
+                page.search({ keyword: keyword });
+            });
+            // 刷新
+            $('#lr_refresh').on('click', function () {
+                location.reload();
+            });
+            // 新增
+            $('#lr_add').on('click', function () {
+                selectedRow = null;
+                learun.layerForm({
+                    id: 'form',
+                    title: '新增',
+                    url: top.$.rootUrl + '/Platform/WrittenExamination/Form',
+                    width: 700,
+                    height: 400,
+                    callBack: function (id) {
+                        return top[id].acceptClick(refreshGirdData);
+                    }
+                });
+            });
+            // 编辑
+            $('#lr_edit').on('click', function () {
+                var keyValue = $('#gridtable').jfGridValue('F_Id');
+                selectedRow = $('#gridtable').jfGridGet('rowdata');
+                if (learun.checkrow(keyValue)) {
+                    learun.layerForm({
+                        id: 'form',
+                        title: '编辑',
+                        url: top.$.rootUrl + '/Platform/WrittenExamination/Form?keyValue=' + keyValue,
+                        width: 700,
+                        height: 400,
+                        callBack: function (id) {
+                            return top[id].acceptClick(refreshGirdData);
+                        }
+                    });
+                }
+            });
+            // 删除
+            $('#lr_delete').on('click', function () {
+                var keyValue = $('#gridtable').jfGridValue('F_Id');
+                if (learun.checkrow(keyValue)) {
+                    learun.layerConfirm('是否确认删除该项！', function (res) {
+                        if (res) {
+                            learun.deleteForm(top.$.rootUrl + '/Platform/WrittenExamination/DeleteForm', { keyValue: keyValue}, function () {
+                            });
+                        }
+                    });
+                }
+            });
+        },
+        initGird: function () {
+            $('#gridtable').lrAuthorizeJfGrid({
+                url: top.$.rootUrl + '/Platform/WrittenExamination/GetPageList',
+                headData: [
+                       
+                        { label: '新员工姓名', name: 'F_CandidatesID', width: 200, align: "left" },
+                        { label: '笔试题目', name: 'F_WrittenTestQuestions', width: 200, align: "left" },
+                        { label: '分数', name: 'F_Score', width: 200, align: "left" },
+                ],
+                mainId:'F_Id',
+                isPage: true
+            });
+            page.search();
+        },
+        search: function (param) {
+            param = param || {};
+            $('#gridtable').jfGridSet('reload', { queryJson: JSON.stringify(param) });
+        }
+    };
+    refreshGirdData = function () {
+        $('#gridtable').jfGridSet('reload');
+    };
+    page.init();
+}

@@ -1,0 +1,9 @@
+﻿<div class="lr-about-page" style="padding-left: 10px; padding-right: 10px; color: #666; font-size: 14px; overflow: auto;">
+    <div class="time-item">
+        <i class="iconfont icon-timefill"></i>
+        <strong id="minute_show">0分</strong>
+        <strong id="second_show">0秒</strong>
+    </div>
+    <hr>
+</div>
+<!--<div class="ver">当前版本:v1.0.0</div>-->

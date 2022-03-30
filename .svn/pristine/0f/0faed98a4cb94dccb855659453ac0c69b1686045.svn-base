@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "标准工资维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item" data-table="Hy_hr_StandardWage">
+        <div class="lr-form-item-title">标准工资子项<font face="宋体">*</font></div>
+        <div id="F_ItemId" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-6 lr-form-item" data-table="Hy_hr_StandardWage">
+        <div class="lr-form-item-title">所属父项<font face="宋体">*</font></div>
+        <div id="F_ParentItemId" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-6 lr-form-item" data-table="Hy_hr_StandardWage">
+        <div class="lr-form-item-title">是否固定费用</div>
+        <div id="F_IsFixedCost"></div>
+    </div>
+    <div class="col-xs-6 lr-form-item" data-table="Hy_hr_StandardWage">
+        <div class="lr-form-item-title">项目费用<font face="宋体">*</font></div>
+        <input id="F_Cost" type="text" class="form-control" isvalid="yes" checkexpession="Num" maxlength="10" />
+    </div>
+    <div class="col-xs-12 lr-form-item" style="padding:0;line-height:38px;text-align:center;font-size:20px;font-weight:bold;color:#333;">
+        <span>计算公式组合</span>
+    </div>
+    <div class="col-xs-3 lr-form-item">
+        <div class="lr-form-item-title">计算(父)项目</div>
+        <div id="parentItem"  checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-3 lr-form-item">
+        <div class="lr-form-item-title">计算公式</div>
+        <div id="formula"  checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-3 lr-form-item">
+        <div class="lr-form-item-title">计算(子)项目</div>
+        <div id="childrenItem"  checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-3 lr-form-item">
+        <div class="lr-form-item-title">计算数值</div>
+        <input id="calculatedValue" type="text" class="form-control" maxlength="10" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-3 lr-form-item">
+        <input id="plusitem" style="background-color:#2E8DED;color:white;" type="button" class="form-control" value="组合表达式" />
+    </div>
+    <div class="col-xs-3 lr-form-item">
+        <input id="clearformula" style="background-color:#dfdddd;color:white;" type="button" class="form-control" value="清空表达式" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_StandardWage">
+        <div class="lr-form-item-title">计算表达式</div>
+        <textarea id="F_Formula" class="form-control" style="height:100px;" maxlength="255" ></textarea>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/StandardWage/Form.js")

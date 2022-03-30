@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "面试信息";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Interview">
+        <div class="lr-form-item-title">新员工<font face="宋体">*</font></div>
+        <div id="F_CandidatesID" isvalid="yes" readonly="readonly"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">身份证号<font face="宋体">*</font></div>
+        <input id="F_IDCard" type="text" class="form-control" readonly="readonly" />
+    </div>
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">面试官<font face="宋体">*</font></div>
+        <div id="F_CreateUserName" isvalid="yes" checkexpession="NotNull"></div>
+        @*<input id="F_CreateUserName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />*@
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_Interview">
+        <div class="lr-form-item-title">是否通过<font face="宋体">*</font></div>
+        <div id="F_InterviewResult" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/RecruitInterview/Form.js")

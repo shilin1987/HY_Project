@@ -1,0 +1,49 @@
+﻿<div>
+    <div class="time-item">
+        <i class="iconfont icon-timefill"></i>
+        <strong id="minute_show">0分</strong>
+        <strong id="second_show">0秒</strong>
+    </div>
+    <hr>
+    <div class="lr-card">
+        <div class="lr-card-header" id="divquestion"></div>
+        <div class="lr-card-content">
+            <div class="lr-card-content-inner" id="choicequestion" style="display:block;">
+                <div class="lr-list">
+                    <div class="lr-list-item lr-list-item-icon" id="choiceA">
+                        <i class="iconfont icon-favor"></i>
+                        <span>第一行</span>
+                    </div>
+                    <div class="lr-list-item lr-list-item-icon" id="choiceB">
+                        <i class="iconfont icon-favor"></i>
+                        <span>第二行</span>
+                    </div>
+                    <div class="lr-list-item lr-list-item-icon" id="choiceC">
+                        <i class="iconfont icon-favor"></i>
+                        <span>第三行</span>
+                    </div>
+                    <div class="lr-list-item lr-list-item-icon" id="choiceD">
+                        <i class="iconfont icon-favor"></i>
+                        <span>第四行</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lr-card-content-inner" id="Completion" style="display:none;">
+                <div class="lr-list-item lr-list-item-icon">
+                    <input type="text" maxlength="50" id="txtanswer" style="margin-top:10px;" placeholder="填空题答案请在此处输入">
+                </div>
+
+            </div>
+        </div>
+        <div class="lr-card-footer">
+            <button type="button" id="actionsheet1" class="lr-btn-success" style="margin-left:40%;">
+                下一题
+            </button>
+        </div>
+    </div>
+</div>
+<div class="lr-list" style="margin-top:15px;">
+    <div class="lr-list-item" style="color:red;text-align:center;" id="saveIma">
+        交  卷
+    </div>
+</div>

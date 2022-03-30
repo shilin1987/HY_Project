@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "岗级工资和基本工资维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">岗级编号<font face="宋体">*</font></div>
+        <div id="F_PostlevelCode" isvalid="yes" checkexpession="NotNull"></div>
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">岗级名称<font face="宋体">*</font></div>
+        <input id="F_PostlevelName" type="text" class="form-control" isvalid="yes" maxlength="20" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">最低工资<font face="宋体">*</font></div>
+        <input id="F_PostSalaryMinimum" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">最高工资<font face="宋体">*</font></div>
+        <input id="F_PostSalaryMaximum" type="text" class="form-control" maxlength="10" isvalid="yes" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">岗位工资<font face="宋体">*</font></div>
+        <input id="F_BasePay" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">绩效工资<font face="宋体">*</font></div>
+        <input id="F_PerformancePay" type="text" class="form-control" isvalid="yes" maxlength="10"  onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">技能工资<font face="宋体">*</font></div>
+        <input id="F_SkillSalary" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">管理技能工资<font face="宋体">*</font></div>
+        <input id="F_ManagementSkillSalary" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">交通补贴<font face="宋体">*</font></div>
+        <input id="F_TransportationSubsidy" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">住房补贴<font face="宋体">*</font></div>
+        <input id="F_HousingSubsidy" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">全勤奖<font face="宋体">*</font></div>
+        <input id="F_PerfectAttendance" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">值班补贴<font face="宋体">*</font></div>
+        <input id="F_DutyAllowance" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_hr_PostLevel">
+        <div class="lr-form-item-title">误餐补贴<font face="宋体">*</font></div>
+        <input id="F_MissedMealAllowance" type="text" class="form-control" isvalid="yes" maxlength="10" checkexpession="Num" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/PostLevel/Form.js")

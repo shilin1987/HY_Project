@@ -1,0 +1,70 @@
+﻿using Learun.Util;
+using Learun.Util.Operat;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using WebApi_EmployeeInformationEntry.BLL;
+using WebApi_EmployeeInformationEntry.DataBase;
+using WebApi_EmployeeInformationEntry.Models;
+
+namespace WebApi_EmployeeInformationEntry.Controllers
+{
+    public class BaseApiController : ApiController
+    {
+        internal readonly LogService  saveLog;
+        internal ApiModel apiModel;
+        public BaseApiController()
+        {
+            apiModel = new ApiModel();
+            saveLog = new LogService();
+        }
+
+        /// <summary>
+        /// 带操作日志
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        protected ApiModel Success(Object data, string title, OperationType type, string keyValue, string content,int CategoryId)
+        {
+            OperateLogModel operateLogModel = new OperateLogModel();
+            operateLogModel.title = title;
+            operateLogModel.CategoryId = CategoryId;
+            operateLogModel.type = type;
+            operateLogModel.url = (string)WebHelper.GetHttpItems("currentUrl");
+            operateLogModel.sourceObjectId = keyValue;
+            operateLogModel.sourceContentJson = content;
+
+            OperatorHelper.Instance.WriteOperateLog(operateLogModel);
+
+            ApiModel res = new ApiModel { code = ResponseCode.success, info = content, data = data };
+
+            return res;
+        }
+
+        /// <summary>
+        /// 带操作日志
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        protected ApiModel Fail(Object data, string title, OperationType type, string keyValue, string content)
+        {
+            OperateLogModel operateLogModel = new OperateLogModel();
+            operateLogModel.title = title;
+            operateLogModel.CategoryId = 4;
+            operateLogModel.type = type;
+            operateLogModel.url = (string)WebHelper.GetHttpItems("currentUrl");
+            operateLogModel.sourceObjectId = keyValue;
+            operateLogModel.sourceContentJson = content;
+
+            OperatorHelper.Instance.WriteOperateLog(operateLogModel);
+
+            ApiModel res = new ApiModel { code = ResponseCode.fail, info = content, data = data };
+
+            return res;
+        }
+
+    }
+}

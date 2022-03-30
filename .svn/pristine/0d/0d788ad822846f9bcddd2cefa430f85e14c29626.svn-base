@@ -1,0 +1,16 @@
+<!--<div class="lr-about-page" style="padding-left: 10px; padding-right: 10px; color: #666; font-size: 14px; overflow: auto;">
+    
+    <span style="font-size: large; font-weight: bold;margin-top:50px;" id="mynodeid">
+        您当前在笔试环节，请进行笔试。
+    </span>
+</div>-->
+<div id="timeline1"></div>
+<hr />
+<div style="margin-top:10%">
+    <span style="font-size: large; font-weight: bold;margin-top:50px;">
+        作业员招聘流程
+    </span>
+    <div style="margin-top:5%">
+        <img src="images/process.jpg" width="100%" />
+    </div>
+</div>

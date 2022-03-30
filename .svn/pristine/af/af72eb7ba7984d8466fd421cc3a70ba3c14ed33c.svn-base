@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "报道节点审批维护";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="lr-layout "  >
+    <div class="lr-layout-center">
+        <div class="lr-layout-wrap lr-layout-wrap-notitle ">
+            <div class="lr-layout-tool">
+                <div class="lr-layout-tool-left">
+                    <div class="lr-layout-tool-item">
+                        <div id="datesearch"></div>
+                    </div>
+                    <div class="lr-layout-tool-item">
+                        <div id="multiple_condition_query">
+                            <div class="lr-query-formcontent">
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">人员姓名</div>
+                                    <input id="F_UserName" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">身份证号</div>
+                                    <input id="F_CardId" type="text" class="form-control" />
+                                </div>
+                                <div class="col-xs-12 lr-form-item">
+                                    <div class="lr-form-item-title">是否通过</div>
+                                    <div id="F_WhetherTheAudit"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lr-layout-tool-right">
+                    <div class=" btn-group btn-group-sm">
+                        <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>
+                    </div>
+                <div class=" btn-group btn-group-sm" learun-authorize="yes">
+                    @*<a id="lr_audit" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp; 报道审批通过</a>
+                    <a id="lr_unaudit" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp; 报道审批不通过</a>
+                    <a id="lr_Batch" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp; 批量审批通过</a>
+                    <a id="lr_auditCertificate" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp; 证件审批</a>*@
+                    
+                </div>
+                </div>
+            </div>
+            <div class="lr-layout-body" id="gridtable"></div>
+        </div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/RecruitReportNodeApprovalClass/Index.js")

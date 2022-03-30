@@ -1,0 +1,472 @@
+﻿using Learun.Util;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-07-28 17:38
+    /// 描 述：新员工入职信息临时保存
+    /// </summary>
+    public class Hy_hr_CandidatesEntity
+    {
+
+        #region 实体成员
+        /// <summary>
+        /// 用户主键
+        /// </summary>		
+        [Column("F_USERID")]
+        public string F_UserId { get; set; }
+        /// <summary>
+        /// 工号
+        /// </summary>	
+        [Column("F_ENCODE")]
+        public string F_EnCode { get; set; }
+        /// <summary>
+        /// 账户
+        /// </summary>	
+        [Column("F_ACCOUNT")]
+        public string F_Account { get; set; }
+        /// <summary>
+        /// 登录密码
+        /// </summary>		
+        [Column("F_PASSWORD")]
+        public string F_Password { get; set; }
+        /// <summary>
+        /// 密码秘钥
+        /// </summary>	
+        [Column("F_SECRETKEY")]
+        public string F_Secretkey { get; set; }
+        /// <summary>
+        /// 真实姓名
+        /// </summary>
+        [Column("F_REALNAME")]
+        public string F_RealName { get; set; }
+        /// <summary>
+        /// 呢称
+        /// </summary>	
+        [Column("F_NICKNAME")]
+        public string F_NickName { get; set; }
+        /// <summary>
+        /// 头像
+        /// </summary>	
+        [Column("F_HEADICON")]
+        public string F_HeadIcon { get; set; }
+        /// <summary>
+        /// 快速查询
+        /// </summary>	
+        [Column("F_QUICKQUERY")]
+        public string F_QuickQuery { get; set; }
+        /// <summary>
+        /// 简拼
+        /// </summary>	
+        [Column("F_SIMPLESPELLING")]
+        public string F_SimpleSpelling { get; set; }
+        /// <summary>
+        /// 性别
+        /// </summary>	
+        [Column("F_GENDER")]
+        public int? F_Gender { get; set; }
+        /// <summary>
+        /// 生日
+        /// </summary>	
+        [Column("F_BIRTHDAY")]
+        public DateTime? F_Birthday { get; set; }
+        /// <summary>
+        /// 手机
+        /// </summary>	
+        [Column("F_MOBILE")]
+        public string F_Mobile { get; set; }
+        /// <summary>
+        /// 电话
+        /// </summary>		
+        [Column("F_TELEPHONE")]
+        public string F_Telephone { get; set; }
+        /// <summary>
+        /// 电子邮件
+        /// </summary>	
+        [Column("F_EMAIL")]
+        public string F_Email { get; set; }
+        /// <summary>
+        /// QQ号
+        /// </summary>		
+        [Column("F_OICQ")]
+        public string F_OICQ { get; set; }
+        /// <summary>
+        /// 微信号
+        /// </summary>	
+        [Column("F_WECHAT")]
+        public string F_WeChat { get; set; }
+        /// <summary>
+        /// MSN
+        /// </summary>		
+        [Column("F_MSN")]
+        public string F_MSN { get; set; }
+        /// <summary>
+        /// 公司主键
+        /// </summary>		
+        [Column("F_COMPANYID")]
+        public string F_CompanyId { get; set; }
+        /// <summary>
+        /// 部门主键
+        /// </summary>		
+        [Column("F_DEPARTMENTID")]
+        public string F_DepartmentId { get; set; }
+        /// <summary>
+        /// 安全级别
+        /// </summary>	
+        [Column("F_SECURITYLEVEL")]
+        public int? F_SecurityLevel { get; set; }
+        /// <summary>
+        /// 单点登录标识
+        /// </summary>		
+        [Column("F_OPENID")]
+        public int? F_OpenId { get; set; }
+        /// <summary>
+        /// 密码提示问题
+        /// </summary>		
+        [Column("F_QUESTION")]
+        public string F_Question { get; set; }
+        /// <summary>
+        /// 密码提示答案
+        /// </summary>	
+        [Column("F_ANSWERQUESTION")]
+        public string F_AnswerQuestion { get; set; }
+        /// <summary>
+        /// 允许多用户同时登录
+        /// </summary>		
+        [Column("F_CHECKONLINE")]
+        public int? F_CheckOnLine { get; set; }
+        /// <summary>
+        /// 允许登录时间开始
+        /// </summary>		
+        [Column("F_ALLOWSTARTTIME")]
+        public DateTime? F_AllowStartTime { get; set; }
+        /// <summary>
+        /// 允许登录时间结束
+        /// </summary>		
+        [Column("F_ALLOWENDTIME")]
+        public DateTime? F_AllowEndTime { get; set; }
+        /// <summary>
+        /// 暂停用户开始日期
+        /// </summary>		
+        [Column("F_LOCKSTARTDATE")]
+        public DateTime? F_LockStartDate { get; set; }
+        /// <summary>
+        /// 暂停用户结束日期
+        /// </summary>		
+        [Column("F_LOCKENDDATE")]
+        public DateTime? F_LockEndDate { get; set; }
+        /// <summary>
+        /// 排序码
+        /// </summary>	
+        [Column("F_SORTCODE")]
+        public int? F_SortCode { get; set; }
+        /// <summary>
+        /// 删除标记
+        /// </summary>	
+        [Column("F_DELETEMARK")]
+        public int? F_DeleteMark { get; set; }
+        /// <summary>
+        /// 有效标志
+        /// </summary>	
+        [Column("F_ENABLEDMARK")]
+        public int? F_EnabledMark { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>		
+        [Column("F_DESCRIPTION")]
+        public string F_Description { get; set; }
+        /// <summary>
+        /// 创建日期
+        /// </summary>		
+        [Column("F_CREATEDATE")]
+        public DateTime? F_CreateDate { get; set; }
+        /// <summary>
+        /// 创建用户主键
+        /// </summary>		
+        [Column("F_CREATEUSERID")]
+        public string F_CreateUserId { get; set; }
+        /// <summary>
+        /// 创建用户
+        /// </summary>	
+        [Column("F_CREATEUSERNAME")]
+        public string F_CreateUserName { get; set; }
+        /// <summary>
+        /// 修改日期
+        /// </summary>	
+        [Column("F_MODIFYDATE")]
+        public DateTime? F_ModifyDate { get; set; }
+        /// <summary>
+        /// 修改用户主键
+        /// </summary>		
+        [Column("F_MODIFYUSERID")]
+        public string F_ModifyUserId { get; set; }
+        /// <summary>
+        /// 修改用户
+        /// </summary>		
+        [Column("F_MODIFYUSERNAME")]
+        public string F_ModifyUserName { get; set; }
+        /// <summary>
+        /// 身份证号
+        /// </summary>		
+        [Column("F_IDCard")]
+        public string F_IDCard { get; set; }
+        /// <summary>
+        /// 一级组织
+        /// </summary>		
+        [Column("F_PrimaryOrganization")]
+        public string F_PrimaryOrganization { get; set; }
+        /// <summary>
+        /// 二级组织
+        /// </summary>		
+        [Column("F_SecondaryOrganization")]
+        public string F_SecondaryOrganization { get; set; }
+        /// <summary>
+        /// 三级组织
+        /// </summary>		
+        [Column("F_TertiaryOrganization")]
+        public string F_TertiaryOrganization { get; set; }
+        /// <summary>
+        /// 四级组织
+        /// </summary>		
+        [Column("F_FourLevelOrganization")]
+        public string F_FourLevelOrganization { get; set; }
+        /// <summary>
+        /// 五级组织
+        /// </summary>		
+        [Column("F_FiveLevelOrganization")]
+        public string F_FiveLevelOrganization { get; set; }
+        /// <summary>
+        /// 六级组织
+        /// </summary>		
+        [Column("F_SixLevelOrganization")]
+        public string F_SixLevelOrganization { get; set; }
+        /// <summary>
+        /// 招聘渠道
+        /// </summary>		
+        [Column("F_RecruitmentChannels")]
+        public string F_RecruitmentChannels { get; set; }
+        /// <summary>
+        /// 入职日期
+        /// </summary>		
+        [Column("F_Entrydate")]
+        public DateTime? F_Entrydate { get; set; }
+        /// <summary>
+        /// 转正日期
+        /// </summary>		
+        [Column("F_ConfirmationDate")]
+        public DateTime? F_ConfirmationDate { get; set; }
+        /// <summary>
+        /// 离职日期
+        /// </summary>		
+        [Column("F_DepartureDate")]
+        public DateTime? F_DepartureDate { get; set; }
+        /// <summary>
+        /// 学历
+        /// </summary>		
+        [Column("F_Education")]
+        public string F_Education { get; set; }
+        /// <summary>
+        /// 计薪方式
+        /// </summary>		
+        [Column("F_SalaryMethod")]
+        public string F_SalaryMethod { get; set; }
+        /// <summary>
+        /// 计薪模式
+        /// </summary>		
+        [Column("F_PayModel")]
+        public string F_PayModel { get; set; }
+        /// <summary>
+        /// 上班制度
+        /// </summary>		
+        [Column("F_WorkingSystem")]
+        public string F_WorkingSystem { get; set; }
+        /// <summary>
+        /// 银行卡卡号
+        /// </summary>		
+        [Column("F_BankCardNumber")]
+        public string F_BankCardNumber { get; set; }
+        /// <summary>
+        /// 银行卡开户行
+        /// </summary>		
+        [Column("F_BankDeposit")]
+        public string F_BankDeposit { get; set; }
+        /// <summary>
+        /// 担任本岗位日期
+        /// </summary>		
+        [Column("F_DateHoldingPost")]
+        public DateTime? F_DateHoldingPost { get; set; }
+        /// <summary>
+        /// 是否有培训协议
+        /// </summary>		
+        [Column("F_IsTrainingAgreement")]
+        public int? F_IsTrainingAgreement { get; set; }
+        /// <summary>
+        /// 服务期开始时间
+        /// </summary>		
+        [Column("F_StartDateService")]
+        public DateTime? F_StartDateService { get; set; }
+        /// <summary>
+        /// 服务器结束时间
+        /// </summary>		
+        [Column("F_EndDateService")]
+        public DateTime? F_EndDateService { get; set; }
+        /// <summary>
+        /// 员工性质
+        /// </summary>		
+        [Column("F_EmployeeNature")]
+        public string F_EmployeeNature { get; set; }
+        /// <summary>
+        /// 员工性质变化时间
+        /// </summary>		
+        [Column("F_EmployeeNatureChangeDate")]
+        public DateTime? F_EmployeeNatureChangeDate { get; set; }
+
+        /// <summary>
+        /// 计件类型
+        /// </summary>		
+        [Column("F_PieceworkType")]
+        public string F_PieceworkType { get; set; }
+
+        /// <summary>
+        /// 转正时间
+        /// </summary>		
+        [Column("F_TimeBecomeRegular")]
+        public DateTime? F_TimeBecomeRegular { get; set; }
+
+        /// <summary>
+        /// 上班制度转换时间
+        /// </summary>		
+        [Column("F_TimeShiftWorkSystem")]
+        public DateTime? F_TimeShiftWorkSystem { get; set; }
+
+        /// <summary>
+        /// 离职类型
+        /// </summary>		
+        [Column("F_TypesResignation")]
+        public string F_TypesResignation { get; set; }
+
+        /// <summary>
+        /// 员工性质变化时间
+        /// </summary>		
+        [Column("F_MakeUpTime")]
+        public DateTime? F_MakeUpTime { get; set; }
+
+        /// <summary>
+        /// 岗位
+        /// </summary>		
+        [Column("F_PostId")]
+        public string F_PostId { get; set; }
+        /// <summary>
+        /// 薪资计算方式
+        /// </summary>		
+        [Column("F_SalaryCalculation")]
+        public string F_SalaryCalculation { get; set; }
+
+        /// <summary>
+        /// 薪资计算方式
+        /// </summary>		
+        [Column("F_OneCardNumber")]
+        public string F_OneCardNumber { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>		
+        [Column("F_IsGetAccommodation")]
+        public string F_IsGetAccommodation { get; set; }
+        /// <summary>
+        /// 当前环节外键
+        /// </summary>
+        [Column("F_SubID")]
+        public string F_SubID { get; set; }
+        /// <summary>
+        /// 入职当前环节
+        /// </summary>
+        [Column("F_ReportsLinkCurrentInfo")]
+        public string F_ReportsLinkCurrentInfo { get; set; }
+        /// <summary>
+        /// 入职下一个环节
+        /// </summary>
+        [Column("F_ReportsLinkNextInfo")]
+        public string F_ReportsLinkNextInfo { get; set; }
+
+        /// <summary>
+        /// 当前环节开始时间
+        /// </summary>
+        [Column("F_ReportsLinkStartTime")]
+        public DateTime? F_ReportsLinkStartTime { get; set; }
+        /// <summary>
+        /// 当前环节结束时间
+        /// </summary>
+        [Column("F_ReportsLinkEndTime")]
+        public DateTime? F_ReportsLinkEndTime { get; set; }
+        #endregion
+
+        #region 扩展操作
+        /// <summary>
+        /// 新增调用
+        /// </summary>
+        public void Create()
+        {
+            UserInfo userInfo = LoginUserInfo.Get();
+            this.F_CreateUserId = userInfo.userId;
+            this.F_CreateUserName = userInfo.realName;
+
+            this.F_UserId = Guid.NewGuid().ToString();
+            this.F_CreateDate = DateTime.Now;
+            this.F_DeleteMark = 0;
+            this.F_EnabledMark = 1;
+        }
+        /// <summary>
+        /// 编辑调用
+        /// </summary>
+        /// <param name="keyValue">主键</param>
+        public void Modify(string keyValue)
+        {
+            UserInfo userInfo = LoginUserInfo.Get();
+            this.F_ModifyUserId = userInfo.userId;
+            this.F_ModifyUserName = userInfo.realName;
+
+            this.F_UserId = keyValue;
+            this.F_ModifyDate = DateTime.Now;
+        }
+        #endregion
+
+        #region 扩展属性
+        /// <summary>
+        /// 登录信息
+        /// </summary>
+        [NotMapped]
+        public string LoginMsg { get; set; }
+        /// <summary>
+        /// 登录状态
+        /// </summary>
+        [NotMapped]
+        public bool LoginOk { get; set; }
+
+        /// <summary>
+        /// 部门名称
+        /// </summary>
+        [NotMapped]
+        public string department { get; set; }
+        /// <summary>
+        /// 最小组织
+        /// </summary>
+        [NotMapped]
+        public string minDepartment { get; set; }
+        /// <summary>
+        /// 人员状态
+        /// </summary>
+        [NotMapped]
+        public string userState { get; set; }
+        /// 在职状态
+        /// </summary>
+        [NotMapped]
+        public string OnJobStatus { get; set; }
+        #endregion
+    }
+}
+

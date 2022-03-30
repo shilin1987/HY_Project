@@ -1,0 +1,114 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：B2B_Account
+ * 日  期：2021-10-25 15:05
+ * 描  述：来料计划填报
+ */
+var refreshGirdData;
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            page.initGird();
+            page.bind();
+        },
+        bind: function () {
+            $('#multiple_condition_query').lrMultipleQuery(function (queryJson) {
+                page.search(queryJson);
+            }, 220, 400);
+            $('#F_CUST_CODE').lrDataSourceSelect({ code: 'MES_客户信息',value: 'cust_no',text: 'cust_no' });
+            $('#F_MERGER_DATE').lrDataItemSelect({ code: 'Month' });
+            // 刷新
+            $('#lr_refresh').on('click', function () {
+                location.reload();
+            });
+            // 新增
+            $('#lr_add').on('click', function () {
+                learun.layerForm({
+                    id: 'form',
+                    title: '新增',
+                    url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE/Form',
+                    width: 600,
+                    height: 400,
+                    callBack: function (id) {
+                        return top[id].acceptClick(refreshGirdData);
+                    }
+                });
+            });
+            // 编辑
+            $('#lr_edit').on('click', function () {
+                var keyValue = $('#gridtable').jfGridValue('F_PLAN_CODE');
+                if (learun.checkrow(keyValue)) {
+                    learun.layerForm({
+                        id: 'form',
+                        title: '编辑',
+                        url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE/Form?keyValue=' + keyValue,
+                        width: 600,
+                        height: 400,
+                        callBack: function (id) {
+                            return top[id].acceptClick(refreshGirdData);
+                        }
+                    });
+                }
+            });
+            // 删除
+            $('#lr_delete').on('click', function () {
+                var keyValue = $('#gridtable').jfGridValue('F_PLAN_CODE');
+                if (learun.checkrow(keyValue)) {
+                    learun.layerConfirm('是否确认删除该项！', function (res) {
+                        if (res) {
+                            learun.deleteForm(top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE/DeleteForm', { keyValue: keyValue}, function () {
+                                refreshGirdData();
+                            });
+                        }
+                    });
+                }
+            });
+            // 打印
+            $('#lr_print').on('click', function () {
+                $('#gridtable').jqprintTable();
+            });
+        },
+        // 初始化列表
+        initGird: function () {
+            $('#gridtable').lrAuthorizeJfGrid({
+                url: top.$.rootUrl + '/B2B_Code/B2B_PLAN_MATERIAL_CREATE/GetPageList',
+                headData: [
+                    { label: "客户代码", name: "F_CUST_CODE", width: 100, align: "left",
+                        formatterAsync: function (callback, value, row, op,$cell) {
+                             learun.clientdata.getAsync('custmerData', {
+                                 url: '/LR_SystemModule/DataSource/GetDataTable?code=' + 'MES_客户信息',
+                                 key: value,
+                                 keyId: 'cust_no',
+                                 callback: function (_data) {
+                                     callback(_data['cust_no']);
+                                 }
+                             });
+                        }},
+                    { label: "填报月份", name: "F_MERGER_DATE", width: 100, align: "left",
+                        formatterAsync: function (callback, value, row, op,$cell) {
+                             learun.clientdata.getAsync('dataItem', {
+                                 key: value,
+                                 code: 'Month',
+                                 callback: function (_data) {
+                                     callback(_data.text);
+                                 }
+                             });
+                        }},
+                    { label: "填报人员", name: "F_WRITE_PERSONNEL", width: 100, align: "left"},
+                ],
+                mainId:'F_PLAN_CODE',
+                isPage: true
+            });
+            page.search();
+        },
+        search: function (param) {
+            param = param || {};
+            $('#gridtable').jfGridSet('reload',{ queryJson: JSON.stringify(param) });
+        }
+    };
+    refreshGirdData = function () {
+        $('#gridtable').jfGridSet('reload');
+    };
+    page.init();
+}

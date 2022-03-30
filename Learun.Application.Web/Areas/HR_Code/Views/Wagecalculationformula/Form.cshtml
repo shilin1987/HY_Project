@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "工资计算公式";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_WageCalculationFormula" >
+        <div class="lr-form-item-title">公式编号<font face="宋体">*</font></div>
+        <input id="F_FormulaCode" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_hr_WageCalculationFormula" >
+        <div class="lr-form-item-title">公式名称<font face="宋体">*</font></div>
+        <input id="F_FormulaName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/Wagecalculationformula/Form.js")

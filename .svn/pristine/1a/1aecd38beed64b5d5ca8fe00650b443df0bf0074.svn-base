@@ -1,0 +1,264 @@
+﻿using Dapper;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.B2B_Code
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-11-16 14:11
+    /// 描 述：来料计划产能分配
+    /// </summary>
+    public class B2B_PLAN_MATERIAL_ALLOTService : RepositoryFactory
+    {
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<B2B_PLAN_MATERIAL_ALLOTEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                t.F_GUID,
+                t.F_ALLOT_MONTH,
+                t.F_ALLOT_PERSON
+                ");
+                strSql.Append("  FROM B2B_PLAN_MATERIAL_ALLOT t ");
+                strSql.Append("  WHERE 1=1 ");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["F_ALLOT_MONTH"].IsEmpty())
+                {
+                    dp.Add("F_ALLOT_MONTH",queryParam["F_ALLOT_MONTH"].ToString(), DbType.String);
+                    strSql.Append(" AND t.F_ALLOT_MONTH = @F_ALLOT_MONTH ");
+                }
+                if (!queryParam["F_ALLOT_PERSON"].IsEmpty())
+                {
+                    dp.Add("F_ALLOT_PERSON", "%" + queryParam["F_ALLOT_PERSON"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_ALLOT_PERSON Like @F_ALLOT_PERSON ");
+                }
+                return this.BaseRepository("B2BDatabase").FindList<B2B_PLAN_MATERIAL_ALLOTEntity>(strSql.ToString(),dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取B2B_PLAN_MATERIAL_ALLOT_SUB表数据
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<B2B_PLAN_MATERIAL_ALLOT_SUBEntity> GetB2B_PLAN_MATERIAL_ALLOT_SUBList(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindList<B2B_PLAN_MATERIAL_ALLOT_SUBEntity>(t=>t.F_GUID == keyValue );
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取B2B_PLAN_MATERIAL_ALLOT_SUB表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public B2B_PLAN_MATERIAL_ALLOT_SUBEntity GetB2B_PLAN_MATERIAL_ALLOT_SUBEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindEntity<B2B_PLAN_MATERIAL_ALLOT_SUBEntity>(t=>t.F_GUID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取B2B_PLAN_MATERIAL_ALLOT表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public B2B_PLAN_MATERIAL_ALLOTEntity GetB2B_PLAN_MATERIAL_ALLOTEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindEntity<B2B_PLAN_MATERIAL_ALLOTEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            var db = this.BaseRepository("B2BDatabase").BeginTrans();
+            try
+            {
+                var b2B_PLAN_MATERIAL_ALLOTEntity = GetB2B_PLAN_MATERIAL_ALLOTEntity(keyValue); 
+                db.Delete<B2B_PLAN_MATERIAL_ALLOT_SUBEntity>(t=>t.F_GUID == b2B_PLAN_MATERIAL_ALLOTEntity.F_GUID);
+                db.Delete<B2B_PLAN_MATERIAL_ALLOTEntity>(t=>t.F_GUID == keyValue);
+                db.Commit();
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 获取合并月份的数据
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public IEnumerable<B2B_PLAN_MATERIAL_ALLOT_SUBEntity> GetPlanData(string month)
+        {
+            try
+            {
+                var year = DateTime.Now.Year.ToString();
+                var strSql = new StringBuilder();
+                strSql.Append($"SELECT A.F_CUST_CODE,'' F_PRODUCT_SERIES,A.F_PACKAGE_MODEL,A.F_PLAN_MONTH_ONE,A.F_PLAN_MONTH_TWO,A.F_PLAN_MONTH_THREE," +
+                $"B.F_REAL_MONTH_ONE, B.F_REAL_MONTH_TWO, B.F_REAL_MONTH_THREE, B.F_WT_QTY, B.F_KC_QTY FROM (SELECT TO_CHAR(A.F_MERGE_DATE, 'YYYY') YEAR," +
+                $"A.F_MERGE_MONTH MONTH, B.F_CUST_CODE,B.F_PACKAGE_MODEL,SUM(B.F_MONTH_ONE) F_PLAN_MONTH_ONE, SUM(B.F_MONTH_TWO) F_PLAN_MONTH_TWO," +
+                $"SUM(B.F_MONTH_THREE) F_PLAN_MONTH_THREE FROM SATSP_ADMIN.B2B_PLAN_MATERIAL_MERGE A INNER JOIN SATSP_ADMIN.B2B_PLAN_MATERIAL_MERGE_SUB B ON A.F_GUID = B.F_GUID " +
+                $"WHERE TO_CHAR(A.F_MERGE_DATE, 'YYYY') = '{year}' AND A.F_MERGE_MONTH = '{month}' GROUP BY A.F_MERGE_DATE, A.F_MERGE_MONTH, B.F_CUST_CODE, B.F_PACKAGE_MODEL) A " + 
+                $"INNER JOIN (SELECT YEAR, MONTH, CUST_CODE,PKG_TYPE_CODE F_PACKAGE_MODEL, BR3 F_REAL_MONTH_ONE,BR2 F_REAL_MONTH_TWO, BR3 F_REAL_MONTH_THREE, WTL_ORDER_QTY F_WT_QTY, KCQTY F_KC_QTY " +
+                $"FROM SATSP_ADMIN.HYSD_INCOMING_BR_DATA A WHERE A.YEAR = '{year}' AND MONTH = '{month}') B ON A.YEAR = B.YEAR AND A.MONTH = B.MONTH AND A.F_CUST_CODE = B.CUST_CODE AND A.F_PACKAGE_MODEL = B.F_PACKAGE_MODEL");
+                return this.BaseRepository("B2BDatabase").FindList<B2B_PLAN_MATERIAL_ALLOT_SUBEntity>(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, B2B_PLAN_MATERIAL_ALLOTEntity entity,List<B2B_PLAN_MATERIAL_ALLOT_SUBEntity> b2B_PLAN_MATERIAL_ALLOT_SUBList)
+        {
+            var db = this.BaseRepository("B2BDatabase").BeginTrans();
+            try
+            {
+                int id = 1;
+                if (!string.IsNullOrEmpty(keyValue))
+                {                   
+                    var b2B_PLAN_MATERIAL_ALLOTEntityTmp = GetB2B_PLAN_MATERIAL_ALLOTEntity(keyValue); 
+                    entity.Modify(keyValue);
+                    db.Update(entity);
+                    db.Delete<B2B_PLAN_MATERIAL_ALLOT_SUBEntity>(t=>t.F_GUID == b2B_PLAN_MATERIAL_ALLOTEntityTmp.F_GUID);
+                    foreach (B2B_PLAN_MATERIAL_ALLOT_SUBEntity item in b2B_PLAN_MATERIAL_ALLOT_SUBList)
+                    {
+                        item.Create();
+                        item.F_GUID = b2B_PLAN_MATERIAL_ALLOTEntityTmp.F_GUID;
+                        item.F_ID =Convert.ToString(id);
+                        item.F_ALLOT_MONTH = entity.F_ALLOT_MONTH;
+                        db.Insert(item);
+                        id++;
+                    }
+                }
+                else
+                {                   
+                    entity.Create();
+                    db.Insert(entity);
+                    foreach (B2B_PLAN_MATERIAL_ALLOT_SUBEntity item in b2B_PLAN_MATERIAL_ALLOT_SUBList)
+                    {
+                        item.Create();
+                        item.F_GUID = entity.F_GUID;
+                        item.F_ID= Convert.ToString(id);
+                        item.F_ALLOT_MONTH = entity.F_ALLOT_MONTH;
+                        db.Insert(item);
+                        id++;
+                    }
+                }
+                db.Commit();
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+}

@@ -1,0 +1,85 @@
+﻿using Learun.Util;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Learun.Application.TwoDevelopment.B2B_Code
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：B2B_Account
+    /// 日 期：2021-10-25 15:05
+    /// 描 述：来料计划填报
+    /// </summary>
+    public class PLAN_INCOMING_MATERIALEntity 
+    {
+        #region 实体成员
+        /// <summary>
+        /// 计划编号
+        /// </summary>
+        [Column("F_PLAN_CODE")]
+        public string F_PLAN_CODE { get; set; }
+        /// <summary>
+        /// 客户代码
+        /// </summary>
+        [Column("F_CUST_CODE")]
+        public string F_CUST_CODE { get; set; }
+        /// <summary>
+        /// 区分类型
+        /// </summary>
+        [Column("F_TYPE_FLAG")]
+        public int? F_TYPE_FLAG { get; set; }
+        /// <summary>
+        /// 填报人员
+        /// </summary>
+        [Column("F_WRITE_PERSONNEL")]
+        public string F_WRITE_PERSONNEL { get; set; }
+        /// <summary>
+        /// 填报日期
+        /// </summary>
+        [Column("F_WRITE_DATE")]
+        public DateTime? F_WRITE_DATE { get; set; }
+        /// <summary>
+        /// 填报月份
+        /// </summary>
+        [Column("F_WRITE_MONTH")]
+        public string F_WRITE_MONTH { get; set; }
+        /// <summary>
+        /// 合并标记
+        /// </summary>
+        [Column("F_MERGER_FLG")]
+        public int? F_MERGER_FLG { get; set; }
+        /// <summary>
+        /// 合并日期
+        /// </summary>
+        [Column("F_MERGER_DATE")]
+        public DateTime? F_MERGER_DATE { get; set; }
+        /// <summary>
+        /// 合并人员
+        /// </summary>
+        [Column("F_MERGER_PERSONNEL")]
+        public string F_MERGER_PERSONNEL { get; set; }
+        #endregion
+
+        #region 扩展操作
+        /// <summary>
+        /// 新增调用
+        /// </summary>
+        public void Create()
+        {
+            this.F_PLAN_CODE = Guid.NewGuid().ToString();
+        }
+        /// <summary>
+        /// 编辑调用
+        /// </summary>
+        /// <param name="keyValue"></param>
+        public void Modify(string keyValue)
+        {
+            this.F_PLAN_CODE = keyValue;
+        }
+        #endregion
+        #region 扩展字段
+        #endregion
+    }
+}
+

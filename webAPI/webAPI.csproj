@@ -1,0 +1,1119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{288DA2E3-10AF-403B-8A13-B12F86C9328D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>webAPI</RootNamespace>
+    <AssemblyName>webAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44359</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Learun.Cache.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Learun.Cache.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Learun.Cache.Factory, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Learun.Cache.Factory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\lr_base_userController.cs" />
+    <Compile Include="Controllers\RegisteredController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="DataBase\lr_base_company.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_department.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_log.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_post.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_role.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\lr_base_user.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\UserModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\UserModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\UserModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiModel.cs" />
+    <Compile Include="Models\RevisePasswordModel.cs" />
+    <Compile Include="Models\UserViewModele.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\styles.css" />
+    <Content Include="DataBase\UserModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UserModel.Context.cs</LastGenOutput>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataBase\UserModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+      <LastGenOutput>UserModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\icons.png" />
+    <Content Include="images\into.png" />
+    <Content Include="pulsApp\css\android.css" />
+    <Content Include="pulsApp\css\fui.min.css" />
+    <Content Include="pulsApp\css\index.css" />
+    <Content Include="pulsApp\css\ios.css" />
+    <Content Include="pulsApp\css\learun-mobile.css" />
+    <Content Include="pulsApp\css\pulsCommon.css" />
+    <Content Include="pulsApp\font\iconfont.css" />
+    <Content Include="pulsApp\font\iconfont.js" />
+    <Content Include="pulsApp\font\iconfont.svg" />
+    <Content Include="pulsApp\images\1.jpg" />
+    <Content Include="pulsApp\images\2.jpg" />
+    <Content Include="pulsApp\images\3.jpg" />
+    <Content Include="pulsApp\images\4.jpg" />
+    <Content Include="pulsApp\images\444.png" />
+    <Content Include="pulsApp\images\background.png" />
+    <Content Include="pulsApp\images\banner.jpg" />
+    <Content Include="pulsApp\images\banner.png" />
+    <Content Include="pulsApp\images\banner1.png" />
+    <Content Include="pulsApp\images\banner160.png" />
+    <Content Include="pulsApp\images\logo.png" />
+    <Content Include="pulsApp\images\myCardBg.jpg" />
+    <Content Include="pulsApp\images\myCardBg.png" />
+    <Content Include="pulsApp\images\notification.png" />
+    <Content Include="pulsApp\images\on-boy.jpg" />
+    <Content Include="pulsApp\images\on-girl.jpg" />
+    <Content Include="pulsApp\images\SOLGEN.png" />
+    <Content Include="pulsApp\images\tab10.png" />
+    <Content Include="pulsApp\images\tab101.png" />
+    <Content Include="pulsApp\images\tab11.png" />
+    <Content Include="pulsApp\images\tab111.png" />
+    <Content Include="pulsApp\images\tab20.png" />
+    <Content Include="pulsApp\images\tab21.png" />
+    <Content Include="pulsApp\images\tab30.png" />
+    <Content Include="pulsApp\images\tab31.png" />
+    <Content Include="pulsApp\images\tab40.png" />
+    <Content Include="pulsApp\images\tab401.png" />
+    <Content Include="pulsApp\images\tab41.png" />
+    <Content Include="pulsApp\images\tab410.png" />
+    <Content Include="pulsApp\images\wechat.jpg" />
+    <Content Include="pulsApp\images\welcomeBanner.jpg" />
+    <Content Include="pulsApp\images\小线段.png" />
+    <Content Include="pulsApp\images\版权信息.png" />
+    <Content Include="pulsApp\images\登录框1.png" />
+    <Content Include="pulsApp\images\登录框2.png" />
+    <Content Include="pulsApp\index.html" />
+    <Content Include="pulsApp\js\base.js" />
+    <Content Include="pulsApp\js\checkbox.js" />
+    <Content Include="pulsApp\js\city.js" />
+    <Content Include="pulsApp\js\config.js" />
+    <Content Include="pulsApp\js\date.js" />
+    <Content Include="pulsApp\js\dropdownbox.js" />
+    <Content Include="pulsApp\js\echarts.js" />
+    <Content Include="pulsApp\js\form.js" />
+    <Content Include="pulsApp\js\fui.min.js" />
+    <Content Include="pulsApp\js\gender.js" />
+    <Content Include="pulsApp\js\http.js" />
+    <Content Include="pulsApp\js\imagepicker.js" />
+    <Content Include="pulsApp\js\index.js" />
+    <Content Include="pulsApp\js\jquery-1.10.2.min.js" />
+    <Content Include="pulsApp\js\jquery.md5.min.js" />
+    <Content Include="pulsApp\js\jquery.message.js" />
+    <Content Include="pulsApp\js\jquery.mobile.custom.min.js" />
+    <Content Include="pulsApp\js\jquery.validate.min.js" />
+    <Content Include="pulsApp\js\layer.js" />
+    <Content Include="pulsApp\js\learun-custmerform.js" />
+    <Content Include="pulsApp\js\listswipe.js" />
+    <Content Include="pulsApp\js\lrmuiex.js" />
+    <Content Include="pulsApp\js\multiplequery.js" />
+    <Content Include="pulsApp\js\navigation.js" />
+    <Content Include="pulsApp\js\pagination.js" />
+    <Content Include="pulsApp\js\picker.js" />
+    <Content Include="pulsApp\js\platform.js" />
+    <Content Include="pulsApp\js\progressbar.js" />
+    <Content Include="pulsApp\js\pulscommon.js" />
+    <Content Include="pulsApp\js\qrcode.js" />
+    <Content Include="pulsApp\js\scan.js" />
+    <Content Include="pulsApp\js\searchdate.js" />
+    <Content Include="pulsApp\js\storage.js" />
+    <Content Include="pulsApp\js\switch.js" />
+    <Content Include="pulsApp\js\tab.js" />
+    <Content Include="pulsApp\pages\chat\chat.css" />
+    <Content Include="pulsApp\pages\chat\chat.html" />
+    <Content Include="pulsApp\pages\chat\chat.js" />
+    <Content Include="pulsApp\pages\contacts\contacts.css" />
+    <Content Include="pulsApp\pages\contacts\contacts.html" />
+    <Content Include="pulsApp\pages\contacts\contacts.js" />
+    <Content Include="pulsApp\pages\contacts\search\search.css" />
+    <Content Include="pulsApp\pages\contacts\search\search.html" />
+    <Content Include="pulsApp\pages\contacts\search\search.js" />
+    <Content Include="pulsApp\pages\crm\invoice\form\form.css" />
+    <Content Include="pulsApp\pages\crm\invoice\form\form.html" />
+    <Content Include="pulsApp\pages\crm\invoice\form\form.js" />
+    <Content Include="pulsApp\pages\crm\invoice\invoice.css" />
+    <Content Include="pulsApp\pages\crm\invoice\invoice.html" />
+    <Content Include="pulsApp\pages\crm\invoice\invoice.js" />
+    <Content Include="pulsApp\pages\crm\order\form\form.css" />
+    <Content Include="pulsApp\pages\crm\order\form\form.html" />
+    <Content Include="pulsApp\pages\crm\order\form\form.js" />
+    <Content Include="pulsApp\pages\crm\order\order.css" />
+    <Content Include="pulsApp\pages\crm\order\order.html" />
+    <Content Include="pulsApp\pages\crm\order\order.js" />
+    <Content Include="pulsApp\pages\custmerform\custmerform.css" />
+    <Content Include="pulsApp\pages\custmerform\custmerform.html" />
+    <Content Include="pulsApp\pages\custmerform\custmerform.js" />
+    <Content Include="pulsApp\pages\custmerform\form\form.css" />
+    <Content Include="pulsApp\pages\custmerform\form\form.html" />
+    <Content Include="pulsApp\pages\custmerform\form\form.js" />
+    <Content Include="pulsApp\pages\demo\actionsheet\actionsheet.css" />
+    <Content Include="pulsApp\pages\demo\actionsheet\actionsheet.html" />
+    <Content Include="pulsApp\pages\demo\actionsheet\actionsheet.js" />
+    <Content Include="pulsApp\pages\demo\amap\amap.css" />
+    <Content Include="pulsApp\pages\demo\amap\amap.html" />
+    <Content Include="pulsApp\pages\demo\amap\amap.js" />
+    <Content Include="pulsApp\pages\demo\badge\badge.css" />
+    <Content Include="pulsApp\pages\demo\badge\badge.html" />
+    <Content Include="pulsApp\pages\demo\badge\badge.js" />
+    <Content Include="pulsApp\pages\demo\button\button.css" />
+    <Content Include="pulsApp\pages\demo\button\button.html" />
+    <Content Include="pulsApp\pages\demo\button\button.js" />
+    <Content Include="pulsApp\pages\demo\cardview\cardview.css" />
+    <Content Include="pulsApp\pages\demo\cardview\cardview.html" />
+    <Content Include="pulsApp\pages\demo\cardview\cardview.js" />
+    <Content Include="pulsApp\pages\demo\demo.css" />
+    <Content Include="pulsApp\pages\demo\demo.html" />
+    <Content Include="pulsApp\pages\demo\demo.js" />
+    <Content Include="pulsApp\pages\demo\dialog\dialog.css" />
+    <Content Include="pulsApp\pages\demo\dialog\dialog.html" />
+    <Content Include="pulsApp\pages\demo\dialog\dialog.js" />
+    <Content Include="pulsApp\pages\demo\formvalidator\formvalidator.css" />
+    <Content Include="pulsApp\pages\demo\formvalidator\formvalidator.html" />
+    <Content Include="pulsApp\pages\demo\formvalidator\formvalidator.js" />
+    <Content Include="pulsApp\pages\demo\form\form.css" />
+    <Content Include="pulsApp\pages\demo\form\form.html" />
+    <Content Include="pulsApp\pages\demo\form\form.js" />
+    <Content Include="pulsApp\pages\demo\getpage\getpage.css" />
+    <Content Include="pulsApp\pages\demo\getpage\getpage.html" />
+    <Content Include="pulsApp\pages\demo\getpage\getpage.js" />
+    <Content Include="pulsApp\pages\demo\grid\grid.css" />
+    <Content Include="pulsApp\pages\demo\grid\grid.html" />
+    <Content Include="pulsApp\pages\demo\grid\grid.js" />
+    <Content Include="pulsApp\pages\demo\iconlist2\iconlist2.css" />
+    <Content Include="pulsApp\pages\demo\iconlist2\iconlist2.html" />
+    <Content Include="pulsApp\pages\demo\iconlist2\iconlist2.js" />
+    <Content Include="pulsApp\pages\demo\iconlist\iconlist.css" />
+    <Content Include="pulsApp\pages\demo\iconlist\iconlist.html" />
+    <Content Include="pulsApp\pages\demo\iconlist\iconlist.js" />
+    <Content Include="pulsApp\pages\demo\icon\icon.css" />
+    <Content Include="pulsApp\pages\demo\icon\icon.html" />
+    <Content Include="pulsApp\pages\demo\icon\icon.js" />
+    <Content Include="pulsApp\pages\demo\layer\layer.css" />
+    <Content Include="pulsApp\pages\demo\layer\layer.html" />
+    <Content Include="pulsApp\pages\demo\layer\layer.js" />
+    <Content Include="pulsApp\pages\demo\listbadge\listbadge.css" />
+    <Content Include="pulsApp\pages\demo\listbadge\listbadge.html" />
+    <Content Include="pulsApp\pages\demo\listbadge\listbadge.js" />
+    <Content Include="pulsApp\pages\demo\listmedia\listmedia.css" />
+    <Content Include="pulsApp\pages\demo\listmedia\listmedia.html" />
+    <Content Include="pulsApp\pages\demo\listmedia\listmedia.js" />
+    <Content Include="pulsApp\pages\demo\listmulti\listmulti.css" />
+    <Content Include="pulsApp\pages\demo\listmulti\listmulti.html" />
+    <Content Include="pulsApp\pages\demo\listmulti\listmulti.js" />
+    <Content Include="pulsApp\pages\demo\listswipe\listswipe.css" />
+    <Content Include="pulsApp\pages\demo\listswipe\listswipe.html" />
+    <Content Include="pulsApp\pages\demo\listswipe\listswipe.js" />
+    <Content Include="pulsApp\pages\demo\list\list.css" />
+    <Content Include="pulsApp\pages\demo\list\list.html" />
+    <Content Include="pulsApp\pages\demo\list\list.js" />
+    <Content Include="pulsApp\pages\demo\loaddata\loaddata.css" />
+    <Content Include="pulsApp\pages\demo\loaddata\loaddata.html" />
+    <Content Include="pulsApp\pages\demo\loaddata\loaddata.js" />
+    <Content Include="pulsApp\pages\demo\login\login.css" />
+    <Content Include="pulsApp\pages\demo\login\login.html" />
+    <Content Include="pulsApp\pages\demo\login\login.js" />
+    <Content Include="pulsApp\pages\demo\my\my.css" />
+    <Content Include="pulsApp\pages\demo\my\my.html" />
+    <Content Include="pulsApp\pages\demo\my\my.js" />
+    <Content Include="pulsApp\pages\demo\page\cpage\cpage.css" />
+    <Content Include="pulsApp\pages\demo\page\cpage\cpage.html" />
+    <Content Include="pulsApp\pages\demo\page\cpage\cpage.js" />
+    <Content Include="pulsApp\pages\demo\page\page.css" />
+    <Content Include="pulsApp\pages\demo\page\page.html" />
+    <Content Include="pulsApp\pages\demo\page\page.js" />
+    <Content Include="pulsApp\pages\demo\pictureupload\pictureupload.css" />
+    <Content Include="pulsApp\pages\demo\pictureupload\pictureupload.html" />
+    <Content Include="pulsApp\pages\demo\pictureupload\pictureupload.js" />
+    <Content Include="pulsApp\pages\demo\picture\picture.css" />
+    <Content Include="pulsApp\pages\demo\picture\picture.html" />
+    <Content Include="pulsApp\pages\demo\picture\picture.js" />
+    <Content Include="pulsApp\pages\demo\progressbar\progressbar.css" />
+    <Content Include="pulsApp\pages\demo\progressbar\progressbar.html" />
+    <Content Include="pulsApp\pages\demo\progressbar\progressbar.js" />
+    <Content Include="pulsApp\pages\demo\pulltorefresh2\pulltorefresh2.css" />
+    <Content Include="pulsApp\pages\demo\pulltorefresh2\pulltorefresh2.html" />
+    <Content Include="pulsApp\pages\demo\pulltorefresh2\pulltorefresh2.js" />
+    <Content Include="pulsApp\pages\demo\pulltorefresh\pulltorefresh.css" />
+    <Content Include="pulsApp\pages\demo\pulltorefresh\pulltorefresh.html" />
+    <Content Include="pulsApp\pages\demo\pulltorefresh\pulltorefresh.js" />
+    <Content Include="pulsApp\pages\demo\scan\scan.css" />
+    <Content Include="pulsApp\pages\demo\scan\scan.html" />
+    <Content Include="pulsApp\pages\demo\scan\scan.js" />
+    <Content Include="pulsApp\pages\demo\timeline\timeline.css" />
+    <Content Include="pulsApp\pages\demo\timeline\timeline.html" />
+    <Content Include="pulsApp\pages\demo\timeline\timeline.js" />
+    <Content Include="pulsApp\pages\demo\toptab\toptab.css" />
+    <Content Include="pulsApp\pages\demo\toptab\toptab.html" />
+    <Content Include="pulsApp\pages\demo\toptab\toptab.js" />
+    <Content Include="pulsApp\pages\demo\webstorage\webstorage.css" />
+    <Content Include="pulsApp\pages\demo\webstorage\webstorage.html" />
+    <Content Include="pulsApp\pages\demo\webstorage\webstorage.js" />
+    <Content Include="pulsApp\pages\describe\describe.css" />
+    <Content Include="pulsApp\pages\describe\describe.html" />
+    <Content Include="pulsApp\pages\describe\describe.js" />
+    <Content Include="pulsApp\pages\login\login.css" />
+    <Content Include="pulsApp\pages\login\login.html" />
+    <Content Include="pulsApp\pages\login\login.js" />
+    <Content Include="pulsApp\pages\login\phoneLogin\phoneLogin.html" />
+    <Content Include="pulsApp\pages\login\phoneLogin\phoneLogin.js" />
+    <Content Include="pulsApp\pages\lrselect\company\company.css" />
+    <Content Include="pulsApp\pages\lrselect\company\company.html" />
+    <Content Include="pulsApp\pages\lrselect\company\company.js" />
+    <Content Include="pulsApp\pages\lrselect\department\department.css" />
+    <Content Include="pulsApp\pages\lrselect\department\department.html" />
+    <Content Include="pulsApp\pages\lrselect\department\department.js" />
+    <Content Include="pulsApp\pages\lrselect\layer\layer.css" />
+    <Content Include="pulsApp\pages\lrselect\layer\layer.html" />
+    <Content Include="pulsApp\pages\lrselect\layer\layer.js" />
+    <Content Include="pulsApp\pages\lrselect\user\user.css" />
+    <Content Include="pulsApp\pages\lrselect\user\user.html" />
+    <Content Include="pulsApp\pages\lrselect\user\user.js" />
+    <Content Include="pulsApp\pages\message\message.css" />
+    <Content Include="pulsApp\pages\message\message.html" />
+    <Content Include="pulsApp\pages\message\message.js" />
+    <Content Include="pulsApp\pages\my\aboutadms\aboutadms.css" />
+    <Content Include="pulsApp\pages\my\aboutadms\aboutadms.html" />
+    <Content Include="pulsApp\pages\my\aboutadms\aboutadms.js" />
+    <Content Include="pulsApp\pages\my\aboutlearun\aboutlearun.css" />
+    <Content Include="pulsApp\pages\my\aboutlearun\aboutlearun.html" />
+    <Content Include="pulsApp\pages\my\aboutlearun\aboutlearun.js" />
+    <Content Include="pulsApp\pages\my\contactInfo\contactInfo.css" />
+    <Content Include="pulsApp\pages\my\contactInfo\contactInfo.html" />
+    <Content Include="pulsApp\pages\my\contactInfo\contactInfo.js" />
+    <Content Include="pulsApp\pages\my\modifypassword\modifypassword.css" />
+    <Content Include="pulsApp\pages\my\modifypassword\modifypassword.html" />
+    <Content Include="pulsApp\pages\my\modifypassword\modifypassword.js" />
+    <Content Include="pulsApp\pages\my\my.css" />
+    <Content Include="pulsApp\pages\my\my.html" />
+    <Content Include="pulsApp\pages\my\my.js" />
+    <Content Include="pulsApp\pages\my\mycode\mycode.css" />
+    <Content Include="pulsApp\pages\my\mycode\mycode.html" />
+    <Content Include="pulsApp\pages\my\mycode\mycode.js" />
+    <Content Include="pulsApp\pages\my\userInfo\userInfo.css" />
+    <Content Include="pulsApp\pages\my\userInfo\userInfo.html" />
+    <Content Include="pulsApp\pages\my\userInfo\userInfo.js" />
+    <Content Include="pulsApp\pages\newpage\newpage.css" />
+    <Content Include="pulsApp\pages\newpage\newpage.html" />
+    <Content Include="pulsApp\pages\newpage\newpage.js" />
+    <Content Include="pulsApp\pages\nworkflow\againcreateflow\againcreateflow.css" />
+    <Content Include="pulsApp\pages\nworkflow\againcreateflow\againcreateflow.html" />
+    <Content Include="pulsApp\pages\nworkflow\againcreateflow\againcreateflow.js" />
+    <Content Include="pulsApp\pages\nworkflow\audit\audit.css" />
+    <Content Include="pulsApp\pages\nworkflow\audit\audit.html" />
+    <Content Include="pulsApp\pages\nworkflow\audit\audit.js" />
+    <Content Include="pulsApp\pages\nworkflow\audit\sign\sign.css" />
+    <Content Include="pulsApp\pages\nworkflow\audit\sign\sign.html" />
+    <Content Include="pulsApp\pages\nworkflow\audit\sign\sign.js" />
+    <Content Include="pulsApp\pages\nworkflow\audit\verify\verify.css" />
+    <Content Include="pulsApp\pages\nworkflow\audit\verify\verify.html" />
+    <Content Include="pulsApp\pages\nworkflow\audit\verify\verify.js" />
+    <Content Include="pulsApp\pages\nworkflow\chlidaudit\chlidaudit.css" />
+    <Content Include="pulsApp\pages\nworkflow\chlidaudit\chlidaudit.html" />
+    <Content Include="pulsApp\pages\nworkflow\chlidaudit\chlidaudit.js" />
+    <Content Include="pulsApp\pages\nworkflow\chlidlook\chlidlook.css" />
+    <Content Include="pulsApp\pages\nworkflow\chlidlook\chlidlook.html" />
+    <Content Include="pulsApp\pages\nworkflow\chlidlook\chlidlook.js" />
+    <Content Include="pulsApp\pages\nworkflow\createflow\createflow.css" />
+    <Content Include="pulsApp\pages\nworkflow\createflow\createflow.html" />
+    <Content Include="pulsApp\pages\nworkflow\createflow\createflow.js" />
+    <Content Include="pulsApp\pages\nworkflow\createflow\form\form.css" />
+    <Content Include="pulsApp\pages\nworkflow\createflow\form\form.html" />
+    <Content Include="pulsApp\pages\nworkflow\createflow\form\form.js" />
+    <Content Include="pulsApp\pages\nworkflow\draft\draft.css" />
+    <Content Include="pulsApp\pages\nworkflow\draft\draft.html" />
+    <Content Include="pulsApp\pages\nworkflow\draft\draft.js" />
+    <Content Include="pulsApp\pages\nworkflow\draft\form\form.css" />
+    <Content Include="pulsApp\pages\nworkflow\draft\form\form.html" />
+    <Content Include="pulsApp\pages\nworkflow\draft\form\form.js" />
+    <Content Include="pulsApp\pages\nworkflow\myflow\myflow.css" />
+    <Content Include="pulsApp\pages\nworkflow\myflow\myflow.html" />
+    <Content Include="pulsApp\pages\nworkflow\myflow\myflow.js" />
+    <Content Include="pulsApp\pages\nworkflow\myprocessInfo\myprocessInfo.css" />
+    <Content Include="pulsApp\pages\nworkflow\myprocessInfo\myprocessInfo.html" />
+    <Content Include="pulsApp\pages\nworkflow\myprocessInfo\myprocessInfo.js" />
+    <Content Include="pulsApp\pages\nworkflow\processInfo\processInfo.css" />
+    <Content Include="pulsApp\pages\nworkflow\processInfo\processInfo.html" />
+    <Content Include="pulsApp\pages\nworkflow\processInfo\processInfo.js" />
+    <Content Include="pulsApp\pages\nworkflow\refer\refer.css" />
+    <Content Include="pulsApp\pages\nworkflow\refer\refer.html" />
+    <Content Include="pulsApp\pages\nworkflow\refer\refer.js" />
+    <Content Include="pulsApp\pages\nworkflow\releasetask\releasetask.css" />
+    <Content Include="pulsApp\pages\nworkflow\releasetask\releasetask.html" />
+    <Content Include="pulsApp\pages\nworkflow\releasetask\releasetask.js" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\signAudit.css" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\signAudit.html" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\signAudit.js" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\sign\sign.css" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\sign\sign.html" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\sign\sign.js" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\verify\verify.css" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\verify\verify.html" />
+    <Content Include="pulsApp\pages\nworkflow\signAudit\verify\verify.js" />
+    <Content Include="pulsApp\pages\Platform\Candidates\candidates.css" />
+    <Content Include="pulsApp\pages\Platform\Candidates\candidates.html" />
+    <Content Include="pulsApp\pages\Platform\Candidates\candidates.js" />
+    <Content Include="pulsApp\pages\search\search.css" />
+    <Content Include="pulsApp\pages\search\search.html" />
+    <Content Include="pulsApp\pages\search\search.js" />
+    <Content Include="pulsApp\pages\workflow\againbootstraper\againbootstraper.css" />
+    <Content Include="pulsApp\pages\workflow\againbootstraper\againbootstraper.html" />
+    <Content Include="pulsApp\pages\workflow\againbootstraper\againbootstraper.js" />
+    <Content Include="pulsApp\pages\workflow\againbootstraper\form\form.css" />
+    <Content Include="pulsApp\pages\workflow\againbootstraper\form\form.html" />
+    <Content Include="pulsApp\pages\workflow\againbootstraper\form\form.js" />
+    <Content Include="pulsApp\pages\workflow\audit\audit.css" />
+    <Content Include="pulsApp\pages\workflow\audit\audit.html" />
+    <Content Include="pulsApp\pages\workflow\audit\audit.js" />
+    <Content Include="pulsApp\pages\workflow\audit\sign\sign.css" />
+    <Content Include="pulsApp\pages\workflow\audit\sign\sign.html" />
+    <Content Include="pulsApp\pages\workflow\audit\sign\sign.js" />
+    <Content Include="pulsApp\pages\workflow\audit\verify\verify.css" />
+    <Content Include="pulsApp\pages\workflow\audit\verify\verify.html" />
+    <Content Include="pulsApp\pages\workflow\audit\verify\verify.js" />
+    <Content Include="pulsApp\pages\workflow\bootstraper\bootstraper.css" />
+    <Content Include="pulsApp\pages\workflow\bootstraper\bootstraper.html" />
+    <Content Include="pulsApp\pages\workflow\bootstraper\bootstraper.js" />
+    <Content Include="pulsApp\pages\workflow\bootstraper\form\form.css" />
+    <Content Include="pulsApp\pages\workflow\bootstraper\form\form.html" />
+    <Content Include="pulsApp\pages\workflow\bootstraper\form\form.js" />
+    <Content Include="pulsApp\pages\workflow\mytask\mytask.css" />
+    <Content Include="pulsApp\pages\workflow\mytask\mytask.html" />
+    <Content Include="pulsApp\pages\workflow\mytask\mytask.js" />
+    <Content Include="pulsApp\pages\workflow\processInfo\processInfo.css" />
+    <Content Include="pulsApp\pages\workflow\processInfo\processInfo.html" />
+    <Content Include="pulsApp\pages\workflow\processInfo\processInfo.js" />
+    <Content Include="pulsApp\pages\workflow\releasetask\releasetask.css" />
+    <Content Include="pulsApp\pages\workflow\releasetask\releasetask.html" />
+    <Content Include="pulsApp\pages\workflow\releasetask\releasetask.js" />
+    <Content Include="pulsApp\puls\barcode_scan.html" />
+    <Content Include="pulsApp\puls\maps_map.html" />
+    <Content Include="pulsApp\puls\maps_map_sub.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\css\android.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\css\fui.min.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\css\index.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\css\ios.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\css\learun-mobile.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\css\pulsCommon.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\font\iconfont.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\font\iconfont.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\font\iconfont.svg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\1.jpg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\2.jpg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\3.jpg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\4.jpg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\banner.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\banner1.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\banner160.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\logo.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\myCardBg.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\notification.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\on-boy.jpg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\on-girl.jpg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\tab10.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\tab11.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\tab20.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\tab21.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\tab30.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\tab31.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\tab40.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\tab41.png" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\wechat.jpg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\images\welcomeBanner.jpg" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\index.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\base.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\checkbox.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\city.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\config.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\date.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\echarts.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\fui.min.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\http.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\imagepicker.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\index.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\jquery-1.10.2.min.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\jquery.md5.min.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\jquery.mobile.custom.min.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\layer.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\learun-custmerform.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\listswipe.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\lrmuiex.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\multiplequery.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\navigation.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\pagination.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\picker.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\platform.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\progressbar.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\pulscommon.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\qrcode.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\scan.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\searchdate.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\storage.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\switch.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\js\tab.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\chat\chat.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\chat\chat.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\chat\chat.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\contacts\contacts.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\contacts\contacts.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\contacts\contacts.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\contacts\search\search.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\contacts\search\search.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\contacts\search\search.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\invoice\form\form.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\invoice\form\form.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\invoice\form\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\invoice\invoice.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\invoice\invoice.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\invoice\invoice.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\order\form\form.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\order\form\form.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\order\form\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\order\order.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\order\order.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\crm\order\order.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\custmerform\custmerform.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\custmerform\custmerform.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\custmerform\custmerform.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\custmerform\form\form.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\custmerform\form\form.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\custmerform\form\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\actionsheet\actionsheet.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\actionsheet\actionsheet.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\actionsheet\actionsheet.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\amap\amap.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\amap\amap.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\amap\amap.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\badge\badge.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\badge\badge.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\badge\badge.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\button\button.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\button\button.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\button\button.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\cardview\cardview.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\cardview\cardview.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\cardview\cardview.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\demo.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\demo.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\demo.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\dialog\dialog.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\dialog\dialog.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\dialog\dialog.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\formvalidator\formvalidator.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\formvalidator\formvalidator.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\formvalidator\formvalidator.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\form\form.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\form\form.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\form\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\getpage\getpage.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\getpage\getpage.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\getpage\getpage.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\grid\grid.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\grid\grid.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\grid\grid.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\iconlist2\iconlist2.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\iconlist2\iconlist2.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\iconlist2\iconlist2.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\iconlist\iconlist.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\iconlist\iconlist.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\iconlist\iconlist.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\icon\icon.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\icon\icon.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\icon\icon.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\layer\layer.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\layer\layer.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\layer\layer.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listbadge\listbadge.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listbadge\listbadge.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listbadge\listbadge.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listmedia\listmedia.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listmedia\listmedia.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listmedia\listmedia.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listmulti\listmulti.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listmulti\listmulti.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listmulti\listmulti.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listswipe\listswipe.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listswipe\listswipe.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\listswipe\listswipe.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\list\list.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\list\list.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\list\list.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\loaddata\loaddata.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\loaddata\loaddata.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\loaddata\loaddata.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\login\login.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\login\login.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\login\login.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\my\my.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\my\my.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\my\my.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\page\cpage\cpage.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\page\cpage\cpage.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\page\cpage\cpage.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\page\page.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\page\page.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\page\page.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pictureupload\pictureupload.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pictureupload\pictureupload.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pictureupload\pictureupload.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\picture\picture.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\picture\picture.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\picture\picture.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\progressbar\progressbar.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\progressbar\progressbar.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\progressbar\progressbar.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh2\pulltorefresh2.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh2\pulltorefresh2.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh2\pulltorefresh2.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh\pulltorefresh.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh\pulltorefresh.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\pulltorefresh\pulltorefresh.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\scan\scan.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\scan\scan.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\scan\scan.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\timeline\timeline.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\timeline\timeline.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\timeline\timeline.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\toptab\toptab.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\toptab\toptab.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\toptab\toptab.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\webstorage\webstorage.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\webstorage\webstorage.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\demo\webstorage\webstorage.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\describe\describe.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\describe\describe.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\describe\describe.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\login\login.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\login\login.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\login\login.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\company\company.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\company\company.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\company\company.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\department\department.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\department\department.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\department\department.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\layer\layer.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\layer\layer.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\layer\layer.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\user\user.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\user\user.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\lrselect\user\user.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\message\message.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\message\message.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\message\message.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\aboutadms\aboutadms.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\aboutadms\aboutadms.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\aboutadms\aboutadms.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\aboutlearun\aboutlearun.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\aboutlearun\aboutlearun.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\aboutlearun\aboutlearun.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\contactInfo\contactInfo.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\contactInfo\contactInfo.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\contactInfo\contactInfo.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\modifypassword\modifypassword.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\modifypassword\modifypassword.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\modifypassword\modifypassword.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\my.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\my.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\my.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\mycode\mycode.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\mycode\mycode.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\mycode\mycode.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\userInfo\userInfo.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\userInfo\userInfo.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\my\userInfo\userInfo.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\newpage\newpage.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\newpage\newpage.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\newpage\newpage.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\againcreateflow\againcreateflow.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\againcreateflow\againcreateflow.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\againcreateflow\againcreateflow.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\audit.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\audit.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\audit.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\sign\sign.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\sign\sign.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\sign\sign.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\verify\verify.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\verify\verify.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\audit\verify\verify.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidaudit\chlidaudit.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidaudit\chlidaudit.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidaudit\chlidaudit.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidlook\chlidlook.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidlook\chlidlook.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\chlidlook\chlidlook.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\createflow.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\createflow.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\createflow.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\form\form.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\form\form.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\createflow\form\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\draft.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\draft.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\draft.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\form\form.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\form\form.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\draft\form\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\myflow\myflow.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\myflow\myflow.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\myflow\myflow.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\myprocessInfo\myprocessInfo.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\myprocessInfo\myprocessInfo.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\myprocessInfo\myprocessInfo.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\processInfo\processInfo.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\processInfo\processInfo.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\processInfo\processInfo.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\refer\refer.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\refer\refer.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\refer\refer.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\releasetask\releasetask.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\releasetask\releasetask.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\releasetask\releasetask.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\signAudit.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\signAudit.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\signAudit.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\sign\sign.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\sign\sign.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\sign\sign.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\verify\verify.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\verify\verify.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\nworkflow\signAudit\verify\verify.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\search\search.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\search\search.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\search\search.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\againbootstraper.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\againbootstraper.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\againbootstraper.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\form\form.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\form\form.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\againbootstraper\form\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\audit.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\audit.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\audit.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\sign\sign.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\sign\sign.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\sign\sign.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\verify\verify.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\verify\verify.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\audit\verify\verify.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\bootstraper.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\bootstraper.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\bootstraper.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\form\form.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\form\form.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\bootstraper\form\form.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\mytask\mytask.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\mytask\mytask.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\mytask\mytask.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\processInfo\processInfo.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\processInfo\processInfo.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\processInfo\processInfo.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\releasetask\releasetask.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\releasetask\releasetask.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workflow\releasetask\releasetask.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\listdetaile\listdetaile.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\listdetaile\listdetaile.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\listdetaile\listdetaile.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\edit\edit.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\edit\edit.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\edit\edit.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\modulelist.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\modulelist.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\modulelist\modulelist.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\search\search.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\search\search.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\search\search.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\workspace.css" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\workspace.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\pages\workspace\workspace.js" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\puls\barcode_scan.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\puls\maps_map.html" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\puls\maps_map_sub.html" />
+    <Content Include="pulsApp\unpackage\res\icons\120x120.png" />
+    <Content Include="pulsApp\unpackage\res\icons\144x144.png" />
+    <Content Include="pulsApp\unpackage\res\icons\152x152.png" />
+    <Content Include="pulsApp\unpackage\res\icons\167x167.png" />
+    <Content Include="pulsApp\unpackage\res\icons\180x180.png" />
+    <Content Include="pulsApp\unpackage\res\icons\192x192.png" />
+    <Content Include="pulsApp\unpackage\res\icons\20x20.png" />
+    <Content Include="pulsApp\unpackage\res\icons\29x29.png" />
+    <Content Include="pulsApp\unpackage\res\icons\40x40.png" />
+    <Content Include="pulsApp\unpackage\res\icons\48x48.png" />
+    <Content Include="pulsApp\unpackage\res\icons\58x58.png" />
+    <Content Include="pulsApp\unpackage\res\icons\60x60.png" />
+    <Content Include="pulsApp\unpackage\res\icons\72x72.png" />
+    <Content Include="pulsApp\unpackage\res\icons\76x76.png" />
+    <Content Include="pulsApp\unpackage\res\icons\80x80.png" />
+    <Content Include="pulsApp\unpackage\res\icons\87x87.png" />
+    <Content Include="pulsApp\unpackage\res\icons\96x96.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="DataBase\UserModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataBase\UserModel.edmx.diagram">
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="pulsApp\font\iconfont.eot" />
+    <Content Include="pulsApp\font\iconfont.ttf" />
+    <Content Include="pulsApp\font\iconfont.woff" />
+    <Content Include="pulsApp\manifest.json" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\font\iconfont.eot" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\font\iconfont.ttf" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\font\iconfont.woff" />
+    <Content Include="pulsApp\unpackage\resources\H529E6E2B\www\manifest.json" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\lr_base_user\Details.cshtml" />
+    <Content Include="Views\lr_base_user\Index.cshtml" />
+    <Content Include="Views\lr_base_user\Edit.cshtml" />
+    <Content Include="Views\LoginPage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Learun.Application.Organization\Learun.Application.Organization.csproj">
+      <Project>{E9877A25-801B-4605-AD35-E6306916513C}</Project>
+      <Name>Learun.Application.Organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Learun.Framework.Module\Learun.Application.Module\Learun.Application.Base\Learun.Application.Base.csproj">
+      <Project>{0CDD0DC8-74CF-4C71-923C-66204A8923D3}</Project>
+      <Name>Learun.Application.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Learun.Framework.Module\Learun.Application.Module\Learun.Application.TwoDevelopment\Learun.Application.TwoDevelopment.csproj">
+      <Project>{56F9A112-FD96-4809-98F4-0D7C5DE0711B}</Project>
+      <Name>Learun.Application.TwoDevelopment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Learun.Framework.Module\Learun.Util\Learun.Util.Operat\Learun.Util.Operat.csproj">
+      <Project>{AD556B7A-E0D1-41BD-9D5B-18F8502E9F33}</Project>
+      <Name>Learun.Util.Operat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Learun.Framework.Module\Learun.Util\Learun.Util\Learun.Util.csproj">
+      <Project>{cf8ae293-88ab-436c-9720-a8386ba5d7b7}</Project>
+      <Name>Learun.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApi_EmployeeInformationEntry\WebApi_EmployeeInformationEntry.csproj">
+      <Project>{F83D5768-D286-45F5-B45D-97FFE742508E}</Project>
+      <Name>WebApi_EmployeeInformationEntry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49330</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44359/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

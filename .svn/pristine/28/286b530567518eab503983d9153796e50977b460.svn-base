@@ -1,0 +1,59 @@
+<div class="lr-my-page">
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px; color:#666">
+        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;请于工作日内8:30～12:00，13:40～18:00前往华羿微电进行面试；联系电话：张女士 19993082216
+    </div>
+    <div class="lr-list" style="margin-top:10px;">
+        <div class="lr-list-item lr-list-item-icon" data-value="candidates">
+            <i class="iconfont icon-info"></i>
+            <a class="lr-nav-right" id="candidates">常见招聘、培训问题解答</a>
+        </div>
+    </div>
+    <div class="lr-list" style="margin-top:15px;">
+        <div class="lr-list-item lr-list-item-icon" data-value="mynode">
+            <i class="iconfont icon-usefull"></i>
+            <a class="lr-nav-right" id="mynode">我的应聘节点</a>
+        </div>
+    </div>
+    <div class="lr-list" style="margin-top:15px;">
+        <div class="lr-list-item lr-list-item-icon" data-value="mywrittenexamination">
+            <i class="iconfont icon-write"></i>
+            <a class="lr-nav-right" id="mywrittenexamination">作业员笔试</a>
+        </div>
+    </div>
+    <div class="lr-list" style="margin-top:15px;">
+        <div class="lr-list-item lr-list-item-icon" data-value="myInformationperfection">
+            <i class="iconfont icon-friend_light"></i>
+            <a class="lr-nav-right" id="myInformationperfection">作业员信息完善</a>
+        </div>
+    </div>
+    <!--<div class="lr-list" style="margin-top:15px;">
+        <div class="lr-list-item lr-list-item-icon" data-value="myinterview">
+            <i class="iconfont icon-friend_light"></i>
+            <a class="lr-nav-right" id="myinterview">作业员面试</a>
+        </div>
+    </div>-->
+    <div class="lr-list" style="margin-top:15px;">
+        <div class="lr-list-item lr-list-item-icon" data-value="myIDPhoto">
+            <i class="iconfont icon-pic"></i>
+            <a class="lr-nav-right" id="myIDPhoto">报到信息上传</a>
+        </div>
+    </div>
+    <div class="lr-list" style="margin-top:15px;">
+        <div class="lr-list-item lr-list-item-icon" data-value="abouthuayi">
+            <i class="iconfont icon-home"></i>
+            <a class="lr-nav-right" id="abouthuayi">关于华羿微电子</a>
+        </div>
+    </div>
+    <div class="lr-list" style="margin-top:15px;">
+        <div class="lr-list-item" style="color:red;text-align:center;" id="outloginbtn">
+            退出
+        </div>
+    </div>
+    <div class="version">V1.0.1 Copyright © 2022</div>
+</div>
+
+<div style="color:orangered;margin-top:10px;text-align:center;">
+    <p>
+        *您已报名成功，您的信息已录入，后续环节需到公司现场确认;
+    </p>
+</div>

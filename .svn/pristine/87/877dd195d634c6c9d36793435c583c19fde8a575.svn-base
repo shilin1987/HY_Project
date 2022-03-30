@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "上岗资格认证表";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+@Html.AppendCssFile("/Areas/LR_OAModule/Views/ModuleExport/Index.css")
+<div class="price-box" style="overflow:scroll; width:80%;height:100%;" id="SRform">
+    <img src="~/Content/images/Logo.jpg" alt="" width="210" height="50" />
+    <div class="price-title">
+        员&nbsp;&nbsp;工&nbsp;&nbsp;上&nbsp;&nbsp;岗&nbsp;&nbsp;资&nbsp;&nbsp;格&nbsp;&nbsp;认&nbsp;&nbsp;证&nbsp;&nbsp;表&nbsp;&nbsp;（正常班）
+    </div>
+    <div class="price-info">
+        <table class="form" border="1" method="post" name="form" enctype="multipart/form-data">
+
+            <tr>
+                <td class="formTitle" align="center">员工编号</td>
+                <td class="formValue" style="padding-right: 20px;">
+                    <input type="text" class="form-control" id="F_EnCode" name="F_EnCode" />
+                </td>
+                <td class="formTitle" align="center">姓名</td>
+                <td class="formValue" style="padding-right: 20px;">
+                    <input type="text" class="form-control" id="F_RealName" />
+                </td>
+                <td class="formTitle" align="center">性别</td>
+                <td class="formValue" style="padding-right: 20px;">
+                    <input type="text" class="form-control" id="F_Gender" />
+                </td>
+                <td class="formTitle" align="center">部门</td>
+                <td class="formValue" style="padding-right: 20px;">
+                    <input type="text" class="form-control" id="F_DepartmentName" />
+                </td>
+                <td class="formTitle" align="center">工序</td>
+                <td class="formValue" style="padding-right: 20px;">
+                    <input type="text" class="form-control" id="F_FourLevelOrganization" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" rowspan="2">文化程度</td>
+                <td class="formValue" style="padding-right: 20px;" rowspan="2">
+                    <input type="text" class="form-control" id="F_Education" />
+                </td>
+                <td class="formTitle" align="center" rowspan="2">人员类别</td>
+                <td class="formValue" style="padding-right: 20px;" rowspan="2">
+                    @*<input type="text" class="form-control" id="F_PersonnelCategory" />*@
+                    <select id="F_PersonnelCategory">
+                        <option value="生产作业类" selected="selected">生产作业类</option>
+                        <option value="品质检验类">品质检验类</option>
+                        <option value="倒班工程类">倒班工程类</option>
+                        <option value="研发类">研发类</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </td>
+                <td class="formTitle" align="center" rowspan="2">上岗日期</td>
+                <td class="formValue" style="padding-right: 20px;" rowspan="2">
+                    <input type="text" id="F_AppointmentDate" class="form-control lr-input-wdatepicker" onfocus="WdatePicker()" />
+                </td>
+                <td class="formTitle" align="center" rowspan="2">
+                    <p>使用期限</p>
+                    <p>[非必填]</p>
+                </td>
+                <td class="formTitle" align="center" colspan="3">
+                    <input type="text" class="form-control" id="F_ProbationPeriod" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formValue" style="padding-right: 20px;" colspan="3">
+                    <input type="text" class="form-control" id="F_TrialDate" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2" rowspan="6">考核成绩</td>
+                <td class="formTitle" align="center" colspan="2">考核项目</td>
+                <td class="formTitle" align="center" colspan="2">考试标准</td>
+                <td class="formTitle" align="center" colspan="4">实际得分</td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">应知应会（笔试）</td>
+                <td class="formTitle" align="center" colspan="2">40</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="4">
+                    <input type="text" class="form-control" id="F_writtenExamination" name="text1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" maxlength="5" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">实际操作及能力</td>
+                <td class="formTitle" align="center" colspan="2">30</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="4">
+                    <input type="text" class="form-control" id="F_OperationCapability" name="text2" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" maxlength="5" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">工作态度及效率</td>
+                <td class="formTitle" align="center" colspan="2">20</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="4">
+                    <input type="text" class="form-control" id="F_workingAttitude" name="text3" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" maxlength="5" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">责任感及学习态度</td>
+                <td class="formTitle" align="center" colspan="2">10</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="4">
+                    <input type="text" class="form-control" id="F_Responsibility" name="text4" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" maxlength="5" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">合计</td>
+                <td class="formTitle" align="center" colspan="2">100</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="4">
+                    <input type="text" class="form-control" id="F_SUM" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">部门/工序BPM</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="8">
+                    <input type="text" class="form-control" id="F_OperationBPM" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">部门/工序主管</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="8">
+                    <input type="text" class="form-control" id="F_OperationDirector" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">部门负责人</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="8">
+                    <input type="text" class="form-control" id="F_OperationCharge" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">品质管理部</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="8">
+                    <input type="text" class="form-control" id="F_QualityManagement" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formTitle" align="center" colspan="2">人力资源部</td>
+                <td class="formValue" style="padding-right: 20px;" colspan="8">
+                    <input type="text" class="form-control" id="F_HumanResources" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    @*<div class='panels'>
+            <button class='btn btn-default add' id="btn_export_Insert">提交</button>
+        </div>*@
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/WL_NormalShift/Form.js")
+<script language="javascript" type="text/javascript">
+    <!--
+           document.onkeydown=OnKeyDown
+           function OnKeyDown()
+           {
+            if(event.keyCode==13)//表示按下回车键
+            {
+
+              if(event.srcElement.id == "<%=Jump_Page.ClientID %>") //控件的ID
+              {
+               document.getElementById("<%=SureBtn.ClientID %>").focus();
+              }
+              else
+              {
+               document.getElementById("<%=SearchBtn.ClientID %>").focus();
+              }
+             }
+           }
+
+
+    // -->
+</script>
+

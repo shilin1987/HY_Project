@@ -1,0 +1,9 @@
+.lr-form-row input {
+    text-align: left;
+    width: 95%;
+    margin-left: 5%;
+}
+
+.lr-form-row label {
+    width: 30%;
+}

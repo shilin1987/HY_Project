@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Learun.Application.Web.Areas.Platform.ViewModel
+{
+    public class DownLoadPDFInfo
+    {
+        /// <summary>
+        /// 工号
+        /// </summary>
+        public string Account { get; set; }
+        /// <summary>
+        /// 正面
+        /// </summary>
+        public string CanvasBase64Above { get; set; }
+        /// <summary>
+        /// 反面
+        /// </summary>
+        public string CanvasBase64Below { get; set; }
+    }
+}

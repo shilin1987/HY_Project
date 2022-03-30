@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.HR_Code.MonthlySettlementsFormulaToCalculate
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface FormulaToCalculateIBLL
+    {
+        #region 获取数据
+        double getCalculateResulet(LinkedList<string> totalFormulainfo, string f_userid,string dateMonth);
+        #endregion
+
+        #region 获取计算公式
+        LinkedList<string> getTheTotalFormula(string shiftType);
+        #endregion
+
+        #region 获取数据库字段流水号
+        string getTableFileNum(string tableName, string filedName, int flowLength, string head, string db);
+        #endregion
+
+    }
+}

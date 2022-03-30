@@ -1,0 +1,20 @@
+<div class="lr-login-page">
+	
+    <div class="login-content">
+        <img src="images/logo.png" />
+        <div class="line">
+            <i class="iconfont icon-friend_light"></i>
+            <input id="account" type="text" placeholder="账号">
+        </div>
+        <div class="line">
+            <i class="iconfont icon-lock"></i>
+            <input id="password" type="password" placeholder="密码">
+        </div>
+        <button id="loginBtn" type="button" class="lr-btn-primary lr-btn-block">
+            登录
+        </button>
+		<button type="button" class="lr-btn-outlined lr-btn-primary" id="signInQuickly" >手机快捷登录</button>
+		<div style="text-align: right;margin-right: 5%;margin-top: 5%;"><a id="register">注 册</a></div>
+    </div>
+    <div class="version">Copyright © 2021 西安华羿微电子有限公司</div>
+</div>

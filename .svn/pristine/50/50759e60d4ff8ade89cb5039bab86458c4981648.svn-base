@@ -1,0 +1,26 @@
+﻿.file {
+    width: 375px;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .file input {
+        position: absolute;
+        font-size: 120px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer !important;
+    }
+
+    .file img {
+        width: 120px;
+        height: 180px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+.text {
+    text-align: center;
+}

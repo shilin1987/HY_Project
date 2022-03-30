@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "面试题库";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">面试题目:<font face="宋体">*</font></div>
+        @*<input id="F_Question" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />*@
+        <textarea id="F_Question" class="form-control" style="height:150px;" isvalid="yes" checkexpession="NotNull"></textarea>
+    </div>
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">参考答案:<font face="宋体">*</font></div>
+        @*<input id="F_Answer" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />*@
+        <textarea id="F_Answer" class="form-control" style="height:150px;" isvalid="yes" checkexpession="NotNull"></textarea>
+    </div>
+    <div class="col-xs-12 lr-form-item">
+        <div class="lr-form-item-title">分数:<font face="宋体">*</font></div>
+        <input id="F_Fraction" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/RecruitInterviewQuestionBank/Form.js")

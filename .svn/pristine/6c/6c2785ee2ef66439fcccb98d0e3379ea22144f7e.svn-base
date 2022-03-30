@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.HR_Code.HeterogeneousSystemInterface
+{
+    public class FILE
+    {
+        private string filename;
+        private Base64FormattingOptions filevalue;
+
+        public string Filename { get => filename; set => filename = value; }
+        public Base64FormattingOptions Filevalue { get => filevalue; set => filevalue = value; }
+    }
+}

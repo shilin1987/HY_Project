@@ -1,0 +1,143 @@
+﻿using Learun.Util;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2022-02-08 15:20
+    /// 描 述：笔试题目管理
+    /// </summary>
+    public class Hy_Recruit_WrittenExaminationQuestionBankEntity
+    {
+        #region 实体成员
+        /// <summary>
+        /// 有效标志0否1是
+        /// </summary>
+        [Column("F_ENABLEDMARK")]
+        public int? F_EnabledMark { get; set; }
+        /// <summary>
+        /// 创建人ID
+        /// </summary>
+        [Column("F_CREATEUSERID")]
+        public string F_CreateUserId { get; set; }
+        /// <summary>
+        /// 编辑人
+        /// </summary>
+        [Column("F_MODIFYUSERNAME")]
+        public string F_ModifyUserName { get; set; }
+        /// <summary>
+        /// 编辑人ID
+        /// </summary>
+        [Column("F_MODIFYUSERID")]
+        public string F_ModifyUserId { get; set; }
+        /// <summary>
+        /// 删除标记0否1是
+        /// </summary>
+        [Column("F_DELETEMARK")]
+        public int? F_DeleteMark { get; set; }
+        /// <summary>
+        /// 排序码
+        /// </summary>
+        [Column("F_SORTCODE")]
+        public int? F_SortCode { get; set; }
+        /// <summary>
+        /// 编辑日期
+        /// </summary>
+        [Column("F_MODIFYDATE")]
+        public DateTime? F_ModifyDate { get; set; }
+        /// <summary>
+        /// 创建人
+        /// </summary>
+        [Column("F_CREATEUSERNAME")]
+        public string F_CreateUserName { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        [Column("F_CREATEDATE")]
+        public DateTime? F_CreateDate { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [Column("F_DESCRIPTION")]
+        public string F_Description { get; set; }
+        /// <summary>
+        /// 笔试题库主键ID
+        /// </summary>
+        [Column("F_ID")]
+        public string F_Id { get; set; }
+        /// <summary>
+        /// 笔试题库名称
+        /// </summary>
+        [Column("F_TESTPAPERNAME")]
+        public string F_TestPaperName { get; set; }
+        /// <summary>
+        /// 题目内容
+        /// </summary>
+        [Column("F_CONTENT")]
+        public string F_Content { get; set; }
+        /// <summary>
+        /// 及格分数线
+        /// </summary>
+        [Column("F_MINIMUMSCORE")]
+        public int? F_MinimumScore { get; set; }
+        #endregion
+
+        //#region 扩展操作
+        ///// <summary>
+        ///// 新增调用
+        ///// </summary>
+        //public void Create()
+        //{
+        //    this.F_Id = Guid.NewGuid().ToString();
+        //    this.F_CreateDate = DateTime.Now;
+        //    UserInfo userInfo = LoginUserInfo.Get();
+        //    this.F_CreateUserId = userInfo.userId;
+        //    this.F_CreateUserName = userInfo.realName;
+        //}
+        ///// <summary>
+        ///// 编辑调用
+        ///// </summary>
+        ///// <param name="keyValue"></param>
+        //public void Modify(string keyValue)
+        //{
+        //    this.F_Id = keyValue;
+        //    this.F_ModifyDate = DateTime.Now;
+        //    UserInfo userInfo = LoginUserInfo.Get();
+        //    this.F_ModifyUserId = userInfo.userId;
+        //    this.F_ModifyUserName = userInfo.realName;
+        //}
+        //#endregion
+        #region 扩展字段
+        /// <summary>
+        /// 笔试题目
+        /// </summary>
+        [NotMapped]
+        public string Questions { get; set; }
+        /// <summary>
+        /// 题目类别
+        /// </summary>
+        [NotMapped]
+        public string F_QuestionsType { get; set; }
+        /// <summary>
+        /// 答案内容
+        /// </summary>
+        [NotMapped]
+        public string F_AnswerContent { get; set; }
+        /// <summary>
+        /// 正确答案
+        /// </summary>
+        [NotMapped]
+        public string F_Answer { get; set; }
+        /// <summary>
+        /// 题目分数
+        /// </summary>
+        [NotMapped]
+        public string F_Score { get; set; }
+        #endregion
+    }
+}
+

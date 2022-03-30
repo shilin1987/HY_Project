@@ -1,0 +1,216 @@
+﻿using Dapper;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+
+namespace Learun.Application.TwoDevelopment.B2B_Code
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-11-10 15:43
+    /// 描 述：来料计划填报查询功能
+    /// </summary>
+    public class SearchTwoService : RepositoryFactory
+    {
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<B2B_PLAN_INCOMING_MATERIALEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(@"
+                t.F_GUID,
+                t1.F_PRODUCT_MODEL,
+                t1.F_PACKAGE_MODEL,
+                t1.F_WAFER_MODEL,
+                t1.F_WAFER_SIZE,
+                t1.F_PACKAGING_TYPE,
+                t1.F_PRODUCT_LEVEL,
+                t1.F_MONTH_ONE,
+                t1.F_MONTH_TWO,
+                t1.F_MONTH_THREE,
+                t1.F_MONTH_FOUR,
+                t1.F_MONTH_FIVE,
+                t1.F_MONTH_SIX,
+                t1.F_REMARK,
+                t1.F_WIRE_SOLDER_NAME,
+                t1.F_SHELL_FRAM_NAME,
+                t1.PARTID
+                ");
+                strSql.Append("  FROM B2B_PLAN_INCOMING_MATERIAL t ");
+                strSql.Append("  LEFT JOIN B2B_PLAN_INCOMING_MATERIAL_SUB t1 ON t1.F_GUID = t.F_GUID ");
+                strSql.Append("  WHERE 1=1 ");
+                var queryParam = queryJson.ToJObject();
+                // 虚拟参数
+                var dp = new DynamicParameters(new { });
+                if (!queryParam["F_CUST_CODE"].IsEmpty())
+                {
+                    dp.Add("F_CUST_CODE", "%" + queryParam["F_CUST_CODE"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_CUST_CODE Like @F_CUST_CODE ");
+                }
+                if (!queryParam["F_WRITE_MONTH"].IsEmpty())
+                {
+                    dp.Add("F_WRITE_MONTH", "%" + queryParam["F_WRITE_MONTH"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_WRITE_MONTH Like @F_WRITE_MONTH ");
+                }
+                if (!queryParam["F_WRITE_PRESON"].IsEmpty())
+                {
+                    dp.Add("F_WRITE_PRESON", "%" + queryParam["F_WRITE_PRESON"].ToString() + "%", DbType.String);
+                    strSql.Append(" AND t.F_WRITE_PRESON Like @F_WRITE_PRESON ");
+                }
+                return this.BaseRepository("B2BDatabase").FindList<B2B_PLAN_INCOMING_MATERIALEntity>(strSql.ToString(),dp, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取B2B_PLAN_INCOMING_MATERIAL表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public B2B_PLAN_INCOMING_MATERIALEntity GetB2B_PLAN_INCOMING_MATERIALEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindEntity<B2B_PLAN_INCOMING_MATERIALEntity>(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取B2B_PLAN_INCOMING_MATERIAL_SUB表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public B2B_PLAN_INCOMING_MATERIAL_SUBEntity GetB2B_PLAN_INCOMING_MATERIAL_SUBEntity(string keyValue)
+        {
+            try
+            {
+                return this.BaseRepository("B2BDatabase").FindEntity<B2B_PLAN_INCOMING_MATERIAL_SUBEntity>(t=>t.F_GUID == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            var db = this.BaseRepository("B2BDatabase").BeginTrans();
+            try
+            {
+                var b2B_PLAN_INCOMING_MATERIALEntity = GetB2B_PLAN_INCOMING_MATERIALEntity(keyValue); 
+                db.Delete<B2B_PLAN_INCOMING_MATERIALEntity>(t=>t.F_GUID == keyValue);
+                db.Delete<B2B_PLAN_INCOMING_MATERIAL_SUBEntity>(t=>t.F_GUID == b2B_PLAN_INCOMING_MATERIALEntity.F_GUID);
+                db.Commit();
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, B2B_PLAN_INCOMING_MATERIALEntity entity,B2B_PLAN_INCOMING_MATERIAL_SUBEntity b2B_PLAN_INCOMING_MATERIAL_SUBEntity)
+        {
+            var db = this.BaseRepository("B2BDatabase").BeginTrans();
+            try
+            {
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    var b2B_PLAN_INCOMING_MATERIALEntityTmp = GetB2B_PLAN_INCOMING_MATERIALEntity(keyValue); 
+                    entity.Modify(keyValue);
+                    db.Update(entity);
+                    db.Delete<B2B_PLAN_INCOMING_MATERIAL_SUBEntity>(t=>t.F_GUID == b2B_PLAN_INCOMING_MATERIALEntityTmp.F_GUID);
+                    b2B_PLAN_INCOMING_MATERIAL_SUBEntity.Create();
+                    b2B_PLAN_INCOMING_MATERIAL_SUBEntity.F_GUID = b2B_PLAN_INCOMING_MATERIALEntityTmp.F_GUID;
+                    db.Insert(b2B_PLAN_INCOMING_MATERIAL_SUBEntity);
+                }
+                else
+                {
+                    entity.Create();
+                    db.Insert(entity);
+                    b2B_PLAN_INCOMING_MATERIAL_SUBEntity.Create();
+                    b2B_PLAN_INCOMING_MATERIAL_SUBEntity.F_GUID = entity.F_GUID;
+                    db.Insert(b2B_PLAN_INCOMING_MATERIAL_SUBEntity);
+                }
+                db.Commit();
+            }
+            catch (Exception ex)
+            {
+                db.Rollback();
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+}

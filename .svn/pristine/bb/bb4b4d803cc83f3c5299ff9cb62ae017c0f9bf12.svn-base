@@ -1,0 +1,783 @@
+﻿using Learun.Application.Organization.ReturnModel;
+using Learun.Application.Organization.User;
+using Learun.DataBase.Repository;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace Learun.Application.Organization
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创建人：力软-框架开发组
+    /// 日 期：2017.03.04
+    /// 描 述：用户模块数据操作服务类
+    /// </summary>
+    public class UserService : RepositoryFactory
+    {
+        #region 属性 构造函数
+        private string fieldSql;
+        public UserService()
+        {
+            fieldSql = @" 
+                      t.[F_UserId]
+                      ,t.[F_EnCode]
+                      ,t.[F_Account]
+                      ,t.[F_Password]
+                      ,t.[F_Secretkey]
+                      ,t.[F_RealName]
+                      ,t.[F_NickName]
+                      ,t.[F_HeadIcon]
+                      ,t.[F_QuickQuery]
+                      ,t.[F_SimpleSpelling]
+                      ,t.[F_Gender]
+                      ,t.[F_Birthday]
+                      ,t.[F_Mobile]
+                      ,t.[F_Telephone]
+                      ,t.[F_Email]
+                      ,t.[F_OICQ]
+                      ,t.[F_WeChat]
+                      ,t.[F_MSN]
+                      ,t.[F_CompanyId]
+                      ,t.[F_DepartmentId]
+                      ,t.[F_SecurityLevel]
+                      ,t.[F_OpenId]
+                      ,t.[F_Question]
+                      ,t.[F_AnswerQuestion]
+                      ,t.[F_CheckOnLine]
+                      ,t.[F_AllowStartTime]
+                      ,t.[F_AllowEndTime]
+                      ,t.[F_LockStartDate]
+                      ,t.[F_LockEndDate]
+                      ,t.[F_SortCode]
+                      ,t.[F_DeleteMark]
+                      ,t.[F_EnabledMark]
+                      ,t.[F_Description]
+                      ,t.[F_CreateDate]
+                      ,t.[F_CreateUserId]
+                      ,t.[F_CreateUserName]
+                      ,t.[F_ModifyDate]
+                      ,t.[F_ModifyUserId]
+                      ,t.[F_ModifyUserName]
+                      ,t.[F_IDCard]
+                      ,t.[F_PrimaryOrganization]
+                      ,isnull(t.[F_SecondaryOrganization],'') F_SecondaryOrganization
+                      ,isnull(t.[F_TertiaryOrganization],'') F_TertiaryOrganization
+                      ,isnull(t.[F_FourLevelOrganization],'') F_FourLevelOrganization
+                      ,isnull(t.[F_FiveLevelOrganization],'') F_FiveLevelOrganization
+                      ,isnull(t.[F_SixLevelOrganization],'') F_SixLevelOrganization
+                      ,t.[F_RecruitmentChannels]
+                      ,t.[F_Entrydate]
+                      ,t.[F_ConfirmationDate]
+                      ,t.[F_DepartureDate]
+                      ,t.[F_Education]
+                      ,t.[F_SalaryMethod]
+                      ,t.[F_PayModel]
+                      ,t.[F_WorkingSystem]
+                      ,t.[F_BankCardNumber]
+                      ,t.[F_BankDeposit]
+                      ,t.[F_DateHoldingPost]
+                      ,t.[F_IsTrainingAgreement]
+                      ,t.[F_StartDateService]
+                      ,t.[F_EndDateService]
+                      ,t.[F_EmployeeNature]
+                      ,t.[F_EmployeeNatureChangeDate]
+                      ,t.[F_PieceworkType]
+                      ,t.[F_TimeBecomeRegular]
+                      ,t.[F_TimeShiftWorkSystem]
+                      ,t.[F_TypesResignation]
+                      ,t.[F_MakeUpTime]
+                      ,t.[F_PostId]
+                      ,t.[F_SalaryCalculation]
+                      ,t.[F_Age]
+                      ,t.[F_DocumentType]
+                      ,t.[F_NationAlity]
+                      ,t.[F_Nation]
+                      ,t.[F_RRNature]
+                      ,t.[F_PoliticalOutlook]
+                      ,t.[F_MaritalStatus]
+                      ,t.[F_NativePlace]
+                      ,isnull(t.[F_OnJobStatus],'') OnJobStatus
+                      ,t.[F_IDCardStartDate]
+                      ,t.[F_IDCardEndDate]
+                      ,t.[F_OneCardNumber]
+                      ,t.[F_SalaryStructureType]
+                      ,t.[F_SalaryType]
+                      ,t.[F_PersonnelCategory]
+                      ,t.[F_JoiningGroupDate]
+                      ,t.[F_EntryChannel]
+                      ,t.[F_OfflineDate]
+                      ,t.[F_InternalCode]
+                      ,t.[F_InternalName]
+                      ,t.[F_InternalCompany]
+                      ,t.[F_LaborRecruitmentDate]
+                      ,t.[F_RecruitmentCompany]
+                      ,t.[F_GraduationUniversitie]
+                      ,t.[F_MajorStudied]
+                      ,t.[F_EducationStartDate]
+                      ,t.[F_EducationEndDate]
+                      ,t.[F_EducationalMode]
+                      ,t.[F_ForeignLanguageLevel]
+                      ,t.[F_IsQualified]
+                      ,t.[F_QualificationName]
+                      ,t.[F_GetTime]
+                      ,t.[F_InternalTitleType]
+                      ,t.[F_InternalTitle]
+                      ,t.[F_InternalTitleDate]
+                      ,t.[F_SocialTitleType]
+                      ,t.[F_SocialTitle]
+                      ,t.[F_SocialTitleDate]
+                      ,t.[F_IDCardAddress]
+                      ,t.[F_PermanentAddress]
+                      ,t.[F_ResidentialAddress]
+                      ,t.[F_CurrentAddress]
+                      ,t.[F_EmergencyContact]
+                      ,t.[F_EContactRelationship]
+                      ,t.[F_EContactNumber]
+                      ,t.[F_ContactAddress]
+                      ,t.[F_laborContractStartDate]
+                      ,t.[F_laborContractEndDate]
+                      ,t.[F_LaborContractStatus]
+                      ,t.[F_AttendanceDeadline]
+                      ,t.[F_IsEsignationCertificate]
+                      ,t.[F_Depreciation]
+                      ,d.F_FullName department
+                      ,case when t.[F_DepartureDate] is null then '在职' else (case when t.[F_DepartureDate]='1900-01-01 00:00:00.0000000' then '在职' else '离职'  end) end userState
+                      ,case t.F_FourLevelOrganization when '无' then (case t.F_TertiaryOrganization 
+                       when '无' then t.F_SecondaryOrganization else t.F_TertiaryOrganization end) 
+					   else t.F_FourLevelOrganization end minDepartment";
+        }
+        #endregion
+
+        #region 获取数据
+        /// <summary>
+        /// 获取实体,通过手机用户账号
+        /// </summary>
+        /// <param name="account">用户账号</param>
+        /// <returns></returns>
+        public UserEntity GetEntityByAccount(string account)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql);
+                strSql.Append(" FROM LR_Base_User t left join lr_base_department d on t.F_SecondaryOrganization=d.F_DepartmentId");
+                strSql.Append(" WHERE t.F_Account = @account AND (t.F_DeleteMark = 0 or t.F_DeleteMark is null)  and (t.F_TypesResignation=''  or t.F_TypesResignation is null)");
+                var userModel= this.BaseRepository().FindEntity<UserEntity>(strSql.ToString(), new { account = account });
+                if (userModel != null)
+                {
+                    if (userModel.minDepartment != null)
+                    {
+                        userModel.minDepartment = this.BaseRepository().FindEntity<DepartmentEntity>(e => e.F_DepartmentId == userModel.minDepartment).F_FullName;
+                    }
+                }
+
+                return userModel;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取实体,通过手机用户账号
+        /// </summary>
+        /// <param name="account">用户账号</param>
+        /// <returns></returns>
+        public ReturnCommon<UserEntity> GetEntityByPhone(string phone)
+        {
+            var msg = new ReturnCommon<UserEntity>();
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql);
+                strSql.Append(" FROM LR_Base_User t ");
+                strSql.Append(" WHERE t.F_Mobile = @mobile AND (t.F_DeleteMark = 0 or t.F_DeleteMark is null)  and (t.F_TypesResignation=''  or t.F_TypesResignation is null)");
+                msg.Data = this.BaseRepository().FindEntity<UserEntity>(strSql.ToString(), new { mobile = phone });
+                msg.Status = true;
+            }
+            catch (Exception ex)
+            {
+                msg.Status = false;
+                msg.Message = ex.Message;
+            }
+
+            return msg;
+        }
+
+
+
+        /// <summary>
+        /// 用户列表(根据公司主键)
+        /// </summary>
+        /// <param name="companyId">公司主键</param>
+        /// <returns></returns>
+        public IEnumerable<UserEntity> GetList(string companyId)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql.Replace("t.F_Password,", "").Replace("t.F_Secretkey,", ""));
+                strSql.Append(" FROM LR_Base_User t WHERE (t.F_DeleteMark = 0 or t.F_DeleteMark is null) and (t.F_TypesResignation=''  or t.F_TypesResignation is null)  AND t.F_PrimaryOrganization = @companyId ORDER BY t.F_DepartmentId,t.F_RealName ");
+                return this.BaseRepository().FindList<UserEntity>(strSql.ToString(), new { companyId = companyId });
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 用户列表(根据部门主键)
+        /// </summary>
+        /// <param name="departmentId">部门主键</param>
+        /// <returns></returns>
+        public IEnumerable<UserEntity> GetListDepartmentId(string departmentId)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                var sql = "select F_FullName from  lr_base_department where F_ParentId='" + departmentId + "'";
+                var list = this.BaseRepository().FindList<DepartmentEntity>(sql);
+                List<String> listname = new List<string>();
+                List<String> namelist = new List<string>();
+                foreach (var item in list)
+                {
+                    listname.Add(item.F_FullName);
+                }
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql.Replace("t.F_Password,", "").Replace("t.F_Secretkey,", ""));
+                if (listname.Count > 0)
+                {
+                    int i = 1;
+                    strSql.Append(" FROM LR_Base_User t WHERE (t.F_DeleteMark = 0 or t.F_DeleteMark is null) AND (t.F_TypesResignation=''  or t.F_TypesResignation is null)  and ");
+                    foreach (var item in listname)
+                    {
+                        strSql.Append("F_TertiaryOrganization='" + item.ToString() + "' or F_FourLevelOrganization = '" + item.ToString() + "'");
+                        if (i < listname.Count)
+                        {
+                            strSql.Append(" or ");
+                        }
+                        i++;
+                    }
+                }
+                else
+                {
+                    strSql.Append(" FROM LR_Base_User t WHERE (t.F_DeleteMark = 0 or t.F_DeleteMark is null) AND  (t.F_TypesResignation=''  or t.F_TypesResignation is null)  and ");
+                    string sql1 = "select f_fullname from lr_base_department where F_DepartmentId ='" + departmentId + "'";
+                    var list1 = this.BaseRepository().FindList<DepartmentEntity>(sql1);
+                    int a = 1;
+                    foreach (var item in list1)
+                    {
+                        namelist.Add(item.F_FullName);
+                    }
+                    foreach (var item in namelist)
+                    {
+                        strSql.Append("F_TertiaryOrganization='" + item.ToString() + "' or F_FourLevelOrganization = '" + item.ToString() + "'");
+                        if (a < listname.Count)
+                        {
+                            strSql.Append(" or ");
+                        }
+                        a++;
+                    }
+                }
+                if (listname.Count > 0 || namelist.Count > 0)
+                { strSql.Append("  or  F_PrimaryOrganization=@departmentId  or F_SecondaryOrganization=@departmentId "); }
+                else
+                { strSql.Append(" F_PrimaryOrganization=@departmentId  or F_SecondaryOrganization=@departmentId "); }
+
+                return this.BaseRepository().FindList<UserEntity>(strSql.ToString(), new { departmentId = departmentId });
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 用户列表(根据公司主键)(分页)
+        /// </summary>
+        /// <param name="companyId"></param>
+        /// <param name="departmentId"></param>
+        /// <param name="pagination"></param>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public IEnumerable<UserEntity> GetPageList(string companyId, string departmentId, Pagination pagination, string keyword)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                //var sql = "select F_FullName from  lr_base_department where F_ParentId='" + companyId + "'";
+                //var list = this.BaseRepository().FindList<DepartmentEntity>(sql);
+                //List<String> listname = new List<string>();
+                //List<String> namelist = new List<string>();
+                //foreach (var item in list) 
+                //{
+                //    listname.Add(item.F_FullName);
+                //}
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql.Replace("t.F_Password,", "").Replace("t.F_Secretkey,", ""));
+                strSql.Append(" FROM LR_Base_User t left join lr_base_department d on t.F_SecondaryOrganization=d.F_DepartmentId WHERE (t.F_DeleteMark = 0 or t.F_DeleteMark is null) AND (t.F_TypesResignation=''  or t.F_TypesResignation is null)  and (t.F_CompanyId=@companyId or F_PrimaryOrganization=@companyId or F_SecondaryOrganization = @companyId or F_TertiaryOrganization = @companyId or F_FourLevelOrganization = @companyId)");
+                //if (listname.Count>0) 
+                //{
+                //    int i = 1;
+                //    strSql.Append(" FROM LR_Base_User t WHERE (t.F_DeleteMark = 0 or t.F_DeleteMark is null) AND (t.F_TypesResignation=''  or t.F_TypesResignation is null)  and (");
+                //    foreach (var item in listname) 
+                //    {
+                //        strSql.Append(" F_TertiaryOrganization='" + item.ToString() + "' or F_FourLevelOrganization = '" + item.ToString() + "'");
+                //        if (i < listname.Count)
+                //        {
+                //            strSql.Append(" or ");
+                //        }
+                //        i++;
+                //    }
+                //    strSql.Append(" ) ");
+                //}
+                //else 
+                //{
+                //    strSql.Append(" FROM LR_Base_User t WHERE (t.F_DeleteMark = 0 or t.F_DeleteMark is null) AND  (t.F_TypesResignation=''  or t.F_TypesResignation is null) ");
+                //    //string sql1 = "select f_fullname from lr_base_department where F_DepartmentId ='" + companyId + "'";
+                //    //var list1 = this.BaseRepository().FindList<DepartmentEntity>(sql1);
+                //    //int a = 1;
+                //    //foreach (var item in list1)
+                //    //{
+                //    //    namelist.Add(item.F_FullName);
+                //    //}
+                //    //foreach (var item in namelist)
+                //    //{
+                //    //    strSql.Append(" F_TertiaryOrganization='" + item.ToString() + "' or F_FourLevelOrganization = '" + item.ToString() + "' ");
+                //    //    if (a < listname.Count)
+                //    //    {
+                //    //        strSql.Append(" or ");
+                //    //    }
+                //    //    a++;
+                //    //}
+                //    //strSql.Append(" ) ");
+                //}
+                //if (listname.Count == 0 || namelist.Count==0)
+                //{
+                //strSql.Append(" and  F_SecondaryOrganization=@companyId ");
+                //}
+                //else
+                //{ strSql.Append(" and  F_SecondaryOrganization=@companyId"); }
+                if (!string.IsNullOrEmpty(departmentId))
+                {
+                    strSql.Append(" AND t.F_SecondaryOrganization = @departmentId ");
+                }
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    keyword = "%" + keyword + "%";
+                    strSql.Append(" AND( t.F_Account like @keyword or t.F_RealName like @keyword  or t.F_Mobile like @keyword  ) ");
+                }
+
+                return this.BaseRepository().FindList<UserEntity>(strSql.ToString(), new { companyId, departmentId, keyword }, pagination);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 用户列表,全部
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<UserEntity> GetAllList()
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT ");
+                strSql.Append(fieldSql.Replace("t.F_Password,", "").Replace("t.F_Secretkey,", ""));
+                strSql.Append(" FROM LR_Base_User t left join lr_base_department d on t.F_SecondaryOrganization=d.F_DepartmentId WHERE t.F_DeleteMark = 0  and (t.F_TypesResignation=''  or t.F_TypesResignation is null)   ORDER BY t.F_CompanyId,t.F_DepartmentId,t.F_RealName ");
+                return this.BaseRepository().FindList<UserEntity>(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取验证码
+        /// </summary>
+        /// <returns></returns>
+        public Hy_Login_VCodeEntity GetVCode(string phone)
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append("SELECT top 1  F_VCode FROM  Hy_Login_VCode where F_Phone=@phone and F_CreateDate>=@createtime order by F_CreateDate desc");
+                return this.BaseRepository().FindEntity<Hy_Login_VCodeEntity>(strSql.ToString(), new { phone = phone, createtime = DateTime.Now.AddMinutes(-5) });
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 用户列表（导出Excel）
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetExportList()
+        {
+            try
+            {
+                var strSql = new StringBuilder();
+                strSql.Append(@"SELECT u.F_Account
+                                  ,u.F_RealName
+                                  ,CASE WHEN u.F_Gender=1 THEN '男' ELSE '女' END AS F_Gender
+                                  ,u.F_Birthday
+                                  ,u.F_Mobile
+                                  ,u.F_Telephone
+                                  ,u.F_Email
+                                  ,u.F_WeChat
+                                  ,u.F_MSN
+                                  ,o.F_FullName AS F_Company
+                                  ,d.F_FullName AS F_Department
+                                  ,u.F_Description
+                                  ,u.F_CreateDate
+                                  ,u.F_CreateUserName
+                              FROM LR_Base_User u
+                              INNER JOIN LR_Base_Department d ON u.F_DepartmentId=d.F_DepartmentId
+                              INNER JOIN LR_Base_Company o ON u.F_CompanyId=o.F_CompanyId WHERE u.F_DeleteMark = 0 ");
+                return this.BaseRepository().FindTable(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 用户实体
+        /// </summary>
+        /// <param name="keyValue">主键值</param>
+        /// <returns></returns>
+        public UserEntity GetEntity(string keyValue)
+        {
+            try
+            {
+                var userModel = this.BaseRepository().FindEntity<UserEntity>(t => t.F_UserId == keyValue && (t.F_DeleteMark == 0 || t.F_DeleteMark == null));
+                return userModel;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 获取超级管理员用户列表
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<UserEntity> GetAdminList()
+        {
+            try
+            {
+                return this.BaseRepository().FindList<UserEntity>(t => t.F_SecurityLevel == 1);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        #endregion
+
+        #region 验证数据
+        /// <summary>
+        /// 账户不能重复
+        /// </summary>
+        /// <param name="account">账户值</param>
+        /// <param name="keyValue">主键</param>
+        /// <returns></returns>
+        public bool ExistAccount(string account, string keyValue)
+        {
+            try
+            {
+                var expression = LinqExtensions.True<UserEntity>();
+                expression = expression.And(t => t.F_Account == account);
+                if (!string.IsNullOrEmpty(keyValue))
+                {
+                    expression = expression.And(t => t.F_UserId != keyValue);
+                }
+                return this.BaseRepository().IQueryable(expression).Count() == 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        #endregion
+
+        #region 提交数据
+        /// <summary>
+        /// 虚拟删除
+        /// </summary>
+        /// <param name="keyValue">主键</param>
+        public void VirtualDelete(string keyValue)
+        {
+            //try
+            //{
+            //    UserEntity entity = new UserEntity()
+            //    {
+            //        F_UserId = keyValue,
+            //        F_DeleteMark = 1
+            //    };
+            //    this.BaseRepository().Update(entity);
+            //}
+            //catch (Exception ex)
+            //{
+            //    if (ex is ExceptionEx)
+            //    {
+            //        throw;
+            //    }
+            //    else
+            //    {
+            //        throw ExceptionEx.ThrowServiceException(ex);
+            //    }
+            //}
+            DeleteEntity(keyValue);
+        }
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            try
+            {
+                this.BaseRepository().Delete<UserEntity>(t => t.F_UserId == keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存用户表单（新增、修改）
+        /// </summary>
+        /// <param name="keyValue">主键值</param>
+        /// <param name="userEntity">用户实体</param>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, UserEntity userEntity)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(keyValue))
+                {
+                    userEntity.Create();
+                    userEntity.F_Secretkey = Md5Helper.Encrypt(CommonHelper.CreateNo(), 16).ToLower();
+                    userEntity.F_Password = Md5Helper.Encrypt(DESEncrypt.Encrypt(userEntity.F_Password, userEntity.F_Secretkey).ToLower(), 32).ToLower();
+                    this.BaseRepository().Insert(userEntity);
+                }
+                else
+                {
+                    userEntity.Modify(keyValue);
+                    userEntity.F_Secretkey = null;
+                    userEntity.F_Password = null;
+                    this.BaseRepository().Update(userEntity);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 修改用户登录密码
+        /// </summary>
+        /// <param name="keyValue">主键值</param>
+        /// <param name="password">新密码（MD5 小写）</param>
+        public void RevisePassword(string keyValue, string password)
+        {
+            try
+            {
+                UserEntity userEntity = new UserEntity();
+                userEntity.Modify(keyValue);
+                userEntity.F_Secretkey = Md5Helper.Encrypt(CommonHelper.CreateNo(), 16).ToLower();
+                userEntity.F_Password = Md5Helper.Encrypt(DESEncrypt.Encrypt(password, userEntity.F_Secretkey).ToLower(), 32).ToLower();
+                this.BaseRepository().Update(userEntity);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 修改用户状态
+        /// </summary>
+        /// <param name="keyValue">主键值</param>
+        /// <param name="state">状态：1-启动；0-禁用</param>
+        public void UpdateState(string keyValue, int state)
+        {
+            try
+            {
+                UserEntity userEntity = new UserEntity();
+                userEntity.Modify(keyValue);
+                userEntity.F_EnabledMark = state;
+                this.BaseRepository().Update(userEntity);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// 修改用户信息
+        /// </summary>
+        /// <param name="userEntity">实体对象</param>
+        public void UpdateEntity(UserEntity userEntity)
+        {
+            try
+            {
+                this.BaseRepository().Update(userEntity);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据部门ID获取用户列表
+        /// </summary>
+        /// <param name="DepId"></param>
+        /// <returns></returns>
+        public IEnumerable<UserEntity> GetUserListByDepId(string DepId)
+        {
+            try
+            {
+                return this.BaseRepository().FindList<UserEntity>(t => t.F_DepartmentId == DepId && (t.F_DeleteMark == null || t.F_DeleteMark == 0));
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowServiceException(ex);
+                }
+            }
+        }
+
+        #endregion
+    }
+}

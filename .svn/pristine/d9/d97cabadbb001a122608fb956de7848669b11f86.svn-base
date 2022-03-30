@@ -1,0 +1,51 @@
+﻿using IdentityAuthentication.Models;
+using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+
+namespace IdentityAuthenticationController.Controllers
+{
+    public class BaseApiController : ApiController
+    {
+      
+        internal ApiModel apiModel;
+        public BaseApiController()
+        {
+            apiModel = new ApiModel();
+            returnCommon = new ReturnCommon();
+        }
+
+        public ReturnCommon returnCommon { get; set; }
+
+        /// <summary>
+        ///请求成功
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        protected ApiModel Success(Object data,  string content)
+        {
+
+            ApiModel res = new ApiModel { code = ResponseCode.success, info = content, data = data.ToJson() };
+
+            return res;
+        }
+
+        /// <summary>
+        /// 请求失败
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        protected ApiModel Fail(Object data,  string content)
+        {
+            ApiModel res = new ApiModel { code = ResponseCode.fail, info = content, data = data.ToJson() };
+
+            return res;
+        }
+
+    }
+}

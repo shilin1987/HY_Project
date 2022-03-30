@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "部门对应成本中心维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_center_cost" style="display: none; " >
+        <div class="lr-form-item-title">系统ID<font face="宋体">*</font></div>
+        <input id="oid" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_center_cost" >
+        <div class="lr-form-item-title">成本中心编号<font face="宋体">*</font></div>
+        <input id="center_cost_code" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_center_cost" >
+        <div class="lr-form-item-title">成本中心名称<font face="宋体">*</font></div>
+        <input id="center_cost" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_center_cost" >
+        <div class="lr-form-item-title">部门编号<font face="宋体">*</font></div>
+        <input id="deptid" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_center_cost" >
+        <div class="lr-form-item-title">部门名称<font face="宋体">*</font></div>
+        <input id="deptname" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/CenterCostClass/Form.js")

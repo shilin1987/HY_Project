@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAttendancePeriod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttendancePeriodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttendancePeriodResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResCommonModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="resFlag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="resMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="resCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="resData" />
+          <s:element minOccurs="0" maxOccurs="1" name="resObj" type="tns:ArrayOfResCommonModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResCommonModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResCommonModel" nillable="true" type="tns:ResCommonModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAttendanceRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttendanceRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttendanceRecordResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSingleAttendanceRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="QkTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Inout" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Devno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OpeType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSingleAttendanceRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddSingleAttendanceRecordResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSummaryAttendanceResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSummaryAttendanceResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSummaryAttendanceResultResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailAttendanceResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailAttendanceResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailAttendanceResultResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddHolidayApplyResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyMode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddHolidayApplyResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddHolidayApplyResultResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddOvertTimeApplyResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OtConvertType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyMode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyLen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddOvertTimeApplyResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddOvertTimeApplyResultResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AttendanceApplyResultAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SignData" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SignTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Inout" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AttendanceApplyResultAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AttendanceApplyResultAddResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyResultRevoke">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OpeType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyResultRevokeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyResultRevokeResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeoFenceGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeoFenceGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeoFenceGetResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExceptionGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExceptionGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExceptionGetResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AttendCommonBusiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AttendCommonBusinessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AttendCommonBusinessResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalaryOutput">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BusType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchParams" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalaryOutputResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SalaryOutputResult" type="tns:ResCommonModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAttendancePeriodSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttendancePeriod" />
+  </wsdl:message>
+  <wsdl:message name="GetAttendancePeriodSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttendancePeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttendanceRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttendanceRecord" />
+  </wsdl:message>
+  <wsdl:message name="GetAttendanceRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttendanceRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSingleAttendanceRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSingleAttendanceRecord" />
+  </wsdl:message>
+  <wsdl:message name="AddSingleAttendanceRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSingleAttendanceRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSummaryAttendanceResultSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSummaryAttendanceResult" />
+  </wsdl:message>
+  <wsdl:message name="GetSummaryAttendanceResultSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSummaryAttendanceResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailAttendanceResultSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailAttendanceResult" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailAttendanceResultSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailAttendanceResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddHolidayApplyResultSoapIn">
+    <wsdl:part name="parameters" element="tns:AddHolidayApplyResult" />
+  </wsdl:message>
+  <wsdl:message name="AddHolidayApplyResultSoapOut">
+    <wsdl:part name="parameters" element="tns:AddHolidayApplyResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddOvertTimeApplyResultSoapIn">
+    <wsdl:part name="parameters" element="tns:AddOvertTimeApplyResult" />
+  </wsdl:message>
+  <wsdl:message name="AddOvertTimeApplyResultSoapOut">
+    <wsdl:part name="parameters" element="tns:AddOvertTimeApplyResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="AttendanceApplyResultAddSoapIn">
+    <wsdl:part name="parameters" element="tns:AttendanceApplyResultAdd" />
+  </wsdl:message>
+  <wsdl:message name="AttendanceApplyResultAddSoapOut">
+    <wsdl:part name="parameters" element="tns:AttendanceApplyResultAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplyResultRevokeSoapIn">
+    <wsdl:part name="parameters" element="tns:ApplyResultRevoke" />
+  </wsdl:message>
+  <wsdl:message name="ApplyResultRevokeSoapOut">
+    <wsdl:part name="parameters" element="tns:ApplyResultRevokeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeoFenceGetSoapIn">
+    <wsdl:part name="parameters" element="tns:GeoFenceGet" />
+  </wsdl:message>
+  <wsdl:message name="GeoFenceGetSoapOut">
+    <wsdl:part name="parameters" element="tns:GeoFenceGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExceptionGetSoapIn">
+    <wsdl:part name="parameters" element="tns:ExceptionGet" />
+  </wsdl:message>
+  <wsdl:message name="ExceptionGetSoapOut">
+    <wsdl:part name="parameters" element="tns:ExceptionGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="AttendCommonBusinessSoapIn">
+    <wsdl:part name="parameters" element="tns:AttendCommonBusiness" />
+  </wsdl:message>
+  <wsdl:message name="AttendCommonBusinessSoapOut">
+    <wsdl:part name="parameters" element="tns:AttendCommonBusinessResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalaryOutputSoapIn">
+    <wsdl:part name="parameters" element="tns:SalaryOutput" />
+  </wsdl:message>
+  <wsdl:message name="SalaryOutputSoapOut">
+    <wsdl:part name="parameters" element="tns:SalaryOutputResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AttendanceServiceSoap">
+    <wsdl:operation name="GetAttendancePeriod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取考勤期数</wsdl:documentation>
+      <wsdl:input message="tns:GetAttendancePeriodSoapIn" />
+      <wsdl:output message="tns:GetAttendancePeriodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendanceRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取打卡记录</wsdl:documentation>
+      <wsdl:input message="tns:GetAttendanceRecordSoapIn" />
+      <wsdl:output message="tns:GetAttendanceRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSingleAttendanceRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入打卡记录</wsdl:documentation>
+      <wsdl:input message="tns:AddSingleAttendanceRecordSoapIn" />
+      <wsdl:output message="tns:AddSingleAttendanceRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSummaryAttendanceResult">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看考勤汇总结果</wsdl:documentation>
+      <wsdl:input message="tns:GetSummaryAttendanceResultSoapIn" />
+      <wsdl:output message="tns:GetSummaryAttendanceResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailAttendanceResult">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查看考勤明细结果</wsdl:documentation>
+      <wsdl:input message="tns:GetDetailAttendanceResultSoapIn" />
+      <wsdl:output message="tns:GetDetailAttendanceResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddHolidayApplyResult">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">增加假勤申请单结果记录</wsdl:documentation>
+      <wsdl:input message="tns:AddHolidayApplyResultSoapIn" />
+      <wsdl:output message="tns:AddHolidayApplyResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOvertTimeApplyResult">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">增加加班申请单结果</wsdl:documentation>
+      <wsdl:input message="tns:AddOvertTimeApplyResultSoapIn" />
+      <wsdl:output message="tns:AddOvertTimeApplyResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AttendanceApplyResultAdd">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">增加签卡申请单结果</wsdl:documentation>
+      <wsdl:input message="tns:AttendanceApplyResultAddSoapIn" />
+      <wsdl:output message="tns:AttendanceApplyResultAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyResultRevoke">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">申请单结果撤销操作</wsdl:documentation>
+      <wsdl:input message="tns:ApplyResultRevokeSoapIn" />
+      <wsdl:output message="tns:ApplyResultRevokeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeoFenceGet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取地理围栏</wsdl:documentation>
+      <wsdl:input message="tns:GeoFenceGetSoapIn" />
+      <wsdl:output message="tns:GeoFenceGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionGet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取考勤异常数据</wsdl:documentation>
+      <wsdl:input message="tns:ExceptionGetSoapIn" />
+      <wsdl:output message="tns:ExceptionGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AttendCommonBusiness">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">考勤通用业务处理</wsdl:documentation>
+      <wsdl:input message="tns:AttendCommonBusinessSoapIn" />
+      <wsdl:output message="tns:AttendCommonBusinessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SalaryOutput">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">薪资信息输出接口</wsdl:documentation>
+      <wsdl:input message="tns:SalaryOutputSoapIn" />
+      <wsdl:output message="tns:SalaryOutputSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AttendanceServiceSoap" type="tns:AttendanceServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAttendancePeriod">
+      <soap:operation soapAction="http://tempuri.org/GetAttendancePeriod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendanceRecord">
+      <soap:operation soapAction="http://tempuri.org/GetAttendanceRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSingleAttendanceRecord">
+      <soap:operation soapAction="http://tempuri.org/AddSingleAttendanceRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSummaryAttendanceResult">
+      <soap:operation soapAction="http://tempuri.org/GetSummaryAttendanceResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailAttendanceResult">
+      <soap:operation soapAction="http://tempuri.org/GetDetailAttendanceResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddHolidayApplyResult">
+      <soap:operation soapAction="http://tempuri.org/AddHolidayApplyResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOvertTimeApplyResult">
+      <soap:operation soapAction="http://tempuri.org/AddOvertTimeApplyResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttendanceApplyResultAdd">
+      <soap:operation soapAction="http://tempuri.org/AttendanceApplyResultAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyResultRevoke">
+      <soap:operation soapAction="http://tempuri.org/ApplyResultRevoke" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeoFenceGet">
+      <soap:operation soapAction="http://tempuri.org/GeoFenceGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionGet">
+      <soap:operation soapAction="http://tempuri.org/ExceptionGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttendCommonBusiness">
+      <soap:operation soapAction="http://tempuri.org/AttendCommonBusiness" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalaryOutput">
+      <soap:operation soapAction="http://tempuri.org/SalaryOutput" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AttendanceServiceSoap12" type="tns:AttendanceServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAttendancePeriod">
+      <soap12:operation soapAction="http://tempuri.org/GetAttendancePeriod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendanceRecord">
+      <soap12:operation soapAction="http://tempuri.org/GetAttendanceRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSingleAttendanceRecord">
+      <soap12:operation soapAction="http://tempuri.org/AddSingleAttendanceRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSummaryAttendanceResult">
+      <soap12:operation soapAction="http://tempuri.org/GetSummaryAttendanceResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailAttendanceResult">
+      <soap12:operation soapAction="http://tempuri.org/GetDetailAttendanceResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddHolidayApplyResult">
+      <soap12:operation soapAction="http://tempuri.org/AddHolidayApplyResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOvertTimeApplyResult">
+      <soap12:operation soapAction="http://tempuri.org/AddOvertTimeApplyResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttendanceApplyResultAdd">
+      <soap12:operation soapAction="http://tempuri.org/AttendanceApplyResultAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyResultRevoke">
+      <soap12:operation soapAction="http://tempuri.org/ApplyResultRevoke" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeoFenceGet">
+      <soap12:operation soapAction="http://tempuri.org/GeoFenceGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionGet">
+      <soap12:operation soapAction="http://tempuri.org/ExceptionGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttendCommonBusiness">
+      <soap12:operation soapAction="http://tempuri.org/AttendCommonBusiness" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalaryOutput">
+      <soap12:operation soapAction="http://tempuri.org/SalaryOutput" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AttendanceService">
+    <wsdl:port name="AttendanceServiceSoap" binding="tns:AttendanceServiceSoap">
+      <soap:address location="http://192.168.98.231:6081/WebService/AttendanceService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AttendanceServiceSoap12" binding="tns:AttendanceServiceSoap12">
+      <soap12:address location="http://192.168.98.231:6081/WebService/AttendanceService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "黑名单永不录用";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item" data-table="Hy_Platform_Blacklist">
+        <div class="lr-form-item-title">姓名<font face="宋体">*</font></div>
+        <input id="F_UserName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_Platform_Blacklist">
+        <div class="lr-form-item-title">身份证号<font face="宋体">*</font></div>
+        <input id="F_IDCard" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item" data-table="Hy_Platform_Blacklist">
+        <div class="lr-form-item-title">原因说明<font face="宋体">*</font></div>
+        @*<input id="F_Description" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />*@
+        <textarea id="F_Description" class="form-control" style="height:150px;" isvalid="yes" checkexpession="NotNull"></textarea>
+
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/Blacklist/Form.js")
+
+

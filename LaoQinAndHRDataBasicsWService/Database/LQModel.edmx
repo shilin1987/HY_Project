@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WTS_HTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="pub_user">
+          <Key>
+            <PropertyRef Name="user_uid" />
+          </Key>
+          <Property Name="user_uid" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="login_name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="user_code" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="64" />
+          <Property Name="user_type" Type="tinyint" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="dept_uid" Type="varchar" MaxLength="36" />
+          <Property Name="third_part_code" Type="varchar" MaxLength="128" />
+          <Property Name="sex" Type="tinyint" />
+          <Property Name="birthday" Type="datetime" />
+          <Property Name="join_date" Type="datetime" />
+          <Property Name="fire_date" Type="datetime" />
+          <Property Name="zjhm" Type="varchar" MaxLength="30" />
+          <Property Name="zjdz" Type="varchar" MaxLength="64" />
+          <Property Name="lxdz" Type="varchar" MaxLength="64" />
+          <Property Name="xueli" Type="tinyint" />
+          <Property Name="mobiletelephone" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="64" />
+          <Property Name="telephone" Type="varchar" MaxLength="64" />
+          <Property Name="user_status" Type="tinyint" />
+          <Property Name="hunkuan" Type="tinyint" />
+          <Property Name="jiguan" Type="tinyint" />
+          <Property Name="remarks" Type="varchar" MaxLength="255" />
+          <Property Name="create_time" Type="datetime" />
+          <Property Name="kq_fangan_code" Type="varchar" MaxLength="36" />
+          <Property Name="kq_rpt" Type="tinyint" />
+          <Property Name="kq_bc" Type="varchar" MaxLength="36" />
+          <Property Name="creater" Type="varchar" MaxLength="64" />
+          <Property Name="allow_ip_arrange" Type="varchar" MaxLength="255" />
+          <Property Name="zhiwu" Type="varchar" MaxLength="36" />
+          <Property Name="leibie" Type="tinyint" />
+          <Property Name="zhiji" Type="varchar" MaxLength="36" />
+          <Property Name="gangwei" Type="varchar" MaxLength="36" />
+          <Property Name="mz" Type="tinyint" />
+          <Property Name="group_uid" Type="varchar" MaxLength="36" />
+          <Property Name="sqcz_code" Type="int" />
+          <Property Name="sqcz_pass" Type="int" />
+          <Property Name="Ena_date" Type="datetime" />
+          <Property Name="user_serial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cost_center" Type="varchar" MaxLength="50" />
+          <Property Name="user_name_en" Type="varchar" MaxLength="255" />
+          <Property Name="go_work_date" Type="datetime" />
+          <Property Name="last_ats" Type="datetime" />
+          <Property Name="last_direction" Type="tinyint" />
+          <Property Name="cb_uid" Type="varchar" MaxLength="36" />
+          <Property Name="nj_uid" Type="varchar" MaxLength="36" />
+          <Property Name="bj_uid" Type="varchar" MaxLength="36" />
+          <Property Name="qsfz_uid" Type="varchar" MaxLength="36" />
+          <Property Name="enable_tx" Type="tinyint" />
+          <Property Name="date_bx_begin" Type="datetime" />
+          <Property Name="date_zzrq" Type="datetime" />
+          <Property Name="date_txrq" Type="datetime" />
+          <Property Name="date_bx_end" Type="datetime" />
+          <Property Name="date_ht_begin" Type="datetime" />
+          <Property Name="date_ht_end" Type="datetime" />
+          <Property Name="address_home" Type="varchar" MaxLength="255" />
+          <Property Name="info_110" Type="varchar" MaxLength="255" />
+          <Property Name="guoji" Type="tinyint" />
+          <Property Name="jiguan2" Type="varchar" MaxLength="255" />
+          <Property Name="language" Type="varchar" MaxLength="20" />
+          <Property Name="employ_type" Type="tinyint" />
+          <Property Name="Location_code" Type="varchar" MaxLength="20" />
+          <Property Name="user_source" Type="tinyint" />
+          <Property Name="Degree" Type="tinyint" />
+          <Property Name="zjlx" Type="tinyint" />
+          <Property Name="graduate_school" Type="varchar" MaxLength="100" />
+          <Property Name="graduate_date" Type="datetime" />
+          <Property Name="political_landscape" Type="tinyint" />
+          <Property Name="specialty" Type="varchar" MaxLength="100" />
+          <Property Name="user_zh" Type="varchar" MaxLength="255" />
+          <Property Name="bankname" Type="varchar" MaxLength="255" />
+          <Property Name="user_ybkh" Type="varchar" MaxLength="255" />
+          <Property Name="user_gjjkh" Type="varchar" MaxLength="255" />
+          <Property Name="user_ylbxkh" Type="varchar" MaxLength="255" />
+          <Property Name="comp_id" Type="varchar" MaxLength="36" />
+          <Property Name="ext_phone" Type="varchar" MaxLength="255" />
+          <Property Name="is_bybus" Type="tinyint" />
+          <Property Name="bus_line" Type="varchar" MaxLength="255" />
+          <Property Name="user_grade" Type="tinyint" />
+          <Property Name="trial_period" Type="varchar" MaxLength="10" />
+          <Property Name="healthy_type" Type="tinyint" />
+          <Property Name="pre_working_age" Type="varchar" MaxLength="10" />
+          <Property Name="direct_manager" Type="varchar" MaxLength="36" />
+          <Property Name="is_initpwd" Type="tinyint" />
+          <Property Name="src_user_code" Type="varchar" MaxLength="50" />
+          <Property Name="user_def1" Type="varchar" MaxLength="100" />
+          <Property Name="user_def2" Type="varchar" MaxLength="100" />
+          <Property Name="user_def3" Type="varchar" MaxLength="100" />
+          <Property Name="user_def4" Type="varchar" MaxLength="100" />
+          <Property Name="user_def5" Type="varchar" MaxLength="100" />
+          <Property Name="user_def6" Type="varchar" MaxLength="100" />
+          <Property Name="user_def7" Type="varchar" MaxLength="100" />
+          <Property Name="user_def8" Type="varchar" MaxLength="200" />
+          <Property Name="user_def9" Type="varchar" MaxLength="200" />
+          <Property Name="user_def10" Type="varchar" MaxLength="200" />
+          <Property Name="sap_id" Type="varchar" MaxLength="50" />
+          <Property Name="kq_place" Type="varchar" MaxLength="200" />
+          <Property Name="user_def11" Type="varchar" MaxLength="100" />
+          <Property Name="user_def12" Type="varchar" MaxLength="100" />
+          <Property Name="user_def13" Type="varchar" MaxLength="100" />
+          <Property Name="user_def14" Type="varchar" MaxLength="100" />
+          <Property Name="user_def15" Type="varchar" MaxLength="100" />
+          <Property Name="user_def16" Type="varchar" MaxLength="100" />
+          <Property Name="user_def17" Type="varchar" MaxLength="100" />
+          <Property Name="user_def18" Type="varchar" MaxLength="100" />
+          <Property Name="user_def19" Type="varchar" MaxLength="100" />
+          <Property Name="user_def20" Type="varchar" MaxLength="100" />
+          <Property Name="user_jbdhfa_uid" Type="varchar" MaxLength="36" />
+          <Property Name="user_valid_status" Type="tinyint" />
+          <Property Name="user_is_wp" Type="tinyint" />
+          <Property Name="user_dataflag" Type="tinyint" />
+          <Property Name="user_export_time" Type="datetime" />
+          <Property Name="user_secondpwd" Type="varchar" MaxLength="50" />
+          <Property Name="user_login_validcount" Type="int" />
+          <Property Name="user_login_status" Type="int" />
+          <Property Name="user_login_time" Type="datetime" />
+          <Property Name="user_mgr_pwd" Type="varchar" MaxLength="80" />
+          <Property Name="user_phase" Type="tinyint" />
+          <Property Name="user_is_flow" Type="tinyint" />
+          <Property Name="user_approve_status" Type="int" />
+          <Property Name="user_approve_date" Type="datetime" />
+          <Property Name="user_approver" Type="varchar" MaxLength="36" />
+          <Property Name="phone_store_uid" Type="varchar" MaxLength="36" />
+          <Property Name="user_photo_uid" Type="varchar" MaxLength="36" />
+          <Property Name="user_weixin" Type="varchar" MaxLength="36" />
+          <Property Name="user_dingding" Type="varchar" MaxLength="36" />
+          <Property Name="user_weixin_openid" Type="nvarchar" MaxLength="36" />
+          <Property Name="user_global_code" Type="varchar" MaxLength="100" />
+          <Property Name="incorp_comp" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityContainer Name="WTS_HTModelStoreContainer">
+          <EntitySet Name="pub_user" EntityType="Self.pub_user" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WTS_HTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="pub_user">
+          <Key>
+            <PropertyRef Name="user_uid" />
+          </Key>
+          <Property Name="user_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="login_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_code" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="user_type" Type="Byte" />
+          <Property Name="user_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dept_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="third_part_code" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="Byte" />
+          <Property Name="birthday" Type="DateTime" Precision="3" />
+          <Property Name="join_date" Type="DateTime" Precision="3" />
+          <Property Name="fire_date" Type="DateTime" Precision="3" />
+          <Property Name="zjhm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="zjdz" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="lxdz" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="xueli" Type="Byte" />
+          <Property Name="mobiletelephone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="user_status" Type="Byte" />
+          <Property Name="hunkuan" Type="Byte" />
+          <Property Name="jiguan" Type="Byte" />
+          <Property Name="remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_time" Type="DateTime" Precision="3" />
+          <Property Name="kq_fangan_code" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="kq_rpt" Type="Byte" />
+          <Property Name="kq_bc" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="creater" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="allow_ip_arrange" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="zhiwu" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="leibie" Type="Byte" />
+          <Property Name="zhiji" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="gangwei" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="mz" Type="Byte" />
+          <Property Name="group_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="sqcz_code" Type="Int32" />
+          <Property Name="sqcz_pass" Type="Int32" />
+          <Property Name="Ena_date" Type="DateTime" Precision="3" />
+          <Property Name="user_serial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cost_center" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="go_work_date" Type="DateTime" Precision="3" />
+          <Property Name="last_ats" Type="DateTime" Precision="3" />
+          <Property Name="last_direction" Type="Byte" />
+          <Property Name="cb_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="nj_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="bj_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="qsfz_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="enable_tx" Type="Byte" />
+          <Property Name="date_bx_begin" Type="DateTime" Precision="3" />
+          <Property Name="date_zzrq" Type="DateTime" Precision="3" />
+          <Property Name="date_txrq" Type="DateTime" Precision="3" />
+          <Property Name="date_bx_end" Type="DateTime" Precision="3" />
+          <Property Name="date_ht_begin" Type="DateTime" Precision="3" />
+          <Property Name="date_ht_end" Type="DateTime" Precision="3" />
+          <Property Name="address_home" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="info_110" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="guoji" Type="Byte" />
+          <Property Name="jiguan2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="language" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="employ_type" Type="Byte" />
+          <Property Name="Location_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="user_source" Type="Byte" />
+          <Property Name="Degree" Type="Byte" />
+          <Property Name="zjlx" Type="Byte" />
+          <Property Name="graduate_school" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="graduate_date" Type="DateTime" Precision="3" />
+          <Property Name="political_landscape" Type="Byte" />
+          <Property Name="specialty" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_zh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="bankname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_ybkh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_gjjkh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_ylbxkh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comp_id" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ext_phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="is_bybus" Type="Byte" />
+          <Property Name="bus_line" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_grade" Type="Byte" />
+          <Property Name="trial_period" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="healthy_type" Type="Byte" />
+          <Property Name="pre_working_age" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="direct_manager" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="is_initpwd" Type="Byte" />
+          <Property Name="src_user_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_def1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def8" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="user_def9" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="user_def10" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="sap_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kq_place" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="user_def11" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def12" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def13" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def14" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def15" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def16" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def17" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def18" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def19" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_def20" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_jbdhfa_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="user_valid_status" Type="Byte" />
+          <Property Name="user_is_wp" Type="Byte" />
+          <Property Name="user_dataflag" Type="Byte" />
+          <Property Name="user_export_time" Type="DateTime" Precision="3" />
+          <Property Name="user_secondpwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_login_validcount" Type="Int32" />
+          <Property Name="user_login_status" Type="Int32" />
+          <Property Name="user_login_time" Type="DateTime" Precision="3" />
+          <Property Name="user_mgr_pwd" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="user_phase" Type="Byte" />
+          <Property Name="user_is_flow" Type="Byte" />
+          <Property Name="user_approve_status" Type="Int32" />
+          <Property Name="user_approve_date" Type="DateTime" Precision="3" />
+          <Property Name="user_approver" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="phone_store_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="user_photo_uid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="user_weixin" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="user_dingding" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="user_weixin_openid" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="user_global_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="incorp_comp" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="WTS_HTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="pub_user" EntityType="Self.pub_user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WTS_HTModelStoreContainer" CdmEntityContainer="WTS_HTEntities">
+          <EntitySetMapping Name="pub_user">
+            <EntityTypeMapping TypeName="WTS_HTModel.pub_user">
+              <MappingFragment StoreEntitySet="pub_user">
+                <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+                <ScalarProperty Name="login_name" ColumnName="login_name" />
+                <ScalarProperty Name="user_code" ColumnName="user_code" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user_type" ColumnName="user_type" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="dept_uid" ColumnName="dept_uid" />
+                <ScalarProperty Name="third_part_code" ColumnName="third_part_code" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="join_date" ColumnName="join_date" />
+                <ScalarProperty Name="fire_date" ColumnName="fire_date" />
+                <ScalarProperty Name="zjhm" ColumnName="zjhm" />
+                <ScalarProperty Name="zjdz" ColumnName="zjdz" />
+                <ScalarProperty Name="lxdz" ColumnName="lxdz" />
+                <ScalarProperty Name="xueli" ColumnName="xueli" />
+                <ScalarProperty Name="mobiletelephone" ColumnName="mobiletelephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="user_status" ColumnName="user_status" />
+                <ScalarProperty Name="hunkuan" ColumnName="hunkuan" />
+                <ScalarProperty Name="jiguan" ColumnName="jiguan" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="kq_fangan_code" ColumnName="kq_fangan_code" />
+                <ScalarProperty Name="kq_rpt" ColumnName="kq_rpt" />
+                <ScalarProperty Name="kq_bc" ColumnName="kq_bc" />
+                <ScalarProperty Name="creater" ColumnName="creater" />
+                <ScalarProperty Name="allow_ip_arrange" ColumnName="allow_ip_arrange" />
+                <ScalarProperty Name="zhiwu" ColumnName="zhiwu" />
+                <ScalarProperty Name="leibie" ColumnName="leibie" />
+                <ScalarProperty Name="zhiji" ColumnName="zhiji" />
+                <ScalarProperty Name="gangwei" ColumnName="gangwei" />
+                <ScalarProperty Name="mz" ColumnName="mz" />
+                <ScalarProperty Name="group_uid" ColumnName="group_uid" />
+                <ScalarProperty Name="sqcz_code" ColumnName="sqcz_code" />
+                <ScalarProperty Name="sqcz_pass" ColumnName="sqcz_pass" />
+                <ScalarProperty Name="Ena_date" ColumnName="Ena_date" />
+                <ScalarProperty Name="user_serial" ColumnName="user_serial" />
+                <ScalarProperty Name="Cost_center" ColumnName="Cost_center" />
+                <ScalarProperty Name="user_name_en" ColumnName="user_name_en" />
+                <ScalarProperty Name="go_work_date" ColumnName="go_work_date" />
+                <ScalarProperty Name="last_ats" ColumnName="last_ats" />
+                <ScalarProperty Name="last_direction" ColumnName="last_direction" />
+                <ScalarProperty Name="cb_uid" ColumnName="cb_uid" />
+                <ScalarProperty Name="nj_uid" ColumnName="nj_uid" />
+                <ScalarProperty Name="bj_uid" ColumnName="bj_uid" />
+                <ScalarProperty Name="qsfz_uid" ColumnName="qsfz_uid" />
+                <ScalarProperty Name="enable_tx" ColumnName="enable_tx" />
+                <ScalarProperty Name="date_bx_begin" ColumnName="date_bx_begin" />
+                <ScalarProperty Name="date_zzrq" ColumnName="date_zzrq" />
+                <ScalarProperty Name="date_txrq" ColumnName="date_txrq" />
+                <ScalarProperty Name="date_bx_end" ColumnName="date_bx_end" />
+                <ScalarProperty Name="date_ht_begin" ColumnName="date_ht_begin" />
+                <ScalarProperty Name="date_ht_end" ColumnName="date_ht_end" />
+                <ScalarProperty Name="address_home" ColumnName="address_home" />
+                <ScalarProperty Name="info_110" ColumnName="info_110" />
+                <ScalarProperty Name="guoji" ColumnName="guoji" />
+                <ScalarProperty Name="jiguan2" ColumnName="jiguan2" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="employ_type" ColumnName="employ_type" />
+                <ScalarProperty Name="Location_code" ColumnName="Location_code" />
+                <ScalarProperty Name="user_source" ColumnName="user_source" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="zjlx" ColumnName="zjlx" />
+                <ScalarProperty Name="graduate_school" ColumnName="graduate_school" />
+                <ScalarProperty Name="graduate_date" ColumnName="graduate_date" />
+                <ScalarProperty Name="political_landscape" ColumnName="political_landscape" />
+                <ScalarProperty Name="specialty" ColumnName="specialty" />
+                <ScalarProperty Name="user_zh" ColumnName="user_zh" />
+                <ScalarProperty Name="bankname" ColumnName="bankname" />
+                <ScalarProperty Name="user_ybkh" ColumnName="user_ybkh" />
+                <ScalarProperty Name="user_gjjkh" ColumnName="user_gjjkh" />
+                <ScalarProperty Name="user_ylbxkh" ColumnName="user_ylbxkh" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="ext_phone" ColumnName="ext_phone" />
+                <ScalarProperty Name="is_bybus" ColumnName="is_bybus" />
+                <ScalarProperty Name="bus_line" ColumnName="bus_line" />
+                <ScalarProperty Name="user_grade" ColumnName="user_grade" />
+                <ScalarProperty Name="trial_period" ColumnName="trial_period" />
+                <ScalarProperty Name="healthy_type" ColumnName="healthy_type" />
+                <ScalarProperty Name="pre_working_age" ColumnName="pre_working_age" />
+                <ScalarProperty Name="direct_manager" ColumnName="direct_manager" />
+                <ScalarProperty Name="is_initpwd" ColumnName="is_initpwd" />
+                <ScalarProperty Name="src_user_code" ColumnName="src_user_code" />
+                <ScalarProperty Name="user_def1" ColumnName="user_def1" />
+                <ScalarProperty Name="user_def2" ColumnName="user_def2" />
+                <ScalarProperty Name="user_def3" ColumnName="user_def3" />
+                <ScalarProperty Name="user_def4" ColumnName="user_def4" />
+                <ScalarProperty Name="user_def5" ColumnName="user_def5" />
+                <ScalarProperty Name="user_def6" ColumnName="user_def6" />
+                <ScalarProperty Name="user_def7" ColumnName="user_def7" />
+                <ScalarProperty Name="user_def8" ColumnName="user_def8" />
+                <ScalarProperty Name="user_def9" ColumnName="user_def9" />
+                <ScalarProperty Name="user_def10" ColumnName="user_def10" />
+                <ScalarProperty Name="sap_id" ColumnName="sap_id" />
+                <ScalarProperty Name="kq_place" ColumnName="kq_place" />
+                <ScalarProperty Name="user_def11" ColumnName="user_def11" />
+                <ScalarProperty Name="user_def12" ColumnName="user_def12" />
+                <ScalarProperty Name="user_def13" ColumnName="user_def13" />
+                <ScalarProperty Name="user_def14" ColumnName="user_def14" />
+                <ScalarProperty Name="user_def15" ColumnName="user_def15" />
+                <ScalarProperty Name="user_def16" ColumnName="user_def16" />
+                <ScalarProperty Name="user_def17" ColumnName="user_def17" />
+                <ScalarProperty Name="user_def18" ColumnName="user_def18" />
+                <ScalarProperty Name="user_def19" ColumnName="user_def19" />
+                <ScalarProperty Name="user_def20" ColumnName="user_def20" />
+                <ScalarProperty Name="user_jbdhfa_uid" ColumnName="user_jbdhfa_uid" />
+                <ScalarProperty Name="user_valid_status" ColumnName="user_valid_status" />
+                <ScalarProperty Name="user_is_wp" ColumnName="user_is_wp" />
+                <ScalarProperty Name="user_dataflag" ColumnName="user_dataflag" />
+                <ScalarProperty Name="user_export_time" ColumnName="user_export_time" />
+                <ScalarProperty Name="user_secondpwd" ColumnName="user_secondpwd" />
+                <ScalarProperty Name="user_login_validcount" ColumnName="user_login_validcount" />
+                <ScalarProperty Name="user_login_status" ColumnName="user_login_status" />
+                <ScalarProperty Name="user_login_time" ColumnName="user_login_time" />
+                <ScalarProperty Name="user_mgr_pwd" ColumnName="user_mgr_pwd" />
+                <ScalarProperty Name="user_phase" ColumnName="user_phase" />
+                <ScalarProperty Name="user_is_flow" ColumnName="user_is_flow" />
+                <ScalarProperty Name="user_approve_status" ColumnName="user_approve_status" />
+                <ScalarProperty Name="user_approve_date" ColumnName="user_approve_date" />
+                <ScalarProperty Name="user_approver" ColumnName="user_approver" />
+                <ScalarProperty Name="phone_store_uid" ColumnName="phone_store_uid" />
+                <ScalarProperty Name="user_photo_uid" ColumnName="user_photo_uid" />
+                <ScalarProperty Name="user_weixin" ColumnName="user_weixin" />
+                <ScalarProperty Name="user_dingding" ColumnName="user_dingding" />
+                <ScalarProperty Name="user_weixin_openid" ColumnName="user_weixin_openid" />
+                <ScalarProperty Name="user_global_code" ColumnName="user_global_code" />
+                <ScalarProperty Name="incorp_comp" ColumnName="incorp_comp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

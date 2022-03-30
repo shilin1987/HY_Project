@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace IdentityAuthentication.BLL
+{
+    public class ComparisonOfIdCardVerificationClassBLL: BaseService
+    {
+        public void test() 
+        {
+            //读写数据库示例
+            var newUser = hYDatabase.lr_base_user.Where(e => e.F_UserId == "");
+        }
+    }
+}

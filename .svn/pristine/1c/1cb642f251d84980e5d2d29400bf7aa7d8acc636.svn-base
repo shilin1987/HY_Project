@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Frm_List";
+    Layout = "~/Views/Shared/_FormSub.cshtml";
+}
+
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item lr-form-item-grid">
+        <div class="lr-layout-body" id="MES_LIST_DATA"></div>
+    </div>
+    <div><input type="hidden" id="cust" name="cust" readonly="readonly" value="@ViewBag.cust" /></div>
+    <div><input type="hidden" id="wafer" name="wafer" readonly="readonly" value="@ViewBag.wafer" /></div>
+    <div><input type="hidden" id="product" name="product" readonly="readonly" value="@ViewBag.product" /></div>
+    <div><input type="hidden" id="url" name="url" readonly="readonly" value="@ViewBag.url" /></div>
+    <div><input type="hidden" id="Colname" name="Colname" readonly="readonly" value="@ViewBag.Colname" /></div>
+</div>
+@Html.AppendJsFile("/Areas/B2B_Code/Views/CUST_ORDER_CREATE/Frm_List.js")

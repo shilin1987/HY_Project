@@ -1,0 +1,74 @@
+﻿/* * 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架(http://www.learun.cn)
+ * Copyright (c) 2013-2018 上海力软信息技术有限公司
+ * 创建人：超级管理员
+ * 日  期：2022-01-24 14:32
+ * 描  述：晶圆清单导入
+ */
+var acceptClick;
+var keyValue = request('keyValue');
+var bootstrap = function ($, learun) {
+    "use strict";
+    var page = {
+        init: function () {
+            $('.lr-form-wrap').lrscroll();
+            page.bind();
+            page.initData();
+        },
+        bind: function () {
+            $("#FFILE_NAME").lrUploader();
+            $('#B2B_WAFER_LIST_SUB').jfGrid({
+                headData: [
+                    {
+                        label: '芯片型号', name: 'FWAFER_TYPE', width: 120, align: 'center'
+                    },
+                    {
+                        label: '批号', name: 'FWAFER_BATCH', width: 140, align: 'center'
+                    },
+                    {
+                        label: '片数', name: 'FWAFER_QTY', width: 100, align: 'center'
+                    },
+                    {
+                        label: '片号', name: 'FWAFER_NUMBER', width: 140, align: 'center'
+                    },
+                    {
+                        label: '数量', name: 'FWAFER_DIE', width: 100, align: 'center'
+                    }
+                ],
+                isEdit: false,
+                height: 360,
+                width: 800
+            });
+        },
+
+        initData: function () {
+            if (!!keyValue) {
+                $.lrSetForm(top.$.rootUrl + '/B2B_Code/B2B_WAFER_LIST/GetFormData?keyValue=' + keyValue, function (data) {
+                    for (var id in data) {
+                        if (!!data[id].length && data[id].length > 0) {
+                            $('#' + id ).jfGridSet('refreshdata', data[id]);
+                        }
+                        else {
+                            $('[data-table="' + id + '"]').lrSetFormData(data[id]);
+                        }
+                    }
+                });
+            }
+        }
+    };
+    // 保存数据
+    acceptClick = function (callBack) {
+        if (!$('body').lrValidform()) {
+            return false;
+        }
+        var postData = {};
+        postData.strb2B_WAFER_LISTEntity = JSON.stringify($('[data-table="B2B_WAFER_LIST"]').lrGetFormData());
+        postData.strEntity = JSON.stringify($('[data-table="B2B_WAFER_LIST_SUB"]').lrGetFormData());
+        $.lrSaveForm(top.$.rootUrl + '/B2B_Code/B2B_WAFER_LIST/SaveForm?keyValue=' + keyValue, postData, function (res) {
+            // 保存成功后才回调
+            if (!!callBack) {
+                callBack();
+            }
+        });
+    };
+    page.init();
+}

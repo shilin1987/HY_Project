@@ -1,0 +1,60 @@
+﻿using Learun.Util;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using WebApi_EmployeeInformationEntry.Models;
+
+namespace WebApi_EmployeeInformationEntry.BLL
+{
+    public class MenuService : BaseService
+    {
+        /// <summary>
+        /// 应聘者登录
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        public async Task<ApiModel> GetProcess(LoginModel login)
+        {
+            try
+            {
+                var isExistUser = hYDatabase.Hy_Recruit_Candidates.Where(e=>e.F_UserId== login.userId);
+                if (isExistUser.Count() > 0)
+                {
+                    result.code = ResponseCode.success;
+                    //查询当前操作流程
+                    var processEntity = hYDatabase.Hy_Recruit_ProcessOperation.Where(e => e.CandidatesId == login.userId);
+                    if (processEntity.Count() > 0)
+                    {
+                        if (processEntity.Where(e => e.OperationStatus == 0).Count() > 0)
+                        {
+                           
+                            result.info = "您当前在[" + processEntity.Where(e => e.OperationStatus == 0).FirstOrDefault().OperationContent + "]流程中";
+                            result.AuxiliaryField = "1";
+                        }
+                        else if (processEntity.Where(e => e.OperationStatus == -1).Count() > 0)
+                        {
+                            result.info = "您当前在[" + processEntity.Where(e => e.OperationStatus == -1).FirstOrDefault().OperationContent + "]不通过流程中";
+                            result.AuxiliaryField = "-1";
+                        }
+                    }
+                    else
+                    {
+                        result.info = "您已通过应聘！欢迎加入华羿微电大家庭!";
+                    }
+                }
+                else
+                {
+                    result.info = "未找到您的应聘信息，请先注册.";
+                }
+            }
+            catch (Exception ex)
+            {
+                result.info = "登录异常,请联系工作人员处理(" + ex.Message + ")";
+            }
+
+            return result;
+        }
+    }
+}

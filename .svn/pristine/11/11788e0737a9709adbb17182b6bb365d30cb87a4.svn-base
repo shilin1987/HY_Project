@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.HR_Code.HeterogeneousSystemInterface
+{
+    public class OatoCreateRequestDTO
+    {
+        public HEADER HEADER;
+        public DETAILS DETAILS;
+        public List<FILE> FILE;
+
+        public HEADER HEADER1 { get => HEADER; set => HEADER = value; }
+        public DETAILS DETAILS1 { get => DETAILS; set => DETAILS = value; }
+        public List<FILE> FILE1 { get => FILE; set => FILE = value; }
+    }
+}

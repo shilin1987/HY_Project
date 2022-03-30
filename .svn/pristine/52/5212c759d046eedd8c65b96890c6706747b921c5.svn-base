@@ -1,0 +1,141 @@
+﻿using Learun.Util;
+using System.Data;
+using Learun.Application.TwoDevelopment.Platform;
+using System.Web.Mvc;
+using System.Collections.Generic;
+
+namespace Learun.Application.Web.Areas.Platform.Controllers
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2021-07-28 17:38
+    /// 描 述：新员工入职信息临时保存
+    /// </summary>
+    public class candidatesController : MvcControllerBase
+    {
+        private candidatesIBLL candidatesIBLL = new candidatesBLL();
+
+        #region 视图功能
+
+        /// <summary>
+        /// 主页面
+        /// <summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Index()
+        {
+             return View();
+        }
+        /// <summary>
+        /// 表单页
+        /// <summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Form()
+        {
+             return View();
+        }
+        #endregion
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        [HttpGet]
+        [AjaxOnly]
+        public ActionResult GetPageList(string pagination, string queryJson)
+        {
+            Pagination paginationobj = pagination.ToObject<Pagination>();
+            var data = candidatesIBLL.GetPageList(paginationobj, queryJson);
+            var jsonData = new
+            {
+                rows = data,
+                total = paginationobj.total,
+                page = paginationobj.page,
+                records = paginationobj.records
+            };
+            return Success(jsonData);
+        }
+
+        [HttpGet]
+        [AjaxOnly]
+        public ActionResult GetFormUpdateState(string keyValue)
+        {
+            var Hy_hr_CandidatesData = candidatesIBLL.GetHy_hr_CandidatesEntity(keyValue);
+            var resulet = candidatesIBLL.GetFormUpdateState(keyValue, Hy_hr_CandidatesData.F_UserId);
+            if (resulet.Status)
+            {
+                return Fail(resulet.Message);
+            }
+            else
+            {
+                return Success(resulet.Message);
+            }
+        }
+        /// <summary>
+        /// 获取表单数据
+        /// <summary>
+        /// <returns></returns>
+        [HttpGet]
+        [AjaxOnly]
+        public ActionResult GetFormData(string keyValue)
+        {
+            var Hy_hr_CandidatesData = candidatesIBLL.GetHy_hr_CandidatesEntity( keyValue );
+            var jsonData = new {
+                Hy_hr_Candidates = Hy_hr_CandidatesData,
+            };
+            return Success(jsonData);
+        }
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        [HttpPost]
+        [AjaxOnly]
+        public ActionResult DeleteForm(string keyValue)
+        {
+            var result = candidatesIBLL.DeleteEntity(keyValue);
+            if (!result.Status)
+            {
+                return Fail(result.Message);
+            }
+            else
+            {
+                return Success(result.Message);
+            }
+        }
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AjaxOnly]
+        public ActionResult SaveForm(string keyValue, string strEntity)
+        {
+            Hy_hr_CandidatesEntity entity = strEntity.ToObject<Hy_hr_CandidatesEntity>();
+            var result = candidatesIBLL.SaveEntity(keyValue,entity);
+            if (!result.Status)
+            {
+                return Fail(result.Message);
+            }
+            else
+            {
+                return Success(result.Message);
+            }
+        }
+        #endregion
+
+    }
+}

@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Learun.Cache.Base</name>
+    </assembly>
+    <members>
+        <member name="T:Learun.Cache.Base.CacheId">
+            <summary>
+            版 本 Learun-ADMS V7.0.6 力软敏捷开发框架
+            Copyright (c) 2013-2020 上海力软信息技术有限公司
+            创建人：力软-框架开发组
+            日 期：2017.03.06
+            描 述：缓存库分配
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.module">
+            <summary>
+            功能模块
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.database">
+            <summary>
+            数据库管理
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.dataItem">
+            <summary>
+            数据字典
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.area">
+            <summary>
+            行政区域信息
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.codeRule">
+            <summary>
+            编码规则
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.custmerQuery">
+            <summary>
+            自定查询
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.dataSource">
+            <summary>
+            数据源
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.filterTime">
+            <summary>
+            时间过滤信息
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.filterIP">
+            <summary>
+            IP过滤信息
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.Interface">
+            <summary>
+            接口管理
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.company">
+            <summary>
+            公司
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.department">
+            <summary>
+            部门
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.post">
+            <summary>
+            岗位
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.userRelation">
+            <summary>
+            人员对应关系
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.authorize">
+            <summary>
+            功能权限
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.dataAuthorize">
+            <summary>
+            数据权限
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.loginInfo">
+            <summary>
+            登录信息
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.annexes">
+            <summary>
+            附件
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.excel">
+            <summary>
+            excel导入
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.workflow">
+            <summary>
+            工作流模板
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.formscheme">
+            <summary>
+            表单模板
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.formRelation">
+            <summary>
+            表单与功能对应关系
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.user">
+            <summary>
+            人员
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.jscss">
+            <summary>
+            jscss
+            </summary>
+        </member>
+        <member name="P:Learun.Cache.Base.CacheId.language">
+            <summary>
+            语言包
+            </summary>
+        </member>
+        <member name="T:Learun.Cache.Base.ICache">
+            <summary>
+            版 本 Learun-ADMS V7.0.6 力软敏捷开发框架
+            Copyright (c) 2013-2020 上海力软信息技术有限公司
+            创建人：力软-框架开发组
+            日 期：2017.03.06
+            描 述：定义缓存接口
+            </summary>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.Read``1(System.String,System.Int32)">
+            <summary>
+            读取缓存
+            </summary>
+            <param name="cacheKey">键</param>
+            <param name="dbId">缓存库编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.Write``1(System.String,``0,System.Int32)">
+            <summary>
+            写入缓存
+            </summary>
+            <param name="value">对象数据</param>
+            <param name="cacheKey">键</param>
+            <param name="dbId">缓存库编码</param>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.Write``1(System.String,``0,System.TimeSpan,System.Int32)">
+            <summary>
+            写入缓存
+            </summary>
+            <param name="value">对象数据</param>
+            <param name="cacheKey">键</param>
+            <param name="dbId">缓存库编码</param>
+            <param name="timeSpan">到期时间</param>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.Remove(System.String,System.Int32)">
+            <summary>
+            移除指定数据缓存
+            </summary>
+            <param name="cacheKey">键</param>
+            <param name="dbId">缓存库编码</param>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.RemoveAll(System.Int32)">
+            <summary>
+            移除全部缓存
+            </summary>
+            <param name="dbId">缓存库编码</param>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.ListRemove``1(System.String,``0,System.Int32)">
+            <summary>
+            移除指定ListId的内部List的值
+            </summary>
+            <param name="cacheKey"></param>
+            <param name="value"></param>
+            <param name="dbId">缓存库编码</param>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.ListRange``1(System.String,System.Int32)">
+            <summary>
+            获取指定key的List
+            </summary>
+            <param name="cacheKey"></param>
+            <param name="dbId">缓存库编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.ListRightPush``1(System.String,``0,System.Int32)">
+            <summary>
+            入队
+            </summary>
+            <param name="cacheKey"></param>
+            <param name="value"></param>
+            <param name="dbId">缓存库编码</param>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.ListRightPop``1(System.String,System.Int32)">
+            <summary>
+            出队
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cacheKey"></param>
+            <param name="dbId">缓存库编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.ListLeftPush``1(System.String,``0,System.Int32)">
+            <summary>
+            入栈
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cacheKey"></param>
+            <param name="value"></param>
+            <param name="dbId">缓存库编码</param>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.ListLeftPop``1(System.String,System.Int32)">
+            <summary>
+            出栈
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cacheKey"></param>
+            <param name="dbId">缓存库编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Learun.Cache.Base.ICache.ListLength(System.String,System.Int32)">
+            <summary>
+            获取集合中的数量
+            </summary>
+            <param name="cacheKey"></param>
+            <param name="dbId">缓存库编码</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

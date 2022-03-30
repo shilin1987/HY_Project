@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "菜价补贴考勤数据明细";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" style="display: none; " >
+        <div class="lr-form-item-title">文本框<font face="宋体">*</font></div>
+        <input id="oid" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">用户编号<font face="宋体">*</font></div>
+        <input id="user_code" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">用户名称<font face="宋体">*</font></div>
+        <input id="user_name" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">考勤时间<font face="宋体">*</font></div>
+        <input id="rq" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">班次编号</div>
+        <input id="bc" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">公差工时</div>
+        <input id="chaiq02" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">在岗工时</div>
+        <input id="chaiq01" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">文本框</div>
+        <input id="cqgs" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">对应年份<font face="宋体">*</font></div>
+        <input id="yearno" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_user_attendance" >
+        <div class="lr-form-item-title">对应月份<font face="宋体">*</font></div>
+        <input id="monthno" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/MonthlyAttendanceDataAutoClass/Form.js")

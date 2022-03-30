@@ -1,0 +1,129 @@
+﻿using Learun.Application.Organization;
+using Learun.Util;
+using Learun.Util.Operat;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using WebApi_EmployeeInformationEntry.BLL;
+using WebApi_EmployeeInformationEntry.Models;
+using UserInfo = WebApi_EmployeeInformationEntry.Models.UserInfo;
+
+namespace WebApi_EmployeeInformationEntry.Controllers
+{
+    public class UserController : BaseApiController
+    {
+        private readonly BLL.UserService userService;
+        private readonly BLL.DepartmentService departmentService;
+        public UserController()
+        {
+            userService = new BLL.UserService();
+            departmentService = new BLL.DepartmentService();
+        }
+
+        // GET: api/User/
+        [HttpGet]
+        public ApiModel Map(string token, string data)
+        {
+            apiModel = departmentService.map(token, data);
+            if (apiModel.code == ResponseCode.fail)
+            {
+                return Fail(null, "部门信息初始化", OperationType.Update, "", apiModel.info);
+            }
+            else
+            {
+                return Success(apiModel.data, "部门信息初始化", OperationType.Update, "", apiModel.info);
+            }
+        }
+
+        /// <summary>
+        /// 用户信息完善
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ApiModel InformationPerfection(UserViewModele user)
+        {
+            apiModel = userService.InformationPerfection(user);
+            if (apiModel.code == ResponseCode.fail)
+            {
+                return Fail(null, "用户信息完善", OperationType.AppLogin, "", apiModel.info);
+            }
+            else
+            {
+                return Success(apiModel.data, "用户信息完善", OperationType.AppLogin, "", apiModel.info);
+            }
+        }
+        /// <summary>
+        /// 用户信息完善
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ApiModel SaveInformation(UserViewGenModele user)
+        {
+            apiModel = userService.SaveInformation(user);
+            if (apiModel.code == ResponseCode.fail)
+            {
+                return Fail(null, "用户信息完善", OperationType.AppLogin, "", apiModel.info);
+            }
+            else
+            {
+                return Success(apiModel.data, "用户信息完善", OperationType.AppLogin, "", apiModel.info);
+            }
+        }
+
+        /// <summary>
+        /// 修改登录密码
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ApiModel RevisePassword(RevisePasswordModel revisePassword)
+        {
+            apiModel = userService.RevisePassword(revisePassword);
+            if (apiModel.code == ResponseCode.fail)
+            {
+                return Fail(null, "修改登录密码", OperationType.AppLogin, "", apiModel.info);
+            }
+            else
+            {
+                return Success(apiModel.data, "修改登录密码", OperationType.AppLogin, "", apiModel.info);
+            }
+        }
+
+        /// <summary>
+        /// 获取人员头像图标
+        /// </summary>
+        /// <param name="_"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ApiModel Img(string data)
+        {
+            //userIBLL.GetImg(userId);
+            return Success(null, "获取头像图标", OperationType.AppLogin, "", "获取成功");
+        }
+
+        [HttpGet]
+        public ApiModel UserMap(string token, string data)
+        {
+            return Success(null, "用户信息已更新", OperationType.Update, "", "update");
+        }
+    
+        [HttpPost]
+        public ApiModel getPersonnelInformation(PersonInfoPartDTO userDTO)
+        {
+            apiModel = userService.getPersonnelInformation(userDTO);
+            if (apiModel.code == ResponseCode.fail)
+            {
+                return Fail(null, "手机号不存在,未查到该用户", OperationType.AppLogin, "", apiModel.info);
+            }
+            else
+            {
+                return Success(apiModel.data, "用户信息加载成功", OperationType.AppLogin, "", apiModel.info);
+            }
+        }
+    }
+}

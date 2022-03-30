@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "招聘流程流程节点维护";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="HR_ProcessNodeTable" >
+        <div class="lr-form-item-title">流程节点顺序<font face="宋体">*</font></div>
+        <input id="F_Sort" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="HR_ProcessNodeTable" >
+        <div class="lr-form-item-title">流程节点名称<font face="宋体">*</font></div>
+        <input id="F_ProcessNodeName" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_SocialRecruitment/Views/SR_ProcessNodeTableClass/Form.js")

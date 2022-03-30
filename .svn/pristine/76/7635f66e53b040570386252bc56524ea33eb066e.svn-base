@@ -1,0 +1,48 @@
+﻿using Learun.Util;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Learun.Application.TwoDevelopment.Platform
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：超级管理员
+    /// 日 期：2022-02-08 18:22
+    /// 描 述：作业员笔试题库
+    /// </summary>
+    public class QuestionListBankEntity
+    {
+        #region 实体成员
+
+ 
+        public string F_Id { get; set; }
+        /// <summary>
+        /// 笔试题库名称
+        /// </summary>
+        public string F_TestPaperName { get; set; }
+        /// <summary>
+        /// 笔试题目
+        /// </summary>
+        public string Questions { get; set; }
+        /// <summary>
+        /// 笔试题目类别
+        /// </summary>
+        public string F_QuestionsType { get; set; }
+        /// <summary>
+        /// 答案内容
+        /// </summary>
+        public string F_AnsewrContent { get; set; }
+        /// <summary>
+        /// 正确答案
+        /// </summary>
+        public string F_Ansewr { get; set; }
+        /// <summary>
+        /// 题目分数
+        /// </summary>
+        public string F_Score { get; set; }
+        #endregion
+
+    }
+}
+

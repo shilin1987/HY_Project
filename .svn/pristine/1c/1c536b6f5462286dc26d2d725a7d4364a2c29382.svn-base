@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "合同后台管理表";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_Recruit_ContractTemplateManagement" >
+        <div class="lr-form-item-title">合同名称<font face="宋体">*</font></div>
+        <input id="F_Name" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_Recruit_ContractTemplateManagement" >
+        <div class="lr-form-item-title">合同类型<font face="宋体">*</font></div>
+        <input id="F_Type" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_Recruit_ContractTemplateManagement" >
+        <div class="lr-form-item-title">合同内容<font face="宋体">*</font></div>
+        <input id="F_ContractContent" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-6 lr-form-item"  data-table="Hy_Recruit_ContractTemplateManagement" >
+        <div class="lr-form-item-title">内容预览<font face="宋体">*</font></div>
+        <input id="F_PreviewtheContract" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hy_Recruit_ContractTemplateManagement" >
+        <div class="lr-form-item-title">附件上传</div>
+        <div id="F_Url"  ></div>
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/Platform/Views/HyRecruitContractTemplateManagement/Form.js")

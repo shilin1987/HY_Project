@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "菜价补贴月数据";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<div class="lr-form-wrap" id="form">
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">系统ID<font face="宋体">*</font></div>
+        <input id="oid" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">员工编号</div>
+        <input id="user_code" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">员工姓名</div>
+        <input id="user_name" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">部门编号<font face="宋体">*</font></div>
+        <input id="deptid" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">部门名称</div>
+        <input id="deptname" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">月早餐合计次数</div>
+        <input id="monBreakfastTogether" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">月午餐合计次数</div>
+        <input id="monLunchTogether" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">月晚餐合计次数</div>
+        <input id="monDinnerTogether" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">月夜宵合计次数</div>
+        <input id="monSupperTogether" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">成本中心编号</div>
+        <input id="cost_centerno" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">成本中心名称</div>
+        <input id="cost_center" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">补贴金额</div>
+        <input id="countMoney" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">年份</div>
+        <input id="yearno" type="text" class="form-control"  />
+    </div>
+    <div class="col-xs-12 lr-form-item"  data-table="Hr_vpsmonthdata" >
+        <div class="lr-form-item-title">月份</div>
+        <input id="monthno" type="text" class="form-control"  />
+    </div>
+</div>
+@Html.AppendJsFile("/Areas/HR_Code/Views/HrvpsmonthdataTab/Form.js")

@@ -1,0 +1,147 @@
+﻿using Learun.Util;
+using System;
+using System.Data;
+using System.Collections.Generic;
+
+namespace Learun.Application.TwoDevelopment.B2B_Code
+{
+    /// <summary>
+    /// 版 本 Learun-ADMS V7.0.3 力软敏捷开发框架
+    /// Copyright (c) 2013-2018 上海力软信息技术有限公司
+    /// 创 建：B2B_Account
+    /// 日 期：2021-10-26 19:09
+    /// 描 述：B2B
+    /// </summary>
+    public class PLAN_INCOMING2BLL : PLAN_INCOMING2IBLL
+    {
+        private PLAN_INCOMING2Service pLAN_INCOMING2Service = new PLAN_INCOMING2Service();
+
+        #region 获取数据
+
+        /// <summary>
+        /// 获取页面显示列表数据
+        /// <summary>
+        /// <param name="queryJson">查询参数</param>
+        /// <returns></returns>
+        public IEnumerable<PLAN_INCOMING_MATERIAL_SUBEntity> GetPageList(Pagination pagination, string queryJson)
+        {
+            try
+            {
+                return pLAN_INCOMING2Service.GetPageList(pagination, queryJson);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取PLAN_INCOMING_MATERIAL_SUB表数据
+        /// <summary>
+        /// <returns></returns>
+        public IEnumerable<PLAN_INCOMING_MATERIAL_SUBEntity> GetPLAN_INCOMING_MATERIAL_SUBList(string keyValue)
+        {
+            try
+            {
+                return pLAN_INCOMING2Service.GetPLAN_INCOMING_MATERIAL_SUBList(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取PLAN_INCOMING_MATERIAL_SUB表实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public PLAN_INCOMING_MATERIAL_SUBEntity GetPLAN_INCOMING_MATERIAL_SUBEntity(string keyValue)
+        {
+            try
+            {
+                return pLAN_INCOMING2Service.GetPLAN_INCOMING_MATERIAL_SUBEntity(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 提交数据
+
+        /// <summary>
+        /// 删除实体数据
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void DeleteEntity(string keyValue)
+        {
+            try
+            {
+                pLAN_INCOMING2Service.DeleteEntity(keyValue);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存实体数据（新增、修改）
+        /// <param name="keyValue">主键</param>
+        /// <summary>
+        /// <returns></returns>
+        public void SaveEntity(string keyValue, PLAN_INCOMING_MATERIAL_SUBEntity entity)
+        {
+            try
+            {
+                pLAN_INCOMING2Service.SaveEntity(keyValue, entity);
+            }
+            catch (Exception ex)
+            {
+                if (ex is ExceptionEx)
+                {
+                    throw;
+                }
+                else
+                {
+                    throw ExceptionEx.ThrowBusinessException(ex);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+}

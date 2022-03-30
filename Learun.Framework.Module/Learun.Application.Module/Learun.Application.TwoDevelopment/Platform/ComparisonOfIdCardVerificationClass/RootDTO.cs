@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Learun.Application.TwoDevelopment.Platform.ComparisonOfIdCardVerificationClass
+{
+    public class RootDTO
+    {
+        /// <summary>
+        /// 1
+        /// </summary>
+        public string code { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string message { get; set; }
+
+        /// <summary>
+        /// 吴涛
+        /// </summary>
+        public string name { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string cardID { get; set; }
+    }
+}
